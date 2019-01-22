@@ -44,7 +44,8 @@ create table userrelationship
 (
 	relationshipid serial primary key,
 	userid1 int references userinfo(userid) not null,
-	userid2 int references userinfo(userid) not null
+	userid2 int references userinfo(userid) not null,
+	status smallint not null
 );
 
 create table directmessage
