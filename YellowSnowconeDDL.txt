@@ -5,6 +5,8 @@ drop table if exists userposts;
 drop table if exists usercredentials;
 drop table if exists userinfo;
 
+
+--Table containing user info
 create table userinfo
 (
 	userid serial primary key,
