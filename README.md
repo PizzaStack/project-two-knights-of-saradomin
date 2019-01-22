@@ -1,14 +1,14 @@
 # project-two-knights-of-saradomin
 
 
-#Yellow Snow-cone 
+# Yellow Snow-cone 
 
 ### (Social media site with a Yeti as the mascot and where likes are regular snow-cones and dislikes are yellow snow-cones)
 
-##Group:
-Boyd Thurston, John DeJesus, Christian Meyer, Derek Cheah
+## Group:
+Boyd Thurston, John DeJesus, Christian Meyer, Derrick Cheah
 
-#User Stories:
+# User Stories:
 - [ ] A user can register.
 - [ ] A user can login.
 - [ ] A user can log out.
@@ -26,6 +26,6 @@ Boyd Thurston, John DeJesus, Christian Meyer, Derek Cheah
 - [ ] A user is notified when someone sends them a message.
 - [ ] A user can edit their profile information.
 
-#Reach Goals:
+# Reach Goals:
 When registering, a user has to type in a confirmation code sent via either text or email.
 
