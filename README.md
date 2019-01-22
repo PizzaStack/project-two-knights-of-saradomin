@@ -1,4 +1,4 @@
-# project-two-knights-of-saradomin
+# Project-two-knights-of-saradomin
 
 
 # Yellow Snow-cone 
