@@ -1,3 +1,0 @@
-DB: yellowsnowcone
-Username: yellowsnowcone
-Password: mybodyisyeti
