@@ -6,7 +6,13 @@
 ### (Social media site with a Yeti as the mascot and where likes are regular snow-cones and dislikes are yellow snow-cones)
 
 ## Group:
-Boyd Thurston, John DeJesus, Christian Meyer, Derrick Cheah
+Boyd Thurston, Christian Meyer, Derrick Cheah, John DeJesus
+
+## installs needed 
+
+```
+npm init -y
+```
 
 # User Stories:
 - [ ] A user can register.
