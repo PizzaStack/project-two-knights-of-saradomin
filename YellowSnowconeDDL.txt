@@ -7,12 +7,12 @@ drop table if exists userinfo;
 create table userinfo
 (
 	userid serial primary key,
+	username varchar(75) unique not null,
+	password varchar(75) not null,
 	firstname varchar(50) not null,
 	lastname varchar(50) not null,
 	emailaddress varchar(75) unique not null,
-	profilepicturelocation varchar(200) null,
-	username varchar(75) unique not null,
-	password varchar(75) not null
+	profilepicturepath varchar(200) null
 );
 
 create table userposts
