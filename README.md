@@ -11,11 +11,7 @@ Boyd Thurston, Christian Meyer, Derrick Cheah, John DeJesus
 ## installs needed 
 
 ```
-<<<<<<< HEAD
 npm i 
-=======
-npm init -y
->>>>>>> init
 ```
 
 # User Stories:
