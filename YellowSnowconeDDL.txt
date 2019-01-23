@@ -2,27 +2,17 @@ drop table if exists directmessage;
 drop table if exists userrelationship;
 drop table if exists postinteractions;
 drop table if exists userposts;
-drop table if exists usercredentials;
 drop table if exists userinfo;
 
-
---Table containing user info
 create table userinfo
 (
 	userid serial primary key,
 	firstname varchar(50) not null,
 	lastname varchar(50) not null,
-	emailaddress varchar(75) not null,
-	profilepicturelocation varchar(200) null
-);
-
-create table usercredentials
-(
-	accountid serial primary key,
-	userid int references userinfo(userid) not null,
-	username varchar(75) not null,
-	password varchar(75) not null,
-	status smallint not null
+	emailaddress varchar(75) unique not null,
+	profilepicturelocation varchar(200) null,
+	username varchar(75) unique not null,
+	password varchar(75) not null
 );
 
 create table userposts
