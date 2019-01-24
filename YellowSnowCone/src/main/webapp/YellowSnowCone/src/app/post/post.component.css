@@ -1,7 +1,7 @@
-.card{
-    min-width: 100vh;
-    
+small{
+    text-align: center
 }
+
 .btn{
     background:  #aad4e5;
   
@@ -9,4 +9,9 @@
     color: white;
     box-shadow: 5px 5px #888888;
     font-size: 15px;
+}
+.btn:active{
+    transform: translateY(2px);
+    
+
 }
