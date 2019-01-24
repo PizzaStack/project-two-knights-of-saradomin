@@ -11,11 +11,7 @@ Boyd Thurston, Christian Meyer, Derrick Cheah, John DeJesus
 ## installs needed 
 
 ```
-<<<<<<< HEAD
 npm i 
-=======
-npm init -y
->>>>>>> init
 ```
 
 # User Stories:
@@ -39,3 +35,9 @@ npm init -y
 # Reach Goals:
 When registering, a user has to type in a confirmation code sent via either text or email.
 
+### color theme 
+
+yellow #ffdf22
+gray #ECEEF1
+snow #aad4e5
+red #e31b23
