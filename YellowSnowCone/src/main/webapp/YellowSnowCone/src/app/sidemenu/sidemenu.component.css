@@ -1,0 +1,23 @@
+li{
+    margin-bottom: 15%;
+    
+}
+a{
+    color:black
+}
+.btn{
+    background:  #aad4e5;
+    font-weight: bold;
+    color: white;
+    box-shadow: 5px 5px #888888;
+    font-size: 25px
+}
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    background: white;
+    padding: 10%;
+    text-align: center
+}
+
