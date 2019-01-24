@@ -35,3 +35,9 @@ npm i
 # Reach Goals:
 When registering, a user has to type in a confirmation code sent via either text or email.
 
+### color theme 
+
+yellow #ffdf22
+gray #ECEEF1
+snow #aad4e5
+red #e31b23
