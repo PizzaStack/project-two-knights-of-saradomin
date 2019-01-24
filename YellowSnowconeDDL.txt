@@ -2,49 +2,48 @@ drop table if exists directmessage;
 drop table if exists userrelationship;
 drop table if exists postinteractions;
 drop table if exists userposts;
-drop table if exists userinfo;
+drop table if exists users;
 
-create table userinfo
+create table users
 (
 	userid serial primary key,
-	username varchar(75) unique not null,
+	email varchar(75) unique not null,
 	password varchar(75) not null,
 	firstname varchar(50) not null,
 	lastname varchar(50) not null,
-	emailaddress varchar(75) unique not null,
 	profilepicturepath varchar(200) null
 );
 
 create table userposts
 (
 	postid serial primary key,
-	userid int references userinfo(userid) not null,
+	userid int references users(userid) not null,
 	textcontents varchar(1000) null,
 	imagelocation varchar(500) null,
-	repostedid int null
+	repostid int null
 );
 
 create table postinteractions
 (
 	interactionid serial primary key,
 	postid int references userposts(postid) not null,
-	userid int references userinfo(userid) not null,
+	userid int references users(userid) not null,
 	type smallint not null
 );
 
-create table userrelationship
+create table userrelations
 (
-	relationshipid serial primary key,
-	userid1 int references userinfo(userid) not null,
-	userid2 int references userinfo(userid) not null,
+	relationid serial primary key,
+	userid1 int references users(userid) not null,
+	userid2 int references users(userid) not null,
 	status smallint not null
 );
 
-create table directmessage
+create table usermessage
 (
 	messageid serial primary key,
 	textcontents varchar(1000) null,
-	userid1 int references userinfo(userid) not null,
-	userid2 int references userinfo(userid) not null,
+	userid1 int references users(userid) not null,
+	userid2 int references users(userid) not null,
 	imagelocation varchar(500) null
 );
