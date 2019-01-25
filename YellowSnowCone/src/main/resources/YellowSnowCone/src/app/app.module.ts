@@ -16,6 +16,7 @@ import { PostComponent } from './post/post.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { IconComponent } from './icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UpdateprofileComponent
+    UpdateprofileComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule
