@@ -15,6 +15,7 @@ import { SnowconedislikeComponent } from './snowconedislike/snowconedislike.comp
 import { PostComponent } from './post/post.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
     SnowconedislikeComponent,
     PostComponent,
     MainviewComponent,
-    WelcomeviewComponent
+    WelcomeviewComponent,
+    UpdateprofileComponent
   ],
   imports: [
     BrowserModule
