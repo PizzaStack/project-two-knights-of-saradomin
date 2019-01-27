@@ -12,4 +12,9 @@ export class SnowconedislikeComponent implements OnInit {
   ngOnInit() {
   }
 
+  dislike(): void {
+    let img = document.getElementById("dislikeImg") as HTMLImageElement;
+    img.src = "../../assets/snowconedislikeshadowupsidedown.png"
+  }
+
 }

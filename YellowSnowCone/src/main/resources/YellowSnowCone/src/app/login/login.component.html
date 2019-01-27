@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
 
 
-    <a class="navbar-brand" href="#"><strong> Yellow Snow Cone</strong></a>
+    <a class="navbar-brand" href="#">
+      <h1> <strong> Yellow Snow Cone</strong></h1>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,8 +21,7 @@
             <input type="password" ngModel [(ngModel)]="newUserModel.password" name="password" 
                 class="form-control" id="login_Password" placeholder="Password">
           </div>
-          <button
-            type="submit" class="btn">Log In</button>
+          <button type="submit" class="btn" routerLink="/mainview">Log In</button>
         </form>
       </ul>
     </div>

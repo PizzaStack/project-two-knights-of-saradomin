@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,10 +16,14 @@ import { SnowconedislikeComponent } from './snowconedislike/snowconedislike.comp
 import { PostComponent } from './post/post.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
-
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { IconComponent } from './icon/icon.component';
 import { AppRoutingModule } from './app-routing.module';
+import { MessagesComponent } from './messages/messages.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from './message.service';
+import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 
-import { HttpClientModule }    from '@angular/common/http';
 import { UserService } from './user.service';
 import { UserListComponent } from './user-list/user-list.component';
 
@@ -47,7 +51,7 @@ import { UserListComponent } from './user-list/user-list.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

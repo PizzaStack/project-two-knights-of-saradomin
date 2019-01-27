@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WelcomeviewComponent } from './welcomeview/welcomeview.component'
-import { MainviewComponent } from './mainview/mainview.component'
-import { LoginComponent } from './login/login.component'
+import { MainviewComponent } from './mainview/mainview.component';
+import { MessagesComponent } from './messages/messages.component';
+import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
+import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  /*{ path: '', component: WelcomeviewComponent },*/
-  { path: 'home', component: WelcomeviewComponent },
-  /*{ path: 'login', redirectTo: '/main', component: LoginComponent },*/
-  { path: 'login', component: MainviewComponent},
-  { path: 'main', component: MainviewComponent }
+
+  { path: '', redirectTo: '/welcomeview', pathMatch: 'full' },
+  { path: 'welcomeview', component: WelcomeviewComponent },
+  { path: 'messages', component: MessagesComponent },
+  { path: 'mainview', component: MainviewComponent },
+  { path: 'messagesthread', component: MessagesthreadComponent }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  exports: [ RouterModule ],
+  imports: [ RouterModule.forRoot(routes)]
 })
+
+
 export class AppRoutingModule { }

@@ -36,28 +36,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
-/* harmony import */ var _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./mainview/mainview.component */ "./src/app/mainview/mainview.component.ts");
+/* harmony import */ var _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mainview/mainview.component */ "./src/app/mainview/mainview.component.ts");
+/* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
+/* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
+/* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
+
+
 
 
 
 
 
 var routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    /*{ path: '', component: WelcomeviewComponent },*/
-    { path: 'home', component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_3__["WelcomeviewComponent"] },
-    /*{ path: 'login', redirectTo: '/main', component: LoginComponent },*/
-    { path: 'login', component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_4__["MainviewComponent"] },
-    { path: 'main', component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_4__["MainviewComponent"] }
+    { path: '', redirectTo: '/welcomeview', pathMatch: 'full' },
+    { path: 'welcomeview', component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__["WelcomeviewComponent"] },
+    { path: 'messages', component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
+    { path: 'mainview', component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"] },
+    { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
-            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)]
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -151,8 +154,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+
 
 
 
@@ -195,7 +200,7 @@ var AppModule = /** @class */ (function () {
                 _post_post_component__WEBPACK_IMPORTED_MODULE_15__["PostComponent"],
                 _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_16__["MainviewComponent"],
                 _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_17__["WelcomeviewComponent"],
-                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_21__["UserListComponent"]
+                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_22__["UserListComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -203,7 +208,7 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_18__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_19__["HttpClientModule"]
             ],
-            providers: [_user_service__WEBPACK_IMPORTED_MODULE_20__["UserService"]],
+            providers: [_user_service__WEBPACK_IMPORTED_MODULE_21__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_20__["MessageService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
@@ -288,7 +293,7 @@ module.exports = ".navbar{\r\n    background-color: white;\r\n    box-shadow: 0p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n    <a class=\"navbar-brand\" href=\"#\"><strong> Yellow Snow Cone</strong></a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <form class=\"form-inline\" #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit()\">\r\n          {{loginForm.value | json}}\r\n          <div class=\"form-group\">\r\n            <input type=\"email\" ngModel [(ngModel)]=\"newUserModel.email\" name=\"email\" \r\n                class=\"form-control\" id=\"login_Email\" aria-describedby=\"emailHelp\" placeholder=\"Enter Email\">\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <input type=\"password\" ngModel [(ngModel)]=\"newUserModel.password\" name=\"password\" \r\n                class=\"form-control\" id=\"login_Password\" placeholder=\"Password\">\r\n          </div>\r\n          <button\r\n            type=\"submit\" class=\"btn\">Log In</button>\r\n        </form>\r\n      </ul>\r\n    </div>\r\n\r\n  \r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <h1> <strong> Yellow Snow Cone</strong></h1>\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <form class=\"form-inline\" #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit()\">\r\n          {{loginForm.value | json}}\r\n          <div class=\"form-group\">\r\n            <input type=\"email\" ngModel [(ngModel)]=\"newUserModel.email\" name=\"email\" \r\n                class=\"form-control\" id=\"login_Email\" aria-describedby=\"emailHelp\" placeholder=\"Enter Email\">\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <input type=\"password\" ngModel [(ngModel)]=\"newUserModel.password\" name=\"password\" \r\n                class=\"form-control\" id=\"login_Password\" placeholder=\"Password\">\r\n          </div>\r\n          <button type=\"submit\" class=\"btn\" routerLink=\"/mainview\">Log In</button>\r\n        </form>\r\n      </ul>\r\n    </div>\r\n\r\n  \r\n</nav>"
 
 /***/ }),
 
@@ -374,7 +379,7 @@ function Login(username, password, callback) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#main{\r\n    margin-top:30%;\r\n    background-color: white;\r\n    padding: 20px;\r\n    font-size: 25px;\r\n    box-shadow: 5px 5px #888888;\r\n    \r\n}\r\n.jumbotron{\r\n    background-color: white; \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbnBhZ2VqdW1ib3Ryb24vbWFpbnBhZ2VqdW1ib3Ryb24uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCx1QkFBdUI7SUFDdkIsYUFBYTtJQUNiLGVBQWU7SUFDZiwyQkFBMkI7O0FBRS9CO0FBQ0E7SUFDSSx1QkFBdUI7QUFDM0IiLCJmaWxlIjoic3JjL2FwcC9tYWlucGFnZWp1bWJvdHJvbi9tYWlucGFnZWp1bWJvdHJvbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI21haW57XHJcbiAgICBtYXJnaW4tdG9wOjMwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMjVweDtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIFxyXG59XHJcbi5qdW1ib3Ryb257XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgXHJcbn0iXX0= */"
+module.exports = "img{\r\n    margin-top:35%;\r\n    height: 350px;\r\n    width: 350px\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbnBhZ2VqdW1ib3Ryb24vbWFpbnBhZ2VqdW1ib3Ryb24uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCxhQUFhO0lBQ2I7QUFDSiIsImZpbGUiOiJzcmMvYXBwL21haW5wYWdlanVtYm90cm9uL21haW5wYWdlanVtYm90cm9uLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbWd7XHJcbiAgICBtYXJnaW4tdG9wOjM1JTtcclxuICAgIGhlaWdodDogMzUwcHg7XHJcbiAgICB3aWR0aDogMzUwcHhcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -385,7 +390,7 @@ module.exports = "#main{\r\n    margin-top:30%;\r\n    background-color: white;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron\" id=\"main\">\r\n  <h3 class=\"display-3\">Yellow Snow Cone</h3>\r\n  <p class=\"lead\">Lorem ipsum tiis esse a, commodi fugit uuam, iure saepe similique minus autem reiciendis ad cupiditate recusandae!\r\n  incidunt a? commodi fugit uuam, iure saepe similique minus autem reiciendis ad </p>\r\n  <app-user-list></app-user-list>\r\n</div>"
+module.exports = "\r\n <img src=\"../../assets/Logo.png\" alt=\"\">   \r\n \r\n"
 
 /***/ }),
 
@@ -479,6 +484,203 @@ var MainviewComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/message.service.ts":
+/*!************************************!*\
+  !*** ./src/app/message.service.ts ***!
+  \************************************/
+/*! exports provided: MessageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageService", function() { return MessageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var MessageService = /** @class */ (function () {
+    function MessageService(http) {
+        this.http = http;
+        this.userId = 1;
+        this.messages = [];
+        this.messagesUrl = 'http://localhost:8080/messagesById';
+    }
+    MessageService.prototype.getMessages = function () {
+        return this.http.get(this.messagesUrl);
+    };
+    MessageService.prototype.getMessagesById = function () {
+        return this.http.post(this.messagesUrl, this.userId);
+    };
+    MessageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], MessageService);
+    return MessageService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/messages/messages.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/messages/messages.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lc3NhZ2VzL21lc3NhZ2VzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/messages/messages.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/messages/messages.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n<button (click)=\"loadMessages()\">Load Messages</button>\r\n\r\n                          <h2>Messages</h2>\r\n                            <ul *ngFor=\"let message of messages\">\r\n                              <li>User1: {{message.user1.firstname}} {{message.user1.lastname}} User2: {{message.user2.firstname}} {{message.user2.lastname}}</li>\r\n                            </ul>\r\n                            \r\n                            <ul> \r\n                            <div id=\"messages\">\r\n\r\n\r\n                            </div>\r\n                            </ul>\r\n\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/messages/messages.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/messages/messages.component.ts ***!
+  \************************************************/
+/*! exports provided: MessagesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagesComponent", function() { return MessagesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../message.service */ "./src/app/message.service.ts");
+
+
+
+var MessagesComponent = /** @class */ (function () {
+    function MessagesComponent(messageService) {
+        this.messageService = messageService;
+        this.employeeId = 1;
+    }
+    MessagesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.messageService.getMessagesById()
+            .subscribe(function (data) { return _this.messages = data; });
+    };
+    MessagesComponent.prototype.loadMessages = function () {
+        var messagesBlock = "";
+        var users = [];
+        for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
+            var i = _a[_i];
+            if (i.userid1 === this.employeeId) {
+                users.push(i.user2.firstname + ' ' + i.user2.lastname);
+            }
+            else {
+                users.push(i.user1.firstname + ' ' + i.user1.lastname);
+            }
+        }
+        var position = 0;
+        for (var _b = 0, users_1 = users; _b < users_1.length; _b++) {
+            var i = users_1[_b];
+            var count = 0;
+            for (var _c = 0, users_2 = users; _c < users_2.length; _c++) {
+                var j = users_2[_c];
+                if (i === j) {
+                    count += 1;
+                }
+            }
+            if (count > 1) {
+                users.splice(position, position + 1);
+            }
+            position += 1;
+        }
+        for (var _d = 0, users_3 = users; _d < users_3.length; _d++) {
+            var k = users_3[_d];
+            messagesBlock = messagesBlock + ("\n      <button onclick=\"test()\">" + k + "</button>\n    ");
+        }
+        document.getElementById("messages").innerHTML = messagesBlock;
+    };
+    MessagesComponent.prototype.test = function () {
+        alert("HAHAHA");
+    };
+    MessagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-messages',
+            template: __webpack_require__(/*! ./messages.component.html */ "./src/app/messages/messages.component.html"),
+            styles: [__webpack_require__(/*! ./messages.component.css */ "./src/app/messages/messages.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+    ], MessagesComponent);
+    return MessagesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/messagesthread/messagesthread.component.css":
+/*!*************************************************************!*\
+  !*** ./src/app/messagesthread/messagesthread.component.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lc3NhZ2VzdGhyZWFkL21lc3NhZ2VzdGhyZWFkLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/messagesthread/messagesthread.component.html":
+/*!**************************************************************!*\
+  !*** ./src/app/messagesthread/messagesthread.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  messagesthread works!\r\n</p>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/messagesthread/messagesthread.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/messagesthread/messagesthread.component.ts ***!
+  \************************************************************/
+/*! exports provided: MessagesthreadComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagesthreadComponent", function() { return MessagesthreadComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var MessagesthreadComponent = /** @class */ (function () {
+    function MessagesthreadComponent() {
+    }
+    MessagesthreadComponent.prototype.ngOnInit = function () {
+    };
+    MessagesthreadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-messagesthread',
+            template: __webpack_require__(/*! ./messagesthread.component.html */ "./src/app/messagesthread/messagesthread.component.html"),
+            styles: [__webpack_require__(/*! ./messagesthread.component.css */ "./src/app/messagesthread/messagesthread.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], MessagesthreadComponent);
+    return MessagesthreadComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/navbar/navbar.component.css":
 /*!*********************************************!*\
   !*** ./src/app/navbar/navbar.component.css ***!
@@ -542,7 +744,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "small{\r\n    text-align: center\r\n}\r\n\r\n.btn{\r\n    background:  #aad4e5;\r\n  \r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n    \r\n\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSTtBQUNKOztBQUVBO0lBQ0ksb0JBQW9COztJQUVwQixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLDJCQUEyQjtJQUMzQixlQUFlO0FBQ25COztBQUNBO0lBQ0ksa0NBQTBCO1lBQTFCLDBCQUEwQjs7O0FBRzlCIiwiZmlsZSI6InNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzbWFsbHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlclxyXG59XHJcblxyXG4uYnRue1xyXG4gICAgYmFja2dyb3VuZDogICNhYWQ0ZTU7XHJcbiAgXHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG4uYnRuOmFjdGl2ZXtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG4gICAgXHJcblxyXG59XHJcbiJdfQ== */"
+module.exports = "small{\r\n    text-align: center\r\n}\r\n\r\n.btn{\r\n    background:  #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSTtBQUNKOztBQUVBO0lBQ0ksb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7QUFDbkI7O0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzbWFsbHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlclxyXG59XHJcblxyXG4uYnRue1xyXG4gICAgYmFja2dyb3VuZDogICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG4uYnRuOmFjdGl2ZXtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -574,8 +776,7 @@ __webpack_require__.r(__webpack_exports__);
 var PostComponent = /** @class */ (function () {
     function PostComponent() {
     }
-    PostComponent.prototype.ngOnInit = function () {
-    };
+    PostComponent.prototype.ngOnInit = function () { };
     PostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-post',
@@ -609,7 +810,7 @@ module.exports = "#profile_Picture{\r\n    height: 100%;\r\n    width: 100%;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<img id=\"profile_Picture\" src=\"../../assets/profile-picture-placeholder.png\" alt=\"Upload Photo\">"
+module.exports = "<img class =\"avatar img-circle img-thumbnail\"id=\"profile_Picture\" src=\"../../assets/profile-picture-placeholder.png\" alt=\"Upload Photo\">"
 
 /***/ }),
 
@@ -665,7 +866,7 @@ module.exports = ".form-control{\r\n    box-shadow:         inset 0 0 15px #8888
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" id =\"Register\">\r\n  <div class=\"row\">\r\n    <form class=\"form col-lg-12\">\r\n      <h3><strong>Create a New Account</strong></h3>\r\n      <p>It’s free and always will be!</p>\r\n\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" placeholder=\"First Name\">\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Last Name\">\r\n            </div>\r\n          </div>\r\n      </div>\r\n      <div class=\"form-group\">    \r\n          <input type=\"email\" class=\"form-control\" id=\"input_Email\" placeholder=\"Email\" required=\"\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n         \r\n          <input type=\"password\" class=\"form-control\" id=\"inputPassword\" placeholder=\"Password\" title=\"At least 6 characters with letters and numbers\" required=\"\">\r\n      </div>\r\n     \r\n      <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-default btn-lg float-right\">Register</button>\r\n      </div>\r\n    </form>\r\n\r\n    <!-- DELETE LATER -->\r\n    <h3> Logged-In </h3>\r\n    <ul *ngFor=\"let user of users\" style=\"font-size:15px\">\r\n      <li>ID:{{user.userId}}, Email:{{user.email}}, Password:{{user.pngassword}}</li>\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n\r\n"
+module.exports = "<div class=\"container\" id =\"Register\">\r\n  <div class=\"row\">\r\n    <form class=\"form col-lg-12\">\r\n      <h3><strong>Create a New Account</strong></h3>\r\n      <p>It’s free and always will be!</p>\r\n\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" clasngs=\"form-control\" id=\"input_First_Name\" placeholder=\"First Name\">\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Last Name\">\r\n            </div>\r\n          </div>\r\n      </div>\r\n      <div class=\"form-group\">    \r\n          <input type=\"email\" class=\"form-control\" id=\"input_Email\" placeholder=\"Email\" required=\"\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n         \r\n          <input type=\"password\" class=\"form-control\" id=\"inputPassword\" placeholder=\"Password\" title=\"At least 6 characters with letters and numbers\" required=\"\">\r\n      </div>\r\n     \r\n      <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-default btn-lg float-right\">Register</button>\r\n      </div>\r\n    </form>\r\n\r\n    <!-- DELETE LATER -->\r\n    <h3> Logged-In </h3>\r\n    <ul *ngFor=\"let user of users\" style=\"font-size:15px\">\r\n      <li>ID:{{user.userId}}, Email:{{user.email}}, Password:{{user.pngassword}}</li>\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -725,7 +926,7 @@ module.exports = "li{\r\n    margin-bottom: 15%;\r\n    \r\n}\r\na{\r\n    color
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n       <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>Name</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Friends List</a>\r\n        </li>\r\n    </ul>\r\n    <button type=\"submit\" class=\"btn \">Log Out</button>\r\n\r\n</nav>"
+module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n       <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>Name</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Friends List</a>\r\n        </li>\r\n        <li>  \r\n           <a routerLink=\"/messages\">Messages</a>\r\n        </li>\r\n    </ul>\r\n    <button type=\"submit\" class=\"btn \">Log Out</button>\r\n\r\n</nav>"
 
 /***/ }),
 
@@ -826,7 +1027,7 @@ var SnowconeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "button{\r\n    background:transparent\r\n}\r\nimg{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc25vd2NvbmVkaXNsaWtlL3Nub3djb25lZGlzbGlrZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0k7QUFDSjtBQUNBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZCIsImZpbGUiOiJzcmMvYXBwL3Nub3djb25lZGlzbGlrZS9zbm93Y29uZWRpc2xpa2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJ1dHRvbntcclxuICAgIGJhY2tncm91bmQ6dHJhbnNwYXJlbnRcclxufVxyXG5pbWd7XHJcbiAgICBoZWlnaHQ6IDE2cHg7XHJcbiAgICB3aWR0aDoxNnB4O1xyXG59Il19 */"
+module.exports = "img{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc25vd2NvbmVkaXNsaWtlL3Nub3djb25lZGlzbGlrZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvc25vd2NvbmVkaXNsaWtlL3Nub3djb25lZGlzbGlrZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW1ne1xyXG4gICAgaGVpZ2h0OiAxNnB4O1xyXG4gICAgd2lkdGg6MTZweDtcclxufVxyXG5cclxuaW5wdXQge1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxufVxyXG5cclxuaW5wdXQ6YWN0aXZlIHtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -837,7 +1038,7 @@ module.exports = "button{\r\n    background:transparent\r\n}\r\nimg{\r\n    heig
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<input type=\"image\" src=\"../../assets/snowconeshadowupsidedown.png\" width=\"48\" height=\"48\">\r\n\r\n"
+module.exports = "<input id=\"dislikeImg\" (click)=\"dislike()\" type=\"image\" src=\"../../assets/snowconeshadowupsidedown.png\" width=\"48\" height=\"48\">\r\n\r\n"
 
 /***/ }),
 
@@ -859,6 +1060,10 @@ var SnowconedislikeComponent = /** @class */ (function () {
     function SnowconedislikeComponent() {
     }
     SnowconedislikeComponent.prototype.ngOnInit = function () {
+    };
+    SnowconedislikeComponent.prototype.dislike = function () {
+        var img = document.getElementById("dislikeImg");
+        img.src = "../../assets/snowconedislikeshadowupsidedown.png";
     };
     SnowconedislikeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -882,7 +1087,7 @@ var SnowconedislikeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "button{\r\n    background:transparent\r\n}\r\nimg{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc25vd2NvbmVsaWtlL3Nub3djb25lbGlrZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0k7QUFDSjtBQUNBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZCIsImZpbGUiOiJzcmMvYXBwL3Nub3djb25lbGlrZS9zbm93Y29uZWxpa2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImJ1dHRvbntcclxuICAgIGJhY2tncm91bmQ6dHJhbnNwYXJlbnRcclxufVxyXG5pbWd7XHJcbiAgICBoZWlnaHQ6IDE2cHg7XHJcbiAgICB3aWR0aDoxNnB4O1xyXG59Il19 */"
+module.exports = "img{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc25vd2NvbmVsaWtlL3Nub3djb25lbGlrZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvc25vd2NvbmVsaWtlL3Nub3djb25lbGlrZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW1ne1xyXG4gICAgaGVpZ2h0OiAxNnB4O1xyXG4gICAgd2lkdGg6MTZweDtcclxufVxyXG5cclxuaW5wdXQge1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxufVxyXG5cclxuaW5wdXQ6YWN0aXZlIHtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -893,7 +1098,7 @@ module.exports = "button{\r\n    background:transparent\r\n}\r\nimg{\r\n    heig
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<input type=\"image\" src=\"../../assets/snowconeshadow.png\" width=\"48\" height=\"48\">\r\n\r\n\r\n"
+module.exports = "<input id=\"likeimg\" (click)=\"like()\" type=\"image\" src=\"../../assets/snowconeshadow.png\" width=\"48\" height=\"48\">"
 
 /***/ }),
 
@@ -915,6 +1120,10 @@ var SnowconelikeComponent = /** @class */ (function () {
     function SnowconelikeComponent() {
     }
     SnowconelikeComponent.prototype.ngOnInit = function () {
+    };
+    SnowconelikeComponent.prototype.like = function () {
+        var img = document.getElementById("likeimg");
+        img.src = "../../assets/snowconelikeshadow.png";
     };
     SnowconelikeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1074,7 +1283,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-login></app-login>\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-lg-6\">\r\n      <app-mainpagejumbotron></app-mainpagejumbotron>\r\n    </div>\r\n    <div class=\"col-lg-6\">\r\n      <app-register></app-register>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<app-login></app-login>\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n      <div class=\"col-lg-1\"></div>\r\n    <div class=\"col-lg-5\">\r\n      <app-mainpagejumbotron></app-mainpagejumbotron>\r\n    </div>\r\n    \r\n    <div class=\"col-lg-6\">\r\n      <app-register></app-register>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 

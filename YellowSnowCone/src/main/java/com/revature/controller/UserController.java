@@ -19,7 +19,7 @@ import com.revature.dao.UserDAO;
 import com.revature.entity.User;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:8200", "http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 public class UserController {
 	@Autowired
 	UserDAO userDAO;

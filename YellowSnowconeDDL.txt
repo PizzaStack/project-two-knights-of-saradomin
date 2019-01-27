@@ -1,4 +1,4 @@
-drop table if exists directmessage;
+drop table if exists usermessage;
 drop table if exists userrelationship;
 drop table if exists postinteractions;
 drop table if exists userposts;
@@ -45,5 +45,6 @@ create table usermessage
 	textcontents varchar(1000) null,
 	userid1 int references users(userid) not null,
 	userid2 int references users(userid) not null,
-	imagelocation varchar(500) null
+	imagelocation varchar(500) null,
+	status smallint not null
 );
