@@ -43,8 +43,12 @@ import { UserListComponent } from './user-list/user-list.component';
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UserListComponent
-  ],
+    UserListComponent,
+    MessagesComponent,
+    MessagesthreadComponent,
+    IconComponent,
+    UpdateprofileComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,
