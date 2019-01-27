@@ -152,11 +152,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _post_post_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./post/post.component */ "./src/app/post/post.component.ts");
 /* harmony import */ var _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./mainview/mainview.component */ "./src/app/mainview/mainview.component.ts");
 /* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+/* harmony import */ var _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./updateprofile/updateprofile.component */ "./src/app/updateprofile/updateprofile.component.ts");
+/* harmony import */ var _icon_icon_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./icon/icon.component */ "./src/app/icon/icon.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
+/* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+
+
+
+
 
 
 
@@ -200,15 +208,19 @@ var AppModule = /** @class */ (function () {
                 _post_post_component__WEBPACK_IMPORTED_MODULE_15__["PostComponent"],
                 _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_16__["MainviewComponent"],
                 _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_17__["WelcomeviewComponent"],
-                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_22__["UserListComponent"]
+                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_26__["UserListComponent"],
+                _messages_messages_component__WEBPACK_IMPORTED_MODULE_21__["MessagesComponent"],
+                _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__["MessagesthreadComponent"],
+                _icon_icon_component__WEBPACK_IMPORTED_MODULE_19__["IconComponent"],
+                _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__["UpdateprofileComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_18__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_19__["HttpClientModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_20__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_22__["HttpClientModule"]
             ],
-            providers: [_user_service__WEBPACK_IMPORTED_MODULE_21__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_20__["MessageService"]],
+            providers: [_user_service__WEBPACK_IMPORTED_MODULE_25__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_23__["MessageService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
@@ -269,6 +281,62 @@ var CreatepostComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], CreatepostComponent);
     return CreatepostComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/icon/icon.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/icon/icon.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "img{\r\n    margin: auto;\r\n    height: 50%;\r\n    width: 50%;\r\n  \r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaWNvbi9pY29uLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxZQUFZO0lBQ1osV0FBVztJQUNYLFVBQVU7O0FBRWQiLCJmaWxlIjoic3JjL2FwcC9pY29uL2ljb24uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImltZ3tcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIGhlaWdodDogNTAlO1xyXG4gICAgd2lkdGg6IDUwJTtcclxuICBcclxufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/icon/icon.component.html":
+/*!******************************************!*\
+  !*** ./src/app/icon/icon.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n      <img src=\"../../assets/Logo.png\" alt=\"\">\r\n  "
+
+/***/ }),
+
+/***/ "./src/app/icon/icon.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/icon/icon.component.ts ***!
+  \****************************************/
+/*! exports provided: IconComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IconComponent", function() { return IconComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var IconComponent = /** @class */ (function () {
+    function IconComponent() {
+    }
+    IconComponent.prototype.ngOnInit = function () {
+    };
+    IconComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-icon',
+            template: __webpack_require__(/*! ./icon.component.html */ "./src/app/icon/icon.component.html"),
+            styles: [__webpack_require__(/*! ./icon.component.css */ "./src/app/icon/icon.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], IconComponent);
+    return IconComponent;
 }());
 
 
@@ -390,7 +458,7 @@ module.exports = "img{\r\n    margin-top:35%;\r\n    height: 350px;\r\n    width
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n <img src=\"../../assets/Logo.png\" alt=\"\">   \r\n \r\n"
+module.exports = "<img src=\"../../assets/Logo.png\" alt=\"\">   \r\n \r\n"
 
 /***/ }),
 
@@ -1134,6 +1202,62 @@ var SnowconelikeComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], SnowconelikeComponent);
     return SnowconelikeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/updateprofile/updateprofile.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/updateprofile/updateprofile.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".form-control{\r\n    box-shadow:         inset 0 0 15px #888888;\r\n    -moz-box-shadow:    inset 0 0 15px #888888;\r\n}\r\n\r\n.btn{\r\n    background:  #aad4e5;\r\n    \r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 25px\r\n}\r\n\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#update_Profile{\r\n    margin-top:30%;\r\n    background-color: white;\r\n    padding: 20px;\r\n    font-size: 25px;\r\n    box-shadow: 5px 5px #888888;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBkYXRlcHJvZmlsZS91cGRhdGVwcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFFSSwwQ0FBMEM7SUFDMUMsMENBQTBDO0FBQzlDOztBQUVBO0lBQ0ksb0JBQW9COztJQUVwQixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLDJCQUEyQjtJQUMzQjtBQUNKOztBQUNBO0lBQ0ksa0NBQTBCO1lBQTFCLDBCQUEwQjtBQUM5Qjs7QUFFQTtJQUNJLGNBQWM7SUFDZCx1QkFBdUI7SUFDdkIsYUFBYTtJQUNiLGVBQWU7SUFDZiwyQkFBMkI7QUFDL0IiLCJmaWxlIjoic3JjL2FwcC91cGRhdGVwcm9maWxlL3VwZGF0ZXByb2ZpbGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb3JtLWNvbnRyb2x7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICBib3gtc2hhZG93OiAgICAgICAgIGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6ICAgIGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbn1cclxuXHJcbi5idG57XHJcbiAgICBiYWNrZ3JvdW5kOiAgI2FhZDRlNTtcclxuICAgIFxyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBib3gtc2hhZG93OiA1cHggNXB4ICM4ODg4ODg7XHJcbiAgICBmb250LXNpemU6IDI1cHhcclxufVxyXG4uYnRuOmFjdGl2ZXtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59XHJcblxyXG4jdXBkYXRlX1Byb2ZpbGV7XHJcbiAgICBtYXJnaW4tdG9wOjMwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMjVweDtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/updateprofile/updateprofile.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/updateprofile/updateprofile.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\" id =\"update_Profile\">\r\n  <div class=\"row\">\r\n    <form class=\"form col-lg-12\">\r\n      <h3><strong>Update Profile</strong></h3>\r\n      <hr>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" placeholder=\"Update First Name\">\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Update Last Name\">\r\n            </div>\r\n          </div>\r\n      </div>\r\n     \r\n      <div class=\"form-group\">\r\n         \r\n          <input type=\"password\" class=\"form-control\" id=\"inputPassword\" placeholder=\"Update Password\" title=\"At least 6 characters with letters and numbers\" required=\"\">\r\n      </div>\r\n     <div>\r\n      <h6>Upload a different photo...</h6>\r\n      <input type=\"file\" class=\"text-center center-block file-upload\">\r\n     </div>\r\n      <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-default btn-lg float-right\">Save</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/updateprofile/updateprofile.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/updateprofile/updateprofile.component.ts ***!
+  \**********************************************************/
+/*! exports provided: UpdateprofileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateprofileComponent", function() { return UpdateprofileComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var UpdateprofileComponent = /** @class */ (function () {
+    function UpdateprofileComponent() {
+    }
+    UpdateprofileComponent.prototype.ngOnInit = function () {
+    };
+    UpdateprofileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-updateprofile',
+            template: __webpack_require__(/*! ./updateprofile.component.html */ "./src/app/updateprofile/updateprofile.component.html"),
+            styles: [__webpack_require__(/*! ./updateprofile.component.css */ "./src/app/updateprofile/updateprofile.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], UpdateprofileComponent);
+    return UpdateprofileComponent;
 }());
 
 

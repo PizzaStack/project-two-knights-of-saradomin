@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.dao.UserDAO;
 import com.revature.entity.User;
+import com.revature.entity.Users;
+import com.revature.repository.UsersRepository;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 public class UserController {
 	@Autowired
 	UserDAO userDAO;
+	UsersRepository repository;
 	Logger logger = LogManager.getLogger(UserController.class);
 	
 	@GetMapping("/users")
@@ -30,6 +33,10 @@ public class UserController {
 		//logger.info("FINDING ALL USERS");
 		System.out.println("FINDING ALL USERS");
 		return userDAO.findAll();
+	}
+	@GetMapping("/users/{firstname}")
+	public Users findByfirstname(@PathVariable("firstname") String firstname) {
+		return repository.findByfirstname(firstname);
 	}
 	
 	@PostMapping("/authenticate")
