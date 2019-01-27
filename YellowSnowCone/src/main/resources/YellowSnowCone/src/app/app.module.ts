@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -23,6 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 
+import { UserService } from './user.service';
+import { UserListComponent } from './user-list/user-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,17 +43,19 @@ import { MessagesthreadComponent } from './messagesthread/messagesthread.compone
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UpdateprofileComponent,
-    IconComponent,
+    UserListComponent,
     MessagesComponent,
-    MessagesthreadComponent
-  ],
+    MessagesthreadComponent,
+    IconComponent,
+    UpdateprofileComponent
+    ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [MessageService],
+  providers: [UserService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
