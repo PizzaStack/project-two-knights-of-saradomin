@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.dao.PostInteractionsDAO;
 import com.revature.entity.PostInteractions;
+import com.revature.repository.PostInteractionsRepository;
 
 @RestController
 public class PostInteractionsController {
 
 	@Autowired
-	PostInteractionsDAO dao;
+	PostInteractionsRepository dao;
 
 	@PostMapping("/postinteraction")
 	public PostInteractions addInteraction(@RequestBody @Valid PostInteractions pi, Errors errors) {

@@ -1,4 +1,4 @@
-package com.revature.dao;
+package com.revature.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.revature.entity.PostInteractions;
 
 @Repository
-public interface PostInteractionsDAO extends JpaRepository<PostInteractions, Integer>{
+public interface PostInteractionsRepository extends JpaRepository<PostInteractions, Integer>{
 
 }

@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.dao.UserPostsDAO;
 import com.revature.entity.UserPosts;
+import com.revature.repository.UserPostsRepository;
 
 @RestController
 public class UserPostsController {
 	
 	@Autowired
-	UserPostsDAO dao;
+	UserPostsRepository dao;
 	
 	@GetMapping("/userposts")
 	public List<UserPosts> getAll() {
