@@ -557,7 +557,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n<button (click)=\"loadMessages()\">Load Messages</button>\n\n                          <h2>Messages</h2>\n                            <ul *ngFor=\"let message of messages\">\n                              <li>User1: {{message.user1.firstname}} {{message.user1.lastname}} User2: {{message.user2.firstname}} {{message.user2.lastname}}</li>\n                            </ul>\n                            \n                            <ul>\n                            <div id=\"messages\">\n\n\n                            </div>\n                            </ul>\n\n<button (click)=\"loadMessages()\">TEST</button>\n</div>"
+module.exports = "<div>\r\n<button (click)=\"loadMessages()\">Load Messages</button>\r\n\r\n                          <h2>Messages</h2>\r\n                            <ul *ngFor=\"let message of messages\">\r\n                              <li>User1: {{message.user1.firstname}} {{message.user1.lastname}} User2: {{message.user2.firstname}} {{message.user2.lastname}}</li>\r\n                            </ul>\r\n                            \r\n                            <ul>\r\n                            <div id=\"messages\">\r\n\r\n\r\n                            </div>\r\n                            </ul>\r\n\r\n<button (click)=\"loadMessages()\">TEST</button>\r\n</div>"
 
 /***/ }),
 
@@ -1256,7 +1256,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\AngularProject\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })

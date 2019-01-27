@@ -11,7 +11,7 @@
 /app/**/*.js.map
 
 # dependencies
-AngularProject/node_modules
+YellowSnowCone/src/main/resources/YellowSnowCone/node_modules
 /node_modules
 /bower_components
 

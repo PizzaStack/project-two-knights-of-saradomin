@@ -1,4 +1,4 @@
-drop table if exists directmessage;
+drop table if exists usermessage;
 drop table if exists userrelationship;
 drop table if exists postinteractions;
 drop table if exists userposts;
