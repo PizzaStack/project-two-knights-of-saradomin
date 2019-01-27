@@ -22,6 +22,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
+import { RepostComponent } from './repost/repost.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MessagesthreadComponent } from './messagesthread/messagesthread.compone
     UpdateprofileComponent,
     IconComponent,
     MessagesComponent,
-    MessagesthreadComponent
+    MessagesthreadComponent,
+    RepostComponent
   ],
   imports: [
     BrowserModule,
