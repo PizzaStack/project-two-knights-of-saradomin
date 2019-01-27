@@ -17,6 +17,11 @@ import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { IconComponent } from './icon/icon.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MessagesComponent } from './messages/messages.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from './message.service';
+import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +40,16 @@ import { IconComponent } from './icon/icon.component';
     MainviewComponent,
     WelcomeviewComponent,
     UpdateprofileComponent,
-    IconComponent
+    IconComponent,
+    MessagesComponent,
+    MessagesthreadComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

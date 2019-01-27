@@ -11,8 +11,10 @@
 /app/**/*.js.map
 
 # dependencies
+YellowSnowCone/src/main/resources/YellowSnowCone/node_modules
 /node_modules
 /bower_components
+YellowSnowCone/src/main/resources/YellowSnowCone/package-lock.json
 
 # IDEs and editors
 /.idea
