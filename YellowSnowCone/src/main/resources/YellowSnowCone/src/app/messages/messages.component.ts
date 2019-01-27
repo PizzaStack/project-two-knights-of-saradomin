@@ -27,6 +27,7 @@ export class MessagesComponent implements OnInit {
     let messagesBlock = ``;
 
     let users = [];
+    
 
     for (let i of this.messages){
       if(i.userid1 === this.employeeId){
@@ -57,12 +58,16 @@ export class MessagesComponent implements OnInit {
 
     for (let k of users){
       messagesBlock = messagesBlock + `
-      <li>${k}</li>
+      <button onclick="test()">${k}</button>
     `
     }
 
     document.getElementById("messages").innerHTML = messagesBlock;
 
+  }
+  
+  test() {
+  	alert("HAHAHA");
   }
 
 

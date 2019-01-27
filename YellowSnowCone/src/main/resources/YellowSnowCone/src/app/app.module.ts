@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from './message.service';
+import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MessageService } from './message.service';
     WelcomeviewComponent,
     UpdateprofileComponent,
     IconComponent,
-    MessagesComponent
+    MessagesComponent,
+    MessagesthreadComponent
   ],
   imports: [
     BrowserModule,
