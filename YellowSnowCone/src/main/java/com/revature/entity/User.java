@@ -94,11 +94,4 @@ public class User {
 	public void setProfilePicturePath(String profilePicturePath) {
 		this.profilePicturePath = profilePicturePath;
 	}
-	
-	public String getUsername() {
-		return this.email;
-	}
-	public void setUername(String username) {
-		this.email = username;
-	}
 }

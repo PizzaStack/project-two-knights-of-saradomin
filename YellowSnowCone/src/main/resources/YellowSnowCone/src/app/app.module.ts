@@ -19,6 +19,10 @@ import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { HttpClientModule }    from '@angular/common/http';
+import { UserService } from './user.service';
+import { UserListComponent } from './user-list/user-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,14 +38,16 @@ import { AppRoutingModule } from './app-routing.module';
     SnowconedislikeComponent,
     PostComponent,
     MainviewComponent,
-    WelcomeviewComponent
+    WelcomeviewComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

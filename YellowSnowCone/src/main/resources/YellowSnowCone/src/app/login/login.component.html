@@ -9,16 +9,21 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <form class="form-inline">
+        <form class="form-inline" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+          {{loginForm.value | json}}
           <div class="form-group">
-            <input type="email" class="form-control" id="login_Email" aria-describedby="emailHelp" placeholder="Enter Email">
+            <input type="email" ngModel [(ngModel)]="newUserModel.email" name="email" 
+                class="form-control" id="login_Email" aria-describedby="emailHelp" placeholder="Enter Email">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="login_Password" placeholder="Password">
+            <input type="password" ngModel [(ngModel)]="newUserModel.password" name="password" 
+                class="form-control" id="login_Password" placeholder="Password">
           </div>
-          <button type="submit" class="btn ">Log In</button>
+          <button
+            type="submit" class="btn">Log In</button>
         </form>
       </ul>
     </div>
+
   
 </nav>

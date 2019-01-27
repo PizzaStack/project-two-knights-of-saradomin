@@ -8,5 +8,5 @@ import com.revature.entity.User;
 @Repository
 public interface UserDAO extends JpaRepository<User, Integer>{
 	User findByUserId(int id);
-	User findByEmail(String email);
+	User findByEmailAndPassword(String email, String password);
 }
