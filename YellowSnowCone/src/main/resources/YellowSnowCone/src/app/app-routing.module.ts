@@ -9,6 +9,11 @@ const routes: Routes = [
 
   { path: '', redirectTo: '/welcomeview', pathMatch: 'full' },
   { path: 'welcomeview', component: WelcomeviewComponent },
+  /*{
+    path: 'users/:id',
+    redirectTo: 'mainview',
+    pathMatch: 'full'
+  },*/
   { path: 'messages', component: MessagesComponent },
   { path: 'mainview', component: MainviewComponent },
   { path: 'messagesthread', component: MessagesthreadComponent }
