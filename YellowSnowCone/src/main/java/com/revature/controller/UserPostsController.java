@@ -29,12 +29,12 @@ public class UserPostsController {
 		return dao.findByUserid(userid);
 	}
 	
-	@PostMapping("/userpost/add/{userid}")
-	public List<UserPosts> getAllById(
+	@PostMapping("/userpost/add")
+	public void addPost(
 			@RequestBody
-			int id) {
-		List<UserPosts> userpost = (List<UserPosts>) dao.findAll();
-		return userpost;
+			UserPosts us
+			) {
+		dao.save(us);
 		
 	}
 	
