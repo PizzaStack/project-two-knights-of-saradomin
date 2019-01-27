@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,6 +25,9 @@ import { MessageService } from './message.service';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { RepostComponent } from './repost/repost.component';
 
+import { UserService } from './user.service';
+import { UserListComponent } from './user-list/user-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,18 +44,24 @@ import { RepostComponent } from './repost/repost.component';
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UpdateprofileComponent,
-    IconComponent,
+    UserListComponent,
     MessagesComponent,
     MessagesthreadComponent,
+<<<<<<< HEAD
     RepostComponent
   ],
+=======
+    IconComponent,
+    UpdateprofileComponent
+    ],
+>>>>>>> master
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [MessageService],
+  providers: [UserService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
