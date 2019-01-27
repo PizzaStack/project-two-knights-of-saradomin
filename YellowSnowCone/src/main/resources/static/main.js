@@ -465,7 +465,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n  \r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                            <app-createpost></app-createpost>\r\n                        </div>\r\n                    </div>\r\n                    <hr>\r\n                    <div class=\"row\">\r\n                            <div class=\"col-lg-12\">\r\n                                <app-post></app-post>\r\n                            </div>\r\n                        </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div>  \r\n</div>"
+module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n\r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n      \r\n                            <app-createpost></app-createpost>\r\n                        </div>\r\n                    </div>\r\n                    <hr>\r\n                    <div class=\"row\">\r\n                            <div class=\"col-lg-12\">\r\n                                <app-post></app-post>\r\n                            </div>\r\n                        </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div>  \r\n</div>"
 
 /***/ }),
 
@@ -552,7 +552,7 @@ var MessageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lc3NhZ2VzL21lc3NhZ2VzLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlcy9tZXNzYWdlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -563,7 +563,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n<button (click)=\"loadMessages()\">Load Messages</button>\r\n\r\n                          <h2>Messages</h2>\r\n\r\n                            <ul> \r\n                            <div id=\"messages\">\r\n\r\n\r\n                            </div>\r\n                            </ul>\r\n\r\n</div>"
+module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n\r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                            <button (click)=\"loadMessages()\">Load Messages</button>\r\n\r\n                            <h2>Messages</h2>\r\n                              <ul *ngFor=\"let user of users\">\r\n                                <li>\r\n                                 <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a> \r\n                                </li>\r\n                              </ul>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div> \r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -580,54 +580,67 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../message.service */ "./src/app/message.service.ts");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var MessagesComponent = /** @class */ (function () {
-    function MessagesComponent(messageService) {
+    function MessagesComponent(messageService, storage) {
         this.messageService = messageService;
-        this.employeeId = 1;
+        this.storage = storage;
+        this.userid = 1;
+        this.specificMessages = [];
+        this.users = [];
     }
     MessagesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; });
     };
-    MessagesComponent.prototype.loadMessages = function () {
-        var messagesBlock = "";
-        var users = [];
+    MessagesComponent.prototype.populateMessageThread = function (user) {
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
             var i = _a[_i];
-            if (i.userid1 === this.employeeId) {
-                users.push(i.user2.firstname + ' ' + i.user2.lastname);
+            if (i.userid1 === this.userid) {
+                if (user === (i.user2.firstname + ' ' + i.user2.lastname)) {
+                    this.specificMessage = "Me: " + i.textcontents;
+                    this.specificMessages.push(this.specificMessage);
+                }
             }
             else {
-                users.push(i.user1.firstname + ' ' + i.user1.lastname);
+                if (user === (i.user1.firstname + ' ' + i.user1.lastname)) {
+                    this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
+                    this.specificMessages.push(this.specificMessage);
+                }
+            }
+        }
+        this.storage.setScope(this.specificMessages);
+    };
+    MessagesComponent.prototype.loadMessages = function () {
+        for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
+            var i = _a[_i];
+            if (i.userid1 === this.userid) {
+                this.users.push(i.user2.firstname + ' ' + i.user2.lastname);
+            }
+            else {
+                this.users.push(i.user1.firstname + ' ' + i.user1.lastname);
             }
         }
         var position = 0;
-        for (var _b = 0, users_1 = users; _b < users_1.length; _b++) {
-            var i = users_1[_b];
+        for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
+            var i = _c[_b];
             var count = 0;
-            for (var _c = 0, users_2 = users; _c < users_2.length; _c++) {
-                var j = users_2[_c];
+            for (var _d = 0, _e = this.users; _d < _e.length; _d++) {
+                var j = _e[_d];
                 if (i === j) {
                     count += 1;
                 }
             }
             if (count > 1) {
-                users.splice(position, position + 1);
+                this.users.splice(position, position + 1);
             }
             position += 1;
         }
-        for (var _d = 0, users_3 = users; _d < users_3.length; _d++) {
-            var k = users_3[_d];
-            messagesBlock = messagesBlock + ("\n      <button onclick=\"test()\">" + k + "</button>\n    ");
-        }
-        document.getElementById("messages").innerHTML = messagesBlock;
-    };
-    MessagesComponent.prototype.test = function () {
-        alert("HAHAHA");
     };
     MessagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -635,7 +648,7 @@ var MessagesComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./messages.component.html */ "./src/app/messages/messages.component.html"),
             styles: [__webpack_require__(/*! ./messages.component.css */ "./src/app/messages/messages.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_2__["MessageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_2__["MessageService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], MessagesComponent);
     return MessagesComponent;
 }());
@@ -662,7 +675,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  messagesthread works!\n</p>\n"
+module.exports = "<ul *ngFor=\"let specificMessage of specificMessages\">\r\n  <li>\r\n    {{specificMessage}}\r\n  </li>\r\n</ul>\r\n"
 
 /***/ }),
 
@@ -678,12 +691,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagesthreadComponent", function() { return MessagesthreadComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+
 
 
 var MessagesthreadComponent = /** @class */ (function () {
-    function MessagesthreadComponent() {
+    function MessagesthreadComponent(storage) {
+        this.storage = storage;
     }
     MessagesthreadComponent.prototype.ngOnInit = function () {
+        this.specificMessages = this.storage.getScope();
     };
     MessagesthreadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -691,7 +708,7 @@ var MessagesthreadComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./messagesthread.component.html */ "./src/app/messagesthread/messagesthread.component.html"),
             styles: [__webpack_require__(/*! ./messagesthread.component.css */ "./src/app/messagesthread/messagesthread.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
     ], MessagesthreadComponent);
     return MessagesthreadComponent;
 }());
@@ -1142,6 +1159,43 @@ var SnowconelikeComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], SnowconelikeComponent);
     return SnowconelikeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage.service.ts":
+/*!************************************!*\
+  !*** ./src/app/storage.service.ts ***!
+  \************************************/
+/*! exports provided: StorageService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageService", function() { return StorageService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var StorageService = /** @class */ (function () {
+    function StorageService() {
+        this.scope = [];
+    }
+    StorageService.prototype.getScope = function () {
+        return this.scope;
+    };
+    StorageService.prototype.setScope = function (scope) {
+        this.scope = scope;
+    };
+    StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], StorageService);
+    return StorageService;
 }());
 
 
