@@ -45,5 +45,6 @@ create table usermessage
 	textcontents varchar(1000) null,
 	userid1 int references users(userid) not null,
 	userid2 int references users(userid) not null,
-	imagelocation varchar(500) null
+	imagelocation varchar(500) null,
+	status smallint not null
 );
