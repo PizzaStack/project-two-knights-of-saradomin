@@ -37,7 +37,7 @@ public class UserController {
 	public User login(@RequestBody User user) {
 		user = userDAO.findByEmailAndPassword(user.getEmail(), user.getPassword());
 		if (user != null) {
-			logger.info("loggedInUser = " + user);
+			//logger.info("loggedInUser = " + user);
 			return user;
 		}
 		else {
