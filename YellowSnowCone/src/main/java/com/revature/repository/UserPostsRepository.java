@@ -9,11 +9,7 @@ import com.revature.entity.UserPosts;
 
 @Repository
 public interface UserPostsRepository extends JpaRepository<UserPosts, Integer> {
-<<<<<<< HEAD
 
 	List<UserPosts> findByUserid(int userid);
 
-=======
-	List<UserPosts> findByUserid(int userid);
->>>>>>> master
 }

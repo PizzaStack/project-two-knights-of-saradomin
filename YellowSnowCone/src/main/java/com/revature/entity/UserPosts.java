@@ -89,7 +89,7 @@ public class UserPosts {
 				+ ", imagelocation=" + imagelocation + ", repostid=" + repostid + ", user=" + user + "]";
 	}
 
-	public UserPosts(@NotNull int postid, int userid, String textcontents, String imagelocation, int repostid,
+	public UserPosts(int postid, int userid, String textcontents, String imagelocation, int repostid,
 			Users user) {
 		super();
 		this.postid = postid;
