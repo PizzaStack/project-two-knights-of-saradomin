@@ -23,6 +23,6 @@ public class UserPostsController {
 	
 	@GetMapping("/userposts/{userid}")
 	public List<UserPosts> findByUserId(@PathVariable("userid") int userid) {
-		return dao.findByUserId(userid);
+		return dao.findByUserid(userid);
 	}
 }

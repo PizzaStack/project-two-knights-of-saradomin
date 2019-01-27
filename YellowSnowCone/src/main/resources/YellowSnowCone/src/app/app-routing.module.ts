@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'messages', component: MessagesComponent },
   { path: 'mainview', component: MainviewComponent },
   { path: 'messagesthread', component: MessagesthreadComponent }
-]; 
+];
 
 @NgModule({
   exports: [ RouterModule ],
