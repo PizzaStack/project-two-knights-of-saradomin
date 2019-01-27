@@ -4,7 +4,6 @@ small{
 
 .btn{
     background:  #aad4e5;
-  
     font-weight: bold;
     color: white;
     box-shadow: 5px 5px #888888;
@@ -12,6 +11,4 @@ small{
 }
 .btn:active{
     transform: translateY(2px);
-    
-
 }
