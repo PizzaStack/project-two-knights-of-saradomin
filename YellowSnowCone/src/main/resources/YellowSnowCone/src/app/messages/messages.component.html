@@ -1,16 +1,25 @@
 <div>
-<button (click)="loadMessages()">Load Messages</button>
+    <app-navbar> </app-navbar>
+       <div class="wrapper">
+           <app-sidemenu></app-sidemenu>
 
-                          <h2>Messages</h2>
-                            <ul *ngFor="let message of messages">
-                              <li>User1: {{message.user1.firstname}} {{message.user1.lastname}} User2: {{message.user2.firstname}} {{message.user2.lastname}}</li>
-                            </ul>
-                            
-                            <ul> 
-                            <div id="messages">
+            <div id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button (click)="loadMessages()">Load Messages</button>
 
-
-                            </div>
-                            </ul>
-
+                            <h2>Messages</h2>
+                              <ul *ngFor="let user of users">
+                                <li>
+                                 <a (click)="populateMessageThread(user)" routerLink="/messagesthread">{{user}}</a> 
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div> 
 </div>
+

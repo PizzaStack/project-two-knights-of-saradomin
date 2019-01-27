@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../message.service';
 import { Message } from '../message';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-messages',
@@ -9,68 +10,76 @@ import { Message } from '../message';
 })
 export class MessagesComponent implements OnInit {
 
-  employeeId: number = 1;
+  userid: number = 1;
 
   message: Message;
 
   messages: Message[];
 
-  constructor(private messageService: MessageService) { }
+  specificMessage: string;
+
+  specificMessages: string[] = [];
+
+  users = [];
+
+  constructor(private messageService: MessageService, private storage: StorageService) { }
 
   ngOnInit() {
     this.messageService.getMessagesById()
     .subscribe(data => this.messages = data);
   }
 
-  loadMessages() {
-
-    let messagesBlock = ``;
-
-    let users = [];
-    
+  populateMessageThread(user: string) {
 
     for (let i of this.messages){
-      if(i.userid1 === this.employeeId){
-        users.push(i.user2.firstname + ' ' + i.user2.lastname);
+      if(i.userid1 === this.userid){
+        if(user === (i.user2.firstname + ' ' + i.user2.lastname)){
+          this.specificMessage = "Me: " + i.textcontents;
+          this.specificMessages.push(this.specificMessage);
+        }
       } else {
-        users.push(i.user1.firstname + ' ' + i.user1.lastname);
+        if(user === (i.user1.firstname + ' ' + i.user1.lastname)){
+          this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
+          this.specificMessages.push(this.specificMessage);
+        }
+      }
+    }
+
+    this.storage.setScope(this.specificMessages);
+
+  }
+
+  loadMessages() {
+
+    for (let i of this.messages){
+      if(i.userid1 === this.userid){
+        this.users.push(i.user2.firstname + ' ' + i.user2.lastname);
+      } else {
+        this.users.push(i.user1.firstname + ' ' + i.user1.lastname);
       }
     }
 
 
     let position = 0;
-    for(let i of users){
+    for(let i of this.users){
       let count = 0;
 
-      for(let j of users){
+      for(let j of this.users){
         if(i === j){
           count += 1;
         }
       }
 
       if(count > 1){
-        users.splice(position, position + 1);
+        this.users.splice(position, position + 1);
       }
 
       position += 1;
 
     }
 
-    for (let k of users){
-      messagesBlock = messagesBlock + `
-      <button onclick="test()">${k}</button>
-    `
-    }
-
-    document.getElementById("messages").innerHTML = messagesBlock;
-
   }
   
-  test() {
-  	alert("HAHAHA");
-  }
-
-
 
 
 }
