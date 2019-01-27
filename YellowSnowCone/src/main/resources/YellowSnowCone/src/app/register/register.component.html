@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <input type="text" class="form-control" id="input_First_Name" placeholder="First Name">
+                <input type="text" clasngs="form-control" id="input_First_Name" placeholder="First Name">
             </div>
         </div>
         <div class="col-lg-6">
@@ -29,6 +29,12 @@
           <button type="submit" class="btn btn-default btn-lg float-right">Register</button>
       </div>
     </form>
+
+    <!-- DELETE LATER -->
+    <h3> Logged-In </h3>
+    <ul *ngFor="let user of users" style="font-size:15px">
+      <li>ID:{{user.userId}}, Email:{{user.email}}, Password:{{user.pngassword}}</li>
+    </ul>
   </div>
 </div>
 
