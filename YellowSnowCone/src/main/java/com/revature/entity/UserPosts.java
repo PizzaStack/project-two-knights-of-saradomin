@@ -9,14 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "userposts")
 public class UserPosts {
 
 	@Id
-	@NotNull
 	@GeneratedValue
 	@Column(name = "postid")
 	private int postid;
@@ -91,7 +89,7 @@ public class UserPosts {
 				+ ", imagelocation=" + imagelocation + ", repostid=" + repostid + ", user=" + user + "]";
 	}
 
-	public UserPosts(@NotNull int postid, int userid, String textcontents, String imagelocation, int repostid,
+	public UserPosts(int postid, int userid, String textcontents, String imagelocation, int repostid,
 			Users user) {
 		super();
 		this.postid = postid;

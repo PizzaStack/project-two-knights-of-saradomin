@@ -23,6 +23,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
+import { RepostComponent } from './repost/repost.component';
 
 import { UserService } from './user.service';
 import { UserListComponent } from './user-list/user-list.component';
