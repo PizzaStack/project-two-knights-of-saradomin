@@ -48,10 +48,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: '', redirectTo: '/welcomeview', pathMatch: 'full' },
-    { path: 'welcomeview', component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__["WelcomeviewComponent"] },
-    { path: 'messages', component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
-    { path: 'mainview', component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"] },
+    { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
+    { path: "welcomeview", component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__["WelcomeviewComponent"] },
+    { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
+    { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"] },
     { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -361,7 +361,7 @@ module.exports = ".navbar{\r\n    background-color: white;\r\n    box-shadow: 0p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <h1> <strong> Yellow Snow Cone</strong></h1>\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <form class=\"form-inline\" #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit()\">\r\n          {{loginForm.value | json}}\r\n          <div class=\"form-group\">\r\n            <input type=\"email\" ngModel [(ngModel)]=\"newUserModel.email\" name=\"email\" \r\n                class=\"form-control\" id=\"login_Email\" aria-describedby=\"emailHelp\" placeholder=\"Enter Email\">\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <input type=\"password\" ngModel [(ngModel)]=\"newUserModel.password\" name=\"password\" \r\n                class=\"form-control\" id=\"login_Password\" placeholder=\"Password\">\r\n          </div>\r\n          <button type=\"submit\" class=\"btn\" routerLink=\"/mainview\">Log In</button>\r\n        </form>\r\n      </ul>\r\n    </div>\r\n\r\n  \r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <h1> <strong> Yellow Snow Cone</strong></h1>\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <form class=\"form-inline\" #loginForm=\"ngForm\" (ngSubmit)=\"onSubmit()\">\r\n          {{loginForm.value | json}}\r\n          <div class=\"form-group\">\r\n            <input type=\"email\" ngModel [(ngModel)]=\"newUserModel.email\" name=\"email\" \r\n                class=\"form-control\" id=\"login_Email\" aria-describedby=\"emailHelp\" placeholder=\"Enter Email\">\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <input type=\"password\" ngModel [(ngModel)]=\"newUserModel.password\" name=\"password\" \r\n                class=\"form-control\" id=\"login_Password\" placeholder=\"Password\">\r\n          </div>\r\n          <button type=\"submit\" class=\"btn\">Log In</button>\r\n        </form>\r\n      </ul>\r\n    </div>\r\n\r\n  \r\n</nav>"
 
 /***/ }),
 
@@ -395,14 +395,19 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this._userService.authenticate(user)
             .subscribe(function (data) {
-            _this.loggedInUser = data;
-            console.log(_this.loggedInUser);
-            if (_this.loggedInUser.userId != null)
-                _this._userService.addLoggedInUser(_this.loggedInUser);
+            user = data;
+            console.log('loggedInUser: ' + JSON.stringify(user));
+            if (user.userId != null) {
+                _this._userService.addLoggedInUser(user);
+                return true;
+            }
         });
+        return false;
     };
     LoginComponent.prototype.onSubmit = function () {
-        this.login(this.newUserModel);
+        var response;
+        if (this.login(this.newUserModel))
+            this._userService.logInUser().subscribe(); /*data => response = JSON.parse(data));*/
         console.log('onSubmit: ' + JSON.stringify(this.newUserModel));
     };
     LoginComponent.prototype.ngOnInit = function () {
@@ -1318,13 +1323,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var httpPOSTOptions = {
+var httpPostOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
     })
 };
-var httpGETOptions = {
+var httpGetOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Access-Control-Allow-Origin': '*'
+    })
+};
+var httpTextOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
         'Access-Control-Allow-Origin': '*'
     })
@@ -1337,11 +1347,14 @@ var UserService = /** @class */ (function () {
         this._url = "http://localhost:8080/";
     }
     UserService.prototype.getUsers = function () {
-        return this.http.get(this._url.concat('users'), httpGETOptions);
+        return this.http.get(this._url.concat('users'), httpGetOptions);
     };
     UserService.prototype.authenticate = function (user) {
         console.log('authenticating... ' + user.email + ', ' + user.password);
-        return this.http.post(this._url.concat('authenticate'), JSON.stringify(user), httpPOSTOptions);
+        return this.http.post(this._url.concat('authenticate'), JSON.stringify(user), httpPostOptions);
+    };
+    UserService.prototype.logInUser = function () {
+        return this.http.get(this._url.concat("mainview"), { headers: httpGetOptions.headers, responseType: "text" });
     };
     UserService.prototype.getLoggedInUsers = function () {
         return this.loggedInUsers;
