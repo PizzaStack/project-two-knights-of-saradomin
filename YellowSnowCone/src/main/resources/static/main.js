@@ -88,7 +88,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n<!--<app-welcomeview></app-welcomeview>-->\r\n"
+module.exports = "<router-outlet></router-outlet>\r\n\r\n"
 
 /***/ }),
 
@@ -159,8 +159,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
 /* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+/* harmony import */ var _repost_repost_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./repost/repost.component */ "./src/app/repost/repost.component.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+
 
 
 
@@ -208,11 +210,12 @@ var AppModule = /** @class */ (function () {
                 _post_post_component__WEBPACK_IMPORTED_MODULE_15__["PostComponent"],
                 _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_16__["MainviewComponent"],
                 _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_17__["WelcomeviewComponent"],
-                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_26__["UserListComponent"],
+                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_27__["UserListComponent"],
                 _messages_messages_component__WEBPACK_IMPORTED_MODULE_21__["MessagesComponent"],
                 _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__["MessagesthreadComponent"],
                 _icon_icon_component__WEBPACK_IMPORTED_MODULE_19__["IconComponent"],
-                _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__["UpdateprofileComponent"]
+                _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__["UpdateprofileComponent"],
+                _repost_repost_component__WEBPACK_IMPORTED_MODULE_25__["RepostComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -220,7 +223,7 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_20__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_22__["HttpClientModule"]
             ],
-            providers: [_user_service__WEBPACK_IMPORTED_MODULE_25__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_23__["MessageService"]],
+            providers: [_user_service__WEBPACK_IMPORTED_MODULE_26__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_23__["MessageService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
@@ -612,11 +615,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
 module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n\r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                            <button (click)=\"loadMessages()\">Load Messages</button>\r\n\r\n                            <h2>Messages</h2>\r\n                              <ul *ngFor=\"let user of users\">\r\n                                <li>\r\n                                 <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a> \r\n                                </li>\r\n                              </ul>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div> \r\n</div>\r\n\r\n"
-=======
-module.exports = "<div>\r\n<button (click)=\"loadMessages()\">Load Messages</button>\r\n\r\n                          <h2>Messages</h2>\r\n                            <ul *ngFor=\"let message of messages\">\r\n                              <li>User1: {{message.user1.firstname}} {{message.user1.lastname}} User2: {{message.user2.firstname}} {{message.user2.lastname}}</li>\r\n                            </ul>\r\n                            \r\n                            <ul> \r\n                            <div id=\"messages\">\r\n\r\n\r\n                            </div>\r\n                            </ul>\r\n\r\n</div>"
->>>>>>> master
 
 /***/ }),
 
@@ -728,11 +727,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<ul *ngFor=\"let specificMessage of specificMessages\">\r\n  <li>\r\n    {{specificMessage}}\r\n  </li>\r\n</ul>\r\n"
-=======
-module.exports = "<p>\r\n  messagesthread works!\r\n</p>\r\n"
->>>>>>> master
+module.exports = "<ul *ngFor=\"let specificMessage of specificMessages\">\r\n  <li>\r\n    {{specificMessage}}\r\n  </li>\r\n</ul>\r\n<input type=\"text\"><button>Send</button>\r\n"
 
 /***/ }),
 
@@ -848,7 +843,7 @@ module.exports = "small{\r\n    text-align: center\r\n}\r\n\r\n.btn{\r\n    back
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"card\">\r\n    <div class=\"card-header\">\r\n       User\r\n    </div>\r\n    <div class=\"card-body\">\r\n     <div class=\"container\">\r\n       <div class=\"row\">\r\n         <div class=\"col-lg-1\">\r\n         </div>\r\n         <div class=\"col-lg-10\">\r\n            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eveniet aut nostrum obcaecati labore molestiae ex at perspiciatis. In optio tempore aperiam delectus iste nobis officiis aliquid placeat harum molestias.</p>\r\n     \r\n          </div>\r\n          <div class=\"col-lg-1\">\r\n            </div>\r\n         \r\n       </div>\r\n       <div class=\"row\">\r\n          <div class=\"col-lg-1\">\r\n          </div>\r\n          <div class=\"col-lg-1\">\r\n            <app-snowconelike></app-snowconelike>\r\n           <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n          </div>\r\n          <div class=\"col-lg-1\">\r\n            <app-snowconedislike></app-snowconedislike>\r\n           <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n          </div>\r\n          <div class=\"col-lg-6\"></div>\r\n          <div class=\"col-lg-2\">\r\n              <button type=\"submit\" class=\"btn\">Comment</button>\r\n          </div>\r\n           <div class=\"col-lg-1\">\r\n             </div>\r\n          \r\n        </div>\r\n     </div>\r\n       \r\n    </div>\r\n  </div>"
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header\">\r\n    User\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eveniet aut nostrum obcaecati labore\r\n            molestiae ex at perspiciatis. In optio tempore aperiam delectus iste nobis officiis aliquid placeat harum\r\n            molestias.</p>\r\n\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <app-snowconelike></app-snowconelike>\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <app-snowconedislike></app-snowconedislike>\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-1\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <button type=\"submit\" class=\"btn\">Comment</button>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -995,6 +990,62 @@ var RegisterComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/repost/repost.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/repost/repost.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "img{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVwb3N0L3JlcG9zdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvcmVwb3N0L3JlcG9zdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW1ne1xyXG4gICAgaGVpZ2h0OiAxNnB4O1xyXG4gICAgd2lkdGg6MTZweDtcclxufVxyXG5cclxuaW5wdXQge1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxufVxyXG5cclxuaW5wdXQ6YWN0aXZlIHtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/repost/repost.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/repost/repost.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<input id=\"repost\" (click)=\"repost()\" type=\"image\" src=\"../../assets/repost-icon.png\" width=\"48\" height=\"48\">"
+
+/***/ }),
+
+/***/ "./src/app/repost/repost.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/repost/repost.component.ts ***!
+  \********************************************/
+/*! exports provided: RepostComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RepostComponent", function() { return RepostComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var RepostComponent = /** @class */ (function () {
+    function RepostComponent() {
+    }
+    RepostComponent.prototype.ngOnInit = function () {
+    };
+    RepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-repost',
+            template: __webpack_require__(/*! ./repost.component.html */ "./src/app/repost/repost.component.html"),
+            styles: [__webpack_require__(/*! ./repost.component.css */ "./src/app/repost/repost.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], RepostComponent);
+    return RepostComponent;
 }());
 
 
@@ -1568,7 +1619,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Associate\java\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
