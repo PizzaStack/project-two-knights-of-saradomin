@@ -2,6 +2,8 @@ package com.revature.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,77 +37,25 @@ public class UserController {
 		System.out.println("FINDING ALL USERS");
 		return userDAO.findAll();
 	}
-	@GetMapping("/users/{firstname}")
-	public Users findByfirstname(@PathVariable("firstname") String firstname) {
-		return repository.findByfirstname(firstname);
-	}
 	
+	@SuppressWarnings("unused")
 	@PostMapping("/authenticate")
 	@ResponseBody
 	public User login(@RequestBody User user) {
 		user = userDAO.findByEmailAndPassword(user.getEmail(), user.getPassword());
+
 		if (user != null) {
-			//logger.info("loggedInUser = " + user);
-			return user;
+			logger.info("loggedInUser = " + user);
 		}
 		else {
 			user = new User(-1, "null", "null", "null", "null", "null");	
 			logger.info("loggedInUser = " + user);
-			return user;
 		}
+		return user;
 	}
 	
-	/*
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST, 
-			 consumes = "application/json")
-	@ResponseBody
-	public User getUser(@RequestBody String email, @RequestBody String password) {
-		//here request body contains User POJO object's payload (JSON object)
-
-		//You are getting username from JSON, 
-		//so you need to update your call to findOne method
-		User result = userDAO.findByEmail(email);
-		System.out.println("RESULT: " + result);
-		return result;
+	@GetMapping("users/{userId}")
+	public String redirectToUserView(@RequestParam int userId) {
+		return "redirect:/mainview";
 	}
-	*/
-	  
-	/*
-	@PostMapping("/login/{email}/{password}")
-	public boolean login(@PathVariable("email") String email, @PathVariable("password") String password) {
-		User user = userDAO.findByEmail(email);
-		if (user != null) {
-			if (user.getPassword() == password) {
-				System.out.println("User Should Be Logged In.");
-				return true;
-			}
-			return false;
-		} else {
-			System.out.println("Error. User Not Found!");
-			return false;
-		}
-	}
-	*/
-	/*
-	@PostMapping("/add")
-	public Artist add(@RequestBody Artist a) {
-		artistDAO.save(a);
-		return a;
-	}
-	
-	@GetMapping("/artists/{name}")
-	public Artist findByName(@PathVariable("name") String name) {
-		return artistDAO.findByName(name);
-	}
-	
-	@DeleteMapping("/artists/{id}")
-	public void deleteById(@PathVariable("id") int id) {
-		artistDAO.deleteById(id);
-	}
-	
-	@GetMapping("/artists/{min}/{max}")
-	public List<Artist> getBetweenIds(@PathVariable("min") int min, @PathVariable("max") int max){
-		return artistDAO.findByIdBetween(min, max);
-	}
-	*/
 }

@@ -8,11 +8,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class YellowSnowConeApplication {
 
 	public static void main(String[] args) {
-		/*AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(WebMvcConfig.class);
-		context.refresh();*/
+		context.refresh();
 		SpringApplication.run(YellowSnowConeApplication.class, args);
-		//SpringApplication.exit(context);
+		SpringApplication.exit(context);
 	}
 }
 

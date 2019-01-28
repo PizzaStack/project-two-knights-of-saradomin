@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mainview',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MainviewComponent implements OnInit {
-
-  constructor() { }
+  id: string;
+  constructor(private router: Router,
+              public authService: AuthService) { }
 
   ngOnInit() {
+    this.id = localStorage.getItem('token');
   }
 
+  logout(): void {
+    console.log("Logout");
+    this.authService.logout();
+    this.router.navigate(['/welcomeview']);
+  }
 }
 
