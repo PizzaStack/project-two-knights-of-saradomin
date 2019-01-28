@@ -19,7 +19,7 @@ public class UserPosts {
 	@Column(name = "postid")
 	private int postid;
 
-	@Column(name = "userid")
+	@Column(name = "userid", insertable=false, updatable=false)
 	private int userid;
 
 	@Column(name = "textcontents")
