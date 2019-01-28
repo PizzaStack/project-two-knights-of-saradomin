@@ -1,18 +1,20 @@
 package com.revature.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "userposts")
 public class UserPosts {
 
 	@Id
-	@NotNull
 	@GeneratedValue
 	@Column(name = "postid")
 	private int postid;
@@ -28,19 +30,10 @@ public class UserPosts {
 
 	@Column(name = "repostid")
 	private int repostid;
-
-	public UserPosts(int postid, int userid, String textcontents, String imagelocation, int repostid) {
-		super();
-		this.postid = postid;
-		this.userid = userid;
-		this.textcontents = textcontents;
-		this.imagelocation = imagelocation;
-		this.repostid = repostid;
-	}
-
-	public UserPosts() {
-		super();
-	}
+	
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name ="userid")
+	private Users user;
 
 	public int getPostid() {
 		return postid;
@@ -82,9 +75,35 @@ public class UserPosts {
 		this.repostid = repostid;
 	}
 
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "UserPost [postid = " + postid + ", userid = " + userid + ", textcontents = " + textcontents
-				+ ", imagelocation = " + imagelocation + ", repostid = " + repostid + "]";
+		return "UserPosts [postid=" + postid + ", userid=" + userid + ", textcontents=" + textcontents
+				+ ", imagelocation=" + imagelocation + ", repostid=" + repostid + ", user=" + user + "]";
 	}
+
+	public UserPosts(int postid, int userid, String textcontents, String imagelocation, int repostid,
+			Users user) {
+		super();
+		this.postid = postid;
+		this.userid = userid;
+		this.textcontents = textcontents;
+		this.imagelocation = imagelocation;
+		this.repostid = repostid;
+		this.user = user;
+	}
+
+	public UserPosts() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
 }

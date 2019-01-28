@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-messagesthread',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesthreadComponent implements OnInit {
 
-  constructor() { }
+  specificMessages: string[];
+
+  constructor(private storage: StorageService) { }
 
   ngOnInit() {
+    this.specificMessages = this.storage.getScope();
   }
+
+  
 
 }

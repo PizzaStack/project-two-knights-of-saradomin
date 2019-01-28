@@ -25,6 +25,7 @@ import { MessageService } from './message.service';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { RepostComponent } from './repost/repost.component';
 
 import { UserService } from './user.service';
 import { UserListComponent } from './user-list/user-list.component';
