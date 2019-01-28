@@ -90,7 +90,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\r\n<!--<app-welcomeview></app-welcomeview>-->\r\n"
+module.exports = "<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -162,8 +162,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
 /* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
 /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+/* harmony import */ var _repost_repost_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./repost/repost.component */ "./src/app/repost/repost.component.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+
 
 
 
@@ -212,11 +214,12 @@ var AppModule = /** @class */ (function () {
                 _post_post_component__WEBPACK_IMPORTED_MODULE_15__["PostComponent"],
                 _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_16__["MainviewComponent"],
                 _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_17__["WelcomeviewComponent"],
-                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_27__["UserListComponent"],
+                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_28__["UserListComponent"],
                 _messages_messages_component__WEBPACK_IMPORTED_MODULE_21__["MessagesComponent"],
                 _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__["MessagesthreadComponent"],
                 _icon_icon_component__WEBPACK_IMPORTED_MODULE_19__["IconComponent"],
-                _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__["UpdateprofileComponent"]
+                _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__["UpdateprofileComponent"],
+                _repost_repost_component__WEBPACK_IMPORTED_MODULE_26__["RepostComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -224,7 +227,7 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_20__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_22__["HttpClientModule"]
             ],
-            providers: [_user_service__WEBPACK_IMPORTED_MODULE_26__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_23__["MessageService"], _auth_guard__WEBPACK_IMPORTED_MODULE_25__["AuthGuard"]],
+            providers: [_user_service__WEBPACK_IMPORTED_MODULE_27__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_23__["MessageService"], _auth_guard__WEBPACK_IMPORTED_MODULE_25__["AuthGuard"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
@@ -846,7 +849,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul *ngFor=\"let specificMessage of specificMessages\">\r\n  <li>\r\n    {{specificMessage}}\r\n  </li>\r\n</ul>\r\n"
+module.exports = "<ul *ngFor=\"let specificMessage of specificMessages\">\r\n  <li>\r\n    {{specificMessage}}\r\n  </li>\r\n</ul>\r\n<input id=\"messageContent\" type=\"text\"><button id=\"send\">Send</button>\r\n"
 
 /***/ }),
 
@@ -1109,6 +1112,62 @@ var RegisterComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/repost/repost.component.css":
+/*!*********************************************!*\
+  !*** ./src/app/repost/repost.component.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "img{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVwb3N0L3JlcG9zdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvcmVwb3N0L3JlcG9zdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW1ne1xyXG4gICAgaGVpZ2h0OiAxNnB4O1xyXG4gICAgd2lkdGg6MTZweDtcclxufVxyXG5cclxuaW5wdXQge1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxufVxyXG5cclxuaW5wdXQ6YWN0aXZlIHtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/repost/repost.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/repost/repost.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<input id=\"repost\" (click)=\"repost()\" type=\"image\" src=\"../../assets/repost-icon.png\" width=\"48\" height=\"48\">"
+
+/***/ }),
+
+/***/ "./src/app/repost/repost.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/repost/repost.component.ts ***!
+  \********************************************/
+/*! exports provided: RepostComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RepostComponent", function() { return RepostComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var RepostComponent = /** @class */ (function () {
+    function RepostComponent() {
+    }
+    RepostComponent.prototype.ngOnInit = function () {
+    };
+    RepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-repost',
+            template: __webpack_require__(/*! ./repost.component.html */ "./src/app/repost/repost.component.html"),
+            styles: [__webpack_require__(/*! ./repost.component.css */ "./src/app/repost/repost.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], RepostComponent);
+    return RepostComponent;
 }());
 
 

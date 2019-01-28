@@ -50,7 +50,8 @@ import { UserListComponent } from './user-list/user-list.component';
     MessagesComponent,
     MessagesthreadComponent,
     IconComponent,
-    UpdateprofileComponent
+    UpdateprofileComponent,
+    RepostComponent
     ],
   imports: [
     BrowserModule,
