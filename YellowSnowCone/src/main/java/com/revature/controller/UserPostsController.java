@@ -19,13 +19,13 @@ public class UserPostsController {
 	@Autowired
 	UserPostsRepository dao;
 	
-	@GetMapping("/userposts")
+	@GetMapping("/allposts")
 	public List<UserPosts> getAll() {
 		return dao.findAll();
 	}
 	
-	@GetMapping("/userposts/{userid}")
-	public List<UserPosts> findByUserId(@PathVariable("userid") int userid) {
+	@PostMapping("/userposts")
+	public List<UserPosts> findByUserId(@RequestBody int userid) {
 		return dao.findByUserid(userid);
 	}
 	
