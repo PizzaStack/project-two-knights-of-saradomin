@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Users } from './users';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { Users } from './users';
 export class StorageService {
 
   textContents: string;
+
+  users: User[];
 
   userId1: number;
 
@@ -66,6 +69,14 @@ export class StorageService {
 
   public setUser2(user2: Users): void {
     this.user2 = user2;
+  }
+
+  public getUser(): User[] {
+    return this.users;
+  }
+
+  public setUser(user: User[]): void {
+    this.users = user;
   }
 
 

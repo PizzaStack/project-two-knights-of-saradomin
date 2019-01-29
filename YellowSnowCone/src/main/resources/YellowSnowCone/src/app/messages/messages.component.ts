@@ -27,7 +27,7 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.getMessagesById()
-    .subscribe(data => this.messages = data);
+    .subscribe(data => this.messages = data,(err) => console.log(err),() => this.loadMessages());
   }
 
 
@@ -41,24 +41,10 @@ export class MessagesComponent implements OnInit {
       }
     }
 
-    let position = 0;
+    this.users = this.users.filter(function(elem, index, self) {
+      return index === self.indexOf(elem);
+    })
 
-    for(let i of this.users){
-      let count = 0;
-
-      for(let j of this.users){
-        if(i === j){
-          count += 1;
-        }
-      }
-
-      if(count >= 1){
-        this.users.splice(position, position + 1);
-      }
-
-      position += 1;
-
-    }
 
   }
 

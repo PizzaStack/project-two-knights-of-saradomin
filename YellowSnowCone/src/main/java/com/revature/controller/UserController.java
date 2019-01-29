@@ -58,4 +58,5 @@ public class UserController {
 	public String redirectToUserView(@RequestParam int userId) {
 		return "redirect:/mainview";
 	}
+	
 }
