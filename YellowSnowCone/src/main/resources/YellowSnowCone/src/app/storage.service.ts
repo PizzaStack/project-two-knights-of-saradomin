@@ -7,6 +7,8 @@ export class StorageService {
 
   public scope: Array<any> = [];
 
+  public firstName: string;
+
   constructor() { }
 
   public getScope(): Array<any> {
@@ -15,5 +17,9 @@ export class StorageService {
 
   public setScope(scope: any): void {
     this.scope = scope;
+  }
+
+  public getFirstName(): string {
+    return this.firstName;
   }
 }
