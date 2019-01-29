@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AuthService } from '../auth.service'
+import { AuthService } from '../auth.service';
+import { FormBuilder, FormGroup, Validators, FormControl, EmailValidator } from '@angular/forms';
+import { ValidationService } from '../validation.service'
 
 @Component({
   selector: 'app-login',
@@ -18,50 +20,51 @@ export class LoginComponent implements OnInit {
   constructor(protected _userService:UserService,
               private location: Location, 
               private router: Router, 
-              public authService: AuthService) { }
+              private formBuilder: FormBuilder,
+              public _authService: AuthService) { }
+  
   private mainviewUrl:string;
-
-  protected newUserModel = new User(null, null, null, null, null, null);
+  protected newUserModel:User;
+  loginForm: FormGroup;
   loggedInUser:User;
 
   login(user:User){
-    this._userService.authenticate(user)
-      .subscribe(data => {
-        user = data;
-        console.log('loggedInUser: ' + JSON.stringify(user));
-        if (user.userId !== null){
-          console.log("Login successful");
-          this._userService.addLoggedInUser(user);
-          localStorage.setItem('isLoggedIn', "true");
-          localStorage.setItem('token', user.userId.toString());
-          this.router.navigate([this.mainviewUrl]);
-          //this._userService.logInUser();
-        } else console.log('userId is null.')
-      });
+    this.loggedInUser = user;
+
+    this._userService.authenticate(user).subscribe(data => {
+      this.loggedInUser = data;
+      console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
+
+      if (this.loggedInUser != null && this.loggedInUser.userId !== null && this.loggedInUser.userId != -1){
+        console.log("Login successful");
+        console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
+        this._userService.addLoggedInUser(this.loggedInUser);
+        localStorage.setItem('isLoggedIn', "true");
+        localStorage.setItem('token', this.loggedInUser.userId.toString());
+        this.router.navigate([this.mainviewUrl]);
+      } else {
+        console.log('userId is null.')
+        console.log('User Info: ' + JSON.stringify(this.loggedInUser));
+      }
+    });
   }
   onSubmit(){
-    this.login(this.newUserModel);
+    if (this.loginForm.dirty && this.loginForm.valid) {
+      console.log("form is dirty + valid")
+      this.login(this.newUserModel);
+    }
+    else alert("Invalid Username Or Password");
   }
 
   ngOnInit(){
+    this._authService.logout();
     this.mainviewUrl = "/mainview";
-    this.authService.logout();
-  }
-}
-  /*
-  login() {
-    this.userService.authenticate(this.credentials, () => {
-        return true;
+    this.newUserModel = new User(null, null, null, null, null, null);
+
+    this.loginForm = this.formBuilder.group({
+      'email': ['', Validators.required],
+      'password': ['', Validators.required]
     });
-    this.router.navigateByUrl('/error');
-    return false;
   }
-  */
-/*
-function Login(username, password, callback) {
-  $http.post('/api/authenticate', { username: username, password: password })
-    .success(function (response) {
-      callback(response);
-    });
+  get formControls() { return this.loginForm.controls; }
 }
-*/

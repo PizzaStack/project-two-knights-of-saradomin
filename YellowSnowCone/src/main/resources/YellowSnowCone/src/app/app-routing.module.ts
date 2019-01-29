@@ -7,7 +7,6 @@ import { MessagesthreadComponent } from './messagesthread/messagesthread.compone
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
   { path: "welcomeview", component: WelcomeviewComponent },
 

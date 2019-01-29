@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -18,17 +20,16 @@ import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { IconComponent } from './icon/icon.component';
-import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MessageService } from './message.service';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
+import { RepostComponent } from './repost/repost.component';
+import { UserListComponent } from './user-list/user-list.component';
+
+import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
-import { RepostComponent } from './repost/repost.component';
-
 import { UserService } from './user.service';
-import { UserListComponent } from './user-list/user-list.component';
+import { ValidationService } from './validation.service'
 
 @NgModule({
   declarations: [
@@ -57,9 +58,10 @@ import { UserListComponent } from './user-list/user-list.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [UserService, MessageService, AuthGuard],
+  providers: [UserService, MessageService, AuthGuard, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

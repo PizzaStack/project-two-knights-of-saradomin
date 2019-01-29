@@ -48,7 +48,6 @@ export class UserService {
   }
 
   logInUser(){
-    console.log("wtf");
     this.router.navigate(['mainview']);
   }
 

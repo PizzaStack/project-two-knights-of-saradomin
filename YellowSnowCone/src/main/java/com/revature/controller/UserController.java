@@ -46,9 +46,10 @@ public class UserController {
 
 		if (user != null) {
 			logger.info("loggedInUser = " + user);
+			return user;
 		}
 		else {
-			user = new User(-1, "null", "null", "null", "null", "null");	
+			user = null;
 			logger.info("loggedInUser = " + user);
 		}
 		return user;
