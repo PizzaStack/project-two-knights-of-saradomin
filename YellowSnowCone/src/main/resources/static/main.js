@@ -690,27 +690,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var MessageService = /** @class */ (function () {
-    function MessageService(http) {
+    function MessageService(http, storage) {
         this.http = http;
+        this.storage = storage;
         this.userId = 1;
         this.messages = [];
-        this.messagesUrl = 'http://localhost:8080/messagesById';
+        this.messagesByIdUrl = 'http://localhost:8080/messagesById';
+        this.addMessagesUrl = 'http://localhost:8080/addMessage';
     }
-    MessageService.prototype.getMessages = function () {
-        return this.http.get(this.messagesUrl);
-    };
+    // getMessages (): Observable<Message[]> {
+    //   return this.http.get<Message[]>(this.messagesUrl);
+    // }
     MessageService.prototype.getMessagesById = function () {
-        return this.http.post(this.messagesUrl, this.userId);
+        return this.http.post(this.messagesByIdUrl, this.userId);
+    };
+    // addMessage (userId1, userId2, textContents) {
+    //   this.http.post<addMessageStatus>(this.addMessagesUrl, userId1 + ";" + userId2 + ";" + textContents).subscribe();
+    // }
+    MessageService.prototype.addMessage = function (message) {
+        this.http.post(this.addMessagesUrl, message).subscribe();
     };
     MessageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], MessageService);
     return MessageService;
 }());
@@ -772,24 +783,6 @@ var MessagesComponent = /** @class */ (function () {
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; });
     };
-    MessagesComponent.prototype.populateMessageThread = function (user) {
-        for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
-            var i = _a[_i];
-            if (i.userid1 === this.userid) {
-                if (user === (i.user2.firstname + ' ' + i.user2.lastname)) {
-                    this.specificMessage = "Me: " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
-                }
-            }
-            else {
-                if (user === (i.user1.firstname + ' ' + i.user1.lastname)) {
-                    this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
-                }
-            }
-        }
-        this.storage.setScope(this.specificMessages);
-    };
     MessagesComponent.prototype.loadMessages = function () {
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
             var i = _a[_i];
@@ -810,11 +803,36 @@ var MessagesComponent = /** @class */ (function () {
                     count += 1;
                 }
             }
-            if (count > 1) {
+            if (count >= 1) {
                 this.users.splice(position, position + 1);
             }
             position += 1;
         }
+    };
+    MessagesComponent.prototype.populateMessageThread = function (user) {
+        this.storage.setUserId1(this.userid);
+        for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
+            var i = _a[_i];
+            if (i.userid1 === this.userid) {
+                if (user === (i.user2.firstname + ' ' + i.user2.lastname)) {
+                    this.specificMessage = "Me: " + i.textcontents;
+                    this.specificMessages.push(this.specificMessage);
+                    this.storage.setUserId2(i.user2.userid);
+                    this.storage.setUser1(i.user1);
+                    this.storage.setUser2(i.user2);
+                }
+            }
+            else {
+                if (user === (i.user1.firstname + ' ' + i.user1.lastname)) {
+                    this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
+                    this.specificMessages.push(this.specificMessage);
+                    this.storage.setUserId2(i.user1.userid);
+                    this.storage.setUser1(i.user2);
+                    this.storage.setUser2(i.user1);
+                }
+            }
+        }
+        this.storage.setScope(this.specificMessages);
     };
     MessagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -838,7 +856,7 @@ var MessagesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21lc3NhZ2VzdGhyZWFkL21lc3NhZ2VzdGhyZWFkLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXN0aHJlYWQvbWVzc2FnZXN0aHJlYWQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlc3RocmVhZC9tZXNzYWdlc3RocmVhZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -849,7 +867,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul *ngFor=\"let specificMessage of specificMessages\">\r\n  <li>\r\n    {{specificMessage}}\r\n  </li>\r\n</ul>\r\n<input id=\"messageContent\" type=\"text\"><button id=\"send\">Send</button>\r\n"
+module.exports = "<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                      <div class=\"col-lg-12\">\r\n                        <ul *ngFor=\"let specificMessage of specificMessages\">\r\n                          <li>\r\n                            {{specificMessage}}\r\n                          </li>\r\n                        </ul>\r\n                        <form id=\"newMessage\">\r\n                        <input id=\"messageContent\" type=\"text\" #messageContent>\r\n                        <button id=\"send\" type=\"button\" (click)=\"send(messageContent)\" (click)=\"messageContent.value = ''\">Send</button>\r\n                        </form>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      \r\n      </div> \r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -866,15 +884,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../message.service */ "./src/app/message.service.ts");
+
 
 
 
 var MessagesthreadComponent = /** @class */ (function () {
-    function MessagesthreadComponent(storage) {
+    function MessagesthreadComponent(messageService, storage) {
+        this.messageService = messageService;
         this.storage = storage;
     }
     MessagesthreadComponent.prototype.ngOnInit = function () {
         this.specificMessages = this.storage.getScope();
+        this.userId1 = this.storage.getUserId1();
+        this.userId2 = this.storage.getUserId2();
+        this.user1 = this.storage.getUser1();
+        this.user2 = this.storage.getUser2();
+    };
+    MessagesthreadComponent.prototype.send = function (messageContent) {
+        if (messageContent.value.includes(";")) {
+            alert("Invalid message. Message must not contain the symbol: ';'");
+        }
+        else {
+            // this.messageService.addMessage(this.userId1, this.userId2, messageContent.value);
+            this.message = {
+                messageid: null,
+                textcontents: messageContent.value,
+                userid1: this.userId1,
+                userid2: this.userId2,
+                status: 0,
+                user1: this.user1,
+                user2: this.user2
+            };
+            this.messageService.addMessage(this.message);
+            this.specificMessages.push("Me: " + messageContent.value);
+        }
     };
     MessagesthreadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -882,7 +926,7 @@ var MessagesthreadComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./messagesthread.component.html */ "./src/app/messagesthread/messagesthread.component.html"),
             styles: [__webpack_require__(/*! ./messagesthread.component.css */ "./src/app/messagesthread/messagesthread.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"], _storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
     ], MessagesthreadComponent);
     return MessagesthreadComponent;
 }());
@@ -1430,6 +1474,36 @@ var StorageService = /** @class */ (function () {
     StorageService.prototype.setScope = function (scope) {
         this.scope = scope;
     };
+    StorageService.prototype.getTextContents = function () {
+        return this.textContents;
+    };
+    StorageService.prototype.setTextContents = function (textContents) {
+        this.textContents = textContents;
+    };
+    StorageService.prototype.getUserId1 = function () {
+        return this.userId1;
+    };
+    StorageService.prototype.setUserId1 = function (userId1) {
+        this.userId1 = userId1;
+    };
+    StorageService.prototype.getUserId2 = function () {
+        return this.userId2;
+    };
+    StorageService.prototype.setUserId2 = function (userId2) {
+        this.userId2 = userId2;
+    };
+    StorageService.prototype.getUser1 = function () {
+        return this.user1;
+    };
+    StorageService.prototype.setUser1 = function (user1) {
+        this.user1 = user1;
+    };
+    StorageService.prototype.getUser2 = function () {
+        return this.user2;
+    };
+    StorageService.prototype.setUser2 = function (user2) {
+        this.user2 = user2;
+    };
     StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -1754,7 +1828,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Associate\java\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })

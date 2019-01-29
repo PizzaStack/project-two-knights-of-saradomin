@@ -1,6 +1,32 @@
-<ul *ngFor="let specificMessage of specificMessages">
-  <li>
-    {{specificMessage}}
-  </li>
-</ul>
-<input id="messageContent" type="text"><button id="send">Send</button>
+<div>
+  <app-navbar> </app-navbar>
+     <div class="wrapper">
+         <app-sidemenu></app-sidemenu>
+
+          <div id="content">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-12">
+                        <ul *ngFor="let specificMessage of specificMessages">
+                          <li>
+                            {{specificMessage}}
+                          </li>
+                        </ul>
+                        <form id="newMessage">
+                        <input id="messageContent" type="text" #messageContent>
+                        <button id="send" type="button" (click)="send(messageContent)" (click)="messageContent.value = ''">Send</button>
+                        </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      
+      </div> 
+</div>
+
+
+
+
+
+
+
