@@ -62,7 +62,7 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)]
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, { onSameUrlNavigation: "reload" })]
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -459,7 +459,7 @@ module.exports = ".navbar{\r\n    background-color: white;\r\n    box-shadow: 0p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <h1> <strong> Yellow Snow Cone</strong></h1>\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <form class=\"form-inline\"  [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n          <!--#loginForm=\"ngForm\"\r\n          {{loginForm.value | json}}\r\n          -->\r\n          <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && formControls.emailValidation.errors }\">\r\n            <input type=\"email\" ngModel [(ngModel)]=\"newUserModel.email\" formControlName=\"email\" name=\"email\"\r\n                class=\"form-control\" id=\"login_Email\" aria-describedby=\"emailHelp\" placeholder=\"Email\">\r\n          </div>\r\n          <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && formControls.emailValidation.errors }\">\r\n            <input type=\"password\" ngModel [(ngModel)]=\"newUserModel.password\" formControlName=\"password\" name=\"password\" \r\n                class=\"form-control\" id=\"login_Password\" placeholder=\"Password\">\r\n          </div>\r\n          <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n        </form>\r\n      </ul>\r\n    </div>\r\n\r\n  \r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <h1> <strong> Yellow Snow Cone</strong></h1>\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <form class=\"form-inline\"  [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n          <!--#loginForm=\"ngForm\"\r\n          {{loginForm.value | json}}\r\n          -->\r\n          <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.email.errors }\">\r\n            <input type=\"email\" formControlName=\"email\"\r\n                class=\"form-control clearfix\" id=\"login_Email\" aria-describedby=\"emailHelp\" placeholder=\"Email\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n          </div>\r\n          <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.password.errors }\">\r\n            <input type=\"password\" formControlName=\"password\"\r\n                class=\"form-control clearfix\" id=\"login_Password\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n          </div>\r\n          <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n        </form>\r\n      </ul>\r\n    </div>\r\n\r\n  \r\n</nav>"
 
 /***/ }),
 
@@ -497,6 +497,20 @@ var LoginComponent = /** @class */ (function () {
         this.formBuilder = formBuilder;
         this._authService = _authService;
     }
+    LoginComponent.prototype.ngOnInit = function () {
+        this._authService.logout();
+        this.mainviewUrl = "/mainview";
+        this.newUserModel = new _user__WEBPACK_IMPORTED_MODULE_2__["User"](null, null, null, null, null, null);
+        this.loginForm = this.formBuilder.group({
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(3)]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required]]
+        });
+    };
+    Object.defineProperty(LoginComponent.prototype, "f", {
+        get: function () { return this.loginForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
     LoginComponent.prototype.login = function (user) {
         var _this = this;
         this.loggedInUser = user;
@@ -521,24 +535,11 @@ var LoginComponent = /** @class */ (function () {
         if (this.loginForm.dirty && this.loginForm.valid) {
             console.log("form is dirty + valid");
             this.login(this.newUserModel);
+            this.router.navigate(["welcomeview"]);
         }
         else
             alert("Invalid Username Or Password");
     };
-    LoginComponent.prototype.ngOnInit = function () {
-        this._authService.logout();
-        this.mainviewUrl = "/mainview";
-        this.newUserModel = new _user__WEBPACK_IMPORTED_MODULE_2__["User"](null, null, null, null, null, null);
-        this.loginForm = this.formBuilder.group({
-            'email': ['', _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required],
-            'password': ['', _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required]
-        });
-    };
-    Object.defineProperty(LoginComponent.prototype, "formControls", {
-        get: function () { return this.loginForm.controls; },
-        enumerable: true,
-        configurable: true
-    });
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-login',

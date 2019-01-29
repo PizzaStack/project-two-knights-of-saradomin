@@ -1,32 +1,58 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
 
 
-    <a class="navbar-brand" href="#">
-      <h1> <strong> Yellow Snow Cone</strong></h1>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" href="#">
+    <h1> <strong> Yellow Snow Cone</strong></h1>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <form class="form-inline"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <!--#loginForm="ngForm"
-          {{loginForm.value | json}}
-          -->
-          <div class="form-group" [ngClass]="{ 'has-error': submitted && formControls.emailValidation.errors }">
-            <input type="email" ngModel [(ngModel)]="newUserModel.email" formControlName="email" name="email"
-                class="form-control" id="login_Email" aria-describedby="emailHelp" placeholder="Email">
-          </div>
-          <div class="form-group" [ngClass]="{ 'has-error': submitted && formControls.emailValidation.errors }">
-            <input type="password" ngModel [(ngModel)]="newUserModel.password" formControlName="password" name="password" 
-                class="form-control" id="login_Password" placeholder="Password">
-          </div>
-          <button type="submit" class="btn" [disabled]="!loginForm.valid">Log In</button>
-        </form>
-      </ul>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <!--
+      <form class="form-inline" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-  
+        <div class="form-group" [ngClass]="{ 'has-error': submitted && f.email.errors }">
+          <input type="email" formControlName="email" class="form-control clearfix" id="login_Email" aria-describedby="emailHelp"
+            placeholder="Email">
+          
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': submitted && f.password.errors }">
+          <input type="password" formControlName="password" class="form-control clearfix" id="login_Password">
+        </div>
+        <button type="submit" class="btn" [disabled]="!loginForm.valid">Log In</button>
+      </form>
+      -->
+      <form class="form-inline" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.email.errors }">
+          <label for="email"></label>
+          <input type="email" name="email" formControlName="email" class="form-control" id="login_Email"
+            aria-describedby="emailHelp" placeholder="Enter Email"/>
+          <!-- ngModel [(ngModel)]="newUserModel.email" -->
+          <div *ngIf="!loginSuccess && f.email.errors" class="help-block">
+            <div *ngIf="f.email.errors.required">Email Is Required</div>
+          </div>
+          <div *ngIf="f.email.errors" class="help-block">
+            <div *ngIf="f.email.errors.minLength">Email Is Too Short</div>
+          </div>
+        </div>
+        <div class="form-group clearfix" [ngClass]="{ 'has-error': submitted && f.password.errors }">
+          <label for="password"></label>
+          <input type="password" name="password" formControlName="password" class="form-control" id="login_Password"
+            placeholder="Password"/>
+          <!-- ngModel [(ngModel)]="newUserModel.password"-->
+          <div *ngIf="!loginSuccess && f.password.errors" class="help-block">
+            <div *ngIf="f.password.errors.required">Password Is Required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Log In</button>
+        </div>
+      </form>
+    </ul>
+  </div>
+
+
 </nav>

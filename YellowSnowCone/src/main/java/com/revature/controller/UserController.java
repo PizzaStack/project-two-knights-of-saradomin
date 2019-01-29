@@ -42,6 +42,7 @@ public class UserController {
 	@PostMapping("/authenticate")
 	@ResponseBody
 	public User login(@RequestBody User user) {
+		logger.info("User = " + user);
 		user = userDAO.findByEmailAndPassword(user.getEmail(), user.getPassword());
 
 		if (user != null) {
