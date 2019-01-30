@@ -32,9 +32,7 @@ public class UserPostsController {
 	@PostMapping("/userposts/add")
 	public void addPost(@RequestBody UserPosts userposts) {
 		if (userposts != null && !dao.existsById(userposts.getPostid()))
-			System.out.println(userposts);
 			dao.save(userposts);
-		
 	}
 	
 }
