@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { NewpostService } from '../newpost.service';
 import { Posts } from '../posts';
 import { Users } from '../users';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-createpost',
@@ -41,7 +42,9 @@ export class CreatepostComponent implements OnInit {
 
     }
 
-    this.newPost.createPost(post)
+    this.newPost.createPost(post);
+    // $("#post").empty();
+    window.location.reload();
   }
  
 }
