@@ -1041,7 +1041,7 @@ var NavbarComponent = /** @class */ (function () {
         else {
             for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
                 var i = _a[_i];
-                if (i.firstname === properSearchContents || i.lastname === properSearchContents) {
+                if (i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents) {
                     this.matchingUsers.push(i);
                 }
             }
@@ -1314,7 +1314,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <app-navbar> </app-navbar>\n       <div class=\"wrapper\">\n           <app-sidemenu></app-sidemenu>\n  \n            <div id=\"content\">\n                <div class=\"container\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                          <ul *ngFor=\"let searchResult of searchResults\">\n                            <li>\n                              {{searchResult.firstname}} {{searchResult.lastname}}\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userId)\">Add Friend</button><button>Send Message</button>\n                            </li>\n                          </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        </div> \n  </div>\n  \n  \n  \n  \n  \n  \n  \n  "
+module.exports = "<div>\n    \n\n    <div class=\"navbar\">\n        <ul class=\"\">\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\n                <div class=\"input-group-append\">\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\">\n                    <i class=\"fa fa-search\"></i>\n                  </button>\n                </div>\n              </div>\n         </ul>\n      </div>\n\n\n\n\n       <div class=\"wrapper\">\n           <app-sidemenu></app-sidemenu>\n  \n            <div id=\"content\">\n                <div class=\"container\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                          <ul *ngFor=\"let searchResult of searchResults\">\n                            <li>\n                              {{searchResult.firstname}} {{searchResult.lastname}}\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userId)\">Add Friend</button><button>Send Message</button>\n                            </li>\n                          </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        </div> \n  </div>\n  \n  \n  \n  \n  \n  \n  \n  "
 
 /***/ }),
 
@@ -1343,61 +1343,95 @@ var SearchuserComponent = /** @class */ (function () {
         this.userService = userService;
         this.storageService = storageService;
         this.friendService = friendService;
+        this.matchingUsers = [];
         this.userId = 1;
     }
     SearchuserComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.searchResults = this.storageService.getSearchResults();
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
-        this.userService.getUsers().subscribe(function (data) { return _this.users = data; });
+        this.userService.getUsers().subscribe(function (data) { return _this.user = data; });
+        // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
+    };
+    SearchuserComponent.prototype.search = function (searchContents) {
+        this.searchResults = [];
+        this.matchingUsers = [];
+        var properSearchContents = searchContents.value.toLowerCase();
+        properSearchContents = properSearchContents.split(' ');
+        for (var i = 0; i < properSearchContents.length; i++) {
+            properSearchContents[i] = properSearchContents[i].charAt(0).toUpperCase() + properSearchContents[i].slice(1);
+        }
+        properSearchContents = properSearchContents.join(' ');
+        if (searchContents.value === "") {
+            alert("Please enter the name of someone you would like to lookup!");
+        }
+        else {
+            for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
+                var i = _a[_i];
+                if (i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents) {
+                    this.matchingUsers.push(i);
+                }
+            }
+        }
+        if (this.matchingUsers.length === 0) {
+            alert("There are no users with the name you specified. Try again!");
+        }
+        else {
+            this.searchResults = this.matchingUsers;
+        }
     };
     SearchuserComponent.prototype.addFriend = function (userId) {
         var _this = this;
-        var alreadyFriends = false;
-        if (this.friends) {
-            for (var _i = 0, _a = this.friends; _i < _a.length; _i++) {
-                var i = _a[_i];
-                if (this.userId === i.userid1) {
-                    if (userId === i.userid2) {
-                        alreadyFriends = true;
-                    }
-                }
-                else if (this.userId === i.userid2) {
-                    if (userId === i.userid1) {
-                        alreadyFriends = true;
-                    }
-                }
-            }
-            for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
-                var i = _c[_b];
-                if (userId === i.userId) {
-                    this.user2 = i;
-                }
-            }
-        }
-        if (alreadyFriends) {
-            alert("You are already friends with this user!");
+        if (userId === this.userId) {
+            alert("You cannot add yourself!");
         }
         else {
-            this.user1 = {
-                userId: 1,
-                email: 'test@revature.com',
-                password: 'PLOK1plok1',
-                firstname: 'John',
-                lastname: 'Smith',
-                profilePicturePath: null
-            };
-            this.friendToAdd = {
-                relationid: null,
-                userid1: this.userId,
-                userid2: userId,
-                status: 1,
-                user1: this.user1,
-                user2: this.user2
-            };
-            this.friendService.addFriend(this.friendToAdd);
-            this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
-            alert("Friend added!");
+            var alreadyFriends = false;
+            if (this.friends) {
+                for (var _i = 0, _a = this.friends; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (this.userId === i.userid1) {
+                        if (userId === i.userid2) {
+                            alreadyFriends = true;
+                        }
+                    }
+                    else if (this.userId === i.userid2) {
+                        if (userId === i.userid1) {
+                            alreadyFriends = true;
+                        }
+                    }
+                }
+                for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
+                    var i = _c[_b];
+                    if (userId === i.userId) {
+                        this.user2 = i;
+                    }
+                }
+            }
+            if (alreadyFriends) {
+                alert("You are already friends with this user!");
+            }
+            else {
+                this.user1 = {
+                    userId: 1,
+                    email: 'test@revature.com',
+                    password: 'PLOK1plok1',
+                    firstname: 'John',
+                    lastname: 'Smith',
+                    profilePicturePath: null
+                };
+                this.friendToAdd = {
+                    relationid: null,
+                    userid1: this.userId,
+                    userid2: userId,
+                    status: 1,
+                    user1: this.user1,
+                    user2: this.user2
+                };
+                this.friendService.addFriend(this.friendToAdd);
+                this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
+                alert("Friend added!");
+            }
         }
     };
     SearchuserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

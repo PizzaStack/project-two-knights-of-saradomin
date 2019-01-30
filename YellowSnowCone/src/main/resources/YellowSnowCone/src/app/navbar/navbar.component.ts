@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 import { StorageService } from '../storage.service';
 import { Router } from '@angular/router';
+import { SearchuserComponent } from '../searchuser/searchuser.component';
 
 @Component({
   selector: 'app-navbar',
@@ -37,7 +38,7 @@ export class NavbarComponent implements OnInit {
       alert("Please enter the name of someone you would like to lookup!");
     } else {
       for(let i of this.user){
-        if(i.firstname === properSearchContents || i.lastname === properSearchContents){
+        if(i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents){
           this.matchingUsers.push(i);
         }
         
@@ -50,6 +51,7 @@ export class NavbarComponent implements OnInit {
     } else {
       this.storageService.setSearchResults(this.matchingUsers);
       this.router.navigate(["searchuser"]);
+
     }
 
 

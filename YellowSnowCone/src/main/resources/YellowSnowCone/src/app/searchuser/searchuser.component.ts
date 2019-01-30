@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { StorageService } from '../storage.service';
@@ -13,6 +13,10 @@ import { Friend } from '../friend';
 export class SearchuserComponent implements OnInit {
 
   searchResults: User[];
+
+  user: User[];
+
+  matchingUsers: User[] = [];
 
   friends: Friend[];
 
@@ -31,10 +35,52 @@ export class SearchuserComponent implements OnInit {
   ngOnInit() {
     this.searchResults = this.storageService.getSearchResults();
     this.friendService.getFriendsById().subscribe(data => this.friends = data);
-    this.userService.getUsers().subscribe(data => this.users = data);
+    this.userService.getUsers().subscribe(data => this.user = data);
+    // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
   }
 
+  search(searchContents) {
+    
+    this.searchResults = [];
+    this.matchingUsers = [];
+    let properSearchContents = searchContents.value.toLowerCase();
+
+    properSearchContents = properSearchContents.split(' ');
+
+
+    for(let i = 0; i < properSearchContents.length; i++){
+      properSearchContents[i] = properSearchContents[i].charAt(0).toUpperCase() + properSearchContents[i].slice(1);
+    }
+
+    properSearchContents = properSearchContents.join(' ');
+
+    if(searchContents.value === ""){
+      alert("Please enter the name of someone you would like to lookup!");
+    } else {
+      for(let i of this.user){
+        if(i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents){
+          this.matchingUsers.push(i);
+        }
+        
+      }
+      
+    }
+
+    if(this.matchingUsers.length === 0){
+      alert("There are no users with the name you specified. Try again!");
+    } else {
+      this.searchResults = this.matchingUsers;
+    }
+
+
+  }
+
+
   addFriend(userId){
+
+    if(userId === this.userId){
+      alert("You cannot add yourself!");
+    } else {
     let alreadyFriends: boolean = false;
 
     if(this.friends){
@@ -84,6 +130,7 @@ export class SearchuserComponent implements OnInit {
       this.friendService.addFriend(this.friendToAdd);
       this.friendService.getFriendsById().subscribe(data => this.friends = data);
       alert("Friend added!");
+    }
     }
   }
 

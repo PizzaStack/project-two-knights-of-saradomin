@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.entity.User;
+import com.revature.entity.Users;
 
 @Repository
-public interface UsersRepository extends JpaRepository<User, Integer> {
-	List<User> findByfirstname(String firstname);
-	List<User> findBylastname(String lastname);
+public interface UsersRepository extends JpaRepository<Users, Integer> {
+	List<Users> findByfirstname(String firstname);
+	List<Users> findBylastname(String lastname);
 	
 	
 }

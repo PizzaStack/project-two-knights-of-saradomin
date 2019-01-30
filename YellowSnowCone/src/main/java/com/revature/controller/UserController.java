@@ -54,34 +54,6 @@ public class UserController {
 		return "redirect:/mainview";
 	}
 	
-	@PostMapping("/userByName")
-	public List<User> getUserByName(
-			@RequestBody
-			String name) {
-		
-		List<User> users = new ArrayList<>();
-		
-		if(name.contains(" ")) {
-			List<User> usersByFirstName = repository.findByfirstname(name);
-			List<User> usersByLastName = repository.findBylastname(name);
-			
-			for(User user : usersByFirstName) {
-				users.add(user);
-			}
-			
-			for(User user : usersByLastName) {
-				users.add(user);
-			}
-		} else {
-			List<User> usersByFirstName = repository.findByfirstname(name);
-			
-			for(User user : usersByFirstName) {
-				users.add(user);
-			}
-		}
-			
-		return users;
-		
-	}
+
 	
 }
