@@ -7,7 +7,7 @@ export class StorageService {
 
   public scope: Array<any> = [];
 
-  public firstName: string;
+  public userId: number;
 
   constructor() { }
 
@@ -19,7 +19,11 @@ export class StorageService {
     this.scope = scope;
   }
 
-  public getFirstName(): string {
-    return this.firstName;
+  public getUserId(): number {
+    return this.userId;
+  }
+
+  public setUserId(userId: number) {
+    this.userId = userId;
   }
 }
