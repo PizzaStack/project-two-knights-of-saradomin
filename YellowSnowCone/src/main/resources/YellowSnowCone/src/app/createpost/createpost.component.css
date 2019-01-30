@@ -8,6 +8,7 @@
     color: white;
     box-shadow: 5px 5px #888888;
     font-size: 15px;
+    margin-top: 15px;
 }
 
 .btn:active{
