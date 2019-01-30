@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { MessageService } from '../message.service';
 import { Message } from '../message';
 import { StorageService } from '../storage.service';
+import { Users } from '../users';
 
 @Component({
   selector: 'app-messages',
@@ -26,28 +27,9 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.getMessagesById()
-    .subscribe(data => this.messages = data);
+    .subscribe(data => this.messages = data,(err) => console.log(err),() => this.loadMessages());
   }
 
-  populateMessageThread(user: string) {
-
-    for (let i of this.messages){
-      if(i.userid1 === this.userid){
-        if(user === (i.user2.firstname + ' ' + i.user2.lastname)){
-          this.specificMessage = "Me: " + i.textcontents;
-          this.specificMessages.push(this.specificMessage);
-        }
-      } else {
-        if(user === (i.user1.firstname + ' ' + i.user1.lastname)){
-          this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
-          this.specificMessages.push(this.specificMessage);
-        }
-      }
-    }
-
-    this.storage.setScope(this.specificMessages);
-
-  }
 
   loadMessages() {
 
@@ -59,24 +41,37 @@ export class MessagesComponent implements OnInit {
       }
     }
 
+    this.users = this.users.filter(function(elem, index, self) {
+      return index === self.indexOf(elem);
+    })
 
-    let position = 0;
-    for(let i of this.users){
-      let count = 0;
 
-      for(let j of this.users){
-        if(i === j){
-          count += 1;
+  }
+
+  populateMessageThread(user: string) {
+
+    this.storage.setUserId1(this.userid);
+    for (let i of this.messages){
+      if(i.userid1 === this.userid){
+        if(user === (i.user2.firstname + ' ' + i.user2.lastname)){
+          this.specificMessage = "Me: " + i.textcontents;
+          this.specificMessages.push(this.specificMessage);
+          this.storage.setUserId2(i.user2.userid);
+          this.storage.setUser1(i.user1);
+          this.storage.setUser2(i.user2);
+        }
+      } else {
+        if(user === (i.user1.firstname + ' ' + i.user1.lastname)){
+          this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
+          this.specificMessages.push(this.specificMessage);
+          this.storage.setUserId2(i.user1.userid);
+          this.storage.setUser1(i.user2);
+          this.storage.setUser2(i.user1);
         }
       }
-
-      if(count > 1){
-        this.users.splice(position, position + 1);
-      }
-
-      position += 1;
-
     }
+
+    this.storage.setScope(this.specificMessages);
 
   }
   

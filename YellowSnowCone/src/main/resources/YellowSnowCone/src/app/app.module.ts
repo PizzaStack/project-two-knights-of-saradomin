@@ -29,9 +29,11 @@ import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
+import { SearchuserComponent } from './searchuser/searchuser.component';
 import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { UserpostComponent } from './userpost/userpost.component';
     IconComponent,
     UpdateprofileComponent,
     RepostComponent,
+    SearchuserComponent,
     MypostViewComponent,
     UserpostComponent
     ],
