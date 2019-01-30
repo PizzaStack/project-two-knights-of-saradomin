@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: "welcomeview", component: WelcomeviewComponent },
   { path: "mypost", component: MypostViewComponent },
   { path: "messages", component: MessagesComponent },
-  { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
+  // { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
+  { path: "mainview", component: MainviewComponent },
   { path: 'messagesthread', component: MessagesthreadComponent },
   { path: 'searchuser', component: SearchuserComponent}
 ];
