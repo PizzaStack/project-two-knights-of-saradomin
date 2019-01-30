@@ -5,6 +5,19 @@ ul {
 .card{
     background: none;
 }
+
+.btn{
+    background:  #aad4e5;
+    font-weight: bold;
+    color: white;
+    box-shadow: 5px 5px #888888;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.btn:active{
+    transform: translateY(2px);
+}
 .messages{
     margin-top: auto;
 		margin-bottom: auto;
@@ -13,8 +26,6 @@ ul {
 		background-color: white;
 		padding: 10px;
         position: relative;
-       
-        
 }
 .wrapper {
     display: flex;
