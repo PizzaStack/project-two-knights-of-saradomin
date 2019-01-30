@@ -20,9 +20,11 @@ export class StorageService {
 
   user2: Users;
 
+  firstName: string;
+
   public scope: Array<any> = [];
 
-  public firstName: string;
+  public userId: number;
 
   constructor() { }
 
