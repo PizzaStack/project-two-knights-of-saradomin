@@ -1,6 +1,9 @@
 small{
     text-align: center
 }
+.card{
+    margin-bottom: 15px
+}
 
 .btn{
     background:  #aad4e5;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user'
+import { Users } from '../users'
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  users:User[]
+  users:Users[]
 
   constructor(private _userService:UserService) { }
 

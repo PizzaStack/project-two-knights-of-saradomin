@@ -27,12 +27,12 @@ public class UserPostsController {
 		return dao.findByUserid(userid);
 	}
 	
-	@PostMapping("/userpost/add")
-	public void addPost(
-			@RequestBody
-			UserPosts us
-			) {
-		dao.save(us);
+	@PostMapping("/userposts/add")
+	public void addPost(@RequestBody UserPosts userposts) {
+		if (userposts != null && !dao.existsById(userposts.getPostid()))
+			System.out.println(userposts);
+			dao.save(userposts);
+		
 	}
 	
 }

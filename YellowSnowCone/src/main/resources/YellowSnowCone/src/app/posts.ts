@@ -2,8 +2,9 @@ import { Users } from './users';
 
 export class Posts {
     postid: number;
-	userid : Users
+	userid : number;
 	textcontents: string;
 	imagelocation: string;
 	repostid: number;
+	user:Users
 }
