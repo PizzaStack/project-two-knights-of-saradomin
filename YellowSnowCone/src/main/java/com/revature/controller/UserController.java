@@ -14,12 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-<<<<<<< HEAD
-import com.revature.dao.UserDAO;
-import com.revature.entity.User;
-=======
 import com.revature.entity.Users;
->>>>>>> master
 import com.revature.repository.UsersRepository;
 
 @RestController

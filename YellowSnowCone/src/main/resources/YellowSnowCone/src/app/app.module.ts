@@ -23,20 +23,16 @@ import { IconComponent } from './icon/icon.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { RepostComponent } from './repost/repost.component';
-import { UserListComponent } from './user-list/user-list.component';
 
 import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
-<<<<<<< HEAD
 import { UserListComponent } from './user-list/user-list.component';
 import { SearchuserComponent } from './searchuser/searchuser.component';
-=======
 import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
->>>>>>> master
 
 @NgModule({
   declarations: [
@@ -60,12 +56,9 @@ import { UserpostComponent } from './userpost/userpost.component';
     IconComponent,
     UpdateprofileComponent,
     RepostComponent,
-<<<<<<< HEAD
     SearchuserComponent
-=======
     MypostViewComponent,
     UserpostComponent
->>>>>>> master
     ],
   imports: [
     BrowserModule,
