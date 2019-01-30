@@ -57,12 +57,9 @@ import { UserpostComponent } from './userpost/userpost.component';
     IconComponent,
     UpdateprofileComponent,
     RepostComponent,
-<<<<<<< HEAD
-    SearchuserComponent
-=======
+    SearchuserComponent,
     MypostViewComponent,
     UserpostComponent
->>>>>>> master
     ],
   imports: [
     BrowserModule,
