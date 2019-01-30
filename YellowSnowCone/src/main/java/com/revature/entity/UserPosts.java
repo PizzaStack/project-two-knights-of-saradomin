@@ -102,7 +102,6 @@ public class UserPosts {
 
 	public UserPosts() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	

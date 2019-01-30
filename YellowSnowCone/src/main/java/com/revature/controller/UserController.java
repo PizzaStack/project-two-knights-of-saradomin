@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.dao.UserDAO;
-import com.revature.entity.User;
 import com.revature.entity.Users;
 import com.revature.repository.UsersRepository;
 
@@ -27,23 +25,22 @@ import com.revature.repository.UsersRepository;
 @CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
 public class UserController {
 	@Autowired
-	UserDAO userDAO;
 	UsersRepository repository;
 	Logger logger = LogManager.getLogger(UserController.class);
 	
 	@GetMapping("/users")
-	public List<User> getAll(){
+	public List<Users> getAll(){
 		//logger.info("FINDING ALL USERS");
 		System.out.println("FINDING ALL USERS");
-		return userDAO.findAll();
+		return repository.findAll();
 	}
 	
 	@SuppressWarnings("unused")
 	@PostMapping("/authenticate")
 	@ResponseBody
-	public User login(@RequestBody User user) {
+	public Users login(@RequestBody Users user) {
 		logger.info("User = " + user);
-		user = userDAO.findByEmailAndPassword(user.getEmail(), user.getPassword());
+		user = repository.findByEmailAndPassword(user.getEmail(), user.getPassword());
 
 		if (user != null) {
 			logger.info("loggedInUser = " + user);

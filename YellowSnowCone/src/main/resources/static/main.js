@@ -62,7 +62,7 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
-            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, { onSameUrlNavigation: "reload" })]
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes /*, {onSameUrlNavigation: "reload"}*/)]
         })
     ], AppRoutingModule);
     return AppRoutingModule;
@@ -448,7 +448,7 @@ var IconComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".navbar{\r\n    background-color: white;\r\n    box-shadow: 0px 5px #888888;\r\n}\r\n#login_Email{\r\nmargin: 5px;\r\nbox-shadow:         inset 0 0 15px #888888;\r\n    -moz-box-shadow:    inset 0 0 15px #888888;\r\n}\r\n#login_Password{\r\nmargin: 5px;\r\nbox-shadow:         inset 0 0 15px #888888;\r\n    -moz-box-shadow:    inset 0 0 15px #888888;\r\n}\r\n.btn{\r\n    background:  #aad4e5;\r\n  \r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 25px\r\n}\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n    \r\n\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHVCQUF1QjtJQUN2QiwyQkFBMkI7QUFDL0I7QUFDQTtBQUNBLFdBQVc7QUFFUCwwQ0FBMEM7SUFDMUMsMENBQTBDO0FBQzlDO0FBQ0E7QUFDQSxXQUFXO0FBRVAsMENBQTBDO0lBQzFDLDBDQUEwQztBQUM5QztBQUVBO0lBQ0ksb0JBQW9COztJQUVwQixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLDJCQUEyQjtJQUMzQjtBQUNKO0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCOzs7QUFHOUIiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdmJhcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogMHB4IDVweCAjODg4ODg4O1xyXG59XHJcbiNsb2dpbl9FbWFpbHtcclxubWFyZ2luOiA1cHg7XHJcbi13ZWJraXQtYm94LXNoYWRvdzogaW5zZXQgMCAwIDE1cHggIzg4ODg4ODtcclxuICAgIGJveC1zaGFkb3c6ICAgICAgICAgaW5zZXQgMCAwIDE1cHggIzg4ODg4ODtcclxuICAgIC1tb3otYm94LXNoYWRvdzogICAgaW5zZXQgMCAwIDE1cHggIzg4ODg4ODtcclxufVxyXG4jbG9naW5fUGFzc3dvcmR7XHJcbm1hcmdpbjogNXB4O1xyXG4td2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICBib3gtc2hhZG93OiAgICAgICAgIGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6ICAgIGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbn1cclxuXHJcbi5idG57XHJcbiAgICBiYWNrZ3JvdW5kOiAgI2FhZDRlNTtcclxuICBcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAyNXB4XHJcbn1cclxuLmJ0bjphY3RpdmV7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxuICAgIFxyXG5cclxufSJdfQ== */"
+module.exports = ".navbar{\r\n    background-color: white;\r\n    box-shadow: 0px 5px #888888;\r\n}\r\n#login_Email{\r\nmargin: 5px;\r\nbox-shadow:         inset 0 0 15px #888888;\r\n    -moz-box-shadow:    inset 0 0 15px #888888;\r\n}\r\n#login_Password{\r\nmargin: 5px;\r\nbox-shadow:         inset 0 0 15px #888888;\r\n    -moz-box-shadow:    inset 0 0 15px #888888;\r\n}\r\n.btn{\r\n    background:  #aad4e5;\r\n  \r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 25px\r\n}\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n.invalid-feedback {\r\n    margin: 29px 0 0 10px;\r\n    position: absolute;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHVCQUF1QjtJQUN2QiwyQkFBMkI7QUFDL0I7QUFDQTtBQUNBLFdBQVc7QUFFUCwwQ0FBMEM7SUFDMUMsMENBQTBDO0FBQzlDO0FBQ0E7QUFDQSxXQUFXO0FBRVAsMENBQTBDO0lBQzFDLDBDQUEwQztBQUM5QztBQUVBO0lBQ0ksb0JBQW9COztJQUVwQixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLDJCQUEyQjtJQUMzQjtBQUNKO0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCO0FBRUE7SUFDSSxxQkFBcUI7SUFDckIsa0JBQWtCO0FBQ3RCIiwiZmlsZSI6InNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uYXZiYXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDBweCA1cHggIzg4ODg4ODtcclxufVxyXG4jbG9naW5fRW1haWx7XHJcbm1hcmdpbjogNXB4O1xyXG4td2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICBib3gtc2hhZG93OiAgICAgICAgIGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6ICAgIGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbn1cclxuI2xvZ2luX1Bhc3N3b3Jke1xyXG5tYXJnaW46IDVweDtcclxuLXdlYmtpdC1ib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgYm94LXNoYWRvdzogICAgICAgICBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiAgICBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG59XHJcblxyXG4uYnRue1xyXG4gICAgYmFja2dyb3VuZDogICNhYWQ0ZTU7XHJcbiAgXHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMjVweFxyXG59XHJcbi5idG46YWN0aXZle1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbi5pbnZhbGlkLWZlZWRiYWNrIHtcclxuICAgIG1hcmdpbjogMjlweCAwIDAgMTBweDtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -459,7 +459,7 @@ module.exports = ".navbar{\r\n    background-color: white;\r\n    box-shadow: 0p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n    <a class=\"navbar-brand\" href=\"#\">\r\n      <h1> <strong> Yellow Snow Cone</strong></h1>\r\n    </a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n      aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav ml-auto\">\r\n        <form class=\"form-inline\"  [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n          <!--#loginForm=\"ngForm\"\r\n          {{loginForm.value | json}}\r\n          -->\r\n          <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.email.errors }\">\r\n            <input type=\"email\" formControlName=\"email\"\r\n                class=\"form-control clearfix\" id=\"login_Email\" aria-describedby=\"emailHelp\" placeholder=\"Email\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n          </div>\r\n          <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.password.errors }\">\r\n            <input type=\"password\" formControlName=\"password\"\r\n                class=\"form-control clearfix\" id=\"login_Password\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n          </div>\r\n          <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n        </form>\r\n      </ul>\r\n    </div>\r\n\r\n  \r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n\r\n\r\n  <a class=\"navbar-brand\" href=\"#\">\r\n    <h1> <strong> Yellow Snow Cone</strong></h1>\r\n  </a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav ml-auto\">\r\n      <!--\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.email.errors }\">\r\n          <input type=\"email\" formControlName=\"email\" class=\"form-control clearfix\" id=\"login_Email\" aria-describedby=\"emailHelp\"\r\n            placeholder=\"Email\">\r\n          \r\n        </div>\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.password.errors }\">\r\n          <input type=\"password\" formControlName=\"password\" class=\"form-control clearfix\" id=\"login_Password\">\r\n        </div>\r\n        <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n      </form>\r\n      -->\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n          <input type=\"email\" name=\"email\" formControlName=\"email\" class=\"form-control\" id=\"login_Email\"\r\n            aria-describedby=\"emailHelp\" placeholder=\"Enter Email\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n          <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.email.errors.required\">Email Is Required</div>\r\n            <div *ngIf=\"f.email.errors.email\">Email Must Be A Valid Email Address</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <input type=\"password\" name=\"password\" formControlName=\"password\" class=\"form-control\" id=\"login_Password\"\r\n            placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n          <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n            <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"loading\">Log In</button>\r\n        </div>\r\n      </form>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -496,14 +496,15 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
         this.formBuilder = formBuilder;
         this._authService = _authService;
+        this.submitted = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
         this._authService.logout();
         this.mainviewUrl = "/mainview";
         this.newUserModel = new _user__WEBPACK_IMPORTED_MODULE_2__["User"](null, null, null, null, null, null);
         this.loginForm = this.formBuilder.group({
-            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(3)]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required]]
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].email]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(4)]]
         });
     };
     Object.defineProperty(LoginComponent.prototype, "f", {
@@ -516,8 +517,7 @@ var LoginComponent = /** @class */ (function () {
         this.loggedInUser = user;
         this._userService.authenticate(user).subscribe(function (data) {
             _this.loggedInUser = data;
-            console.log('loggedInUser: ' + JSON.stringify(_this.loggedInUser));
-            if (_this.loggedInUser != null && _this.loggedInUser.userId !== null && _this.loggedInUser.userId != -1) {
+            if (_this.loggedInUser.userId !== null && _this.loggedInUser.userId != -1) {
                 console.log("Login successful");
                 console.log('loggedInUser: ' + JSON.stringify(_this.loggedInUser));
                 _this._userService.addLoggedInUser(_this.loggedInUser);
@@ -526,19 +526,30 @@ var LoginComponent = /** @class */ (function () {
                 _this.router.navigate([_this.mainviewUrl]);
             }
             else {
-                console.log('userId is null.');
+                console.log('userId Is Null.');
                 console.log('User Info: ' + JSON.stringify(_this.loggedInUser));
             }
         });
     };
     LoginComponent.prototype.onSubmit = function () {
-        if (this.loginForm.dirty && this.loginForm.valid) {
-            console.log("form is dirty + valid");
-            this.login(this.newUserModel);
-            this.router.navigate(["welcomeview"]);
+        this.submitted = true;
+        if (this.loginForm.invalid) {
+            //this.loginSuccess = false;
+            //this.f.email = null;
+            //this.f.password = null;
+            return;
         }
-        else
-            alert("Invalid Username Or Password");
+        else {
+            this.newUserModel.email = this.f.email.value;
+            this.newUserModel.password = this.f.password.value;
+            if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
+                console.log("valid credentials");
+                this.login(this.newUserModel);
+                //this.router.navigate(["welcomeview"]);
+            }
+            else
+                alert("Invalid Username Or Password");
+        }
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -961,7 +972,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "small{\r\n    text-align: center\r\n}\r\n\r\n.btn{\r\n    background:  #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSTtBQUNKOztBQUVBO0lBQ0ksb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7QUFDbkI7O0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzbWFsbHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlclxyXG59XHJcblxyXG4uYnRue1xyXG4gICAgYmFja2dyb3VuZDogICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG4uYnRuOmFjdGl2ZXtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59XHJcbiJdfQ== */"
+module.exports = "small{\r\n    text-align: center\r\n}\r\n\r\n.btn{\r\n    background:  #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\nimg{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSTtBQUNKOztBQUVBO0lBQ0ksb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7QUFDbkI7O0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzbWFsbHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlclxyXG59XHJcblxyXG4uYnRue1xyXG4gICAgYmFja2dyb3VuZDogICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG4uYnRuOmFjdGl2ZXtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59XHJcblxyXG5pbWd7XHJcbiAgICBoZWlnaHQ6IDE2cHg7XHJcbiAgICB3aWR0aDoxNnB4O1xyXG59XHJcblxyXG5pbnB1dCB7XHJcbiAgICBvdXRsaW5lOiBub25lO1xyXG59XHJcblxyXG5pbnB1dDphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -972,7 +983,7 @@ module.exports = "small{\r\n    text-align: center\r\n}\r\n\r\n.btn{\r\n    back
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n  <div class=\"card-header\">\r\n    User\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eveniet aut nostrum obcaecati labore\r\n            molestiae ex at perspiciatis. In optio tempore aperiam delectus iste nobis officiis aliquid placeat harum\r\n            molestias.</p>\r\n\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <app-snowconelike></app-snowconelike>\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <app-snowconedislike></app-snowconedislike>\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-1\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <button type=\"submit\" class=\"btn\">Comment</button>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    User\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src=\"../../assets/snowconeshadow.png\" width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src=\"../../assets/snowconeshadowupsidedown.png\"\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-1\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <button type=\"submit\" class=\"btn\">Comment</button>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -988,21 +999,133 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostComponent", function() { return PostComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _posts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts.service */ "./src/app/posts.service.ts");
+/* harmony import */ var _postinteractions_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../postinteractions.service */ "./src/app/postinteractions.service.ts");
+
+
 
 
 var PostComponent = /** @class */ (function () {
-    function PostComponent() {
+    function PostComponent(postsService, postInteractionsService) {
+        this.postsService = postsService;
+        this.postInteractionsService = postInteractionsService;
+        this.postContent = [];
     }
-    PostComponent.prototype.ngOnInit = function () { };
+    PostComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.postsService.getPostsById()
+            .subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+    };
+    PostComponent.prototype.loadPosts = function () {
+        for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
+            var i = _a[_i];
+            this.post = {
+                content: i.textcontents,
+                id1: i.postid + 'like',
+                id2: i.postid + 'dislike'
+            };
+            this.postContent.push(this.post);
+        }
+        this.postContent = this.postContent.reverse();
+    };
+    PostComponent.prototype.like = function (likeimg) {
+        var img = document.getElementById(likeimg);
+        if (img.src.split("/").pop() === "snowconeshadow.png") {
+            img.src = "../../assets/snowconelikeshadow.png";
+        }
+        else if (img.src.split("/").pop() === "snowconelikeshadow.png") {
+            img.src = "../../assets/snowconeshadow.png";
+        }
+    };
+    PostComponent.prototype.dislike = function (dislikeimg) {
+        var img = document.getElementById(dislikeimg);
+        if (img.src.split("/").pop() === "snowconeshadowupsidedown.png") {
+            img.src = "../../assets/snowconedislikeshadowupsidedown.png";
+        }
+        else if (img.src.split("/").pop() === "snowconedislikeshadowupsidedown.png") {
+            img.src = "../../assets/snowconeshadowupsidedown.png";
+        }
+    };
     PostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-post',
             template: __webpack_require__(/*! ./post.component.html */ "./src/app/post/post.component.html"),
             styles: [__webpack_require__(/*! ./post.component.css */ "./src/app/post/post.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"], _postinteractions_service__WEBPACK_IMPORTED_MODULE_3__["PostinteractionsService"]])
     ], PostComponent);
     return PostComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/postinteractions.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/postinteractions.service.ts ***!
+  \*********************************************/
+/*! exports provided: PostinteractionsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostinteractionsService", function() { return PostinteractionsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var PostinteractionsService = /** @class */ (function () {
+    function PostinteractionsService(http) {
+        this.http = http;
+    }
+    PostinteractionsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], PostinteractionsService);
+    return PostinteractionsService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/posts.service.ts":
+/*!**********************************!*\
+  !*** ./src/app/posts.service.ts ***!
+  \**********************************/
+/*! exports provided: PostsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostsService", function() { return PostsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var PostsService = /** @class */ (function () {
+    function PostsService(http) {
+        this.http = http;
+        this.userId = 1;
+        this.postsUrl = 'http://localhost:8080/userposts';
+    }
+    PostsService.prototype.getPostsById = function () {
+        return this.http.post(this.postsUrl, this.userId);
+    };
+    PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], PostsService);
+    return PostsService;
 }());
 
 
@@ -1083,7 +1206,7 @@ module.exports = ".form-control{\r\n    box-shadow:         inset 0 0 15px #8888
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" id =\"Register\">\r\n  <div class=\"row\">\r\n    <form class=\"form col-lg-12\">\r\n      <h3><strong>Create a New Account</strong></h3>\r\n      <p>It’s free and always will be!</p>\r\n\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" clasngs=\"form-control\" id=\"input_First_Name\" placeholder=\"First Name\">\r\n            </div>\r\n        </div>\r\n        <div class=\"col-lg-6\">\r\n            <div class=\"form-group\">\r\n                <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Last Name\">\r\n            </div>\r\n          </div>\r\n      </div>\r\n      <div class=\"form-group\">    \r\n          <input type=\"email\" class=\"form-control\" id=\"input_Email\" placeholder=\"Email\" required=\"\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n         \r\n          <input type=\"password\" class=\"form-control\" id=\"inputPassword\" placeholder=\"Password\" title=\"At least 6 characters with letters and numbers\" required=\"\">\r\n      </div>\r\n     \r\n      <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-default btn-lg float-right\">Register</button>\r\n      </div>\r\n    </form>\r\n\r\n    <!-- DELETE LATER -->\r\n    <h3> Logged-In </h3>\r\n    <ul *ngFor=\"let user of users\" style=\"font-size:15px\">\r\n      <li>ID:{{user.userId}}, Email:{{user.email}}, Password:{{user.pngassword}}</li>\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\" id=\"Register\">\r\n    <div class=\"row\">\r\n        <form class=\"form col-lg-12\">\r\n            <h3><strong>Create a New Account</strong></h3>\r\n            <p>It’s free and always will be!</p>\r\n\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" placeholder=\"First Name\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Last Name\">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"email\" class=\"form-control\" id=\"input_Email\" placeholder=\"Email\" required=\"\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" placeholder=\"Password\" title=\"At least 6 characters with letters and numbers\"\r\n                    required=\"\">\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default btn-lg float-right\">Register</button>\r\n            </div>\r\n        </form>\r\n\r\n        <!-- DELETE LATER -->\r\n        <h3> Logged-In </h3>\r\n        <ul *ngFor=\"let user of users\" style=\"font-size:15px\">\r\n            <li>ID:{{user.userId}}, Email:{{user.email}}, Password:{{user.pngassword}}</li>\r\n        </ul>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1394,8 +1517,8 @@ var SnowconelikeComponent = /** @class */ (function () {
     }
     SnowconelikeComponent.prototype.ngOnInit = function () {
     };
-    SnowconelikeComponent.prototype.like = function () {
-        var img = document.getElementById("likeimg");
+    SnowconelikeComponent.prototype.like = function (likeimg) {
+        var img = document.getElementById(likeimg);
         img.src = "../../assets/snowconelikeshadow.png";
     };
     SnowconelikeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1436,6 +1559,9 @@ var StorageService = /** @class */ (function () {
     };
     StorageService.prototype.setScope = function (scope) {
         this.scope = scope;
+    };
+    StorageService.prototype.getFirstName = function () {
+        return this.firstName;
     };
     StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
