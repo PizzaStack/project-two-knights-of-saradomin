@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { Posts } from '../posts';
-import { PostinteractionsService } from '../postinteractions.service'
+import { PostInteractions } from '../postinteractions';
 
 @Component({
   selector: 'app-post',
@@ -11,6 +11,7 @@ import { PostinteractionsService } from '../postinteractions.service'
 export class PostComponent implements OnInit {
 
   posts: Posts[];
+  postInteractions: PostInteractions[];
 
   post: {
     content: string;
@@ -18,13 +19,21 @@ export class PostComponent implements OnInit {
     id2: any;
   }
 
+  postInteraction: {
+    postId: number;
+    type: number;
+  }
+
   postContent = [];
 
-  constructor(private postsService: PostsService, private postInteractionsService: PostinteractionsService) { }
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
     this.postsService.getPostsById()
       .subscribe(data => this.posts = data, (error: any) => console.log(error), () => this.loadPosts());
+
+    this.postsService.getInteractionsById()
+      .subscribe(data => this.postInteractions = data, (error: any) => console.log(error), () => this.loadInteractions());
   }
 
   loadPosts() {
@@ -37,6 +46,15 @@ export class PostComponent implements OnInit {
       this.postContent.push(this.post);
     }
     this.postContent = this.postContent.reverse();
+  }
+
+  loadInteractions() {
+    for (let i of this.postInteractions) {
+      this.postInteraction = {
+        postId: i.postid,
+        type: i.type
+      }
+    }
   }
 
   like(likeimg: any): void {

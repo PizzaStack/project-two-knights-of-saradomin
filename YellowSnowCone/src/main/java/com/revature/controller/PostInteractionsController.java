@@ -20,8 +20,8 @@ public class PostInteractionsController {
 	@Autowired
 	PostInteractionsRepository dao;
 
-	@PostMapping("/postinteraction")
-	public PostInteractions addInteraction(@RequestBody @Valid PostInteractions pi, Errors errors) {
+	@PostMapping("/addinteraction")
+	public PostInteractions addInteraction(@RequestBody PostInteractions pi, Errors errors) {
 		if (errors.hasErrors())
 			return null;
 
@@ -32,5 +32,10 @@ public class PostInteractionsController {
 	@GetMapping("/getinteraction")
 	public List<PostInteractions> getAll() {
 		return dao.findAll();
+	}
+	
+	@PostMapping("/getinteractionbyid")
+	public List<PostInteractions> findByUserId(@RequestBody int userid) {
+		return dao.findByUserid(userid);
 	}
 }
