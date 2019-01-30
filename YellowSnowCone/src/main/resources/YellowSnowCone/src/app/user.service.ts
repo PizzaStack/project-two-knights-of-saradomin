@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { User } from './user'
+import { Users } from './users'
 
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -30,20 +30,20 @@ const httpTextOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  users:User[] = [];
-  loggedInUsers:User[] = [];
+  users:Users[] = [];
+  loggedInUsers:Users[] = [];
   private _url = "http://localhost:8080/";
 
   constructor(private http: HttpClient,
               public router: Router) {}
 
-  getUsers() : Observable<User[]> {
-    return this.http.get<User[]>(this._url.concat('users'), httpGetOptions);
+  getUsers() : Observable<Users[]> {
+    return this.http.get<Users[]>(this._url.concat('users'), httpGetOptions);
   }
   
-  authenticate(user:User) : Observable<User> {
+  authenticate(user:Users) : Observable<Users> {
     console.log('authenticating... '+user.email+', '+user.password);
-    return this.http.post<User>(this._url.concat('authenticate'), 
+    return this.http.post<Users>(this._url.concat('authenticate'), 
       JSON.stringify(user), httpPostOptions)
   }
 
@@ -51,63 +51,11 @@ export class UserService {
     this.router.navigate(['mainview']);
   }
 
-  getLoggedInUsers() : User[] {
+  getLoggedInUsers() : Users[] {
     return this.loggedInUsers;
   }
-  addLoggedInUser(user:User){
+  addLoggedInUser(user:Users){
     this.loggedInUsers.push(user);
   }
-
-  /*
-  getUsers(){
-    this.users = [
-      {id:0, email:"ex@gmail.com", password:"password", firstname:"Jay", lastname:"Smith", profilePicturePath:"null"},
-      {id:1, email:"lovelyboy@kissme.org", password:"hello", firstname:"Kansas", lastname:"tulip", profilePicturePath:"null"},
-      {id:2, email:"cokewhore@crack.com", password:"crack", firstname:"Lindsay", lastname:"Peters", profilePicturePath:"null"}
-    ];
-    return this.users;
-  }
-  */
-     /*
-    return [
-        {"id":0, "email":"ex@gmail.com", "password":"password", "firstname":"Jay", "lastname":"Smith", "profilePicturePath":"null"},
-        {"id":1, "email":"lovelyboy@kissme.org", "password":"hello", "firstname":'Kansas', "lastname":"tulip", "profilePicturePath":"null"},
-        {"id":2, "email":"cokewhore@crack.com", "password":"crack", "firstname":"Lindsay", "lastname":"Peters", "profilePicturePath":"null"}
-    ];
-    */
-  /*
-  authenticate(credentials, callback) {
-        const headers = new HttpHeaders(credentials ? {
-            authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
-        } : {});
-
-        this.http.get('user', {headers: headers}).subscribe(response => {
-            if (response['name']) {
-                this.authenticated = true;
-            } else {
-                this.authenticated = false;
-            }
-            return callback && callback();
-        });
-    }
-  */
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-    
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-    
-      // TODO: better job of transforming error for user consumption
-      //this.log(`${operation} failed: ${error.message}`);
-    
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-  */
+  
 }

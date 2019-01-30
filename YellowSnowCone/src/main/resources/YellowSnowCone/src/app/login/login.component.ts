@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../user';
+import { Users } from '../users';
 import { UserService } from '../user.service';
 
 import { HttpClient } from '@angular/common/http';
@@ -18,9 +18,9 @@ import { ValidationService } from '../validation.service'
 })
 export class LoginComponent implements OnInit {
   private mainviewUrl:string;
-  protected newUserModel:User;
+  protected newUserModel:Users;
   loginForm: FormGroup;
-  loggedInUser:User;
+  loggedInUser:Users;
   submitted = false;
 
   constructor(protected _userService:UserService,
@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(){
     this._authService.logout();
-    this.mainviewUrl = "/mainview";
-    this.newUserModel = new User(null, null, null, null, null, null);
+    this.mainviewUrl = "mainview";
+    this.newUserModel = new Users(null, null, null, null, null, null);
 
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,21 +41,21 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  login(user:User){
-    this.loggedInUser = user;
+  login(user:Users){
+    //this.loggedInUser = user;
 
     this._userService.authenticate(user).subscribe(data => {
       this.loggedInUser = data;
 
-      if (this.loggedInUser.userId !== null && this.loggedInUser.userId != -1){
+      if (this.loggedInUser.userid != -1){
         console.log("Login successful");
         console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
         this._userService.addLoggedInUser(this.loggedInUser);
         localStorage.setItem('isLoggedIn', "true");
-        localStorage.setItem('token', this.loggedInUser.userId.toString());
+        localStorage.setItem('token', this.loggedInUser.userid.toString());
         this.router.navigate([this.mainviewUrl]);
       } else {
-        console.log('userId Is Null.')
+        console.log('userid Is Null.')
         console.log('User Info: ' + JSON.stringify(this.loggedInUser));
       }
     });
@@ -73,8 +73,11 @@ export class LoginComponent implements OnInit {
       if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
         console.log("valid credentials")
         this.login(this.newUserModel);
-        //this.router.navigate(["welcomeview"]);
-      } else alert("Invalid Username Or Password");
+        
+      } else {
+        alert("Invalid Username Or Password");
+        this.router.navigate(["welcomeview"]);
+      }
     }
   }
 }
