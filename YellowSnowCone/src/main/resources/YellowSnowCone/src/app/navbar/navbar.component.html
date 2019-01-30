@@ -2,13 +2,13 @@
   <div class="navbar">
     <ul class="">
         <div class="input-group">
-            <input type="text" class="form-control" (keyup)="search()" placeholder="Search ">
+            <input type="text" class="form-control" placeholder="Search" #searchContents>
             <div class="input-group-append">
-              <button class="btn btn-secondary" type="button">
+              <button class="btn btn-secondary" type="button" (click)="search(searchContents)">
                 <i class="fa fa-search"></i>
               </button>
             </div>
           </div>
-    </ul>
+     </ul>
   </div>
   

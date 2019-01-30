@@ -41,6 +41,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
 /* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
 /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+/* harmony import */ var _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./searchuser/searchuser.component */ "./src/app/searchuser/searchuser.component.ts");
+
 
 
 
@@ -54,7 +56,8 @@ var routes = [
     { path: "welcomeview", component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__["WelcomeviewComponent"] },
     { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
     { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
-    { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] }
+    { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] },
+    { path: 'searchuser', component: _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_8__["SearchuserComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -379,6 +382,52 @@ var CreatepostComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], CreatepostComponent);
     return CreatepostComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/friend.service.ts":
+/*!***********************************!*\
+  !*** ./src/app/friend.service.ts ***!
+  \***********************************/
+/*! exports provided: FriendService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FriendService", function() { return FriendService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
+
+
+
+var FriendService = /** @class */ (function () {
+    function FriendService(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.friendsByIdUrl = "http://localhost:8080/relationsById";
+        this.addFriendUrl = "http://localhost:8080/addFriend";
+        this.userId = 1;
+    }
+    FriendService.prototype.getFriendsById = function () {
+        return this.http.post(this.friendsByIdUrl, this.userId);
+    };
+    FriendService.prototype.addFriend = function (friend) {
+        this.http.post(this.addFriendUrl, friend).subscribe();
+    };
+    FriendService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
+    ], FriendService);
+    return FriendService;
 }());
 
 
@@ -944,7 +993,7 @@ module.exports = ".navbar{\r\n    background:transparent;\r\n    margin-left: 0p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n  <div class=\"navbar\">\r\n    <ul class=\"\">\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" class=\"form-control\" (keyup)=\"search()\" placeholder=\"Search \">\r\n            <div class=\"input-group-append\">\r\n              <button class=\"btn btn-secondary\" type=\"button\">\r\n                <i class=\"fa fa-search\"></i>\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </ul>\r\n  </div>\r\n  \r\n"
+module.exports = "\r\n  <div class=\"navbar\">\r\n    <ul class=\"\">\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n            <div class=\"input-group-append\">\r\n              <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\">\r\n                <i class=\"fa fa-search\"></i>\r\n              </button>\r\n            </div>\r\n          </div>\r\n     </ul>\r\n  </div>\r\n  \r\n"
 
 /***/ }),
 
@@ -962,21 +1011,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(userService, storageService) {
+    function NavbarComponent(userService, storageService, router) {
         this.userService = userService;
         this.storageService = storageService;
+        this.router = router;
+        this.matchingUsers = [];
     }
     NavbarComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.userService.getUsers().subscribe(function (data) { return _this.user = data; }, function (error) { return console.log(error); }, function () { return _this.storageService.setUser(_this.user); });
     };
-    NavbarComponent.prototype.search = function () {
-        alert("Key pressed!");
+    NavbarComponent.prototype.search = function (searchContents) {
+        var properSearchContents = searchContents.value.toLowerCase();
+        properSearchContents = properSearchContents.split(' ');
+        for (var i = 0; i < properSearchContents.length; i++) {
+            properSearchContents[i] = properSearchContents[i].charAt(0).toUpperCase() + properSearchContents[i].slice(1);
+        }
+        properSearchContents = properSearchContents.join(' ');
+        if (searchContents.value === "") {
+            alert("Please enter the name of someone you would like to lookup!");
+        }
+        else {
+            for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
+                var i = _a[_i];
+                if (i.firstname === properSearchContents || i.lastname === properSearchContents) {
+                    this.matchingUsers.push(i);
+                }
+            }
+        }
+        if (this.matchingUsers.length === 0) {
+            alert("There are no users with the name you specified. Try again!");
+        }
+        else {
+            this.storageService.setSearchResults(this.matchingUsers);
+            this.router.navigate(["searchuser"]);
+        }
     };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -984,7 +1060,7 @@ var NavbarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/navbar/navbar.component.html"),
             styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1227,7 +1303,7 @@ var RepostComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NlYXJjaHVzZXIvc2VhcmNodXNlci5jb21wb25lbnQuY3NzIn0= */"
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCIiwiZmlsZSI6InNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1238,7 +1314,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  searchuser works!\n</p>\n"
+module.exports = "<div>\n    <app-navbar> </app-navbar>\n       <div class=\"wrapper\">\n           <app-sidemenu></app-sidemenu>\n  \n            <div id=\"content\">\n                <div class=\"container\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                          <ul *ngFor=\"let searchResult of searchResults\">\n                            <li>\n                              {{searchResult.firstname}} {{searchResult.lastname}}\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userId)\">Add Friend</button><button>Send Message</button>\n                            </li>\n                          </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        </div> \n  </div>\n  \n  \n  \n  \n  \n  \n  \n  "
 
 /***/ }),
 
@@ -1255,14 +1331,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _friend_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../friend.service */ "./src/app/friend.service.ts");
+
+
 
 
 
 var SearchuserComponent = /** @class */ (function () {
-    function SearchuserComponent(userService) {
+    function SearchuserComponent(userService, storageService, friendService) {
         this.userService = userService;
+        this.storageService = storageService;
+        this.friendService = friendService;
+        this.userId = 1;
     }
     SearchuserComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.searchResults = this.storageService.getSearchResults();
+        this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
+        this.userService.getUsers().subscribe(function (data) { return _this.users = data; });
+    };
+    SearchuserComponent.prototype.addFriend = function (userId) {
+        var _this = this;
+        var alreadyFriends = false;
+        if (this.friends) {
+            for (var _i = 0, _a = this.friends; _i < _a.length; _i++) {
+                var i = _a[_i];
+                if (this.userId === i.userid1) {
+                    if (userId === i.userid2) {
+                        alreadyFriends = true;
+                    }
+                }
+                else if (this.userId === i.userid2) {
+                    if (userId === i.userid1) {
+                        alreadyFriends = true;
+                    }
+                }
+            }
+            for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (userId === i.userId) {
+                    this.user2 = i;
+                }
+            }
+        }
+        if (alreadyFriends) {
+            alert("You are already friends with this user!");
+        }
+        else {
+            this.user1 = {
+                userId: 1,
+                email: 'test@revature.com',
+                password: 'PLOK1plok1',
+                firstname: 'John',
+                lastname: 'Smith',
+                profilePicturePath: null
+            };
+            this.friendToAdd = {
+                relationid: null,
+                userid1: this.userId,
+                userid2: userId,
+                status: 1,
+                user1: this.user1,
+                user2: this.user2
+            };
+            this.friendService.addFriend(this.friendToAdd);
+            this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
+            alert("Friend added!");
+        }
     };
     SearchuserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1270,7 +1406,7 @@ var SearchuserComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./searchuser.component.html */ "./src/app/searchuser/searchuser.component.html"),
             styles: [__webpack_require__(/*! ./searchuser.component.css */ "./src/app/searchuser/searchuser.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _friend_service__WEBPACK_IMPORTED_MODULE_4__["FriendService"]])
     ], SearchuserComponent);
     return SearchuserComponent;
 }());
@@ -1570,6 +1706,12 @@ var StorageService = /** @class */ (function () {
     };
     StorageService.prototype.setUser = function (user) {
         this.users = user;
+    };
+    StorageService.prototype.getSearchResults = function () {
+        return this.searchResults;
+    };
+    StorageService.prototype.setSearchResults = function (user) {
+        this.searchResults = user;
     };
     StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

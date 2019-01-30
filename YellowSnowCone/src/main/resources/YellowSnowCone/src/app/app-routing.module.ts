@@ -5,6 +5,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { AuthGuard } from './auth.guard';
+import { SearchuserComponent } from './searchuser/searchuser.component';
 
 const routes: Routes = [
 
@@ -13,7 +14,8 @@ const routes: Routes = [
 
   { path: "messages", component: MessagesComponent },
   { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
-  { path: 'messagesthread', component: MessagesthreadComponent }
+  { path: 'messagesthread', component: MessagesthreadComponent },
+  { path: 'searchuser', component: SearchuserComponent}
 ];
 
 @NgModule({

@@ -7,6 +7,8 @@ import { User } from './user';
 })
 export class StorageService {
 
+  searchResults: User[];
+
   textContents: string;
 
   users: User[];
@@ -79,5 +81,12 @@ export class StorageService {
     this.users = user;
   }
 
+  public getSearchResults(): User[] {
+    return this.searchResults;
+  }
+
+  public setSearchResults(user: User[]): void {
+    this.searchResults = user;
+  }
 
 }

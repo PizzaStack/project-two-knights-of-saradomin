@@ -38,4 +38,12 @@ public List<UserRelations> getAllById(
 	return userRelationsList2;
 }
 
+@PostMapping("/addFriend")
+public void addFriend(
+		@RequestBody
+		UserRelations userRelation) {
+	System.out.println(userRelation);
+	userRelationsRepository.save(userRelation);
+}
+
 }

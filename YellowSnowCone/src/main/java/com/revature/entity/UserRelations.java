@@ -25,11 +25,11 @@ public class UserRelations {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "userid1")
-	private Users user1;
+	private User user1;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "userid2")
-	private Users user2;
+	private User user2;
 
 	public int getRelationid() {
 		return relationid;
@@ -63,19 +63,19 @@ public class UserRelations {
 		this.status = status;
 	}
 
-	public Users getUser1() {
+	public User getUser1() {
 		return user1;
 	}
 
-	public void setUser1(Users user1) {
+	public void setUser1(User user1) {
 		this.user1 = user1;
 	}
 
-	public Users getUser2() {
+	public User getUser2() {
 		return user2;
 	}
 
-	public void setUser2(Users user2) {
+	public void setUser2(User user2) {
 		this.user2 = user2;
 	}
 
@@ -85,7 +85,7 @@ public class UserRelations {
 				+ status + ", user1=" + user1 + ", user2=" + user2 + "]";
 	}
 
-	public UserRelations(int relationid, int userid1, int userid2, int status, Users user1, Users user2) {
+	public UserRelations(int relationid, int userid1, int userid2, int status, User user1, User user2) {
 		super();
 		this.relationid = relationid;
 		this.userid1 = userid1;
