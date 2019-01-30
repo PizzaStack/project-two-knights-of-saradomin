@@ -40,10 +40,8 @@ export class NavbarComponent implements OnInit {
       for(let i of this.user){
         if(i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents){
           this.matchingUsers.push(i);
-        }
-        
+        } 
       }
-      
     }
 
     if(this.matchingUsers.length === 0){
@@ -51,7 +49,6 @@ export class NavbarComponent implements OnInit {
     } else {
       this.storageService.setSearchResults(this.matchingUsers);
       this.router.navigate(["searchuser"]);
-
     }
 
 

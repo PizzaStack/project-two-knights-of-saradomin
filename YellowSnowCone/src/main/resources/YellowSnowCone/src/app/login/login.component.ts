@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
       if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
         console.log("valid credentials")
         this.login(this.newUserModel);
-        if (this.loggedInUser.userid == -1 || this.loggedInUser == null){
+        if (this.newUserModel.userid == -1 || this.newUserModel == null){
           alert("Invalid Username Or Password");
           this.router.navigate(["welcomeview"]);
         }
