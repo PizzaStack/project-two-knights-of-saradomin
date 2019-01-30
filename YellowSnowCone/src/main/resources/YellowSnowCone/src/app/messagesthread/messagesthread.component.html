@@ -22,7 +22,7 @@
                                     {{specificMessage}}
                                   </li>
                                 </ul>
-                                <input id="messageContent" type="text"><button id="send">Send</button>
+                                <input id="messageContent" type="text" #messageContent><button id="send" (click)="send(messageContent)" (click)="messageContent.value=''">Send</button>
                               </div>
                             </div>
                           </div>

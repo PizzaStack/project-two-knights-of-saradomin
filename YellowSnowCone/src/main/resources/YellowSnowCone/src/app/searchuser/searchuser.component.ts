@@ -20,7 +20,7 @@ export class SearchuserComponent implements OnInit {
 
   friendToAdd: Friend;
 
-  userId: number = 1;
+  userId: number = 0;
 
   user1: Users;
 
@@ -34,6 +34,7 @@ export class SearchuserComponent implements OnInit {
     this.searchResults = this.storageService.getSearchResults();
     this.friendService.getFriendsById().subscribe(data => this.friends = data);
     this.userService.getUsers().subscribe(data => this.users = data);
+    this.userId = this.userService.getLoggedInUsers()[0].userid;
     // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
   }
 
@@ -107,14 +108,7 @@ export class SearchuserComponent implements OnInit {
       alert("You are already friends with this user!");
     } else {
 
-      this.user1 = {
-        userid: 1,
-        email: 'test@revature.com',
-        password: 'PLOK1plok1',
-        firstname: 'John',
-        lastname: 'Smith',
-        profilePicturePath: null
-      };
+      this.user1 = this.userService.getLoggedInUsers()[0];
 
       this.friendToAdd = {
         relationid: null,

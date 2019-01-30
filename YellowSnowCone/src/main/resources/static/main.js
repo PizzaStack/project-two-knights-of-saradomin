@@ -435,17 +435,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+
 
 
 
 
 var FriendService = /** @class */ (function () {
-    function FriendService(http, storage) {
+    function FriendService(http, storage, userService) {
         this.http = http;
         this.storage = storage;
+        this.userService = userService;
         this.friendsByIdUrl = "http://localhost:8080/relationsById";
         this.addFriendUrl = "http://localhost:8080/addFriend";
-        this.userId = 1;
+        this.userId = this.userService.getLoggedInUsers()[0].userid;
     }
     FriendService.prototype.getFriendsById = function () {
         return this.http.post(this.friendsByIdUrl, this.userId);
@@ -458,7 +461,8 @@ var FriendService = /** @class */ (function () {
             providedIn: 'root'
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
-            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"],
+            _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
     ], FriendService);
     return FriendService;
 }());
@@ -630,7 +634,7 @@ var LoginComponent = /** @class */ (function () {
             if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
                 console.log("valid credentials");
                 this.login(this.newUserModel);
-                if (this.loggedInUser.userid == -1 || this.loggedInUser == null) {
+                if (this.newUserModel.userid == -1 || this.newUserModel == null) {
                     alert("Invalid Username Or Password");
                     this.router.navigate(["welcomeview"]);
                 }
@@ -799,15 +803,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+
 
 
 
 
 var MessageService = /** @class */ (function () {
-    function MessageService(http, storage) {
+    function MessageService(http, storage, userService) {
         this.http = http;
         this.storage = storage;
-        this.userId = 1;
+        this.userService = userService;
+        this.userId = this.userService.getLoggedInUsers()[0].userid;
         this.messages = [];
         this.messagesByIdUrl = 'http://localhost:8080/messagesById';
         this.addMessagesUrl = 'http://localhost:8080/addMessage';
@@ -829,7 +836,8 @@ var MessageService = /** @class */ (function () {
             providedIn: 'root'
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
-            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"],
+            _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
     ], MessageService);
     return MessageService;
 }());
@@ -874,15 +882,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../message.service */ "./src/app/message.service.ts");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+
 
 
 
 
 var MessagesComponent = /** @class */ (function () {
-    function MessagesComponent(messageService, storage) {
+    function MessagesComponent(messageService, storage, userService) {
         this.messageService = messageService;
         this.storage = storage;
-        this.userid = 1;
+        this.userService = userService;
+        this.userid = 0;
         this.specificMessages = [];
         this.users = [];
     }
@@ -890,6 +901,7 @@ var MessagesComponent = /** @class */ (function () {
         var _this = this;
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
+        this.userid = this.userService.getLoggedInUsers()[0].userid;
     };
     MessagesComponent.prototype.loadMessages = function () {
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
@@ -936,7 +948,7 @@ var MessagesComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./messages.component.html */ "./src/app/messages/messages.component.html"),
             styles: [__webpack_require__(/*! ./messages.component.css */ "./src/app/messages/messages.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_2__["MessageService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_2__["MessageService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
     ], MessagesComponent);
     return MessagesComponent;
 }());
@@ -963,7 +975,7 @@ module.exports = "ul {\r\n    list-style-type: none;\r\n    \r\n  }\r\n.card{\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n\r\n<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-3\">\r\n                    <div class=\"col-lg-9\">\r\n    \r\n                          <div>\r\n                            \r\n                            <div class=\"\">\r\n                              <h4 class=\"card-title\">Messages</h4>\r\n                              <div class=\"messages\">\r\n                                <ul *ngFor=\"let specificMessage of specificMessages\">\r\n                                  <li class=\"panel\">\r\n                                    {{specificMessage}}\r\n                                  </li>\r\n                                </ul>\r\n                                <input id=\"messageContent\" type=\"text\"><button id=\"send\">Send</button>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n                 \r\n              </div>\r\n          </div>\r\n      \r\n      </div>  \r\n</div>\r\n"
+module.exports = "\r\n\r\n\r\n<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-3\">\r\n                    <div class=\"col-lg-9\">\r\n    \r\n                          <div>\r\n                            \r\n                            <div class=\"\">\r\n                              <h4 class=\"card-title\">Messages</h4>\r\n                              <div class=\"messages\">\r\n                                <ul *ngFor=\"let specificMessage of specificMessages\">\r\n                                  <li class=\"panel\">\r\n                                    {{specificMessage}}\r\n                                  </li>\r\n                                </ul>\r\n                                <input id=\"messageContent\" type=\"text\" #messageContent><button id=\"send\" (click)=\"send(messageContent)\" (click)=\"messageContent.value=''\">Send</button>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n                 \r\n              </div>\r\n          </div>\r\n      \r\n      </div>  \r\n</div>\r\n"
 
 /***/ }),
 
@@ -998,23 +1010,17 @@ var MessagesthreadComponent = /** @class */ (function () {
         this.user2 = this.storage.getUser2();
     };
     MessagesthreadComponent.prototype.send = function (messageContent) {
-        if (messageContent.value.includes(";")) {
-            alert("Invalid message. Message must not contain the symbol: ';'");
-        }
-        else {
-            // this.messageService.addMessage(this.userId1, this.userId2, messageContent.value);
-            this.message = {
-                messageid: null,
-                textcontents: messageContent.value,
-                userid1: this.userId1,
-                userid2: this.userId2,
-                status: 0,
-                user1: this.user1,
-                user2: this.user2
-            };
-            this.messageService.addMessage(this.message);
-            this.specificMessages.push("Me: " + messageContent.value);
-        }
+        this.message = {
+            messageid: null,
+            textcontents: messageContent.value,
+            userid1: this.userId1,
+            userid2: this.userId2,
+            status: 0,
+            user1: this.user1,
+            user2: this.user2
+        };
+        this.messageService.addMessage(this.message);
+        this.specificMessages.push("Me: " + messageContent.value);
     };
     MessagesthreadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1575,7 +1581,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    \r\n\r\n    <div class=\"navbar\">\r\n        <ul class=\"\">\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                  </button>\r\n                </div>\r\n              </div>\r\n         </ul>\r\n      </div>\r\n\r\n\r\n\r\n\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n  \r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                          <ul *ngFor=\"let searchResult of searchResults\">\r\n                            <li>\r\n                              {{searchResult.firstname}} {{searchResult.lastname}}\r\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userid)\">Add Friend</button><button>Send Message</button>\r\n                            </li>\r\n                          </ul>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div> \r\n  </div>\r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  "
+module.exports = "<div>\r\n    \r\n\r\n    <div class=\"navbar\">\r\n        <ul class=\"\">\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\" (click)=\"searchContents.value=''\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                  </button>\r\n                </div>\r\n              </div>\r\n         </ul>\r\n      </div>\r\n\r\n\r\n\r\n\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n  \r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                        <h2>Search results:</h2>\r\n                          <ul *ngFor=\"let searchResult of searchResults\">\r\n                            <li>\r\n                              {{searchResult.firstname}} {{searchResult.lastname}}\r\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userid)\">Add Friend</button><button>Send Message</button>\r\n                            </li>\r\n                          </ul>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div> \r\n  </div>\r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  \r\n  "
 
 /***/ }),
 
@@ -1605,13 +1611,14 @@ var SearchuserComponent = /** @class */ (function () {
         this.storageService = storageService;
         this.friendService = friendService;
         this.matchingUsers = [];
-        this.userId = 1;
+        this.userId = 0;
     }
     SearchuserComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.searchResults = this.storageService.getSearchResults();
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
-        this.userService.getUsers().subscribe(function (data) { return _this.user = data; });
+        this.userService.getUsers().subscribe(function (data) { return _this.users = data; });
+        this.userId = this.userService.getLoggedInUsers()[0].userid;
         // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
     };
     SearchuserComponent.prototype.search = function (searchContents) {
@@ -1627,7 +1634,7 @@ var SearchuserComponent = /** @class */ (function () {
             alert("Please enter the name of someone you would like to lookup!");
         }
         else {
-            for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
+            for (var _i = 0, _a = this.users; _i < _a.length; _i++) {
                 var i = _a[_i];
                 if (i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents) {
                     this.matchingUsers.push(i);
@@ -1661,7 +1668,7 @@ var SearchuserComponent = /** @class */ (function () {
                         }
                     }
                 }
-                for (var _b = 0, _c = this.user; _b < _c.length; _b++) {
+                for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
                     var i = _c[_b];
                     if (userId === i.userid) {
                         this.user2 = i;
@@ -1672,14 +1679,7 @@ var SearchuserComponent = /** @class */ (function () {
                 alert("You are already friends with this user!");
             }
             else {
-                this.user1 = {
-                    userid: 1,
-                    email: 'test@revature.com',
-                    password: 'PLOK1plok1',
-                    firstname: 'John',
-                    lastname: 'Smith',
-                    profilePicturePath: null
-                };
+                this.user1 = this.userService.getLoggedInUsers()[0];
                 this.friendToAdd = {
                     relationid: null,
                     userid1: this.userId,
@@ -1727,7 +1727,7 @@ module.exports = "li{\r\n    margin-bottom: 15%;\r\n    \r\n}\r\na{\r\n    color
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n       <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>Name</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"/mypost\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Friends List</a>\r\n        </li>\r\n        <li>  \r\n           <a routerLink=\"/messages\">Messages</a>\r\n        </li>\r\n    </ul>\r\n    <button type=\"submit\" class=\"btn \">Log Out</button>\r\n\r\n</nav>"
+module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n       <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>{{name}}</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"/mainview\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"/mypost\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Friends List</a>\r\n        </li>\r\n        <li>  \r\n           <a routerLink=\"/messages\">Messages</a>\r\n        </li>\r\n    </ul>\r\n    <button type=\"submit\" class=\"btn \">Log Out</button>\r\n\r\n</nav>"
 
 /***/ }),
 
@@ -1743,12 +1743,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SidemenuComponent", function() { return SidemenuComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+
 
 
 var SidemenuComponent = /** @class */ (function () {
-    function SidemenuComponent() {
+    function SidemenuComponent(userService) {
+        this.userService = userService;
     }
     SidemenuComponent.prototype.ngOnInit = function () {
+        this.name = this.userService.getLoggedInUsers()[0].firstname + " " + this.userService.getLoggedInUsers()[0].lastname;
     };
     SidemenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1756,7 +1760,7 @@ var SidemenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sidemenu.component.html */ "./src/app/sidemenu/sidemenu.component.html"),
             styles: [__webpack_require__(/*! ./sidemenu.component.css */ "./src/app/sidemenu/sidemenu.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
     ], SidemenuComponent);
     return SidemenuComponent;
 }());
