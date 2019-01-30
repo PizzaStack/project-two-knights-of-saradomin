@@ -23,6 +23,8 @@ export class StorageService {
 
   public scope: Array<any> = [];
 
+  public firstName: string;
+
   constructor() { }
 
   public getScope(): Array<any> {
@@ -89,4 +91,7 @@ export class StorageService {
     this.searchResults = user;
   }
 
+  public getFirstName(): string {
+    return this.firstName;
+  }
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.entity.UserMessage;
+
 import com.revature.entity.UserPosts;
 import com.revature.repository.UserPostsRepository;
 
@@ -19,22 +19,21 @@ public class UserPostsController {
 	@Autowired
 	UserPostsRepository dao;
 	
-	@GetMapping("/userposts")
+	@GetMapping("/allposts")
 	public List<UserPosts> getAll() {
 		return dao.findAll();
 	}
 	
-	@GetMapping("/userposts/{userid}")
-	public List<UserPosts> findByUserId(@PathVariable("userid") int userid) {
+	@PostMapping("/userposts")
+	public List<UserPosts> findByUserId(@RequestBody int userid) {
 		return dao.findByUserid(userid);
 	}
 	
-	@PostMapping("/userpost/add")
-	public void addPost(
-			@RequestBody
-			UserPosts us
-			) {
-		dao.save(us);
+	@PostMapping("/userposts/add")
+	public void addPost(@RequestBody UserPosts userposts) {
+		if (userposts != null && !dao.existsById(userposts.getPostid()))
+			System.out.println(userposts);
+			dao.save(userposts);
 		
 	}
 	

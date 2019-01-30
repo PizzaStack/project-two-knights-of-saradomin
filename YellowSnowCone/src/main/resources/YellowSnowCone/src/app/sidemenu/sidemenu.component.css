@@ -21,3 +21,9 @@ a{
     text-align: center
 }
 
+.btn:active{
+    transform: translateY(2px);
+    
+
+}
+

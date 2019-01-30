@@ -1,6 +1,9 @@
 small{
     text-align: center
 }
+.card{
+    margin-bottom: 15px
+}
 
 .btn{
     background:  #aad4e5;
@@ -10,5 +13,18 @@ small{
     font-size: 15px;
 }
 .btn:active{
+    transform: translateY(2px);
+}
+
+img{
+    height: 16px;
+    width:16px;
+}
+
+input {
+    outline: none;
+}
+
+input:active {
     transform: translateY(2px);
 }

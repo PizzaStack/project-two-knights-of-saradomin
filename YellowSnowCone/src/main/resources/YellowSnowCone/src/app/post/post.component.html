@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngFor="let post of postContent">
   <div class="card-header">
     User
   </div>
@@ -8,38 +8,31 @@
         <div class="col-lg-1">
         </div>
         <div class="col-lg-10">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam eveniet aut nostrum obcaecati labore
-            molestiae ex at perspiciatis. In optio tempore aperiam delectus iste nobis officiis aliquid placeat harum
-            molestias.</p>
-
+          <p>{{post.content}}</p>
         </div>
         <div class="col-lg-1">
         </div>
-
       </div>
       <div class="row">
         <div class="col-lg-1">
         </div>
         <div class="col-lg-1">
-          <app-snowconelike></app-snowconelike>
+          <input id="{{post.id1}}" (click)="like(post.id1)" type="image" src="../../assets/snowconeshadow.png" width="48"
+            height="48">
           <small id="liked" class="form-text text-muted">Like</small>
         </div>
         <div class="col-lg-1">
-          <app-snowconedislike></app-snowconedislike>
+          <input id="{{post.id2}}" (click)="dislike(post.id2)" type="image" src="../../assets/snowconeshadowupsidedown.png"
+            width="48" height="48">
           <small id="disliked" class="form-text text-muted">Hate</small>
         </div>
         <div class="col-lg-5"></div>
-        <div class="col-lg-1">
+        <div class="col-lg-3">
           <app-repost></app-repost>
         </div>
-        <div class="col-lg-2">
-          <button type="submit" class="btn">Comment</button>
-        </div>
         <div class="col-lg-1">
         </div>
-
       </div>
     </div>
-
   </div>
 </div>
