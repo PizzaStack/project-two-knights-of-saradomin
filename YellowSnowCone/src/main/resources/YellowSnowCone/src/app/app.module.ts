@@ -23,7 +23,6 @@ import { IconComponent } from './icon/icon.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { RepostComponent } from './repost/repost.component';
-import { UserListComponent } from './user-list/user-list.component';
 
 import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
@@ -33,7 +32,6 @@ import { SearchuserComponent } from './searchuser/searchuser.component';
 import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
-
 
 @NgModule({
   declarations: [
@@ -51,7 +49,6 @@ import { UserpostComponent } from './userpost/userpost.component';
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UserListComponent,
     MessagesComponent,
     MessagesthreadComponent,
     IconComponent,
