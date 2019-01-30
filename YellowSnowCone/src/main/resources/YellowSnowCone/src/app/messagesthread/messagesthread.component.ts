@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { MessageService } from '../message.service';
 import { addMessageStatus } from '../addMessageStatus';
@@ -40,7 +40,6 @@ export class MessagesthreadComponent implements OnInit {
   }
 
   send(messageContent) {
-      
       this.message = {
         messageid: null,
         textcontents: messageContent.value,
@@ -51,9 +50,6 @@ export class MessagesthreadComponent implements OnInit {
         user2: this.user2
       };
       this.messageService.addMessage(this.message);
-
       this.specificMessages.push("Me: " + messageContent.value);
   }
-  
-
 }

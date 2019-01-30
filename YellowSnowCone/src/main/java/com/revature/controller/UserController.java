@@ -1,6 +1,5 @@
 package com.revature.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,20 +17,19 @@ import com.revature.entity.Users;
 import com.revature.repository.UsersRepository;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:8080", "http://localhost:4200"})
+@CrossOrigin(origins = { "http://localhost:8080", "http://localhost:4200" })
 public class UserController {
 	@Autowired
 	UsersRepository repository;
 	Logger logger = LogManager.getLogger(UserController.class);
-	
+
 	@GetMapping("/users")
-	public List<Users> getAll(){
-		//logger.info("FINDING ALL USERS");
+	public List<Users> getAll() {
+		// logger.info("FINDING ALL USERS");
 		System.out.println("FINDING ALL USERS");
 		return repository.findAll();
 	}
-	
-	@SuppressWarnings("unused")
+
 	@PostMapping("/authenticate")
 	@ResponseBody
 	public Users login(@RequestBody Users user) {
@@ -41,19 +39,16 @@ public class UserController {
 		if (user != null) {
 			logger.info("loggedInUser = " + user);
 			return user;
-		}
-		else {
+		} else {
 			user = null;
 			logger.info("loggedInUser = " + user);
 		}
 		return user;
 	}
-	
+
 	@GetMapping("users/{userId}")
 	public String redirectToUserView(@RequestParam int userId) {
 		return "redirect:/mainview";
 	}
-	
 
-	
 }

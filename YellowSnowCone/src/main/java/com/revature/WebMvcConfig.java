@@ -11,20 +11,17 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-      registry.addResourceHandler("/**/*")
-        .addResourceLocations("classpath:/static/")
-        .resourceChain(true)
-        .addResolver(new PathResourceResolver() {
-            @Override
-            protected Resource getResource(String resourcePath,
-                Resource location) throws IOException {
-                Resource requestedResource = location.createRelative(resourcePath);
-                return requestedResource.exists() && requestedResource.isReadable() ? requestedResource
-                : new ClassPathResource("/static/index.html");
-            }
-        });
-    }
+		registry.addResourceHandler("/**/*").addResourceLocations("classpath:/static/").resourceChain(true)
+				.addResolver(new PathResourceResolver() {
+					@Override
+					protected Resource getResource(String resourcePath, Resource location) throws IOException {
+						Resource requestedResource = location.createRelative(resourcePath);
+						return requestedResource.exists() && requestedResource.isReadable() ? requestedResource
+								: new ClassPathResource("/static/index.html");
+					}
+				});
+	}
 }

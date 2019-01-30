@@ -19,41 +19,34 @@ public class UserMessageController {
 	UsersRepository userRepository;
 	@Autowired
 	UserMessageRepository messageRepository;
-	
+
 	@GetMapping("/messages")
-	public List<UserMessage> getAll(){
+	public List<UserMessage> getAll() {
 		return messageRepository.findAll();
 	}
-	
+
 	@PostMapping("/messagesById")
-	public List<UserMessage> getAllById(
-			@RequestBody
-			int id) {
-		
-		List<UserMessage> messageList = (List<UserMessage>) messageRepository.findAll();
-		
+	public List<UserMessage> getAllById(@RequestBody int id) {
+
+		List<UserMessage> messageList = messageRepository.findAll();
+
 		List<UserMessage> messageList2 = new ArrayList<>();
-		
-		for(UserMessage userMessage : messageList) {
-			if(userMessage.getUserid1() == id || userMessage.getUserid2() == id) {
+
+		for (UserMessage userMessage : messageList) {
+			if (userMessage.getUserid1() == id || userMessage.getUserid2() == id) {
 				messageList2.add(userMessage);
 			}
 		}
-		
+
 		return messageList2;
 	}
-	
-	
-	
+
 	@PostMapping("/addMessage")
-	public void addMessage(
-			@RequestBody
-			UserMessage userMessage
-			) {
-			System.out.println(userMessage);
-			messageRepository.save(userMessage);
+	public void addMessage(@RequestBody UserMessage userMessage) {
+		System.out.println(userMessage);
+		messageRepository.save(userMessage);
 	}
-	
+
 //	@PostMapping("/addMessage")
 //	public void addMessage(
 //			@RequestBody
@@ -71,6 +64,4 @@ public class UserMessageController {
 //		System.out.println(userId1 + " " + userId2 + " " + textContents);
 //
 //	}
-	
-	
 }

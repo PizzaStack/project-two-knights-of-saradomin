@@ -13,8 +13,6 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { ProfilepictureComponent } from './profilepicture/profilepicture.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { SnowconeComponent } from './snowcone/snowcone.component';
-import { SnowconelikeComponent } from './snowconelike/snowconelike.component';
-import { SnowconedislikeComponent } from './snowconedislike/snowconedislike.component';
 import { PostComponent } from './post/post.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
@@ -44,8 +42,6 @@ import { UserpostComponent } from './userpost/userpost.component';
     ProfilepictureComponent,
     CreatepostComponent,
     SnowconeComponent,
-    SnowconelikeComponent,
-    SnowconedislikeComponent,
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
@@ -57,7 +53,7 @@ import { UserpostComponent } from './userpost/userpost.component';
     SearchuserComponent,
     MypostViewComponent,
     UserpostComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -65,7 +61,7 @@ import { UserpostComponent } from './userpost/userpost.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, MessageService, AuthGuard, ValidationService],
+  providers: [UserService, MessageService, AuthGuard, ValidationService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

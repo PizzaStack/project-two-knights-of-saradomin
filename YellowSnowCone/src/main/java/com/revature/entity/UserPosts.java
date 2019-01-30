@@ -1,6 +1,5 @@
 package com.revature.entity;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +19,7 @@ public class UserPosts {
 	@Column(name = "postid")
 	private int postid;
 
-	@Column(name = "userid", insertable=false, updatable=false)
+	@Column(name = "userid", insertable = false, updatable = false)
 	private int userid;
 
 	@Column(name = "textcontents")
@@ -31,9 +30,9 @@ public class UserPosts {
 
 	@Column(name = "repostid")
 	private int repostid;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name ="userid")
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userid")
 	private Users user;
 
 	public int getPostid() {
@@ -90,8 +89,7 @@ public class UserPosts {
 				+ ", imagelocation=" + imagelocation + ", repostid=" + repostid + ", user=" + user + "]";
 	}
 
-	public UserPosts(int postid, int userid, String textcontents, String imagelocation, int repostid,
-			Users user) {
+	public UserPosts(int postid, int userid, String textcontents, String imagelocation, int repostid, Users user) {
 		super();
 		this.postid = postid;
 		this.userid = userid;
@@ -104,6 +102,4 @@ public class UserPosts {
 	public UserPosts() {
 		super();
 	}
-
-	
 }

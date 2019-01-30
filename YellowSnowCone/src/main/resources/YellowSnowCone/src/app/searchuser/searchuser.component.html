@@ -1,6 +1,4 @@
 <div>
-    
-
     <div class="navbar">
         <ul class="">
             <div class="input-group">
@@ -27,22 +25,14 @@
                         <h2>Search results:</h2>
                           <ul *ngFor="let searchResult of searchResults">
                             <li>
-                              {{searchResult.firstname}} {{searchResult.lastname}}
-                              <button>View Profile</button><button (click)="addFriend(searchResult.userid)">Add Friend</button><button>Send Message</button>
+                                {{searchResult.firstname}} {{searchResult.lastname}}
+                                <button>View Profile</button><button (click)="addFriend(searchResult.userid)">Add
+                                    Friend</button><button>Send Message</button>
                             </li>
-                          </ul>
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </div>
-        
-        </div> 
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
+        </div>
+    </div>
+</div>

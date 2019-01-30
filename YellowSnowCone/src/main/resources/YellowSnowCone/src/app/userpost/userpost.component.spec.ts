@@ -8,9 +8,9 @@ describe('UserpostComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserpostComponent ]
+      declarations: [UserpostComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

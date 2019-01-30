@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message } from './message';
 import { addMessageStatus } from './addMessageStatus';
@@ -31,7 +31,7 @@ export class MessageService {
   //   return this.http.get<Message[]>(this.messagesUrl);
   // }
 
-  getMessagesById (): Observable<Message[]> {
+  getMessagesById(): Observable<Message[]> {
     return this.http.post<Message[]>(this.messagesByIdUrl, this.userId);
   }
 
@@ -39,7 +39,7 @@ export class MessageService {
   //   this.http.post<addMessageStatus>(this.addMessagesUrl, userId1 + ";" + userId2 + ";" + textContents).subscribe();
   // }
 
-  addMessage (message) {
+  addMessage(message) {
     this.http.post<addMessageStatus>(this.addMessagesUrl, message).subscribe();
   }
 }
