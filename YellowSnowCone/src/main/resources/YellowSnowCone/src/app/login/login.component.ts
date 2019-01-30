@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../validation.service'
+import { timeoutWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
     this._userService.authenticate(user).subscribe(data => {
       this.loggedInUser = data;
 
-      if (this.loggedInUser.userid != -1){
+      if (this.loggedInUser.userid === null || this.loggedInUser.userid != -1){
         console.log("Login successful");
         console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
         this._userService.addLoggedInUser(this.loggedInUser);
@@ -65,9 +66,10 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if (this.loginForm.invalid) {
-      //this.loginSuccess = false;
-      //this.f.email = null;
-      //this.f.password = null;
+      this.f.email.setValue("");
+      this.f.password.setValue("");
+      this.newUserModel.email = null;
+      this.newUserModel.password = null;
       return;
     } else {
       this.newUserModel.email = this.f.email.value;
