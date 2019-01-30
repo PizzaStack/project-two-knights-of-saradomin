@@ -630,7 +630,7 @@ var LoginComponent = /** @class */ (function () {
             if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
                 console.log("valid credentials");
                 this.login(this.newUserModel);
-                if (this.loggedInUser.userid == -1 || this.loggedInUser == null) {
+                if (this.newUserModel.userid == -1 || this.newUserModel == null) {
                     alert("Invalid Username Or Password");
                     this.router.navigate(["welcomeview"]);
                 }
@@ -1253,21 +1253,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _posts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts.service */ "./src/app/posts.service.ts");
-/* harmony import */ var _postinteractions_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../postinteractions.service */ "./src/app/postinteractions.service.ts");
-
 
 
 
 var PostComponent = /** @class */ (function () {
-    function PostComponent(postsService, postInteractionsService) {
+    function PostComponent(postsService) {
         this.postsService = postsService;
-        this.postInteractionsService = postInteractionsService;
         this.postContent = [];
     }
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.postsService.getPostsById()
             .subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+        this.postsService.getInteractionsById()
+            .subscribe(function (data) { return _this.postInteractions = data; }, function (error) { return console.log(error); }, function () { return _this.loadInteractions(); });
     };
     PostComponent.prototype.loadPosts = function () {
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
@@ -1280,6 +1279,15 @@ var PostComponent = /** @class */ (function () {
             this.postContent.push(this.post);
         }
         this.postContent = this.postContent.reverse();
+    };
+    PostComponent.prototype.loadInteractions = function () {
+        for (var _i = 0, _a = this.postInteractions; _i < _a.length; _i++) {
+            var i = _a[_i];
+            this.postInteraction = {
+                postId: i.postid,
+                type: i.type
+            };
+        }
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
@@ -1305,42 +1313,9 @@ var PostComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./post.component.html */ "./src/app/post/post.component.html"),
             styles: [__webpack_require__(/*! ./post.component.css */ "./src/app/post/post.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"], _postinteractions_service__WEBPACK_IMPORTED_MODULE_3__["PostinteractionsService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"]])
     ], PostComponent);
     return PostComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/postinteractions.service.ts":
-/*!*********************************************!*\
-  !*** ./src/app/postinteractions.service.ts ***!
-  \*********************************************/
-/*! exports provided: PostinteractionsService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostinteractionsService", function() { return PostinteractionsService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-var PostinteractionsService = /** @class */ (function () {
-    function PostinteractionsService(http) {
-        this.http = http;
-    }
-    PostinteractionsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], PostinteractionsService);
-    return PostinteractionsService;
 }());
 
 
@@ -1360,23 +1335,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
+
 
 
 
 var PostsService = /** @class */ (function () {
-    function PostsService(http) {
+    function PostsService(http, userService) {
         this.http = http;
-        this.userId = 1;
-        this.postsUrl = 'http://localhost:8080/userposts';
+        this.userService = userService;
+        this.userId = this.userService.getLoggedInUsers()[0].userid;
+        this.userposts = 'http://localhost:8080/userposts';
+        this.postinteraction = 'http://localhost:8080/addinteraction';
     }
     PostsService.prototype.getPostsById = function () {
-        return this.http.post(this.postsUrl, this.userId);
+        return this.http.post(this.userposts, this.userId);
+    };
+    PostsService.prototype.addPostInteraction = function (body) {
+        this.http.post(this.postinteraction, body).subscribe();
+    };
+    PostsService.prototype.getInteractionsById = function () {
+        return this.http.post(this.postinteraction, this.userId);
     };
     PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
     ], PostsService);
     return PostsService;
 }());
@@ -1611,7 +1597,7 @@ var SearchuserComponent = /** @class */ (function () {
         var _this = this;
         this.searchResults = this.storageService.getSearchResults();
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
-        this.userService.getUsers().subscribe(function (data) { return _this.user = data; });
+        this.userService.getUsers().subscribe(function (data) { return _this.users = data; });
         // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
     };
     SearchuserComponent.prototype.search = function (searchContents) {
@@ -1627,7 +1613,7 @@ var SearchuserComponent = /** @class */ (function () {
             alert("Please enter the name of someone you would like to lookup!");
         }
         else {
-            for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
+            for (var _i = 0, _a = this.users; _i < _a.length; _i++) {
                 var i = _a[_i];
                 if (i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents) {
                     this.matchingUsers.push(i);
@@ -1661,7 +1647,7 @@ var SearchuserComponent = /** @class */ (function () {
                         }
                     }
                 }
-                for (var _b = 0, _c = this.user; _b < _c.length; _b++) {
+                for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
                     var i = _c[_b];
                     if (userId === i.userid) {
                         this.user2 = i;
@@ -2391,7 +2377,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
