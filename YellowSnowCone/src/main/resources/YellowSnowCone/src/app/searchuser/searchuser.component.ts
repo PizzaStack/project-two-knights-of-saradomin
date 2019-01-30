@@ -14,8 +14,6 @@ export class SearchuserComponent implements OnInit {
 
   searchResults: Users[];
 
-  user: Users[];
-
   matchingUsers: Users[] = [];
 
   friends: Friend[];
@@ -35,7 +33,7 @@ export class SearchuserComponent implements OnInit {
   ngOnInit() {
     this.searchResults = this.storageService.getSearchResults();
     this.friendService.getFriendsById().subscribe(data => this.friends = data);
-    this.userService.getUsers().subscribe(data => this.user = data);
+    this.userService.getUsers().subscribe(data => this.users = data);
     // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
   }
 
@@ -57,7 +55,7 @@ export class SearchuserComponent implements OnInit {
     if(searchContents.value === ""){
       alert("Please enter the name of someone you would like to lookup!");
     } else {
-      for(let i of this.user){
+      for(let i of this.users){
         if(i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents){
           this.matchingUsers.push(i);
         }
@@ -128,7 +126,7 @@ export class SearchuserComponent implements OnInit {
       }
 
       this.friendService.addFriend(this.friendToAdd);
-      this.friendService.getFriendsById().subscribe(data => this.friends = data);
+      this.friends.push(this.friendToAdd);
       alert("Friend added!");
     }
     }
