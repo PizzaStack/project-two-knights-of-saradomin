@@ -5,7 +5,7 @@ export class Message {
     textcontents: string;
     userid1: number;
     userid2: number;
-    imagelocation: string;
+    status: number;
     user1: Users;
     user2: Users;
   }

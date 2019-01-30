@@ -41,7 +41,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
 /* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
 /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+<<<<<<< HEAD
+/* harmony import */ var _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./searchuser/searchuser.component */ "./src/app/searchuser/searchuser.component.ts");
+=======
 /* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
+>>>>>>> master
 
 
 
@@ -57,7 +61,8 @@ var routes = [
     { path: "mypost", component: _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_8__["MypostViewComponent"] },
     { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
     { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
-    { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] }
+    { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] },
+    { path: 'searchuser', component: _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_8__["SearchuserComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -196,11 +201,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repost_repost_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./repost/repost.component */ "./src/app/repost/repost.component.ts");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
 /* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+<<<<<<< HEAD
+/* harmony import */ var _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./searchuser/searchuser.component */ "./src/app/searchuser/searchuser.component.ts");
+=======
 /* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
 /* harmony import */ var _userpost_userpost_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./userpost/userpost.component */ "./src/app/userpost/userpost.component.ts");
 
 
 >>>>>>> 3cffd46db28b63724228dbf61e64cf873a8cd3c8
+>>>>>>> master
 
 
 
@@ -279,9 +288,13 @@ var AppModule = /** @class */ (function () {
                 _icon_icon_component__WEBPACK_IMPORTED_MODULE_19__["IconComponent"],
                 _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__["UpdateprofileComponent"],
                 _repost_repost_component__WEBPACK_IMPORTED_MODULE_26__["RepostComponent"],
+<<<<<<< HEAD
+                _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_29__["SearchuserComponent"]
+=======
                 _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_29__["MypostViewComponent"],
                 _userpost_userpost_component__WEBPACK_IMPORTED_MODULE_30__["UserpostComponent"]
 >>>>>>> 3cffd46db28b63724228dbf61e64cf873a8cd3c8
+>>>>>>> master
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -469,6 +482,52 @@ var CreatepostComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_newpost_service__WEBPACK_IMPORTED_MODULE_2__["NewpostService"]])
     ], CreatepostComponent);
     return CreatepostComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/friend.service.ts":
+/*!***********************************!*\
+  !*** ./src/app/friend.service.ts ***!
+  \***********************************/
+/*! exports provided: FriendService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FriendService", function() { return FriendService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
+
+
+
+var FriendService = /** @class */ (function () {
+    function FriendService(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.friendsByIdUrl = "http://localhost:8080/relationsById";
+        this.addFriendUrl = "http://localhost:8080/addFriend";
+        this.userId = 1;
+    }
+    FriendService.prototype.getFriendsById = function () {
+        return this.http.post(this.friendsByIdUrl, this.userId);
+    };
+    FriendService.prototype.addFriend = function (friend) {
+        this.http.post(this.addFriendUrl, friend).subscribe();
+    };
+    FriendService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
+    ], FriendService);
+    return FriendService;
 }());
 
 
@@ -798,27 +857,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var MessageService = /** @class */ (function () {
-    function MessageService(http) {
+    function MessageService(http, storage) {
         this.http = http;
+        this.storage = storage;
         this.userId = 1;
         this.messages = [];
-        this.messagesUrl = 'http://localhost:8080/messagesById';
+        this.messagesByIdUrl = 'http://localhost:8080/messagesById';
+        this.addMessagesUrl = 'http://localhost:8080/addMessage';
     }
-    MessageService.prototype.getMessages = function () {
-        return this.http.get(this.messagesUrl);
-    };
+    // getMessages (): Observable<Message[]> {
+    //   return this.http.get<Message[]>(this.messagesUrl);
+    // }
     MessageService.prototype.getMessagesById = function () {
-        return this.http.post(this.messagesUrl, this.userId);
+        return this.http.post(this.messagesByIdUrl, this.userId);
+    };
+    // addMessage (userId1, userId2, textContents) {
+    //   this.http.post<addMessageStatus>(this.addMessagesUrl, userId1 + ";" + userId2 + ";" + textContents).subscribe();
+    // }
+    MessageService.prototype.addMessage = function (message) {
+        this.http.post(this.addMessagesUrl, message).subscribe();
     };
     MessageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], MessageService);
     return MessageService;
 }());
@@ -845,7 +915,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n\r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                            <button (click)=\"loadMessages()\">Load Messages</button>\r\n\r\n                            <h2>Messages</h2>\r\n                              <ul *ngFor=\"let user of users\">\r\n                                <li>\r\n                                 <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a> \r\n                                </li>\r\n                              </ul>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div> \r\n</div>\r\n\r\n"
+module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n\r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                            <h2>Messages</h2><button id=\"newMessage\" (click)=\"newMessage()\">New Message</button>\r\n                              <ul *ngFor=\"let user of users\">\r\n                                <li>\r\n                                 <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a> \r\n                                </li>\r\n                              </ul>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div> \r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -878,25 +948,7 @@ var MessagesComponent = /** @class */ (function () {
     MessagesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.messageService.getMessagesById()
-            .subscribe(function (data) { return _this.messages = data; });
-    };
-    MessagesComponent.prototype.populateMessageThread = function (user) {
-        for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
-            var i = _a[_i];
-            if (i.userid1 === this.userid) {
-                if (user === (i.user2.firstname + ' ' + i.user2.lastname)) {
-                    this.specificMessage = "Me: " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
-                }
-            }
-            else {
-                if (user === (i.user1.firstname + ' ' + i.user1.lastname)) {
-                    this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
-                }
-            }
-        }
-        this.storage.setScope(this.specificMessages);
+            .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
     };
     MessagesComponent.prototype.loadMessages = function () {
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
@@ -908,21 +960,34 @@ var MessagesComponent = /** @class */ (function () {
                 this.users.push(i.user1.firstname + ' ' + i.user1.lastname);
             }
         }
-        var position = 0;
-        for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
-            var i = _c[_b];
-            var count = 0;
-            for (var _d = 0, _e = this.users; _d < _e.length; _d++) {
-                var j = _e[_d];
-                if (i === j) {
-                    count += 1;
+        this.users = this.users.filter(function (elem, index, self) {
+            return index === self.indexOf(elem);
+        });
+    };
+    MessagesComponent.prototype.populateMessageThread = function (user) {
+        this.storage.setUserId1(this.userid);
+        for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
+            var i = _a[_i];
+            if (i.userid1 === this.userid) {
+                if (user === (i.user2.firstname + ' ' + i.user2.lastname)) {
+                    this.specificMessage = "Me: " + i.textcontents;
+                    this.specificMessages.push(this.specificMessage);
+                    this.storage.setUserId2(i.user2.userid);
+                    this.storage.setUser1(i.user1);
+                    this.storage.setUser2(i.user2);
                 }
             }
-            if (count > 1) {
-                this.users.splice(position, position + 1);
+            else {
+                if (user === (i.user1.firstname + ' ' + i.user1.lastname)) {
+                    this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
+                    this.specificMessages.push(this.specificMessage);
+                    this.storage.setUserId2(i.user1.userid);
+                    this.storage.setUser1(i.user2);
+                    this.storage.setUser2(i.user1);
+                }
             }
-            position += 1;
         }
+        this.storage.setScope(this.specificMessages);
     };
     MessagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -946,7 +1011,11 @@ var MessagesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXN0aHJlYWQvbWVzc2FnZXN0aHJlYWQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlc3RocmVhZC9tZXNzYWdlc3RocmVhZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59Il19 */"
+=======
 module.exports = "ul {\r\n    list-style-type: none;\r\n    overflow: scroll;\r\n    height: 250px;\r\n  }\r\n.card{\r\n    background: none;\r\n}\r\n.messages{\r\n    margin-top: auto;\r\n\t\tmargin-bottom: auto;\r\n\t\tmargin-left: 10px;\r\n\t\tborder-radius: 25px;\r\n\t\tbackground-color: white;\r\n\t\tpadding: 10px;\r\n        position: relative;\r\n        overflow: scroll;\r\n        height: 250px;\r\n        \r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXN0aHJlYWQvbWVzc2FnZXN0aHJlYWQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtJQUNyQixnQkFBZ0I7SUFDaEIsYUFBYTtFQUNmO0FBQ0Y7SUFDSSxnQkFBZ0I7QUFDcEI7QUFDQTtJQUNJLGdCQUFnQjtFQUNsQixtQkFBbUI7RUFDbkIsaUJBQWlCO0VBQ2pCLG1CQUFtQjtFQUNuQix1QkFBdUI7RUFDdkIsYUFBYTtRQUNQLGtCQUFrQjtRQUNsQixnQkFBZ0I7UUFDaEIsYUFBYTs7QUFFckI7QUFDQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlc3RocmVhZC9tZXNzYWdlc3RocmVhZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xyXG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG4gICAgb3ZlcmZsb3c6IHNjcm9sbDtcclxuICAgIGhlaWdodDogMjUwcHg7XHJcbiAgfVxyXG4uY2FyZHtcclxuICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcbn1cclxuLm1lc3NhZ2Vze1xyXG4gICAgbWFyZ2luLXRvcDogYXV0bztcclxuXHRcdG1hcmdpbi1ib3R0b206IGF1dG87XHJcblx0XHRtYXJnaW4tbGVmdDogMTBweDtcclxuXHRcdGJvcmRlci1yYWRpdXM6IDI1cHg7XHJcblx0XHRiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuXHRcdHBhZGRpbmc6IDEwcHg7XHJcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAgIG92ZXJmbG93OiBzY3JvbGw7XHJcbiAgICAgICAgaGVpZ2h0OiAyNTBweDtcclxuICAgICAgICBcclxufVxyXG4ud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn1cclxuIl19 */"
+>>>>>>> master
 
 /***/ }),
 
@@ -957,7 +1026,11 @@ module.exports = "ul {\r\n    list-style-type: none;\r\n    overflow: scroll;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
+module.exports = "<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                      <div class=\"col-lg-12\">\r\n                        <ul *ngFor=\"let specificMessage of specificMessages\">\r\n                          <li>\r\n                            {{specificMessage}}\r\n                          </li>\r\n                        </ul>\r\n                        <form id=\"newMessage\">\r\n                        <input id=\"messageContent\" type=\"text\" #messageContent>\r\n                        <button id=\"send\" type=\"button\" (click)=\"send(messageContent)\" (click)=\"messageContent.value = ''\">Send</button>\r\n                        </form>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      \r\n      </div> \r\n</div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+=======
 module.exports = "\r\n\r\n\r\n<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                    <div class=\"col-lg-3\">\r\n                    <div class=\"col-lg-9\">\r\n    \r\n                          <div>\r\n                            \r\n                            <div class=\"\">\r\n                              <h4 class=\"card-title\">Messages</h4>\r\n                              <div class=\"messages\">\r\n                                <ul *ngFor=\"let specificMessage of specificMessages\">\r\n                                  <li class=\"panel\">\r\n                                    {{specificMessage}}\r\n                                  </li>\r\n                                </ul>\r\n                                <input id=\"messageContent\" type=\"text\"><button id=\"send\">Send</button>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n                 \r\n              </div>\r\n          </div>\r\n      \r\n      </div>  \r\n</div>"
+>>>>>>> master
 
 /***/ }),
 
@@ -974,15 +1047,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../message.service */ "./src/app/message.service.ts");
+
 
 
 
 var MessagesthreadComponent = /** @class */ (function () {
-    function MessagesthreadComponent(storage) {
+    function MessagesthreadComponent(messageService, storage) {
+        this.messageService = messageService;
         this.storage = storage;
     }
     MessagesthreadComponent.prototype.ngOnInit = function () {
         this.specificMessages = this.storage.getScope();
+        this.userId1 = this.storage.getUserId1();
+        this.userId2 = this.storage.getUserId2();
+        this.user1 = this.storage.getUser1();
+        this.user2 = this.storage.getUser2();
+    };
+    MessagesthreadComponent.prototype.send = function (messageContent) {
+        if (messageContent.value.includes(";")) {
+            alert("Invalid message. Message must not contain the symbol: ';'");
+        }
+        else {
+            // this.messageService.addMessage(this.userId1, this.userId2, messageContent.value);
+            this.message = {
+                messageid: null,
+                textcontents: messageContent.value,
+                userid1: this.userId1,
+                userid2: this.userId2,
+                status: 0,
+                user1: this.user1,
+                user2: this.user2
+            };
+            this.messageService.addMessage(this.message);
+            this.specificMessages.push("Me: " + messageContent.value);
+        }
     };
     MessagesthreadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -990,7 +1089,7 @@ var MessagesthreadComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./messagesthread.component.html */ "./src/app/messagesthread/messagesthread.component.html"),
             styles: [__webpack_require__(/*! ./messagesthread.component.css */ "./src/app/messagesthread/messagesthread.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"], _storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
     ], MessagesthreadComponent);
     return MessagesthreadComponent;
 }());
@@ -1073,7 +1172,7 @@ module.exports = ".navbar{\r\n    background:transparent;\r\n    margin-left: 0p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n  <div class=\"navbar\">\r\n    <ul class=\"\">\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search \">\r\n            <div class=\"input-group-append\">\r\n              <button class=\"btn btn-secondary\" type=\"button\">\r\n                <i class=\"fa fa-search\"></i>\r\n              </button>\r\n            </div>\r\n          </div>\r\n    </ul>\r\n  </div>\r\n  \r\n"
+module.exports = "\r\n  <div class=\"navbar\">\r\n    <ul class=\"\">\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n            <div class=\"input-group-append\">\r\n              <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\">\r\n                <i class=\"fa fa-search\"></i>\r\n              </button>\r\n            </div>\r\n          </div>\r\n     </ul>\r\n  </div>\r\n  \r\n"
 
 /***/ }),
 
@@ -1089,12 +1188,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
 
 
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent() {
+    function NavbarComponent(userService, storageService, router) {
+        this.userService = userService;
+        this.storageService = storageService;
+        this.router = router;
+        this.matchingUsers = [];
     }
     NavbarComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getUsers().subscribe(function (data) { return _this.user = data; }, function (error) { return console.log(error); }, function () { return _this.storageService.setUser(_this.user); });
+    };
+    NavbarComponent.prototype.search = function (searchContents) {
+        var properSearchContents = searchContents.value.toLowerCase();
+        properSearchContents = properSearchContents.split(' ');
+        for (var i = 0; i < properSearchContents.length; i++) {
+            properSearchContents[i] = properSearchContents[i].charAt(0).toUpperCase() + properSearchContents[i].slice(1);
+        }
+        properSearchContents = properSearchContents.join(' ');
+        if (searchContents.value === "") {
+            alert("Please enter the name of someone you would like to lookup!");
+        }
+        else {
+            for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
+                var i = _a[_i];
+                if (i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents) {
+                    this.matchingUsers.push(i);
+                }
+            }
+        }
+        if (this.matchingUsers.length === 0) {
+            alert("There are no users with the name you specified. Try again!");
+        }
+        else {
+            this.storageService.setSearchResults(this.matchingUsers);
+            this.router.navigate(["searchuser"]);
+        }
     };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1102,7 +1239,7 @@ var NavbarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/navbar/navbar.component.html"),
             styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1491,6 +1628,159 @@ var RepostComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/searchuser/searchuser.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/searchuser/searchuser.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCIiwiZmlsZSI6InNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/searchuser/searchuser.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/searchuser/searchuser.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    \n\n    <div class=\"navbar\">\n        <ul class=\"\">\n            <div class=\"input-group\">\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\n                <div class=\"input-group-append\">\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\">\n                    <i class=\"fa fa-search\"></i>\n                  </button>\n                </div>\n              </div>\n         </ul>\n      </div>\n\n\n\n\n       <div class=\"wrapper\">\n           <app-sidemenu></app-sidemenu>\n  \n            <div id=\"content\">\n                <div class=\"container\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                          <ul *ngFor=\"let searchResult of searchResults\">\n                            <li>\n                              {{searchResult.firstname}} {{searchResult.lastname}}\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userId)\">Add Friend</button><button>Send Message</button>\n                            </li>\n                          </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        </div> \n  </div>\n  \n  \n  \n  \n  \n  \n  \n  "
+
+/***/ }),
+
+/***/ "./src/app/searchuser/searchuser.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/searchuser/searchuser.component.ts ***!
+  \****************************************************/
+/*! exports provided: SearchuserComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchuserComponent", function() { return SearchuserComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _friend_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../friend.service */ "./src/app/friend.service.ts");
+
+
+
+
+
+var SearchuserComponent = /** @class */ (function () {
+    function SearchuserComponent(userService, storageService, friendService) {
+        this.userService = userService;
+        this.storageService = storageService;
+        this.friendService = friendService;
+        this.matchingUsers = [];
+        this.userId = 1;
+    }
+    SearchuserComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.searchResults = this.storageService.getSearchResults();
+        this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
+        this.userService.getUsers().subscribe(function (data) { return _this.user = data; });
+        // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
+    };
+    SearchuserComponent.prototype.search = function (searchContents) {
+        this.searchResults = [];
+        this.matchingUsers = [];
+        var properSearchContents = searchContents.value.toLowerCase();
+        properSearchContents = properSearchContents.split(' ');
+        for (var i = 0; i < properSearchContents.length; i++) {
+            properSearchContents[i] = properSearchContents[i].charAt(0).toUpperCase() + properSearchContents[i].slice(1);
+        }
+        properSearchContents = properSearchContents.join(' ');
+        if (searchContents.value === "") {
+            alert("Please enter the name of someone you would like to lookup!");
+        }
+        else {
+            for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
+                var i = _a[_i];
+                if (i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents) {
+                    this.matchingUsers.push(i);
+                }
+            }
+        }
+        if (this.matchingUsers.length === 0) {
+            alert("There are no users with the name you specified. Try again!");
+        }
+        else {
+            this.searchResults = this.matchingUsers;
+        }
+    };
+    SearchuserComponent.prototype.addFriend = function (userId) {
+        var _this = this;
+        if (userId === this.userId) {
+            alert("You cannot add yourself!");
+        }
+        else {
+            var alreadyFriends = false;
+            if (this.friends) {
+                for (var _i = 0, _a = this.friends; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (this.userId === i.userid1) {
+                        if (userId === i.userid2) {
+                            alreadyFriends = true;
+                        }
+                    }
+                    else if (this.userId === i.userid2) {
+                        if (userId === i.userid1) {
+                            alreadyFriends = true;
+                        }
+                    }
+                }
+                for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
+                    var i = _c[_b];
+                    if (userId === i.userId) {
+                        this.user2 = i;
+                    }
+                }
+            }
+            if (alreadyFriends) {
+                alert("You are already friends with this user!");
+            }
+            else {
+                this.user1 = {
+                    userId: 1,
+                    email: 'test@revature.com',
+                    password: 'PLOK1plok1',
+                    firstname: 'John',
+                    lastname: 'Smith',
+                    profilePicturePath: null
+                };
+                this.friendToAdd = {
+                    relationid: null,
+                    userid1: this.userId,
+                    userid2: userId,
+                    status: 1,
+                    user1: this.user1,
+                    user2: this.user2
+                };
+                this.friendService.addFriend(this.friendToAdd);
+                this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
+                alert("Friend added!");
+            }
+        }
+    };
+    SearchuserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-searchuser',
+            template: __webpack_require__(/*! ./searchuser.component.html */ "./src/app/searchuser/searchuser.component.html"),
+            styles: [__webpack_require__(/*! ./searchuser.component.css */ "./src/app/searchuser/searchuser.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _friend_service__WEBPACK_IMPORTED_MODULE_4__["FriendService"]])
+    ], SearchuserComponent);
+    return SearchuserComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/sidemenu/sidemenu.component.css":
 /*!*************************************************!*\
   !*** ./src/app/sidemenu/sidemenu.component.css ***!
@@ -1747,8 +2037,52 @@ var StorageService = /** @class */ (function () {
     StorageService.prototype.setScope = function (scope) {
         this.scope = scope;
     };
+<<<<<<< HEAD
+    StorageService.prototype.getTextContents = function () {
+        return this.textContents;
+    };
+    StorageService.prototype.setTextContents = function (textContents) {
+        this.textContents = textContents;
+    };
+    StorageService.prototype.getUserId1 = function () {
+        return this.userId1;
+    };
+    StorageService.prototype.setUserId1 = function (userId1) {
+        this.userId1 = userId1;
+    };
+    StorageService.prototype.getUserId2 = function () {
+        return this.userId2;
+    };
+    StorageService.prototype.setUserId2 = function (userId2) {
+        this.userId2 = userId2;
+    };
+    StorageService.prototype.getUser1 = function () {
+        return this.user1;
+    };
+    StorageService.prototype.setUser1 = function (user1) {
+        this.user1 = user1;
+    };
+    StorageService.prototype.getUser2 = function () {
+        return this.user2;
+    };
+    StorageService.prototype.setUser2 = function (user2) {
+        this.user2 = user2;
+    };
+    StorageService.prototype.getUser = function () {
+        return this.users;
+    };
+    StorageService.prototype.setUser = function (user) {
+        this.users = user;
+    };
+    StorageService.prototype.getSearchResults = function () {
+        return this.searchResults;
+    };
+    StorageService.prototype.setSearchResults = function (user) {
+        this.searchResults = user;
+=======
     StorageService.prototype.getFirstName = function () {
         return this.firstName;
+>>>>>>> master
     };
     StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -2165,10 +2499,14 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+=======
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\Associate\java\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 =======
 module.exports = __webpack_require__(/*! C:\Users\jdeje\OneDrive\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 >>>>>>> 3cffd46db28b63724228dbf61e64cf873a8cd3c8
+>>>>>>> master
 
 
 /***/ })
