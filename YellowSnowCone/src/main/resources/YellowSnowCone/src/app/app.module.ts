@@ -29,6 +29,8 @@ import { RepostComponent } from './repost/repost.component';
 
 import { UserService } from './user.service';
 import { UserListComponent } from './user-list/user-list.component';
+import { MypostViewComponent } from './mypost-view/mypost-view.component';
+import { UserpostComponent } from './userpost/userpost.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { UserListComponent } from './user-list/user-list.component';
     MessagesthreadComponent,
     IconComponent,
     UpdateprofileComponent,
-    RepostComponent
+    RepostComponent,
+    MypostViewComponent,
+    UserpostComponent
     ],
   imports: [
     BrowserModule,

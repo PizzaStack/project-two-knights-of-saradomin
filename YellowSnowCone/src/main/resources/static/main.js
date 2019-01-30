@@ -41,6 +41,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
 /* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
 /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+/* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
+
 
 
 
@@ -52,6 +54,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
     { path: "welcomeview", component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__["WelcomeviewComponent"] },
+    { path: "mypost", component: _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_8__["MypostViewComponent"] },
     { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
     { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] }
@@ -165,6 +168,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repost_repost_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./repost/repost.component */ "./src/app/repost/repost.component.ts");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
 /* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+/* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
+
 
 
 
@@ -220,7 +225,8 @@ var AppModule = /** @class */ (function () {
                 _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__["MessagesthreadComponent"],
                 _icon_icon_component__WEBPACK_IMPORTED_MODULE_19__["IconComponent"],
                 _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_18__["UpdateprofileComponent"],
-                _repost_repost_component__WEBPACK_IMPORTED_MODULE_26__["RepostComponent"]
+                _repost_repost_component__WEBPACK_IMPORTED_MODULE_26__["RepostComponent"],
+                _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_29__["MypostViewComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -346,7 +352,7 @@ module.exports = ".card{\r\n    min-width: 100vh;\r\n    \r\n}\r\n.btn{\r\n    b
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n     \r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>     \r\n            \r\n              <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Comment</button>\r\n               </div>\r\n        </form>\r\n     \r\n    </div>\r\n  </div>"
+module.exports = "\r\n<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n     \r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>     \r\n            \r\n              <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\" routerLink='/mainpage'>Post</button>\r\n               </div>\r\n        </form>\r\n     \r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -910,6 +916,62 @@ var MessagesthreadComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
     ], MessagesthreadComponent);
     return MessagesthreadComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/mypost-view/mypost-view.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/mypost-view/mypost-view.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXlwb3N0LXZpZXcvbXlwb3N0LXZpZXcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC9teXBvc3Qtdmlldy9teXBvc3Qtdmlldy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/mypost-view/mypost-view.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/mypost-view/mypost-view.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <app-navbar> </app-navbar>\n     <div class=\"wrapper\">\n         <app-sidemenu></app-sidemenu>\n\n          <div id=\"content\">\n              <div class=\"container\">\n                  <div class=\"row\">\n                      <div class=\"col-lg-12\">\n    \n                          <app-createpost></app-createpost>\n                      </div>\n                  </div>\n                  <hr>\n                  <div class=\"row\">\n                          <div class=\"col-lg-12\">\n                              <app-post></app-post>\n                          </div>\n                      </div>\n              </div>\n          </div>\n      \n      </div>  \n</div>"
+
+/***/ }),
+
+/***/ "./src/app/mypost-view/mypost-view.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/mypost-view/mypost-view.component.ts ***!
+  \******************************************************/
+/*! exports provided: MypostViewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MypostViewComponent", function() { return MypostViewComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var MypostViewComponent = /** @class */ (function () {
+    function MypostViewComponent() {
+    }
+    MypostViewComponent.prototype.ngOnInit = function () {
+    };
+    MypostViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-mypost-view',
+            template: __webpack_require__(/*! ./mypost-view.component.html */ "./src/app/mypost-view/mypost-view.component.html"),
+            styles: [__webpack_require__(/*! ./mypost-view.component.css */ "./src/app/mypost-view/mypost-view.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], MypostViewComponent);
+    return MypostViewComponent;
 }());
 
 
