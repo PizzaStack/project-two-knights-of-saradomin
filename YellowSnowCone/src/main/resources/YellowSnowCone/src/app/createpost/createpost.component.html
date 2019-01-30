@@ -7,9 +7,10 @@
      
         <form>
             <div class="form-group">
-                <textarea class="form-control" id="post" rows="5" placeholder="Roar it out!!!"></textarea>     
-              </div>
-              <button type="submit" class="btn">Comment</button>
+                <textarea class="form-control" #newPost name="post" id="post" rows="5" placeholder="Roar it out!!!"></textarea>     
+            
+              <button type="button" (click)="createPost(newPost)" class="btn">Comment</button>
+               </div>
         </form>
      
     </div>
