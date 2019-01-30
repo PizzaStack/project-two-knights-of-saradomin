@@ -12,8 +12,8 @@ export class SnowconelikeComponent implements OnInit {
   ngOnInit() {
   }
 
-  like(): void {
-    let img = document.getElementById("likeimg") as HTMLImageElement;
+  like(likeimg): void {
+    let img = document.getElementById(likeimg) as HTMLImageElement;
     img.src = "../../assets/snowconelikeshadow.png"
   }
 

@@ -15,3 +15,16 @@ small{
 .btn:active{
     transform: translateY(2px);
 }
+
+img{
+    height: 16px;
+    width:16px;
+}
+
+input {
+    outline: none;
+}
+
+input:active {
+    transform: translateY(2px);
+}

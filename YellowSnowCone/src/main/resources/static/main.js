@@ -1078,7 +1078,7 @@ var NewpostService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "small{\r\n    text-align: center\r\n}\r\n.card{\r\n    margin-bottom: 15px\r\n}\r\n.btn{\r\n    background:  #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSTtBQUNKO0FBQ0E7SUFDSTtBQUNKO0FBRUE7SUFDSSxvQkFBb0I7SUFDcEIsaUJBQWlCO0lBQ2pCLFlBQVk7SUFDWiwyQkFBMkI7SUFDM0IsZUFBZTtBQUNuQjtBQUNBO0lBQ0ksa0NBQTBCO1lBQTFCLDBCQUEwQjtBQUM5QiIsImZpbGUiOiJzcmMvYXBwL3Bvc3QvcG9zdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsic21hbGx7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXJcclxufVxyXG4uY2FyZHtcclxuICAgIG1hcmdpbi1ib3R0b206IDE1cHhcclxufVxyXG5cclxuLmJ0bntcclxuICAgIGJhY2tncm91bmQ6ICAjYWFkNGU1O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBib3gtc2hhZG93OiA1cHggNXB4ICM4ODg4ODg7XHJcbiAgICBmb250LXNpemU6IDE1cHg7XHJcbn1cclxuLmJ0bjphY3RpdmV7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG4iXX0= */"
+module.exports = "small{\r\n    text-align: center\r\n}\r\n\r\n.btn{\r\n    background:  #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\nimg{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSTtBQUNKOztBQUVBO0lBQ0ksb0JBQW9CO0lBQ3BCLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7QUFDbkI7O0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvcG9zdC9wb3N0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzbWFsbHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlclxyXG59XHJcblxyXG4uYnRue1xyXG4gICAgYmFja2dyb3VuZDogICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG4uYnRuOmFjdGl2ZXtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59XHJcblxyXG5pbWd7XHJcbiAgICBoZWlnaHQ6IDE2cHg7XHJcbiAgICB3aWR0aDoxNnB4O1xyXG59XHJcblxyXG5pbnB1dCB7XHJcbiAgICBvdXRsaW5lOiBub25lO1xyXG59XHJcblxyXG5pbnB1dDphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -1089,7 +1089,7 @@ module.exports = "small{\r\n    text-align: center\r\n}\r\n.card{\r\n    margin-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button (click)=\"loadPosts()\">Load Posts</button>\r\n<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    User\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <app-snowconelike></app-snowconelike>\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <app-snowconedislike></app-snowconedislike>\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-1\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <button type=\"submit\" class=\"btn\">Comment</button>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    User\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src=\"../../assets/snowconeshadow.png\" width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src=\"../../assets/snowconeshadowupsidedown.png\"\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-1\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <button type=\"submit\" class=\"btn\">Comment</button>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1117,12 +1117,36 @@ var PostComponent = /** @class */ (function () {
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.postsService.getPostsById()
-            .subscribe(function (data) { return _this.posts = data; });
+            .subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
     };
     PostComponent.prototype.loadPosts = function () {
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
-            this.postContent.push(i.textcontents);
+            this.post = {
+                content: i.textcontents,
+                id1: i.postid + 'like',
+                id2: i.postid + 'dislike'
+            };
+            this.postContent.push(this.post);
+        }
+        this.postContent = this.postContent.reverse();
+    };
+    PostComponent.prototype.like = function (likeimg) {
+        var img = document.getElementById(likeimg);
+        if (img.src.split("/").pop() === "snowconeshadow.png") {
+            img.src = "../../assets/snowconelikeshadow.png";
+        }
+        else if (img.src.split("/").pop() === "snowconelikeshadow.png") {
+            img.src = "../../assets/snowconeshadow.png";
+        }
+    };
+    PostComponent.prototype.dislike = function (dislikeimg) {
+        var img = document.getElementById(dislikeimg);
+        if (img.src.split("/").pop() === "snowconeshadowupsidedown.png") {
+            img.src = "../../assets/snowconedislikeshadowupsidedown.png";
+        }
+        else if (img.src.split("/").pop() === "snowconedislikeshadowupsidedown.png") {
+            img.src = "../../assets/snowconeshadowupsidedown.png";
         }
     };
     PostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1563,8 +1587,8 @@ var SnowconelikeComponent = /** @class */ (function () {
     }
     SnowconelikeComponent.prototype.ngOnInit = function () {
     };
-    SnowconelikeComponent.prototype.like = function () {
-        var img = document.getElementById("likeimg");
+    SnowconelikeComponent.prototype.like = function (likeimg) {
+        var img = document.getElementById(likeimg);
         img.src = "../../assets/snowconelikeshadow.png";
     };
     SnowconelikeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
