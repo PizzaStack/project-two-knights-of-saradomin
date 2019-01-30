@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
@@ -29,6 +29,8 @@ import { RepostComponent } from './repost/repost.component';
 
 import { UserService } from './user.service';
 import { UserListComponent } from './user-list/user-list.component';
+import { MypostViewComponent } from './mypost-view/mypost-view.component';
+import { UserpostComponent } from './userpost/userpost.component';
 
 @NgModule({
   declarations: [
@@ -51,13 +53,16 @@ import { UserListComponent } from './user-list/user-list.component';
     MessagesthreadComponent,
     IconComponent,
     UpdateprofileComponent,
-    RepostComponent
+    RepostComponent,
+    MypostViewComponent,
+    UserpostComponent
     ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [UserService, MessageService, AuthGuard],
   bootstrap: [AppComponent]

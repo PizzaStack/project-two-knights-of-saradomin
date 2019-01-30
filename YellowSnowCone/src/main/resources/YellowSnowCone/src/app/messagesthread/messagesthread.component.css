@@ -1,0 +1,22 @@
+ul {
+    list-style-type: none;
+    
+  }
+.card{
+    background: none;
+}
+.messages{
+    margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 10px;
+		border-radius: 25px;
+		background-color: white;
+		padding: 10px;
+        position: relative;
+       
+        
+}
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
