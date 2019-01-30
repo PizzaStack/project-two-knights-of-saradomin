@@ -8,4 +8,6 @@ import com.revature.entity.Users;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Integer> {
 	Users findByfirstname(String firstname);
+	Users findByUserid(int id);
+	Users findByEmailAndPassword(String email, String password);
 }

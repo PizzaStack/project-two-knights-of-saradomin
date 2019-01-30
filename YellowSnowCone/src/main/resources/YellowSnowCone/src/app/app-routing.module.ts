@@ -8,7 +8,6 @@ import { AuthGuard } from './auth.guard';
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 
 const routes: Routes = [
-
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
   { path: "welcomeview", component: WelcomeviewComponent },
   { path: "mypost", component: MypostViewComponent },
@@ -19,6 +18,6 @@ const routes: Routes = [
 
 @NgModule({
   exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes)]
+  imports: [ RouterModule.forRoot(routes/*, {onSameUrlNavigation: "reload"}*/)]
 })
 export class AppRoutingModule { }
