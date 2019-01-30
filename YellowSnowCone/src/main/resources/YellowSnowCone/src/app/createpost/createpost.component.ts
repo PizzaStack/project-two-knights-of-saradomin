@@ -4,6 +4,7 @@ import { NewpostService } from '../newpost.service';
 import { Posts } from '../posts';
 import { Users } from '../users';
 import { $ } from 'protractor';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-createpost',
@@ -12,33 +13,27 @@ import { $ } from 'protractor';
 })
 export class CreatepostComponent implements OnInit {
 
-  constructor(private newPost: NewpostService) { }
-   
+ user: Users[]
 
+  constructor(
+    private newPost: NewpostService,
+    private userService: UserService
+    ) { }
 
   ngOnInit() {  
 
     // this.newPost.createPost
+    this.user = this.userService.getLoggedInUsers();
   }
 
   createPost(data){
-      
-    let user:Users = {
-        userid: 1,
-        email: 'test@revature.com',
-        password: 'PLOK1plok1',
-        firstname: 'John',
-        lastname: 'Smith',
-        profilePicturePath: null
-      }
-
       let post: Posts = {
       postid: null,
       userid : 1,
       textcontents: data.value,
       imagelocation: null,
       repostid: -1,
-      user: user
+      user: this.user[0]
 
     }
 

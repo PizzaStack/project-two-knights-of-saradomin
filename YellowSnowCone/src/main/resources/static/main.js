@@ -375,32 +375,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _newpost_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../newpost.service */ "./src/app/newpost.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+
 
 
 
 var CreatepostComponent = /** @class */ (function () {
-    function CreatepostComponent(newPost) {
+    function CreatepostComponent(newPost, userService) {
         this.newPost = newPost;
+        this.userService = userService;
     }
     CreatepostComponent.prototype.ngOnInit = function () {
         // this.newPost.createPost
+        this.user = this.userService.getLoggedInUsers();
     };
     CreatepostComponent.prototype.createPost = function (data) {
-        var user = {
-            userid: 1,
-            email: 'test@revature.com',
-            password: 'PLOK1plok1',
-            firstname: 'John',
-            lastname: 'Smith',
-            profilePicturePath: null
-        };
         var post = {
             postid: null,
             userid: 1,
             textcontents: data.value,
             imagelocation: null,
             repostid: -1,
-            user: user
+            user: this.user[0]
         };
         this.newPost.createPost(post);
         // $("#post").empty();
@@ -412,7 +408,8 @@ var CreatepostComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./createpost.component.html */ "./src/app/createpost/createpost.component.html"),
             styles: [__webpack_require__(/*! ./createpost.component.css */ "./src/app/createpost/createpost.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_newpost_service__WEBPACK_IMPORTED_MODULE_2__["NewpostService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_newpost_service__WEBPACK_IMPORTED_MODULE_2__["NewpostService"],
+            _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
     ], CreatepostComponent);
     return CreatepostComponent;
 }());
@@ -630,7 +627,7 @@ var LoginComponent = /** @class */ (function () {
             if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
                 console.log("valid credentials");
                 this.login(this.newUserModel);
-                if (this.loggedInUser.userid == -1 || this.loggedInUser == null) {
+                if (this.newUserModel.userid == -1 || this.newUserModel == null) {
                     alert("Invalid Username Or Password");
                     this.router.navigate(["welcomeview"]);
                 }
@@ -1611,7 +1608,7 @@ var SearchuserComponent = /** @class */ (function () {
         var _this = this;
         this.searchResults = this.storageService.getSearchResults();
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
-        this.userService.getUsers().subscribe(function (data) { return _this.user = data; });
+        this.userService.getUsers().subscribe(function (data) { return _this.users = data; });
         // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
     };
     SearchuserComponent.prototype.search = function (searchContents) {
@@ -1627,7 +1624,7 @@ var SearchuserComponent = /** @class */ (function () {
             alert("Please enter the name of someone you would like to lookup!");
         }
         else {
-            for (var _i = 0, _a = this.user; _i < _a.length; _i++) {
+            for (var _i = 0, _a = this.users; _i < _a.length; _i++) {
                 var i = _a[_i];
                 if (i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents) {
                     this.matchingUsers.push(i);
@@ -1661,7 +1658,7 @@ var SearchuserComponent = /** @class */ (function () {
                         }
                     }
                 }
-                for (var _b = 0, _c = this.user; _b < _c.length; _b++) {
+                for (var _b = 0, _c = this.users; _b < _c.length; _b++) {
                     var i = _c[_b];
                     if (userId === i.userid) {
                         this.user2 = i;
@@ -2391,7 +2388,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\jdeje\OneDrive\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
