@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../validation.service'
+import { timeoutWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -41,31 +42,34 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  login(user:Users){
+  login(user:Users) : any {
     //this.loggedInUser = user;
 
     this._userService.authenticate(user).subscribe(data => {
       this.loggedInUser = data;
 
-      if (this.loggedInUser.userid != -1){
+      if (this.loggedInUser.userid === null || this.loggedInUser.userid != -1){
         console.log("Login successful");
         console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
         this._userService.addLoggedInUser(this.loggedInUser);
         localStorage.setItem('isLoggedIn', "true");
         localStorage.setItem('token', this.loggedInUser.userid.toString());
         this.router.navigate([this.mainviewUrl]);
+        return true;
       } else {
         console.log('userid Is Null.')
         console.log('User Info: ' + JSON.stringify(this.loggedInUser));
       }
+      return false;
     });
   }
   onSubmit(){
     this.submitted = true;
     if (this.loginForm.invalid) {
-      //this.loginSuccess = false;
-      //this.f.email = null;
-      //this.f.password = null;
+      this.f.email.setValue("");
+      this.f.password.setValue("");
+      this.newUserModel.email = null;
+      this.newUserModel.password = null;
       return;
     } else {
       this.newUserModel.email = this.f.email.value;
@@ -73,7 +77,10 @@ export class LoginComponent implements OnInit {
       if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
         console.log("valid credentials")
         this.login(this.newUserModel);
-        
+        if (this.loggedInUser.userid == -1 || this.loggedInUser == null){
+          alert("Invalid Username Or Password");
+          this.router.navigate(["welcomeview"]);
+        }
       } else {
         alert("Invalid Username Or Password");
         this.router.navigate(["welcomeview"]);
