@@ -1,9 +1,9 @@
-.card{
+.card {
     min-width: 100vh;
-    
 }
-.btn{
-    background:  #aad4e5;
+
+.btn {
+    background: #aad4e5;
     font-weight: bold;
     color: white;
     box-shadow: 5px 5px #888888;
@@ -11,6 +11,6 @@
     margin-top: 15px;
 }
 
-.btn:active{
+.btn:active {
     transform: translateY(2px);
 }

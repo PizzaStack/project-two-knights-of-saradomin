@@ -16,11 +16,11 @@ const routes: Routes = [
   // { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
   { path: "mainview", component: MainviewComponent },
   { path: 'messagesthread', component: MessagesthreadComponent },
-  { path: 'searchuser', component: SearchuserComponent}
+  { path: 'searchuser', component: SearchuserComponent }
 ];
 
 @NgModule({
-  exports: [ RouterModule ],
-  imports: [ RouterModule.forRoot(routes/*, {onSameUrlNavigation: "reload"}*/)]
+  exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes/*, {onSameUrlNavigation: "reload"}*/)]
 })
 export class AppRoutingModule { }

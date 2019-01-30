@@ -11,9 +11,11 @@ import com.revature.entity.Users;
 public interface UsersRepository extends JpaRepository<Users, Integer> {
 
 	List<Users> findByfirstname(String firstname);
+
 	List<Users> findBylastname(String lastname);
 
 	Users findByUserid(int id);
+
 	Users findByEmailAndPassword(String email, String password);
 
 }

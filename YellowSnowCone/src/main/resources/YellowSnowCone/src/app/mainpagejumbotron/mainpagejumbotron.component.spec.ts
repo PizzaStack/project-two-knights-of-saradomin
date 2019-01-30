@@ -8,9 +8,9 @@ describe('MainpagejumbotronComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainpagejumbotronComponent ]
+      declarations: [MainpagejumbotronComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
