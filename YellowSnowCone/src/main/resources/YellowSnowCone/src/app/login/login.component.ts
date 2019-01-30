@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   protected newUserModel:User;
   loginForm: FormGroup;
   loggedInUser:User;
-  loginSuccess:boolean;
+  submitted = false;
 
   constructor(protected _userService:UserService,
     private location: Location, 
@@ -33,11 +33,10 @@ export class LoginComponent implements OnInit {
     this._authService.logout();
     this.mainviewUrl = "/mainview";
     this.newUserModel = new User(null, null, null, null, null, null);
-    this.loginSuccess = true;
 
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.minLength(4), Validators.pattern(/^[a-zA-Z0-9_.+-]{1,}@[a-zA-Z0-9-]{1,}\.[a-zA-Z0-9-.]{1,}$/)]],
-      password: ['', [Validators.required]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
   get f() { return this.loginForm.controls; }
@@ -62,19 +61,20 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit(){
+    this.submitted = true;
     if (this.loginForm.invalid) {
-      this.loginSuccess = false;
-      this.f.email = null;
-      this.f.password = null;
+      //this.loginSuccess = false;
+      //this.f.email = null;
+      //this.f.password = null;
       return;
+    } else {
+      this.newUserModel.email = this.f.email.value;
+      this.newUserModel.password = this.f.password.value;
+      if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
+        console.log("valid credentials")
+        this.login(this.newUserModel);
+        //this.router.navigate(["welcomeview"]);
+      } else alert("Invalid Username Or Password");
     }
-    this.newUserModel.email = this.f.email.value;
-    this.newUserModel.password = this.f.password.value;
-    if (this.loginForm.dirty && this.loginForm.valid) {
-      console.log("form is dirty + valid")
-      this.login(this.newUserModel);
-      this.router.navigate(["welcomeview"]);
-    }
-    //else alert("Invalid Username Or Password");
   }
 }
