@@ -28,7 +28,6 @@ import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
-import { UserListComponent } from './user-list/user-list.component';
 import { SearchuserComponent } from './searchuser/searchuser.component';
 import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
@@ -50,13 +49,12 @@ import { UserpostComponent } from './userpost/userpost.component';
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UserListComponent,
     MessagesComponent,
     MessagesthreadComponent,
     IconComponent,
     UpdateprofileComponent,
     RepostComponent,
-    SearchuserComponent
+    SearchuserComponent,
     MypostViewComponent,
     UserpostComponent
     ],
