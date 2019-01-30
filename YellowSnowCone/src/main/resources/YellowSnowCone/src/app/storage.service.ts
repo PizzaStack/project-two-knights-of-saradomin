@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Users } from './users';
-import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
 
-  searchResults: User[];
+  searchResults: Users[];
 
   textContents: string;
 
-  users: User[];
+  users: Users[];
 
   userId1: number;
 
@@ -75,19 +74,19 @@ export class StorageService {
     this.user2 = user2;
   }
 
-  public getUser(): User[] {
+  public getUser(): Users[] {
     return this.users;
   }
 
-  public setUser(user: User[]): void {
+  public setUser(user: Users[]): void {
     this.users = user;
   }
 
-  public getSearchResults(): User[] {
+  public getSearchResults(): Users[] {
     return this.searchResults;
   }
 
-  public setSearchResults(user: User[]): void {
+  public setSearchResults(user: Users[]): void {
     this.searchResults = user;
   }
 

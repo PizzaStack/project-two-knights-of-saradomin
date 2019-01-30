@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../user';
+import { Users } from '../users';
 import { StorageService } from '../storage.service';
 import { Router } from '@angular/router';
 import { SearchuserComponent } from '../searchuser/searchuser.component';
@@ -12,9 +12,9 @@ import { SearchuserComponent } from '../searchuser/searchuser.component';
 })
 export class NavbarComponent implements OnInit {
 
-  user: User[];
+  user: Users[];
 
-  matchingUsers: User[] = [];
+  matchingUsers: Users[] = [];
 
   constructor(private userService: UserService, private storageService: StorageService, private router: Router) { }
 
@@ -40,10 +40,8 @@ export class NavbarComponent implements OnInit {
       for(let i of this.user){
         if(i.firstname === properSearchContents || i.lastname === properSearchContents || (i.firstname + " " + i.lastname) === properSearchContents){
           this.matchingUsers.push(i);
-        }
-        
+        } 
       }
-      
     }
 
     if(this.matchingUsers.length === 0){
@@ -51,7 +49,6 @@ export class NavbarComponent implements OnInit {
     } else {
       this.storageService.setSearchResults(this.matchingUsers);
       this.router.navigate(["searchuser"]);
-
     }
 
 
