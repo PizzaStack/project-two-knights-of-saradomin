@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-sidemenu',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidemenuComponent implements OnInit {
 
-  constructor() { }
+  name: string;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.name = this.userService.getLoggedInUsers()[0].firstname + " " + this.userService.getLoggedInUsers()[0].lastname;
   }
 
 }
