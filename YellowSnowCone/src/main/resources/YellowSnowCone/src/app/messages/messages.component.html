@@ -7,9 +7,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <button (click)="loadMessages()">Load Messages</button>
-
-                            <h2>Messages</h2>
+                            <h2>Messages</h2><button id="newMessage" (click)="newMessage()">New Message</button>
                               <ul *ngFor="let user of users">
                                 <li>
                                  <a (click)="populateMessageThread(user)" routerLink="/messagesthread">{{user}}</a> 

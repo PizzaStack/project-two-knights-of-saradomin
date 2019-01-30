@@ -1,0 +1,47 @@
+<div>
+    
+
+    <div class="navbar">
+        <ul class="">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" #searchContents>
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button" (click)="search(searchContents)">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+         </ul>
+      </div>
+
+
+
+
+       <div class="wrapper">
+           <app-sidemenu></app-sidemenu>
+  
+            <div id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                          <ul *ngFor="let searchResult of searchResults">
+                            <li>
+                              {{searchResult.firstname}} {{searchResult.lastname}}
+                              <button>View Profile</button><button (click)="addFriend(searchResult.userid)">Add Friend</button><button>Send Message</button>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div> 
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  

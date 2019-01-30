@@ -29,7 +29,7 @@ export class CreatepostComponent implements OnInit {
         password: 'PLOK1plok1',
         firstname: 'John',
         lastname: 'Smith',
-        profilepicturelocation: null
+        profilePicturePath: null
       }
 
       let post: Posts = {

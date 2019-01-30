@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
@@ -18,17 +20,16 @@ import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { IconComponent } from './icon/icon.component';
-import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MessageService } from './message.service';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
-import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
 import { RepostComponent } from './repost/repost.component';
 
+import { MessageService } from './message.service';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
 import { UserService } from './user.service';
-import { UserListComponent } from './user-list/user-list.component';
+import { SearchuserComponent } from './searchuser/searchuser.component';
+import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
 
@@ -48,12 +49,12 @@ import { UserpostComponent } from './userpost/userpost.component';
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UserListComponent,
     MessagesComponent,
     MessagesthreadComponent,
     IconComponent,
     UpdateprofileComponent,
     RepostComponent,
+    SearchuserComponent,
     MypostViewComponent,
     UserpostComponent
     ],
@@ -64,7 +65,7 @@ import { UserpostComponent } from './userpost/userpost.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, MessageService, AuthGuard],
+  providers: [UserService, MessageService, AuthGuard, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

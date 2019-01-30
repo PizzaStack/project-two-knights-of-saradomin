@@ -25,6 +25,9 @@ margin: 5px;
 }
 .btn:active{
     transform: translateY(2px);
-    
+}
 
+.invalid-feedback {
+    margin: 30px 0 0 10px;
+    position: absolute;
 }
