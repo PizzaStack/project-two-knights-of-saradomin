@@ -30,6 +30,8 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { ValidationService } from './validation.service'
+import { MypostViewComponent } from './mypost-view/mypost-view.component';
+import { UserpostComponent } from './userpost/userpost.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { ValidationService } from './validation.service'
     MessagesthreadComponent,
     IconComponent,
     UpdateprofileComponent,
-    RepostComponent
+    RepostComponent,
+    MypostViewComponent,
+    UserpostComponent
     ],
   imports: [
     BrowserModule,
