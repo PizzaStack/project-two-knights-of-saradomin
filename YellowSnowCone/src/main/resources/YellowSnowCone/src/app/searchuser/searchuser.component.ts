@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../user';
+import { Users } from '../users';
 import { StorageService } from '../storage.service';
 import { FriendService } from '../friend.service';
 import { Friend } from '../friend';
@@ -12,11 +12,11 @@ import { Friend } from '../friend';
 })
 export class SearchuserComponent implements OnInit {
 
-  searchResults: User[];
+  searchResults: Users[];
 
-  user: User[];
+  user: Users[];
 
-  matchingUsers: User[] = [];
+  matchingUsers: Users[] = [];
 
   friends: Friend[];
 
@@ -24,11 +24,11 @@ export class SearchuserComponent implements OnInit {
 
   userId: number = 1;
 
-  user1: User;
+  user1: Users;
 
-  user2: User;
+  user2: Users;
 
-  users: User[];
+  users: Users[];
 
   constructor(private userService: UserService, private storageService: StorageService, private friendService: FriendService) { }
 
@@ -98,7 +98,7 @@ export class SearchuserComponent implements OnInit {
     }
 
       for(let i of this.users){
-        if(userId === i.userId){
+        if(userId === i.userid){
           this.user2 = i;
         }
       }
@@ -110,7 +110,7 @@ export class SearchuserComponent implements OnInit {
     } else {
 
       this.user1 = {
-        userId: 1,
+        userid: 1,
         email: 'test@revature.com',
         password: 'PLOK1plok1',
         firstname: 'John',
