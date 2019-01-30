@@ -8,9 +8,9 @@ describe('MypostViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MypostViewComponent ]
+      declarations: [MypostViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

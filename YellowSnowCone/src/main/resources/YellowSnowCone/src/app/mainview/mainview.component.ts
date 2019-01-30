@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class MainviewComponent implements OnInit {
   id: string;
   constructor(private router: Router,
-              public authService: AuthService) { }
+    public authService: AuthService) { }
 
   ngOnInit() {
     this.id = localStorage.getItem('token');
@@ -23,4 +23,3 @@ export class MainviewComponent implements OnInit {
     this.router.navigate(['/welcomeview']);
   }
 }
-

@@ -14,8 +14,8 @@ import { Users } from '../users'
 })
 export class UserListComponent implements OnInit {
 
-  public users:Users[];
-  constructor( private _userService:UserService ) { }
+  public users: Users[];
+  constructor(private _userService: UserService) { }
 
   ngOnInit() {
     this._userService.getUsers().subscribe(data => this.users = data);

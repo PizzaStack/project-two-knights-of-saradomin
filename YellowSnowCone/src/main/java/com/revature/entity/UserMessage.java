@@ -1,6 +1,5 @@
 package com.revature.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,17 +18,17 @@ public class UserMessage {
 	@Column(name = "messageid", updatable = false, nullable = false)
 	private int messageid;
 	private String textcontents;
-	@Column(name = "userid1", insertable=false, updatable=false)
+	@Column(name = "userid1", insertable = false, updatable = false)
 	private int userid1;
-	@Column(name = "userid2", insertable=false, updatable=false)
+	@Column(name = "userid2", insertable = false, updatable = false)
 	private int userid2;
 	private int status;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userid1")
 	private Users user1;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userid2")
 	private Users user2;
 
@@ -109,12 +108,5 @@ public class UserMessage {
 
 	public UserMessage() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	
-
-	
-	
-	
 }

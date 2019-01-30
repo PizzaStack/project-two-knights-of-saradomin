@@ -1,24 +1,26 @@
-small{
+small {
     text-align: center
 }
-.card{
+
+.card {
     margin-bottom: 15px
 }
 
-.btn{
-    background:  #aad4e5;
+.btn {
+    background: #aad4e5;
     font-weight: bold;
     color: white;
     box-shadow: 5px 5px #888888;
     font-size: 15px;
 }
-.btn:active{
+
+.btn:active {
     transform: translateY(2px);
 }
 
-img{
+img {
     height: 16px;
-    width:16px;
+    width: 16px;
 }
 
 input {
