@@ -6,6 +6,7 @@ import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { AuthGuard } from './auth.guard';
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
+import { SearchuserComponent } from './searchuser/searchuser.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
