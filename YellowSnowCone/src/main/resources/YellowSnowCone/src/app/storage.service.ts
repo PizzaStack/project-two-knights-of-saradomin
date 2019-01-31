@@ -6,7 +6,7 @@ import { Users } from './users';
 })
 export class StorageService {
 
-  baseUrl: string = "http://3.16.107.15:8888";
+  baseUrl: string = "http://3.16.107.15:8888/";
 
   searchResults: Users[];
 
