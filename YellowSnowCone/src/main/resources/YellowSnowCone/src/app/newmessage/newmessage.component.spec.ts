@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SnowconelikeComponent } from './snowconelike.component';
+import { NewmessageComponent } from './newmessage.component';
 
-describe('SnowconelikeComponent', () => {
-  let component: SnowconelikeComponent;
-  let fixture: ComponentFixture<SnowconelikeComponent>;
+describe('NewmessageComponent', () => {
+  let component: NewmessageComponent;
+  let fixture: ComponentFixture<NewmessageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnowconelikeComponent ]
+      declarations: [ NewmessageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SnowconelikeComponent);
+    fixture = TestBed.createComponent(NewmessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

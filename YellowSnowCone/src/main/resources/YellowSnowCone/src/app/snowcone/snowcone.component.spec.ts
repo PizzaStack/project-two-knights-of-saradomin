@@ -8,9 +8,9 @@ describe('SnowconeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnowconeComponent ]
+      declarations: [SnowconeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,9 +8,9 @@ describe('UpdateprofileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateprofileComponent ]
+      declarations: [UpdateprofileComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

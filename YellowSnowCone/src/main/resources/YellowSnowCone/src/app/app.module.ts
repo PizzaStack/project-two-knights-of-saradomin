@@ -13,8 +13,6 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { ProfilepictureComponent } from './profilepicture/profilepicture.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { SnowconeComponent } from './snowcone/snowcone.component';
-import { SnowconelikeComponent } from './snowconelike/snowconelike.component';
-import { SnowconedislikeComponent } from './snowconedislike/snowconedislike.component';
 import { PostComponent } from './post/post.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
@@ -32,6 +30,9 @@ import { SearchuserComponent } from './searchuser/searchuser.component';
 import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
+import { NewmessageComponent } from './newmessage/newmessage.component';
+import { FriendslistComponent } from './friendslist/friendslist.component';
+import { OtheruserprofileComponent } from './otheruserprofile/otheruserprofile.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,6 @@ import { UserpostComponent } from './userpost/userpost.component';
     ProfilepictureComponent,
     CreatepostComponent,
     SnowconeComponent,
-    SnowconelikeComponent,
-    SnowconedislikeComponent,
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
@@ -56,7 +55,10 @@ import { UserpostComponent } from './userpost/userpost.component';
     RepostComponent,
     SearchuserComponent,
     MypostViewComponent,
-    UserpostComponent
+    UserpostComponent,
+    NewmessageComponent,
+    FriendslistComponent,
+    OtheruserprofileComponent
     ],
   imports: [
     BrowserModule,
@@ -65,7 +67,7 @@ import { UserpostComponent } from './userpost/userpost.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, MessageService, AuthGuard, ValidationService],
+  providers: [UserService, MessageService, AuthGuard, ValidationService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

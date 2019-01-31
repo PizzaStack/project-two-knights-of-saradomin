@@ -1,13 +1,13 @@
 ul {
     list-style-type: none;
-    
-  }
-.card{
+}
+
+.card {
     background: none;
 }
 
-.btn{
-    background:  #aad4e5;
+.btn {
+    background: #aad4e5;
     font-weight: bold;
     color: white;
     box-shadow: 5px 5px #888888;
@@ -15,18 +15,20 @@ ul {
     margin-top: 15px;
 }
 
-.btn:active{
+.btn:active {
     transform: translateY(2px);
 }
-.messages{
+
+.messages {
     margin-top: auto;
-		margin-bottom: auto;
-		margin-left: 10px;
-		border-radius: 25px;
-		background-color: white;
-		padding: 10px;
-        position: relative;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: white;
+    padding: 10px;
+    position: relative;
 }
+
 .wrapper {
     display: flex;
     align-items: stretch;

@@ -8,12 +8,12 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  users:Users[]
+  users: Users[]
 
-  constructor(private _userService:UserService) { }
+  constructor(private _userService: UserService) { }
 
   ngOnInit() {
-    this.users=this._userService.getLoggedInUsers();
+    this.users = this._userService.getLoggedInUsers();
   }
 
 }

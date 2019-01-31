@@ -1,17 +1,19 @@
-li{
+li {
     margin-bottom: 15%;
-    
 }
-a{
-    color:black
+
+a {
+    color: black
 }
-.btn{
-    background:  #aad4e5;
+
+.btn {
+    background: #aad4e5;
     font-weight: bold;
     color: white;
     box-shadow: 5px 5px #888888;
     font-size: 25px
 }
+
 #sidebar {
     min-width: 250px;
     max-width: 250px;
@@ -21,9 +23,6 @@ a{
     text-align: center
 }
 
-.btn:active{
+.btn:active {
     transform: translateY(2px);
-    
-
 }
-

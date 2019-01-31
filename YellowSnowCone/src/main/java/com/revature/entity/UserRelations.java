@@ -17,17 +17,17 @@ public class UserRelations {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "relationid", updatable = false, nullable = false)
 	private int relationid;
-	@Column(name = "userid1", insertable=false, updatable=false)
+	@Column(name = "userid1", insertable = false, updatable = false)
 	private int userid1;
-	@Column(name = "userid2", insertable=false, updatable=false)
+	@Column(name = "userid2", insertable = false, updatable = false)
 	private int userid2;
 	private int status;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userid1")
 	private Users user1;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userid2")
 	private Users user2;
 
@@ -97,8 +97,5 @@ public class UserRelations {
 
 	public UserRelations() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	
 }

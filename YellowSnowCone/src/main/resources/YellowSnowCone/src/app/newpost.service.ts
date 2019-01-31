@@ -10,18 +10,17 @@ import { Observable } from 'rxjs';
 })
 export class NewpostService {
 
-  newPost : Posts;
+  newPost: Posts;
 
-  private newPostUrl ='http://localhost:8080/userposts/add'
-  
-  
+  private newPostUrl = 'http://localhost:8080/userposts/add'
+
+
   constructor(
     private http: HttpClient,
   ) { }
 
-    createPost(data) {
-    
-     this.http.post(this.newPostUrl,data).subscribe();
-    }
-  
+  createPost(data: any) {
+    this.http.post(this.newPostUrl, data).subscribe();
+  }
+
 }

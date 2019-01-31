@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SnowconedislikeComponent } from './snowconedislike.component';
+import { OtheruserprofileComponent } from './otheruserprofile.component';
 
-describe('SnowconedislikeComponent', () => {
-  let component: SnowconedislikeComponent;
-  let fixture: ComponentFixture<SnowconedislikeComponent>;
+describe('OtheruserprofileComponent', () => {
+  let component: OtheruserprofileComponent;
+  let fixture: ComponentFixture<OtheruserprofileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnowconedislikeComponent ]
+      declarations: [ OtheruserprofileComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SnowconedislikeComponent);
+    fixture = TestBed.createComponent(OtheruserprofileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
