@@ -31,7 +31,6 @@ const httpTextOptions = {
 export class UserService {
   users: Users[] = [];
   loggedInUsers: Users[] = [];
-  // private _url = this.storage.getBaseUrl();
   private _url = this.storage.getBaseUrl();
 
   constructor(private http: HttpClient,

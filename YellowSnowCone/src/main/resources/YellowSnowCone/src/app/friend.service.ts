@@ -10,9 +10,9 @@ import { UserService } from './user.service';
 })
 export class FriendService {
 
-  private friendsByIdUrl: string = "http://localhost:8080/relationsById";
+  private friendsByIdUrl: string = this.storage.getBaseUrl() + "relationsById";
 
-  private addFriendUrl: string = "http://localhost:8080/addFriend";
+  private addFriendUrl: string = this.storage.getBaseUrl() + "addFriend";
 
   userId: number = this.userService.getLoggedInUsers()[0].userid;
 

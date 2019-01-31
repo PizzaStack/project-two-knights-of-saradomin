@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Posts } from './posts';
 import { PostInteractions } from './postinteractions';
 import { Observable } from 'rxjs';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,13 @@ export class PostsService {
 
   userPost: Posts;
 
-  private userposts = 'http://localhost:8080/userposts';
-  private addpostinteraction = 'http://localhost:8080/addinteraction';
-  private getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
+  private userposts = this.storage.getBaseUrl() + 'userposts';
+  private addpostinteraction = this.storage.getBaseUrl() + 'addinteraction';
+  private getpostinteraction = this.storage.getBaseUrl() + 'getinteractionsbyid';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private storage: StorageService
   ) { }
 
   getPostsById(userId: number): Observable<Posts[]> {
