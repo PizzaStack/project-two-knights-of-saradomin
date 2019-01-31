@@ -453,8 +453,8 @@ var FriendService = /** @class */ (function () {
         this.http = http;
         this.storage = storage;
         this.userService = userService;
-        this.friendsByIdUrl = "http://localhost:8080/relationsById";
-        this.addFriendUrl = "http://localhost:8080/addFriend";
+        this.friendsByIdUrl = this.storage.getBaseUrl() + "relationsById";
+        this.addFriendUrl = this.storage.getBaseUrl() + "addFriend";
         this.userId = this.userService.getLoggedInUsers()[0].userid;
     }
     FriendService.prototype.getFriendsById = function () {
@@ -955,8 +955,8 @@ var MessageService = /** @class */ (function () {
         this.userService = userService;
         this.userId = this.userService.getLoggedInUsers()[0].userid;
         this.messages = [];
-        this.messagesByIdUrl = 'http://localhost:8080/messagesById';
-        this.addMessagesUrl = 'http://localhost:8080/addMessage';
+        this.messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
+        this.addMessagesUrl = this.storage.getBaseUrl() + "addMessage";
     }
     // getMessages (): Observable<Message[]> {
     //   return this.http.get<Message[]>(this.messagesUrl);
@@ -1476,13 +1476,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var NewpostService = /** @class */ (function () {
-    function NewpostService(http) {
+    function NewpostService(http, storage) {
         this.http = http;
-        this.newPostUrl = 'http://localhost:8080/userposts/add';
+        this.storage = storage;
+        this.newPostUrl = this.storage.getBaseUrl() + 'userposts/add';
     }
     NewpostService.prototype.createPost = function (data) {
         this.http.post(this.newPostUrl, data).subscribe();
@@ -1491,7 +1494,8 @@ var NewpostService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], NewpostService);
     return NewpostService;
 }());
@@ -1710,15 +1714,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var PostsService = /** @class */ (function () {
-    function PostsService(http) {
+    function PostsService(http, storage) {
         this.http = http;
-        this.userposts = 'http://localhost:8080/userposts';
-        this.addpostinteraction = 'http://localhost:8080/addinteraction';
-        this.getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
+        this.storage = storage;
+        this.userposts = this.storage.getBaseUrl() + 'userposts';
+        this.addpostinteraction = this.storage.getBaseUrl() + 'addinteraction';
+        this.getpostinteraction = this.storage.getBaseUrl() + 'getinteractionsbyid';
     }
     PostsService.prototype.getPostsById = function (userId) {
         return this.http.post(this.userposts, userId);
@@ -1733,7 +1740,8 @@ var PostsService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], PostsService);
     return PostsService;
 }());
@@ -2362,7 +2370,6 @@ var UserService = /** @class */ (function () {
         this.storage = storage;
         this.users = [];
         this.loggedInUsers = [];
-        // private _url = this.storage.getBaseUrl();
         this._url = this.storage.getBaseUrl();
     }
     UserService.prototype.getUsers = function () {
