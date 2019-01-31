@@ -1,0 +1,21 @@
+<div>
+  <app-navbar> </app-navbar>
+     <div class="wrapper">
+         <app-sidemenu></app-sidemenu>
+          <div id="content">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <h2>Friend's List:</h2>
+                            <ul *ngFor="let user of users">
+                              <li>
+                               <a>{{user.firstname}} {{user.lastname}}</a><button>View Profile</button><button (click)="populateMessageThread(user.firstname + ' ' + user.lastname)" routerLink="/messagesthread">Messages</button>
+                              </li>
+                            </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      
+      </div> 
+</div>

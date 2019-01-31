@@ -3,6 +3,7 @@ import { MessageService } from '../message.service';
 import { Message } from '../message';
 import { StorageService } from '../storage.service';
 import { Users } from '../users';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-messages',
@@ -11,7 +12,7 @@ import { Users } from '../users';
 })
 export class MessagesComponent implements OnInit {
 
-  userid: number = 1;
+  userid: number = 0;
 
   message: Message;
 
@@ -23,11 +24,12 @@ export class MessagesComponent implements OnInit {
 
   users = [];
 
-  constructor(private messageService: MessageService, private storage: StorageService) { }
+  constructor(private messageService: MessageService, private storage: StorageService, private userService: UserService) { }
 
   ngOnInit() {
     this.messageService.getMessagesById()
-      .subscribe(data => this.messages = data, (err) => console.log(err), () => this.loadMessages());
+    .subscribe(data => this.messages = data,(err) => console.log(err),() => this.loadMessages());
+    this.userid = this.userService.getLoggedInUsers()[0].userid;
   }
 
   loadMessages() {
@@ -41,6 +43,9 @@ export class MessagesComponent implements OnInit {
     this.users = this.users.filter(function (elem, index, self) {
       return index === self.indexOf(elem);
     })
+
+    this.users.reverse();
+
   }
 
   populateMessageThread(user: string) {
@@ -66,4 +71,5 @@ export class MessagesComponent implements OnInit {
     }
     this.storage.setScope(this.specificMessages);
   }
+
 }

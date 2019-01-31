@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Message } from './message';
 import { addMessageStatus } from './addMessageStatus';
 import { StorageService } from './storage.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  userId = 1;
+  userId: number = this.userService.getLoggedInUsers()[0].userid;
 
   addMessageStatus: addMessageStatus;
 
@@ -22,7 +23,8 @@ export class MessageService {
 
   constructor(
     private http: HttpClient,
-    private storage: StorageService
+    private storage: StorageService,
+    private userService: UserService
   ) { }
 
   // getMessages (): Observable<Message[]> {

@@ -20,7 +20,7 @@ export class SearchuserComponent implements OnInit {
 
   friendToAdd: Friend;
 
-  userId: number = 1;
+  userId: number = 0;
 
   user1: Users;
 
@@ -34,6 +34,7 @@ export class SearchuserComponent implements OnInit {
     this.searchResults = this.storageService.getSearchResults();
     this.friendService.getFriendsById().subscribe(data => this.friends = data);
     this.userService.getUsers().subscribe(data => this.users = data);
+    this.userId = this.userService.getLoggedInUsers()[0].userid;
     // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
   }
 
@@ -60,6 +61,9 @@ export class SearchuserComponent implements OnInit {
     } else {
       this.searchResults = this.matchingUsers;
     }
+
+    this.searchResults.reverse();
+
   }
 
   addFriend(userId: any) {
@@ -85,29 +89,28 @@ export class SearchuserComponent implements OnInit {
           }
         }
       }
-      if (alreadyFriends) {
-        alert("You are already friends with this user!");
-      } else {
-        this.user1 = {
-          userid: 1,
-          email: 'test@revature.com',
-          password: 'PLOK1plok1',
-          firstname: 'John',
-          lastname: 'Smith',
-          profilePicturePath: null
-        };
-        this.friendToAdd = {
-          relationid: null,
-          userid1: this.userId,
-          userid2: userId,
-          status: 1,
-          user1: this.user1,
-          user2: this.user2
-        }
-        this.friendService.addFriend(this.friendToAdd);
-        this.friends.push(this.friendToAdd);
-        alert("Friend added!");
+
+    
+
+    if(alreadyFriends){
+      alert("You are already friends with this user!");
+    } else {
+
+      this.user1 = this.userService.getLoggedInUsers()[0];
+
+      this.friendToAdd = {
+        relationid: null,
+        userid1: this.userId,
+        userid2: userId,
+        status: 1,
+        user1: this.user1,
+        user2: this.user2
       }
+
+      this.friendService.addFriend(this.friendToAdd);
+      this.friends.push(this.friendToAdd);
+      alert("Friend added!");
+    }
     }
   }
 }
