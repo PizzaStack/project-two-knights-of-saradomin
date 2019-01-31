@@ -6,6 +6,8 @@ import { Users } from './users';
 })
 export class StorageService {
 
+  baseUrl: string = "http://18.217.201.118:8888";
+
   searchResults: Users[];
 
   textContents: string;
@@ -94,5 +96,9 @@ export class StorageService {
 
   public getFirstName(): string {
     return this.firstName;
+  }
+
+  public getBaseUrl(): string {
+    return this.baseUrl;
   }
 }

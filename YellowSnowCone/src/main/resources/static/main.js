@@ -2164,6 +2164,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
+        this.baseUrl = "http://18.217.201.118:8888";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -2216,6 +2217,9 @@ var StorageService = /** @class */ (function () {
     };
     StorageService.prototype.getFirstName = function () {
         return this.firstName;
+    };
+    StorageService.prototype.getBaseUrl = function () {
+        return this.baseUrl;
     };
     StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -2300,6 +2304,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
 
 
 
@@ -2321,12 +2327,13 @@ var httpTextOptions = {
     })
 };
 var UserService = /** @class */ (function () {
-    function UserService(http, router) {
+    function UserService(http, router, storage) {
         this.http = http;
         this.router = router;
+        this.storage = storage;
         this.users = [];
         this.loggedInUsers = [];
-        this._url = "http://localhost:8080/";
+        this._url = this.storage.getBaseUrl();
     }
     UserService.prototype.getUsers = function () {
         return this.http.get(this._url.concat('users'), httpGetOptions);
@@ -2349,7 +2356,8 @@ var UserService = /** @class */ (function () {
             providedIn: 'root'
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_4__["StorageService"]])
     ], UserService);
     return UserService;
 }());
