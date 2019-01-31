@@ -496,7 +496,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <app-navbar> </app-navbar>\n     <div class=\"wrapper\">\n         <app-sidemenu></app-sidemenu>\n          <div id=\"content\">\n              <div class=\"container\">\n                  <div class=\"row\">\n                      <div class=\"col-lg-12\">\n                          <h2>Friend's List:</h2>\n                            <ul *ngFor=\"let user of users\">\n                              <li>\n                               <a>{{user.firstname}} {{user.lastname}}</a><button>View Profile</button><button (click)=\"populateMessageThread(user.firstname + ' ' + user.lastname)\" routerLink=\"/messagesthread\">Messages</button>\n                              </li>\n                            </ul>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      \n      </div> \n</div>"
+module.exports = "<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                      <div class=\"col-lg-12\">\r\n                          <h2>Friend's List:</h2>\r\n                            <ul *ngFor=\"let user of users\">\r\n                              <li>\r\n                               <a>{{user.firstname}} {{user.lastname}}</a><button>View Profile</button><button (click)=\"populateMessageThread(user.firstname + ' ' + user.lastname)\" routerLink=\"/messagesthread\">Messages</button>\r\n                              </li>\r\n                            </ul>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      \r\n      </div> \r\n</div>"
 
 /***/ }),
 
@@ -1345,7 +1345,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <app-navbar> </app-navbar>\n       <div class=\"wrapper\">\n           <app-sidemenu></app-sidemenu>\n            <div id=\"content\">\n                <div class=\"container\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                            <h2>Choose a Recipient:</h2>\n                              <ul *ngFor=\"let user of users\">\n                                <li>\n                                 <a (click)=\"populateMessageThread(user.firstname + ' ' + user.lastname)\" routerLink=\"/messagesthread\">{{user.firstname}} {{user.lastname}}</a> \n                                </li>\n                              </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        \n        </div> \n</div>"
+module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                            <h2>Choose a Recipient:</h2>\r\n                              <ul *ngFor=\"let user of users\">\r\n                                <li>\r\n                                 <a (click)=\"populateMessageThread(user.firstname + ' ' + user.lastname)\" routerLink=\"/messagesthread\">{{user.firstname}} {{user.lastname}}</a> \r\n                                </li>\r\n                              </ul>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        \r\n        </div> \r\n</div>"
 
 /***/ }),
 
@@ -1518,7 +1518,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <app-navbar> </app-navbar>\n     <div class=\"wrapper\">\n         <app-sidemenu></app-sidemenu>\n\n          <div id=\"content\">\n              <div class=\"container\">\n                  <div class=\"row\">\n                      <div class=\"col-lg-12\">\n                          <h2>'s Profile</h2>\n                          <h1>Posts:</h1>\n                            <ul *ngFor=\"let post of posts\">\n                              <li>\n                               <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a> \n                              </li>\n                            </ul>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div>\n  </div>"
+module.exports = "<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                      <div class=\"col-lg-12\">\r\n                          <h2>'s Profile</h2>\r\n                          <h1>Posts:</h1>\r\n                            <ul *ngFor=\"let post of posts\">\r\n                              <li>\r\n                               <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a> \r\n                              </li>\r\n                            </ul>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      </div>\r\n  </div>"
 
 /***/ }),
 
@@ -1719,7 +1719,6 @@ var PostsService = /** @class */ (function () {
         this.userposts = 'http://localhost:8080/userposts';
         this.addpostinteraction = 'http://localhost:8080/addinteraction';
         this.getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
-        this.postbyid = 'http://localhost:8080/postbyid';
     }
     PostsService.prototype.getPostsById = function (userId) {
         return this.http.post(this.userposts, userId);
@@ -2194,7 +2193,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        this.baseUrl = "http://3.16.107.15:8888";
+        this.baseUrl = "http://localhost:8080/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -2363,6 +2362,7 @@ var UserService = /** @class */ (function () {
         this.storage = storage;
         this.users = [];
         this.loggedInUsers = [];
+        // private _url = this.storage.getBaseUrl();
         this._url = this.storage.getBaseUrl();
     }
     UserService.prototype.getUsers = function () {
@@ -2636,7 +2636,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })

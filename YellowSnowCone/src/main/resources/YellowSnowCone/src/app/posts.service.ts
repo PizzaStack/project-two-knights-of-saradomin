@@ -14,7 +14,6 @@ export class PostsService {
   private userposts = 'http://localhost:8080/userposts';
   private addpostinteraction = 'http://localhost:8080/addinteraction';
   private getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
-  private postbyid = 'http://localhost:8080/postbyid';
 
   constructor(
     private http: HttpClient
