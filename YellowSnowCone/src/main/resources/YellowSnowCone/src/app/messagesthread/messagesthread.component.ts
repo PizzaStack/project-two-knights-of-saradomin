@@ -52,4 +52,7 @@ export class MessagesthreadComponent implements OnInit {
       this.messageService.addMessage(this.message);
       this.specificMessages.push("Me: " + messageContent.value);
   }
+
+  
+
 }

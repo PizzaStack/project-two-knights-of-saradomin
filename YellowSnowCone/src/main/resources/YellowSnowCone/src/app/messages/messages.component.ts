@@ -43,6 +43,9 @@ export class MessagesComponent implements OnInit {
     this.users = this.users.filter(function (elem, index, self) {
       return index === self.indexOf(elem);
     })
+
+    this.users.reverse();
+
   }
 
   populateMessageThread(user: string) {
@@ -68,4 +71,5 @@ export class MessagesComponent implements OnInit {
     }
     this.storage.setScope(this.specificMessages);
   }
+
 }

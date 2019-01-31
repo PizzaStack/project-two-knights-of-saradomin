@@ -61,6 +61,9 @@ export class SearchuserComponent implements OnInit {
     } else {
       this.searchResults = this.matchingUsers;
     }
+
+    this.searchResults.reverse();
+
   }
 
   addFriend(userId: any) {
@@ -87,7 +90,7 @@ export class SearchuserComponent implements OnInit {
         }
       }
 
-    }
+    
 
     if(alreadyFriends){
       alert("You are already friends with this user!");
