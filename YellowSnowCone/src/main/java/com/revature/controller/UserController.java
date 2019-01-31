@@ -30,7 +30,9 @@ public class UserController {
 	UsersRepository repository;
 	
 	Logger logger = LogManager.getLogger(UserController.class);
+	@Autowired
 	EmailController emailController;
+	
 	
 	@GetMapping("/users")
 	public List<Users> getAll(){
@@ -88,28 +90,42 @@ public class UserController {
 	@PostMapping("/register")
 	@ResponseBody
 	public synchronized Users register(@RequestBody Users user) {
+		/*
 		Users lastUser = repository.findTopByOrderByUseridDesc();
 		logger.info("lastUser = " + lastUser);
 		Users newUser = new Users();
 		
-		newUser.setUserid(lastUser.getUserid()+1);
+		//newUser.setUserid(lastUser.getUserid()+1);
+		newUser.setUserid(null);
+		//logger.info("newUser.userId = " + newUser.getUserid());
 		newUser.setFirstname(user.getFirstname());
 		newUser.setLastname(user.getLastname());
 		newUser.setEmail(user.getEmail());
 		newUser.setPassword(user.getPassword());
-		user = repository.save(newUser);
 		
-		System.out.println("newUserID = " + newUser.getUserid());
+		if (repository.findByEmailAndPassword(newUser.getEmail(), newUser.getPassword()) == null) {
+			System.out.println("newUser was not found!");
+		} else {
+			System.out.println("newUser was found!");
+		}
+		*/
+		Users newUser = repository.save(user);
+		repository.flush();
 
 		if (newUser != null) {
-			emailController.sendRegistrationEmail();
+			try {
+				emailController.sendEmail();
+			} catch (Exception e) {
+				logger.info("Unable To Send Verification Email");
+				e.printStackTrace();
+				return null;
+			}
 			logger.info("newUser = " + newUser);
-			logger.info("user = " + user);
-			return user;
+			return newUser;
 		}
 		else {
-			user = null;
 			logger.info("user = " + user);
+			user = null;
 		}
 		return user;
 	}

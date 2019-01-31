@@ -22,10 +22,10 @@ public class Users {
 	private String profilepicturepath;
 	private boolean enabled;
 	
-	public Integer getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(Integer userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	public String getEmail() {
@@ -69,7 +69,7 @@ public class Users {
 		return "Users [userid=" + userid + ", email=" + email + ", password=" + password + ", firstname=" + firstname
 				+ ", lastname=" + lastname + ", profilepicturepath=" + profilepicturepath + ", enabled=" + enabled + "]";
 	}
-	public Users(Integer userid, String email, String password, String firstname, String lastname,
+	public Users(int userid, String email, String password, String firstname, String lastname,
 			String profilepicturepath, boolean enabled) {
 		super();
 		this.userid = userid;

@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this._authService.logout();
     this._url = 'http://localhost:8080/';
-    this.newUserModel = new Users(-1, null, null, null, null, null, false);
+    this.newUserModel = new Users(null, null, null, null, null, null, false);
 
     this.registrationForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     this._userService.addNewUser(user).subscribe(data => {
       this.newUser = data;
       var anewUser:Users = this.newUser;
-      if (anewUser.userid === null || anewUser.userid != -1){
+      if (anewUser.userid !== null && anewUser.userid != -1){
         console.log("Registration Successful");
         console.log('anewUser: ' + JSON.stringify(anewUser));
         console.log('self._url=' + self._url);
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
           type:"success",
           timer: 3000
         });
-      } else if (anewUser.userid === -1){
+      } else if (anewUser.userid === -1 || anewUser.userid === null){
         swal({
           title:"Error",
           text:"There is already an account associated with that email.",

@@ -49,8 +49,8 @@ create table usermessage
 	imagelocation varchar(500) null
 );
 
-INSERT INTO users VALUES(1, 'a@b.c', 'pass', 'lily', 'fern', null, true);
-INSERT INTO users VALUES(2, 'gayweedlord@gmail.com', 'coconuts', 'jay', 'keefer', null, true);
-INSERT INTO users VALUES(3, 'user@example.com', 'password', 'toodlebop', 'cutiballs', null, true);
-INSERT INTO users VALUES(4, 'saggin@since1994.net', 'passward', 'randall', 'jenkins', null, true);
-INSERT INTO users VALUES(5, 'hacker@dark.net', 'p4ssw0rd', 'harry', 'hacker', null, true);
+INSERT INTO users(email, password, firstname, lastname, profilepicturepath, enabled) VALUES('a@b.c', 'pass', 'lily', 'fern', null, true);
+INSERT INTO users(email, password, firstname, lastname, profilepicturepath, enabled) VALUES('gayweedlord@gmail.com', 'coconuts', 'jay', 'keefer', null, true);
+INSERT INTO users(email, password, firstname, lastname, profilepicturepath, enabled) VALUES('user@example.com', 'password', 'toodlebop', 'cutiballs', null, true);
+INSERT INTO users(email, password, firstname, lastname, profilepicturepath, enabled) VALUES('saggin@since1994.net', 'passward', 'randall', 'jenkins', null, true);
+INSERT INTO users(email, password, firstname, lastname, profilepicturepath, enabled) VALUES('hacker@dark.net', 'p4ssw0rd', 'harry', 'hacker', null, true);
