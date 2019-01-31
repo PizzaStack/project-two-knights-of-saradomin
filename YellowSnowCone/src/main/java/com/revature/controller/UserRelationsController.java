@@ -14,36 +14,31 @@ import com.revature.repository.UsersRepository;
 
 @RestController
 public class UserRelationsController {
-@Autowired
-UsersRepository usersRepository;
+	@Autowired
+	UsersRepository usersRepository;
 
-@Autowired
-UserRelationsRepository userRelationsRepository;
+	@Autowired
+	UserRelationsRepository userRelationsRepository;
 
-@PostMapping("/relationsById")
-public List<UserRelations> getAllById(
-		@RequestBody
-		int id) {
-	
-	List<UserRelations> userRelationsList = (List<UserRelations>) userRelationsRepository.findAll();
-	
-	List<UserRelations> userRelationsList2 = new ArrayList<>();
-	
-	for(UserRelations userRelations : userRelationsList) {
-		if(userRelations.getUserid1() == id || userRelations.getUserid2() == id) {
-			userRelationsList2.add(userRelations);
+	@PostMapping("/relationsById")
+	public List<UserRelations> getAllById(@RequestBody int id) {
+
+		List<UserRelations> userRelationsList = userRelationsRepository.findAll();
+
+		List<UserRelations> userRelationsList2 = new ArrayList<>();
+
+		for (UserRelations userRelations : userRelationsList) {
+			if (userRelations.getUserid1() == id || userRelations.getUserid2() == id) {
+				userRelationsList2.add(userRelations);
+			}
 		}
+
+		return userRelationsList2;
 	}
-	
-	return userRelationsList2;
-}
 
-@PostMapping("/addFriend")
-public void addFriend(
-		@RequestBody
-		UserRelations userRelation) {
-	System.out.println(userRelation);
-	userRelationsRepository.save(userRelation);
-}
-
+	@PostMapping("/addFriend")
+	public void addFriend(@RequestBody UserRelations userRelation) {
+		System.out.println(userRelation);
+		userRelationsRepository.save(userRelation);
+	}
 }

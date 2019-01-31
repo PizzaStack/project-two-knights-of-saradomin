@@ -3,14 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Users } from '../users';
 import { UserService } from '../user.service';
 
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidationService } from '../validation.service'
-import { timeoutWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -18,19 +14,19 @@ import { timeoutWith } from 'rxjs/operators';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private mainviewUrl:string;
-  protected newUserModel:Users;
+  private mainviewUrl: string;
+  protected newUserModel: Users;
   loginForm: FormGroup;
-  loggedInUser:Users;
+  loggedInUser: Users;
   submitted = false;
 
-  constructor(protected _userService:UserService,
-    private location: Location, 
-    private router: Router, 
+  constructor(protected _userService: UserService,
+    private location: Location,
+    private router: Router,
     private formBuilder: FormBuilder,
     public _authService: AuthService) { }
-  
-  ngOnInit(){
+
+  ngOnInit() {
     this._authService.logout();
     this.mainviewUrl = "mainview";
     this.newUserModel = new Users(null, null, null, null, null, null);
@@ -42,13 +38,11 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  login(user:Users) : any {
-    //this.loggedInUser = user;
-
+  login(user: Users): any {
     this._userService.authenticate(user).subscribe(data => {
       this.loggedInUser = data;
 
-      if (this.loggedInUser.userid === null || this.loggedInUser.userid != -1){
+      if (this.loggedInUser.userid === null || this.loggedInUser.userid != -1) {
         console.log("Login successful");
         console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
         this._userService.addLoggedInUser(this.loggedInUser);
@@ -63,7 +57,7 @@ export class LoginComponent implements OnInit {
       return false;
     });
   }
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
     if (this.loginForm.invalid) {
       this.f.email.setValue("");
@@ -77,7 +71,7 @@ export class LoginComponent implements OnInit {
       if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
         console.log("valid credentials")
         this.login(this.newUserModel);
-        if (this.newUserModel.userid == -1 || this.newUserModel == null){
+        if (this.newUserModel.userid == -1 || this.newUserModel == null) {
           alert("Invalid Username Or Password");
           this.router.navigate(["welcomeview"]);
         }

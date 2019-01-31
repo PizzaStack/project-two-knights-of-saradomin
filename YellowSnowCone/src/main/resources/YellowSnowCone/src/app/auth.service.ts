@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Users } from './users';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +10,6 @@ export class AuthService {
   logout(): void {
     localStorage.setItem('isLoggedIn', "false");
     localStorage.removeItem('token');
-  } 
+  }
 
 }
