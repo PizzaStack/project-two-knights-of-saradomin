@@ -32,6 +32,8 @@ import { SearchuserComponent } from './searchuser/searchuser.component';
 import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
+import { NewmessageComponent } from './newmessage/newmessage.component';
+import { FriendslistComponent } from './friendslist/friendslist.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { UserpostComponent } from './userpost/userpost.component';
     RepostComponent,
     SearchuserComponent,
     MypostViewComponent,
-    UserpostComponent
+    UserpostComponent,
+    NewmessageComponent,
+    FriendslistComponent
     ],
   imports: [
     BrowserModule,

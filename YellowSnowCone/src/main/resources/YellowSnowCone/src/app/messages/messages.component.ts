@@ -47,6 +47,7 @@ export class MessagesComponent implements OnInit {
       return index === self.indexOf(elem);
     })
 
+    this.users.reverse();
 
   }
 
@@ -76,7 +77,5 @@ export class MessagesComponent implements OnInit {
     this.storage.setScope(this.specificMessages);
 
   }
-  
-
 
 }

@@ -71,6 +71,7 @@ export class SearchuserComponent implements OnInit {
       this.searchResults = this.matchingUsers;
     }
 
+    this.searchResults.reverse();
 
   }
 

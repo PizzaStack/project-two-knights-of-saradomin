@@ -7,6 +7,8 @@ import { MessagesthreadComponent } from './messagesthread/messagesthread.compone
 import { AuthGuard } from './auth.guard';
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { SearchuserComponent } from './searchuser/searchuser.component';
+import { NewmessageComponent } from './newmessage/newmessage.component';
+import { FriendslistComponent } from './friendslist/friendslist.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
@@ -16,7 +18,9 @@ const routes: Routes = [
   // { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
   { path: "mainview", component: MainviewComponent },
   { path: 'messagesthread', component: MessagesthreadComponent },
-  { path: 'searchuser', component: SearchuserComponent}
+  { path: 'searchuser', component: SearchuserComponent},
+  { path: 'newmessage', component: NewmessageComponent},
+  { path: 'friendslist', component: FriendslistComponent}
 ];
 
 @NgModule({

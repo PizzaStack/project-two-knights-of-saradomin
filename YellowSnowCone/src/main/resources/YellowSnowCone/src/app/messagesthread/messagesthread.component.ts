@@ -54,6 +54,7 @@ export class MessagesthreadComponent implements OnInit {
 
       this.specificMessages.push("Me: " + messageContent.value);
   }
+
   
 
 }
