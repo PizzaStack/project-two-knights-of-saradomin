@@ -12,67 +12,112 @@ import { UserService } from '../user.service';
 export class PostComponent implements OnInit {
 
   posts: Posts[];
-  postInteractions: PostInteractions[];
+  postInteractionsArray: PostInteractions[];
+  postInteraction: PostInteractions;
 
   post: {
     content: string;
+    name: string;
+    id: number;
     id1: any;
     id2: any;
+    postinteractions: PostInteractions[],
+    src1: string,
+    src2: string
   };
 
-  postInteraction: {
-    postId: number;
-    type: number;
+  interactionIdAndType: {
+    postid: number,
+    type: number
   };
+
+  interactionIdAndTypeArray = [];
 
   postContent = [];
+
+  userId = this.userService.getLoggedInUsers()[0].userid;
 
   constructor(private postsService: PostsService, private userService: UserService) { }
 
   ngOnInit() {
-    this.postsService.getPostsById(this.userService.getLoggedInUsers()[0].userid)
+    this.postsService.getPostsById(this.userId)
       .subscribe(data => this.posts = data, (error: any) => console.log(error), () => this.loadPosts());
-
-    this.postsService.getInteractionsById(this.userService.getLoggedInUsers()[0].userid)
-      .subscribe(data => this.postInteractions = data, (error: any) => console.log(error), () => this.loadInteractions());
   }
 
   loadPosts() {
     for (const i of this.posts) {
       this.post = {
         content: i.textcontents,
-        id1: i.postid + 'like',
-        id2: i.postid + 'dislike'
+        name: i.user.firstname + " " + i.user.lastname,
+        id: i.postid,
+        id1: i.postid + ' like',
+        id2: i.postid + ' dislike',
+        postinteractions: i.postinteractions,
+        src1: '../../assets/snowconeshadow.png',
+        src2: '../../assets/snowconeshadowupsidedown.png'
       };
       this.postContent.push(this.post);
     }
     this.postContent = this.postContent.reverse();
+    this.loadLikesAndDislikes();
   }
 
-  loadInteractions() {
-    for (const i of this.postInteractions) {
-      this.postInteraction = {
-        postId: i.postid,
-        type: i.type
-      };
+  loadLikesAndDislikes() {
+    for (let i of this.postContent) {
+      for (let j of i.postinteractions) {
+        if (this.userId === j.userid) {
+          if (j.type === 1) {
+            i.src1 = '../../assets/snowconelikeshadow.png';
+          } else if (j.type === 0) {
+            i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
+          }
+        }
+      }
     }
   }
 
   like(likeimg: any): void {
     const img = document.getElementById(likeimg) as HTMLImageElement;
 
+    let postId = likeimg.split(" ")[0];
+    postId = +postId;
+
     if (img.src.split('/').pop() === 'snowconeshadow.png') {
       img.src = '../../assets/snowconelikeshadow.png';
+
+      this.postInteraction = {
+        interactionid: null,
+        postid: postId,
+        userid: this.userId,
+        type: 1
+      }
+
+      this.postsService.addPostInteraction(this.postInteraction);
+
     } else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
       img.src = '../../assets/snowconeshadow.png';
     }
   }
 
+
   dislike(dislikeimg: any): void {
     const img = document.getElementById(dislikeimg) as HTMLImageElement;
 
+    let postId = dislikeimg.split(" ")[0];
+    postId = +postId;
+
     if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
       img.src = '../../assets/snowconedislikeshadowupsidedown.png';
+
+      this.postInteraction = {
+        interactionid: null,
+        postid: postId,
+        userid: this.userId,
+        type: 0
+      }
+
+      this.postsService.addPostInteraction(this.postInteraction);
+
     } else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
       img.src = '../../assets/snowconeshadowupsidedown.png';
     }

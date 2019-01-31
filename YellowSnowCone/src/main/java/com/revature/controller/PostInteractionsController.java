@@ -3,7 +3,6 @@ package com.revature.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,12 +18,10 @@ public class PostInteractionsController {
 	PostInteractionsRepository dao;
 
 	@PostMapping("/addinteraction")
-	public PostInteractions addInteraction(@RequestBody PostInteractions pi, Errors errors) {
-		if (errors.hasErrors())
-			return null;
-
-		dao.save(pi);
-		return pi;
+	public void addInteraction(@RequestBody PostInteractions pi) {
+		if (pi != null) {
+			dao.save(pi);
+		}
 	}
 
 	@GetMapping("/getinteraction")
@@ -32,7 +29,7 @@ public class PostInteractionsController {
 		return dao.findAll();
 	}
 
-	@PostMapping("/getinteractionbyid")
+	@PostMapping("/getinteractionsbyid")
 	public List<PostInteractions> findByUserId(@RequestBody int userid) {
 		return dao.findByUserid(userid);
 	}
