@@ -392,7 +392,7 @@ var CreatepostComponent = /** @class */ (function () {
     CreatepostComponent.prototype.createPost = function (data) {
         var post = {
             postid: null,
-            userid: 1,
+            userid: this.user[0].userid,
             textcontents: data.value,
             imagelocation: null,
             repostid: -1,
