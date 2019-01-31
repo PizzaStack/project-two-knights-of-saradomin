@@ -2,6 +2,7 @@ package com.revature.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,17 +14,18 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "userid", updatable = false, nullable = false)
-	private int userid;
+	private Integer userid;
 	private String email;
 	private String password;
 	private String firstname;
 	private String lastname;
 	private String profilepicturepath;
+	private boolean enabled;
 	
-	public int getUserid() {
+	public Integer getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(Integer userid) {
 		this.userid = userid;
 	}
 	public String getEmail() {
@@ -56,13 +58,19 @@ public class Users {
 	public void setProfilepicturepath(String profilepicturepath) {
 		this.profilepicturepath = profilepicturepath;
 	}
+	public boolean getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	@Override
 	public String toString() {
 		return "Users [userid=" + userid + ", email=" + email + ", password=" + password + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", profilepicturepath=" + profilepicturepath + "]";
+				+ ", lastname=" + lastname + ", profilepicturepath=" + profilepicturepath + ", enabled=" + enabled + "]";
 	}
-	public Users(int userid, String email, String password, String firstname, String lastname,
-			String profilepicturepath) {
+	public Users(Integer userid, String email, String password, String firstname, String lastname,
+			String profilepicturepath, boolean enabled) {
 		super();
 		this.userid = userid;
 		this.email = email;
@@ -70,13 +78,20 @@ public class Users {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.profilepicturepath = profilepicturepath;
+		this.enabled = enabled;
+	}
+	public Users(String email, String password, String firstname, String lastname,
+			String profilepicturepath, boolean enabled) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.profilepicturepath = profilepicturepath;
+		this.enabled = enabled;
 	}
 	public Users() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
 	
 }

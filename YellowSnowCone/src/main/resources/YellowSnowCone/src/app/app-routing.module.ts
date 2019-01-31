@@ -7,10 +7,12 @@ import { MessagesthreadComponent } from './messagesthread/messagesthread.compone
 import { AuthGuard } from './auth.guard';
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { SearchuserComponent } from './searchuser/searchuser.component';
+import { RegisteredComponent } from './registered/registered.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
   { path: "welcomeview", component: WelcomeviewComponent },
+  { path: "registered", component: RegisteredComponent },
   { path: "mypost", component: MypostViewComponent },
   { path: "messages", component: MessagesComponent },
   { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },

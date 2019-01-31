@@ -115,7 +115,8 @@ export class SearchuserComponent implements OnInit {
         password: 'PLOK1plok1',
         firstname: 'John',
         lastname: 'Smith',
-        profilePicturePath: null
+        profilePicturePath: null, 
+        enabled: true
       };
 
       this.friendToAdd = {

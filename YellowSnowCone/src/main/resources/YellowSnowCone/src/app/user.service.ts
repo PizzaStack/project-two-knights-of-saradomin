@@ -47,6 +47,12 @@ export class UserService {
       JSON.stringify(user), httpPostOptions)
   }
 
+  addNewUser(user:Users) : Observable<Users> {
+    console.log('adding new user... '+user.email+', '+user.password);
+    return this.http.post<Users>(this._url.concat('register'), 
+      JSON.stringify(user), httpPostOptions)
+  }
+
   logInUser(){
     this.router.navigate(['mainview']);
   }
@@ -57,5 +63,5 @@ export class UserService {
   addLoggedInUser(user:Users){
     this.loggedInUsers.push(user);
   }
-  
+
 }

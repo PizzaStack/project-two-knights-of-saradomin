@@ -5,6 +5,7 @@ export class Users{
         public password: string,
         public firstname: string,
         public lastname: string,
-        public profilePicturePath: string = null
+        public profilePicturePath: string = null, 
+        public enabled: boolean
     ) {}
 }

@@ -33,7 +33,8 @@ import { SearchuserComponent } from './searchuser/searchuser.component';
 import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
-
+import { RegisteredComponent } from './registered/registered.component';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -59,14 +60,21 @@ import { UserpostComponent } from './userpost/userpost.component';
     RepostComponent,
     SearchuserComponent,
     MypostViewComponent,
-    UserpostComponent
+    UserpostComponent,
+    RegisteredComponent
     ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+  })
   ],
   providers: [UserService, MessageService, AuthGuard, ValidationService],
   bootstrap: [AppComponent]

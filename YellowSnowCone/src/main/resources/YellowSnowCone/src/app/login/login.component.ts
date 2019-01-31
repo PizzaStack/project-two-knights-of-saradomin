@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(){
     this._authService.logout();
     this.mainviewUrl = "mainview";
-    this.newUserModel = new Users(null, null, null, null, null, null);
+    this.newUserModel = new Users(null, null, null, null, null, null, false);
 
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     this._userService.authenticate(user).subscribe(data => {
       this.loggedInUser = data;
 
-      if (this.loggedInUser.userid === null || this.loggedInUser.userid != -1){
+      if (this.loggedInUser.userid !== null || this.loggedInUser.userid != -1){
         console.log("Login successful");
         console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
         this._userService.addLoggedInUser(this.loggedInUser);

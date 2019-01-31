@@ -11,7 +11,8 @@ create table users
 	password varchar(75) not null,
 	firstname varchar(50) not null,
 	lastname varchar(50) not null,
-	profilepicturepath varchar(200) null
+	profilepicturepath varchar(200) null, 
+	enabled boolean default(false)
 );
 
 create table userposts
@@ -48,8 +49,8 @@ create table usermessage
 	imagelocation varchar(500) null
 );
 
-INSERT INTO users VALUES(0, 'a@b.c', 'pass', 'lily', 'fern', 'null');
-INSERT INTO users VALUES(1, 'gayweedlord@gmail.com', 'coconuts', 'jay', 'keefer', 'null');
-INSERT INTO users VALUES(2, 'user@example.com', 'password', 'toodlebop', 'cutiballs', 'null');
-INSERT INTO users VALUES(3, 'saggin@since1994.net', 'passward', 'randall', 'jenkins', 'null');
-INSERT INTO users VALUES(4, 'hacker@dark.net', 'p4ssw0rd', 'harry', 'hacker', 'null');
+INSERT INTO users VALUES(1, 'a@b.c', 'pass', 'lily', 'fern', null, true);
+INSERT INTO users VALUES(2, 'gayweedlord@gmail.com', 'coconuts', 'jay', 'keefer', null, true);
+INSERT INTO users VALUES(3, 'user@example.com', 'password', 'toodlebop', 'cutiballs', null, true);
+INSERT INTO users VALUES(4, 'saggin@since1994.net', 'passward', 'randall', 'jenkins', null, true);
+INSERT INTO users VALUES(5, 'hacker@dark.net', 'p4ssw0rd', 'harry', 'hacker', null, true);
