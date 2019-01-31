@@ -1,4 +1,5 @@
 import { Users } from './users';
+import { PostInteractions } from './postinteractions';
 
 export class Posts {
 	postid: number;
@@ -7,4 +8,5 @@ export class Posts {
 	imagelocation: string;
 	repostid: number;
 	user: Users
+	postinteractions: PostInteractions[]
 }
