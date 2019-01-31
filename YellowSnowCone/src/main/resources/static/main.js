@@ -1649,8 +1649,14 @@ var PostComponent = /** @class */ (function () {
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
         var postId = likeimg.split(" ")[0];
+        var dislikeimg = postId + ' dislike';
         postId = +postId;
+        var img2 = document.getElementById(dislikeimg);
         if (img.src.split('/').pop() === 'snowconeshadow.png') {
+            if (img2.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
+                img2.src = '../../assets/snowconeshadowupsidedown.png';
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
             img.src = '../../assets/snowconelikeshadow.png';
             this.postInteraction = {
                 interactionid: null,
@@ -1662,13 +1668,20 @@ var PostComponent = /** @class */ (function () {
         }
         else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
             img.src = '../../assets/snowconeshadow.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
         }
     };
     PostComponent.prototype.dislike = function (dislikeimg) {
         var img = document.getElementById(dislikeimg);
         var postId = dislikeimg.split(" ")[0];
+        var likeimg = postId + ' like';
         postId = +postId;
+        var img2 = document.getElementById(likeimg);
         if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
+            if (img2.src.split('/').pop() === 'snowconelikeshadow.png') {
+                img2.src = '../../assets/snowconeshadow.png';
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
             img.src = '../../assets/snowconedislikeshadowupsidedown.png';
             this.postInteraction = {
                 interactionid: null,
@@ -1680,6 +1693,7 @@ var PostComponent = /** @class */ (function () {
         }
         else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
             img.src = '../../assets/snowconeshadowupsidedown.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
         }
     };
     PostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1719,6 +1733,7 @@ var PostsService = /** @class */ (function () {
         this.userposts = 'http://localhost:8080/userposts';
         this.addpostinteraction = 'http://localhost:8080/addinteraction';
         this.getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
+        this.deletepostinteraction = 'http://localhost:8080/removeinteractionsbyid/';
     }
     PostsService.prototype.getPostsById = function (userId) {
         return this.http.post(this.userposts, userId);
@@ -1728,6 +1743,9 @@ var PostsService = /** @class */ (function () {
     };
     PostsService.prototype.getInteractionsById = function (userId) {
         return this.http.post(this.getpostinteraction, userId);
+    };
+    PostsService.prototype.deletePostInteraction = function (postid, userid) {
+        this.http.delete(this.deletepostinteraction + postid + '/' + userid).subscribe();
     };
     PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

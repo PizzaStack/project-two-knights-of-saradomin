@@ -14,6 +14,7 @@ export class PostsService {
   private userposts = 'http://localhost:8080/userposts';
   private addpostinteraction = 'http://localhost:8080/addinteraction';
   private getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
+  private deletepostinteraction = 'http://localhost:8080/removeinteractionsbyid/';
 
   constructor(
     private http: HttpClient
@@ -29,5 +30,9 @@ export class PostsService {
 
   getInteractionsById(userId: number): Observable<PostInteractions[]> {
     return this.http.post<PostInteractions[]>(this.getpostinteraction, userId);
+  }
+
+  deletePostInteraction(postid: number, userid: number): void {
+    this.http.delete(this.deletepostinteraction + postid + '/' + userid).subscribe();
   }
 }
