@@ -42,7 +42,6 @@ export class UserService {
   }
 
   authenticate(user: Users): Observable<Users> {
-    alert(this._url);
     console.log('authenticating... ' + user.email + ', ' + user.password);
     return this.http.post<Users>(this._url.concat('authenticate'),
       JSON.stringify(user), httpPostOptions)

@@ -2376,7 +2376,6 @@ var UserService = /** @class */ (function () {
         return this.http.get(this._url.concat('users'), httpGetOptions);
     };
     UserService.prototype.authenticate = function (user) {
-        alert(this._url);
         console.log('authenticating... ' + user.email + ', ' + user.password);
         return this.http.post(this._url.concat('authenticate'), JSON.stringify(user), httpPostOptions);
     };
