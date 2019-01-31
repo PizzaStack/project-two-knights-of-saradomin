@@ -32,6 +32,7 @@ import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
 import { NewmessageComponent } from './newmessage/newmessage.component';
 import { FriendslistComponent } from './friendslist/friendslist.component';
+import { OtheruserprofileComponent } from './otheruserprofile/otheruserprofile.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { FriendslistComponent } from './friendslist/friendslist.component';
     MypostViewComponent,
     UserpostComponent,
     NewmessageComponent,
-    FriendslistComponent
+    FriendslistComponent,
+    OtheruserprofileComponent
     ],
   imports: [
     BrowserModule,
