@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { StorageService } from './storage.service';
 
 const httpPostOptions = {
   headers: new HttpHeaders({
@@ -30,10 +31,11 @@ const httpTextOptions = {
 export class UserService {
   users: Users[] = [];
   loggedInUsers: Users[] = [];
-  private _url = "http://localhost:8080/";
+  private _url = this.storage.getBaseUrl();
 
   constructor(private http: HttpClient,
-    public router: Router) { }
+    public router: Router,
+    private storage: StorageService) { }
 
   getUsers(): Observable<Users[]> {
     return this.http.get<Users[]>(this._url.concat('users'), httpGetOptions);
