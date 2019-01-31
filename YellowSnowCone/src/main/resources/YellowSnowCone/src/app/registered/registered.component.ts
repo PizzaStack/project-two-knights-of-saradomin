@@ -9,7 +9,6 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
   styleUrls: ['./registered.component.css']
 })
 export class RegisteredComponent implements OnInit {
-  goBack:string;
   
   constructor(private router: Router) { }
 
@@ -20,6 +19,10 @@ export class RegisteredComponent implements OnInit {
       type:"success",
       timer: 3000
     });
+    this.goBack();
+  }
+
+  goBack() : any {
     setTimeout(function(){
       this.router.navigate(["http://localhost:8080/welcomeview"]);
     }, 3000);

@@ -80,6 +80,7 @@ public class Users {
 		this.profilepicturepath = profilepicturepath;
 		this.enabled = enabled;
 	}
+	/*
 	public Users(String email, String password, String firstname, String lastname,
 			String profilepicturepath, boolean enabled) {
 		super();
@@ -90,6 +91,7 @@ public class Users {
 		this.profilepicturepath = profilepicturepath;
 		this.enabled = enabled;
 	}
+	*/
 	public Users() {
 		super();
 	}

@@ -57,6 +57,7 @@ public class UserController {
 		return user;
 	}
 	
+	/*
 	@SuppressWarnings("unused")
 	@PostMapping("/register")
 	@ResponseBody
@@ -81,7 +82,38 @@ public class UserController {
 		}
 		return user;
 	}
+	*/
 
+	@SuppressWarnings("unused")
+	@PostMapping("/register")
+	@ResponseBody
+	public synchronized Users register(@RequestBody Users user) {
+		Users lastUser = repository.findTopByOrderByUseridDesc();
+		logger.info("lastUser = " + lastUser);
+		Users newUser = new Users();
+		
+		newUser.setUserid(lastUser.getUserid()+1);
+		newUser.setFirstname(user.getFirstname());
+		newUser.setLastname(user.getLastname());
+		newUser.setEmail(user.getEmail());
+		newUser.setPassword(user.getPassword());
+		user = repository.save(newUser);
+		
+		System.out.println("newUserID = " + newUser.getUserid());
+
+		if (newUser != null) {
+			emailController.sendRegistrationEmail();
+			logger.info("newUser = " + newUser);
+			logger.info("user = " + user);
+			return user;
+		}
+		else {
+			user = null;
+			logger.info("user = " + user);
+		}
+		return user;
+	}
+	
 	@GetMapping("users/{userId}")
 	public String redirectToUserView(@RequestParam int userId) {
 		return "redirect:/mainview";

@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this._authService.logout();
     this._url = 'http://localhost:8080/';
-    this.newUserModel = new Users(undefined, null, null, null, null, null, false);
+    this.newUserModel = new Users(-1, null, null, null, null, null, false);
 
     this.registrationForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,20 +41,25 @@ export class RegisterComponent implements OnInit {
     });
   }
   get f() { return this.registrationForm.controls; }
-
-  register(user:Users) : any {
+  register(user:Users){
+    var self = this;
     this._userService.addNewUser(user).subscribe(data => {
       this.newUser = data;
-
-      if (this.newUser.userid === null || this.newUser.userid != -1){
+      var anewUser:Users = this.newUser;
+      if (anewUser.userid === null || anewUser.userid != -1){
         console.log("Registration Successful");
-        console.log('newUser: ' + JSON.stringify(this.newUser));
+        console.log('anewUser: ' + JSON.stringify(anewUser));
+        console.log('self._url=' + self._url);
         //this._userService.addLoggedInUser(this.loggedInUser);
-        localStorage.setItem('isLoggedIn', "true");
-        localStorage.setItem('token', this.newUser.userid.toString());
-        this.router.navigate(["http://localhost:8080/registered"]);
-        return true;
-      } else {
+        localStorage.setItem('isRegistered', "true");
+        localStorage.setItem('token', anewUser.userid.toString());
+        swal({
+          title:"Success",
+          text:"Check Your Email!",
+          type:"success",
+          timer: 3000
+        });
+      } else if (anewUser.userid === -1){
         swal({
           title:"Error",
           text:"There is already an account associated with that email.",
@@ -62,9 +67,8 @@ export class RegisterComponent implements OnInit {
           timer: 3000
         });
         console.log('userid Is Null.')
-        console.log('User Info: ' + JSON.stringify(this.newUser));
+        console.log('anewUser Info: ' + JSON.stringify(anewUser));
       }
-      return false;
     });
   }
 
@@ -72,33 +76,19 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if (this.registrationForm.invalid){
-      this.f.email.setValue("");
-      this.f.password.setValue("");
-      this.f.firstname.setValue("");
-      this.f.lastname.setValue("");
-      this.newUserModel.email = null;
-      this.newUserModel.password = null;
-      this.newUserModel.firstname = null;
-      this.newUserModel.lastname = null;
+      //this.resetFields();
+      this.resetModel();
       return;
     } else {
       this.newUserModel.email = this.f.email.value;
       this.newUserModel.password = this.f.password.value;
       this.newUserModel.firstname = this.f.firstname.value;
       this.newUserModel.lastname = this.f.lastname.value;
-      console.log("newUserModel: " + JSON.stringify(this.newUserModel));
       if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
         console.log("Valid Credentials")
         this.register(this.newUserModel);
-        if (this.newUser == null || this.newUser.userid == undefined){
-          console.log("newUser is null")
-          swal({
-            title:"Error",
-            text:"There is already an account associated with that email.",
-            type:"error",
-            timer: 3000
-          });
-        }
+        this.resetFields();
+        this.submitted = false;
       } else {
         /*
         swal({
@@ -112,5 +102,17 @@ export class RegisterComponent implements OnInit {
         */
       }
     }
+  }
+  resetFields(){
+    this.f.email.setValue("");
+    this.f.password.setValue("");
+    this.f.firstname.setValue("");
+    this.f.lastname.setValue("");
+  }
+  resetModel(){
+    this.newUserModel.email = null;
+    this.newUserModel.password = null;
+    this.newUserModel.firstname = null;
+    this.newUserModel.lastname = null;
   }
 }

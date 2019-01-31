@@ -1523,7 +1523,7 @@ var RegisterComponent = /** @class */ (function () {
     RegisterComponent.prototype.ngOnInit = function () {
         this._authService.logout();
         this._url = 'http://localhost:8080/';
-        this.newUserModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](undefined, null, null, null, null, null, false);
+        this.newUserModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](-1, null, null, null, null, null, false);
         this.registrationForm = this.formBuilder.group({
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].email]],
             password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(4)]],
@@ -1538,18 +1538,25 @@ var RegisterComponent = /** @class */ (function () {
     });
     RegisterComponent.prototype.register = function (user) {
         var _this = this;
+        var self = this;
         this._userService.addNewUser(user).subscribe(function (data) {
             _this.newUser = data;
-            if (_this.newUser.userid === null || _this.newUser.userid != -1) {
+            var anewUser = _this.newUser;
+            if (anewUser.userid === null || anewUser.userid != -1) {
                 console.log("Registration Successful");
-                console.log('newUser: ' + JSON.stringify(_this.newUser));
+                console.log('anewUser: ' + JSON.stringify(anewUser));
+                console.log('self._url=' + self._url);
                 //this._userService.addLoggedInUser(this.loggedInUser);
                 localStorage.setItem('isLoggedIn', "true");
-                localStorage.setItem('token', _this.newUser.userid.toString());
-                _this.router.navigate([_this._url.concat("registered")]);
-                return true;
+                localStorage.setItem('token', anewUser.userid.toString());
+                sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
+                    title: "Success",
+                    text: "Check Your Email!",
+                    type: "success",
+                    timer: 3000
+                });
             }
-            else {
+            else if (anewUser.userid === -1) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
                     title: "Error",
                     text: "There is already an account associated with that email.",
@@ -1557,22 +1564,15 @@ var RegisterComponent = /** @class */ (function () {
                     timer: 3000
                 });
                 console.log('userid Is Null.');
-                console.log('User Info: ' + JSON.stringify(_this.newUser));
+                console.log('anewUser Info: ' + JSON.stringify(anewUser));
             }
-            return false;
         });
     };
     RegisterComponent.prototype.onSubmit = function () {
         this.submitted = true;
         if (this.registrationForm.invalid) {
-            this.f.email.setValue("");
-            this.f.password.setValue("");
-            this.f.firstname.setValue("");
-            this.f.lastname.setValue("");
-            this.newUserModel.email = null;
-            this.newUserModel.password = null;
-            this.newUserModel.firstname = null;
-            this.newUserModel.lastname = null;
+            //this.resetFields();
+            this.resetModel();
             return;
         }
         else {
@@ -1580,19 +1580,11 @@ var RegisterComponent = /** @class */ (function () {
             this.newUserModel.password = this.f.password.value;
             this.newUserModel.firstname = this.f.firstname.value;
             this.newUserModel.lastname = this.f.lastname.value;
-            console.log("newUserModel: " + JSON.stringify(this.newUserModel));
             if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
                 console.log("Valid Credentials");
                 this.register(this.newUserModel);
-                if (this.newUser == null || this.newUser.userid == undefined) {
-                    console.log("newUser is null");
-                    sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
-                        title: "Error",
-                        text: "There is already an account associated with that email.",
-                        type: "error",
-                        timer: 3000
-                    });
-                }
+                this.resetFields();
+                this.submitted = false;
             }
             else {
                 /*
@@ -1607,6 +1599,18 @@ var RegisterComponent = /** @class */ (function () {
                 */
             }
         }
+    };
+    RegisterComponent.prototype.resetFields = function () {
+        this.f.email.setValue("");
+        this.f.password.setValue("");
+        this.f.firstname.setValue("");
+        this.f.lastname.setValue("");
+    };
+    RegisterComponent.prototype.resetModel = function () {
+        this.newUserModel.email = null;
+        this.newUserModel.password = null;
+        this.newUserModel.firstname = null;
+        this.newUserModel.lastname = null;
     };
     RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1676,8 +1680,12 @@ var RegisteredComponent = /** @class */ (function () {
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
             title: "Success",
             text: "Check Your Email!",
-            type: "success"
+            type: "success",
+            timer: 3000
         });
+        this.goBack();
+    };
+    RegisteredComponent.prototype.goBack = function () {
         setTimeout(function () {
             this.router.navigate(["http://localhost:8080/welcomeview"]);
         }, 3000);
