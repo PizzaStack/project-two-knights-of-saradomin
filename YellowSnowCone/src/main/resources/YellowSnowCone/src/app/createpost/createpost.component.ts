@@ -29,7 +29,8 @@ export class CreatepostComponent implements OnInit {
       textcontents: data.value,
       imagelocation: null,
       repostid: -1,
-      user: this.user[0]
+      user: this.user[0],
+      postinteractions: null
     }
 
     this.newPost.createPost(post);

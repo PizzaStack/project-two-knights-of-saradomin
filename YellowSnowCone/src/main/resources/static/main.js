@@ -391,7 +391,8 @@ var CreatepostComponent = /** @class */ (function () {
             textcontents: data.value,
             imagelocation: null,
             repostid: -1,
-            user: this.user[0]
+            user: this.user[0],
+            postinteractions: null
         };
         this.newPost.createPost(post);
         window.location.reload();
@@ -1226,7 +1227,7 @@ module.exports = "small {\r\n    text-align: center\r\n}\r\n\r\n.card {\r\n    m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    User\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src=\"../../assets/snowconeshadow.png\" width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src=\"../../assets/snowconeshadowupsidedown.png\"\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1252,40 +1253,62 @@ var PostComponent = /** @class */ (function () {
     function PostComponent(postsService, userService) {
         this.postsService = postsService;
         this.userService = userService;
+        this.interactionIdAndTypeArray = [];
         this.postContent = [];
+        this.userId = this.userService.getLoggedInUsers()[0].userid;
     }
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.postsService.getPostsById(this.userService.getLoggedInUsers()[0].userid)
+        this.postsService.getPostsById(this.userId)
             .subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
-        this.postsService.getInteractionsById(this.userService.getLoggedInUsers()[0].userid)
-            .subscribe(function (data) { return _this.postInteractions = data; }, function (error) { return console.log(error); }, function () { return _this.loadInteractions(); });
     };
     PostComponent.prototype.loadPosts = function () {
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
             this.post = {
                 content: i.textcontents,
-                id1: i.postid + 'like',
-                id2: i.postid + 'dislike'
+                name: i.user.firstname + " " + i.user.lastname,
+                id: i.postid,
+                id1: i.postid + ' like',
+                id2: i.postid + ' dislike',
+                postinteractions: i.postinteractions,
+                src1: '../../assets/snowconeshadow.png',
+                src2: '../../assets/snowconeshadowupsidedown.png'
             };
             this.postContent.push(this.post);
         }
         this.postContent = this.postContent.reverse();
+        this.loadLikesAndDislikes();
     };
-    PostComponent.prototype.loadInteractions = function () {
-        for (var _i = 0, _a = this.postInteractions; _i < _a.length; _i++) {
+    PostComponent.prototype.loadLikesAndDislikes = function () {
+        for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
             var i = _a[_i];
-            this.postInteraction = {
-                postId: i.postid,
-                type: i.type
-            };
+            for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
+                var j = _c[_b];
+                if (this.userId === j.userid) {
+                    if (j.type === 1) {
+                        i.src1 = '../../assets/snowconelikeshadow.png';
+                    }
+                    else if (j.type === 0) {
+                        i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
+                    }
+                }
+            }
         }
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
+        var postId = likeimg.split(" ")[0];
+        postId = +postId;
         if (img.src.split('/').pop() === 'snowconeshadow.png') {
             img.src = '../../assets/snowconelikeshadow.png';
+            this.postInteraction = {
+                interactionid: null,
+                postid: postId,
+                userid: this.userId,
+                type: 1
+            };
+            this.postsService.addPostInteraction(this.postInteraction);
         }
         else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
             img.src = '../../assets/snowconeshadow.png';
@@ -1293,8 +1316,17 @@ var PostComponent = /** @class */ (function () {
     };
     PostComponent.prototype.dislike = function (dislikeimg) {
         var img = document.getElementById(dislikeimg);
+        var postId = dislikeimg.split(" ")[0];
+        postId = +postId;
         if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
             img.src = '../../assets/snowconedislikeshadowupsidedown.png';
+            this.postInteraction = {
+                interactionid: null,
+                postid: postId,
+                userid: this.userId,
+                type: 0
+            };
+            this.postsService.addPostInteraction(this.postInteraction);
         }
         else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
             img.src = '../../assets/snowconeshadowupsidedown.png';
@@ -1328,33 +1360,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-
 
 
 
 var PostsService = /** @class */ (function () {
-    function PostsService(http, userService) {
+    function PostsService(http) {
         this.http = http;
-        this.userService = userService;
         this.userposts = 'http://localhost:8080/userposts';
-        this.postinteraction = 'http://localhost:8080/addinteraction';
+        this.addpostinteraction = 'http://localhost:8080/addinteraction';
+        this.getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
+        this.postbyid = 'http://localhost:8080/postbyid';
     }
     PostsService.prototype.getPostsById = function (userId) {
         return this.http.post(this.userposts, userId);
     };
     PostsService.prototype.addPostInteraction = function (body) {
-        this.http.post(this.postinteraction, body).subscribe();
+        this.http.post(this.addpostinteraction, body).subscribe();
     };
     PostsService.prototype.getInteractionsById = function (userId) {
-        return this.http.post(this.postinteraction, userId);
+        return this.http.post(this.getpostinteraction, userId);
     };
     PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
-            _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], PostsService);
     return PostsService;
 }());
