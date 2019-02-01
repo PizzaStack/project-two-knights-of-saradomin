@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidationService } from '../validation.service'
 import { timeoutWith } from 'rxjs/operators';
 
 @Component({

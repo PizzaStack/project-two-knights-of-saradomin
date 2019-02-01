@@ -2,6 +2,7 @@ drop table if exists usermessage;
 drop table if exists userrelations;
 drop table if exists postinteractions;
 drop table if exists userposts;
+drop table if exists verificationtokens;
 drop table if exists users;
 
 create table users
@@ -15,10 +16,12 @@ create table users
 	enabled boolean default(false)
 );
 
-create table 
+create table verificationtokens
 (
-	userid SERIAL REFERENCES users(userid),
-	token VARCHAR(500) UNIQUE
+	tokenid SERIAL PRIMARY KEY,
+	userid INT REFERENCES users(userid),
+	token VARCHAR(500) UNIQUE,
+	expiration_date TIMESTAMP
 );
 
 create table userposts

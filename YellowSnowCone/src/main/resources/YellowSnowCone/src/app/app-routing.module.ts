@@ -12,7 +12,7 @@ import { RegisteredComponent } from './registered/registered.component';
 const routes: Routes = [
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
   { path: "welcomeview", component: WelcomeviewComponent },
-  { path: "registered", component: RegisteredComponent },
+  { path: "welcomeview/:id/:token", component: RegisteredComponent },
   { path: "mypost", component: MypostViewComponent },
   { path: "messages", component: MessagesComponent },
   { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },

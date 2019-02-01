@@ -34,7 +34,6 @@ public class UserPostsController {
 		if (userposts != null && !dao.existsById(userposts.getPostid()))
 			System.out.println(userposts);
 			dao.save(userposts);
-		
 	}
 	
 }

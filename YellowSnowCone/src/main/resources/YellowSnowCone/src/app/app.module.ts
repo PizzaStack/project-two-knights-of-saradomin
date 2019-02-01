@@ -27,10 +27,8 @@ import { UserListComponent } from './user-list/user-list.component';
 
 import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { SearchuserComponent } from './searchuser/searchuser.component';
-import { ValidationService } from './validation.service'
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
 import { RegisteredComponent } from './registered/registered.component';
@@ -76,7 +74,7 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
       cancelButtonClass: 'btn'
   })
   ],
-  providers: [UserService, MessageService, AuthGuard, ValidationService],
+  providers: [UserService, MessageService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

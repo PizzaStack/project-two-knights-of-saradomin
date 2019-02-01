@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.thymeleaf.TemplateEngine;
 
 import com.revature.entity.Users;
+import com.revature.entity.VerificationToken;
 import com.revature.service.MailContentBuilder;
 
 @Controller
@@ -45,13 +46,12 @@ public class EmailController {
         }
     }
     
-    public void sendEmail(Users user) throws Exception {
+    public void sendEmail(Users user, VerificationToken verificationToken) throws Exception {
     	MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);
             
             String name = user.getFirstname();
-            String token = UUID.randomUUID().toString();
-            String url = "http://localhost:8080/".concat(token);
+            String url = "http://localhost:8080/welcomeview/".concat(String.valueOf(user.getUserid())).concat("/").concat(verificationToken.getToken());
             String content = mailContentBuilder.build(name, url);
             messageHelper.setTo("cmeyerwps@gmail.com");
             messageHelper.setSubject("YellowSnowCone - Please Verify Your Email");
