@@ -2291,8 +2291,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        // baseUrl: string = "http://18.191.217.180:8888/";
-        this.baseUrl = "http://localhost:8080/";
+        this.baseUrl = "http://18.191.217.180:8888/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
