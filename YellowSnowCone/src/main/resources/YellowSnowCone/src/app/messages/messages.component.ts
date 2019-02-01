@@ -49,6 +49,7 @@ export class MessagesComponent implements OnInit {
   }
 
   populateMessageThread(user: string) {
+    this.storage.setMessageThreadUser(user);
     this.storage.setUserId1(this.userid);
     for (let i of this.messages) {
       if (i.userid1 === this.userid) {
