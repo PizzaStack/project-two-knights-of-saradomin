@@ -1649,7 +1649,7 @@ module.exports = "small {\r\n    text-align: center\r\n}\r\n\r\n.card {\r\n    m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <input id=\"repost\" (click)=\"repost(post.id)\" type=\"image\" src=\"../../assets/repost-icon.png\" width=\"48\" height=\"48\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1667,14 +1667,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _posts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts.service */ "./src/app/posts.service.ts");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _newpost_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../newpost.service */ "./src/app/newpost.service.ts");
+
 
 
 
 
 var PostComponent = /** @class */ (function () {
-    function PostComponent(postsService, userService) {
+    function PostComponent(postsService, userService, newpostService) {
         this.postsService = postsService;
         this.userService = userService;
+        this.newpostService = newpostService;
         this.interactionIdAndTypeArray = [];
         this.postContent = [];
         this.userId = this.userService.getLoggedInUsers()[0].userid;
@@ -1822,13 +1825,33 @@ var PostComponent = /** @class */ (function () {
             }
         }
     };
+    PostComponent.prototype.repost = function (postid) {
+        var _this = this;
+        new Promise(function (reject) {
+            _this.postsService.getPostByPostId(postid).toPromise().then(function (data) {
+                _this.reposts = data;
+                var post = {
+                    postid: null,
+                    userid: _this.userId,
+                    textcontents: _this.reposts.textcontents,
+                    imagelocation: _this.reposts.imagelocation,
+                    repostid: _this.reposts.postid,
+                    user: _this.userService.getLoggedInUsers()[0],
+                    postinteractions: null
+                };
+                _this.newpostService.createPost(post);
+            }, function (msg) {
+                reject(msg);
+            });
+        });
+    };
     PostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-post',
             template: __webpack_require__(/*! ./post.component.html */ "./src/app/post/post.component.html"),
             styles: [__webpack_require__(/*! ./post.component.css */ "./src/app/post/post.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"], _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"], _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _newpost_service__WEBPACK_IMPORTED_MODULE_4__["NewpostService"]])
     ], PostComponent);
     return PostComponent;
 }());
@@ -1860,12 +1883,25 @@ var PostsService = /** @class */ (function () {
         this.http = http;
         this.storage = storage;
         this.userposts = this.storage.getBaseUrl() + 'userposts';
+        this.postbypostid = this.storage.getBaseUrl() + 'postbypostid';
         this.addpostinteraction = this.storage.getBaseUrl() + 'addinteraction';
         this.getpostinteraction = this.storage.getBaseUrl() + 'getinteractionsbyid';
         this.deletepostinteraction = this.storage.getBaseUrl() + 'removeinteractionsbyid/';
     }
     PostsService.prototype.getPostsById = function (userId) {
         return this.http.post(this.userposts, userId);
+    };
+    PostsService.prototype.getPostByPostId = function (postId) {
+        return this.http.post(this.postbypostid, postId);
+        // let promise = new Promise((reject) => {
+        //   this.http.post<Posts>(this.postbypostid, postId).toPromise().then(data => {
+        //     this.repost = data;
+        //     return this.repost;
+        //   },
+        //     msg => {
+        //       reject(msg)
+        //     });
+        // });
     };
     PostsService.prototype.addPostInteraction = function (body) {
         this.http.post(this.addpostinteraction, body).subscribe();
@@ -2046,6 +2082,8 @@ var RepostComponent = /** @class */ (function () {
     function RepostComponent() {
     }
     RepostComponent.prototype.ngOnInit = function () {
+    };
+    RepostComponent.prototype.repost = function () {
     };
     RepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2341,7 +2379,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        this.baseUrl = "http://18.191.217.180:8888/";
+        // baseUrl: string = "http://18.191.217.180:8888/";
+        this.baseUrl = "http://localhost:8080/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -2789,7 +2828,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })

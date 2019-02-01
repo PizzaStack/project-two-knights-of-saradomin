@@ -15,6 +15,7 @@ export class PostComponent implements OnInit {
   posts: Posts[];
   postInteractionsArray: PostInteractions[];
   postInteraction: PostInteractions;
+  reposts: Posts;
 
   post: {
     content: string;
@@ -203,6 +204,24 @@ export class PostComponent implements OnInit {
   }
 
   repost(postid: any): void {
-    let repost = this.postsService.getPostsById
+    new Promise((reject) => {
+      this.postsService.getPostByPostId(postid).toPromise().then(data => {
+        this.reposts = data;
+
+        let post: Posts = {
+          postid: null,
+          userid: this.userId,
+          textcontents: this.reposts.textcontents,
+          imagelocation: this.reposts.imagelocation,
+          repostid: this.reposts.postid,
+          user: this.userService.getLoggedInUsers()[0],
+          postinteractions: null
+        };
+        this.newpostService.createPost(post)
+      },
+        msg => {
+          reject(msg)
+        });
+    });
   }
 }
