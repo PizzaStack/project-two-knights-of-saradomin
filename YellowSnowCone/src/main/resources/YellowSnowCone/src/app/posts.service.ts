@@ -15,6 +15,7 @@ export class PostsService {
   private userposts = this.storage.getBaseUrl() + 'userposts';
   private addpostinteraction = this.storage.getBaseUrl() + 'addinteraction';
   private getpostinteraction = this.storage.getBaseUrl() + 'getinteractionsbyid';
+  private deletepostinteraction = this.storage.getBaseUrl() + 'removeinteractionsbyid/';
 
   constructor(
     private http: HttpClient,
@@ -31,5 +32,9 @@ export class PostsService {
 
   getInteractionsById(userId: number): Observable<PostInteractions[]> {
     return this.http.post<PostInteractions[]>(this.getpostinteraction, userId);
+  }
+
+  deletePostInteraction(postid: number, userid: number): void {
+    this.http.delete(this.deletepostinteraction + postid + '/' + userid).subscribe();
   }
 }
