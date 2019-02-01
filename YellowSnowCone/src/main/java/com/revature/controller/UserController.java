@@ -1,12 +1,15 @@
 package com.revature.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -76,13 +79,17 @@ public class UserController {
 
 		if (newUser != null) {
 			try {
-		        String token = UUID.randomUUID().toString();
-		        VerificationToken verificationToken = new VerificationToken(user.getUserid(), token, null, user);
+		        String vtoken = UUID.randomUUID().toString();
+		        VerificationToken verificationToken = new VerificationToken(newUser.getUserid(), vtoken);
+		        newUser.setVerificationToken(verificationToken);
+		        newUser = userRepository.save(newUser);
+		        //tokenRepository.save(verificationToken);
+		        System.out.println("verificationToken Persisted");
 				emailController.sendEmail(newUser, verificationToken);
 			} catch (Exception e) {
 				logger.info("Unable To Send Verification Email");
 				e.printStackTrace();
-				tokenRepository.deleteById(user.getUserid());
+				userRepository.deleteById(newUser.getUserid());
 				return null;
 			}
 			logger.info("newUser = " + newUser);
@@ -91,15 +98,17 @@ public class UserController {
 		else {
 			logger.info("user = " + user);
 			user = null;
+			System.out.println("verificationToken Not Persisted");
 		}
 		return user;
 	}
 
 	@GetMapping("welcomeview/{id}/{token}")
-	public void verifyUser(@RequestParam int userid, @RequestParam String token) {
-		if (tokenRepository.findByUseridAndToken(userid, token)){
+	public void verifyUser(@RequestParam int userid, @RequestParam String vtoken) {
+		if (tokenRepository.findByUseridAndVtoken(userid, vtoken)){
 		   Users user = userRepository.findByUserid(userid);
-		   if (user != null) user.setEnabled(true);
+		   user.setEnabled(true);
+		   VerificationToken verificationToken = tokenRepository.getByUseridAndVtoken(user.getUserid(), vtoken);
 		} else {
 			
 		}

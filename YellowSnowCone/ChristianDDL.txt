@@ -18,10 +18,8 @@ create table users
 
 create table verificationtokens
 (
-	tokenid SERIAL PRIMARY KEY,
-	userid INT REFERENCES users(userid),
-	token VARCHAR(500) UNIQUE,
-	expiration_date TIMESTAMP
+	userid INT PRIMARY KEY REFERENCES users(userid),
+	vtoken VARCHAR(500) UNIQUE
 );
 
 create table userposts

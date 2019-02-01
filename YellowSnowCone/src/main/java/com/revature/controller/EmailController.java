@@ -35,6 +35,7 @@ public class EmailController {
     @Autowired
     public MailContentBuilder mailContentBuilder;// = new MailContextBuilder(templateEngine);
     
+    /*
     @RequestMapping("/registrationEmail")
     @ResponseBody
     String sendRegistrationEmail() {
@@ -45,13 +46,15 @@ public class EmailController {
             return "Error in sending email: "+ex;
         }
     }
+    */
     
     public void sendEmail(Users user, VerificationToken verificationToken) throws Exception {
     	MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);
-            
+
             String name = user.getFirstname();
-            String url = "http://localhost:8080/welcomeview/".concat(String.valueOf(user.getUserid())).concat("/").concat(verificationToken.getToken());
+            String vtoken = verificationToken.getVtoken();
+            String url = "http://localhost:8080/welcomeview/".concat(String.valueOf(user.getUserid())).concat("/").concat(vtoken);
             String content = mailContentBuilder.build(name, url);
             messageHelper.setTo("cmeyerwps@gmail.com");
             messageHelper.setSubject("YellowSnowCone - Please Verify Your Email");
@@ -63,6 +66,7 @@ public class EmailController {
         	e.printStackTrace();
         }
     }
+    /*
     public void sendEmail() throws Exception {
     	MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);
@@ -80,6 +84,7 @@ public class EmailController {
         	e.printStackTrace();
         }
     }
+    */
     
     /*
     public void sendEmail() throws Exception {

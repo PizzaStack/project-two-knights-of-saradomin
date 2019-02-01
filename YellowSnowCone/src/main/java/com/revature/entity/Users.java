@@ -1,11 +1,15 @@
 package com.revature.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,13 +18,17 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "userid", updatable = false, nullable = false)
-	private Integer userid;
+	private int userid;
 	private String email;
 	private String password;
 	private String firstname;
 	private String lastname;
 	private String profilepicturepath;
 	private boolean enabled;
+	
+	@OneToOne(optional=true, cascade = CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=true)
+    @JoinColumn(name="userid")
+	private VerificationToken verificationToken;
 	
 	public int getUserid() {
 		return userid;
@@ -63,6 +71,12 @@ public class Users {
 	}
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	public VerificationToken getVerificationToken() {
+		return verificationToken;
+	}
+	public void setVerificationToken(VerificationToken verificationToken) {
+		this.verificationToken = verificationToken;
 	}
 	@Override
 	public String toString() {
