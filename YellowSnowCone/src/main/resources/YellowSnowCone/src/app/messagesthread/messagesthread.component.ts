@@ -13,6 +13,8 @@ import { UserService } from '../user.service';
 })
 export class MessagesthreadComponent implements OnInit {
 
+  messageTimerId;
+
   userid: number = 0;
 
   specificMessages: string[] = [];
@@ -57,9 +59,10 @@ export class MessagesthreadComponent implements OnInit {
     this.userid = this.userService.getLoggedInUsers()[0].userid;
     this.messageService.getMessagesById()
       .subscribe(data => this.messages = data,(err) => console.log(err),() => this.loadMessages());
-    setInterval(() => {
+    this.messageTimerId = setInterval(() => {
       this.refreshMessages();
-    }, 500);
+    }, 1000);
+    this.storage.setMessageTimerId(this.messageTimerId);
   }
 
 
@@ -75,30 +78,15 @@ export class MessagesthreadComponent implements OnInit {
         user2: this.user2
       };
       this.messageService.addMessage(this.message);
-      this.specificMessages.push("Me: " + messageContent.value);
   }
 
   refreshMessages(){
       this.newSpecificMessages = [];
       this.messageService.getMessagesById()
       .subscribe(data => this.messages = data,(err) => console.log(err),() => this.loadMessages());
-      console.log("refresh messages");
   }
 
   loadMessages() {
-    for (let i of this.messages) {
-      if (i.userid1 === this.userid) {
-        this.users.push(i.user2.firstname + ' ' + i.user2.lastname);
-      } else {
-        this.users.push(i.user1.firstname + ' ' + i.user1.lastname);
-      }
-    }
-    this.users = this.users.filter(function (elem, index, self) {
-      return index === self.indexOf(elem);
-    })
-
-    this.users.reverse();
-
     this.storage.setUserId1(this.userid);
     for (let i of this.messages) {
       if (i.userid1 === this.userid) {
@@ -123,8 +111,6 @@ export class MessagesthreadComponent implements OnInit {
         }
       }
     }
-    this.storage.setScope(this.specificMessages);
-
 
     this.specificMessagesLengthOriginal = this.specificMessages.length;
 

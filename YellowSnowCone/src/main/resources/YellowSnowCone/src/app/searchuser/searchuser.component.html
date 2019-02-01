@@ -1,10 +1,9 @@
-<div>
     <div class="navbar">
         <ul class="">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" #searchContents>
+                <input type="text" autofocus="autofocus" class="form-control" placeholder="Search" #searchContents (keyup.enter)="search(searchContents)" (keyup.enter)="clearMessageRefresh()" (keyup.enter)="searchContents.value=''">
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button" (click)="search(searchContents)" (click)="searchContents.value=''">
+                  <button class="btn btn-secondary" type="button" (click)="search(searchContents)" (click)="searchContents.value=''" (click)="clearMessageRefresh()">
                     <i class="fa fa-search"></i>
                   </button>
                 </div>
@@ -34,4 +33,3 @@
             </div>
         </div>
     </div>
-</div>
