@@ -17,7 +17,7 @@ export class UserpostService {
   ) { }
 
   
-  getPostsById(userId): Observable<Posts[]> {
+  getPostsById(userId:number): Observable<Posts[]> {
     return this.http.post<Posts[]>(this.userposts, userId);
   }
 }
