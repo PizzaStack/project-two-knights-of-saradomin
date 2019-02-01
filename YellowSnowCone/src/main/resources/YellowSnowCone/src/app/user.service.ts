@@ -12,17 +12,20 @@ import { Router } from '@angular/router';
 const httpPostOptions = {
   headers: new HttpHeaders({ 
     'Content-Type': 'application/json', 
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
   })
 };
 const httpGetOptions = {
   headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
   })
 };
 const httpTextOptions = {
   headers: new HttpHeaders({
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
   })
 }
 

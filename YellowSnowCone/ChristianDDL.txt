@@ -15,6 +15,12 @@ create table users
 	enabled boolean default(false)
 );
 
+create table 
+(
+	userid SERIAL REFERENCES users(userid),
+	token VARCHAR(500) UNIQUE
+);
+
 create table userposts
 (
 	postid serial primary key,

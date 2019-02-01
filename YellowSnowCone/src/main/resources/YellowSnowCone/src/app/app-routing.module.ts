@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: "messages", component: MessagesComponent },
   { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
   { path: 'messagesthread', component: MessagesthreadComponent },
-  { path: 'searchuser', component: SearchuserComponent}
+  { path: 'searchuser', component: SearchuserComponent},
+  { path: 'logo', redirectTo: ''}
 ];
 
 @NgModule({

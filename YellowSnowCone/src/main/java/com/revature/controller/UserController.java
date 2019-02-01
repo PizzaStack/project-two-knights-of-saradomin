@@ -2,6 +2,7 @@ package com.revature.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -114,7 +115,7 @@ public class UserController {
 
 		if (newUser != null) {
 			try {
-				emailController.sendEmail();
+				emailController.sendEmail(newUser);
 			} catch (Exception e) {
 				logger.info("Unable To Send Verification Email");
 				e.printStackTrace();
@@ -135,5 +136,9 @@ public class UserController {
 		return "redirect:/mainview";
 	}
 
+	@GetMapping("users/{token}")
+	public String verifyUser(@RequestParam String token) {
+		return null;
+	}
 	
 }

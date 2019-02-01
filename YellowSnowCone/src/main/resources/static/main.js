@@ -1523,7 +1523,7 @@ var RegisterComponent = /** @class */ (function () {
     RegisterComponent.prototype.ngOnInit = function () {
         this._authService.logout();
         this._url = 'http://localhost:8080/';
-        this.newUserModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](-1, null, null, null, null, null, false);
+        this.newUserModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](null, null, null, null, null, null, false);
         this.registrationForm = this.formBuilder.group({
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].email]],
             password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(4)]],
@@ -1542,12 +1542,12 @@ var RegisterComponent = /** @class */ (function () {
         this._userService.addNewUser(user).subscribe(function (data) {
             _this.newUser = data;
             var anewUser = _this.newUser;
-            if (anewUser.userid === null || anewUser.userid != -1) {
+            if (anewUser.userid !== null && anewUser.userid != -1) {
                 console.log("Registration Successful");
                 console.log('anewUser: ' + JSON.stringify(anewUser));
                 console.log('self._url=' + self._url);
                 //this._userService.addLoggedInUser(this.loggedInUser);
-                localStorage.setItem('isLoggedIn', "true");
+                localStorage.setItem('isRegistered', "true");
                 localStorage.setItem('token', anewUser.userid.toString());
                 sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
                     title: "Success",
@@ -1556,7 +1556,7 @@ var RegisterComponent = /** @class */ (function () {
                     timer: 3000
                 });
             }
-            else if (anewUser.userid === -1) {
+            else if (anewUser.userid === -1 || anewUser.userid === null) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
                     title: "Error",
                     text: "There is already an account associated with that email.",
