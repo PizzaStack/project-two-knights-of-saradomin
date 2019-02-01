@@ -37,7 +37,6 @@ public class UserMessageController {
 				messageList2.add(userMessage);
 			}
 		}
-
 		return messageList2;
 	}
 
@@ -47,21 +46,4 @@ public class UserMessageController {
 		messageRepository.save(userMessage);
 	}
 
-//	@PostMapping("/addMessage")
-//	public void addMessage(
-//			@RequestBody
-//			String userMessage
-//			) {
-//		int userId1 = 0;
-//		int userId2 = 0;
-//		String textContents = "";
-//		String userMessageTrimmed = "";
-//		
-//		userId1 = Integer.parseInt(userMessage.substring(0,userMessage.indexOf(";")));
-//		userMessageTrimmed = userMessage.substring(userMessage.indexOf(";") + 1,userMessage.length());
-//		userId2 = Integer.parseInt(userMessageTrimmed.substring(0,userMessageTrimmed.indexOf(";")));
-//		textContents = userMessageTrimmed.substring(userMessageTrimmed.indexOf(";") + 1,userMessageTrimmed.length());
-//		System.out.println(userId1 + " " + userId2 + " " + textContents);
-//
-//	}
 }

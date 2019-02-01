@@ -10,6 +10,8 @@ export class StorageService {
 
    baseUrl: string = "http://localhost:8080/";
 
+  messageTimerId;
+
   searchResults: Users[];
 
   textContents: string;
@@ -112,5 +114,13 @@ export class StorageService {
 
   public setMessageThreadUser(messageThreadUser: string): void {
     this.messageThreadUser = messageThreadUser;
+  }
+
+  public getMessageTimerId() {
+    return this.messageTimerId;
+  }
+
+  public setMessageTimerId(messageTimerId): void {
+    this.messageTimerId = messageTimerId;
   }
 }

@@ -113,4 +113,8 @@ export class SearchuserComponent implements OnInit {
     }
     }
   }
+
+  clearMessageRefresh(){
+    clearInterval(this.storageService.getMessageTimerId());
+  }
 }

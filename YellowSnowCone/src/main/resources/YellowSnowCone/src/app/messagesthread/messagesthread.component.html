@@ -15,7 +15,7 @@
                   {{specificMessage}}
                 </li>
               </ul>
-              <input id="messageContent" type="text" #messageContent><button id="send" (click)="send(messageContent)"
+              <input id="messageContent" type="text" #messageContent (keyup.enter)="send(messageContent)" (keyup.enter)="messageContent.value=''"><button id="send" (click)="send(messageContent)"
                 (click)="messageContent.value=''">Send</button>
             </div>
           </div>
