@@ -453,8 +453,8 @@ var FriendService = /** @class */ (function () {
         this.http = http;
         this.storage = storage;
         this.userService = userService;
-        this.friendsByIdUrl = "http://localhost:8080/relationsById";
-        this.addFriendUrl = "http://localhost:8080/addFriend";
+        this.friendsByIdUrl = this.storage.getBaseUrl() + "relationsById";
+        this.addFriendUrl = this.storage.getBaseUrl() + "addFriend";
         this.userId = this.userService.getLoggedInUsers()[0].userid;
     }
     FriendService.prototype.getFriendsById = function () {
@@ -685,7 +685,7 @@ module.exports = ".navbar {\r\n    background-color: white;\r\n    box-shadow: 0
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n  <a class=\"navbar-brand\" href=\"#\">\r\n    <h1> <strong> Yellow Snow Cone</strong></h1>\r\n  </a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav ml-auto\">\r\n      <!--\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.email.errors }\">\r\n          <input type=\"email\" formControlName=\"email\" class=\"form-control clearfix\" id=\"login_Email\" aria-describedby=\"emailHelp\"\r\n            placeholder=\"Email\">\r\n          \r\n        </div>\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.password.errors }\">\r\n          <input type=\"password\" formControlName=\"password\" class=\"form-control clearfix\" id=\"login_Password\">\r\n        </div>\r\n        <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n      </form>\r\n      -->\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n          <input type=\"email\" name=\"email\" formControlName=\"email\" class=\"form-control\" id=\"login_Email\"\r\n            aria-describedby=\"emailHelp\" placeholder=\"Enter Email\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n          <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.email.errors.required\">Email Is Required</div>\r\n            <div *ngIf=\"f.email.errors.email\">Email Must Be A Valid Email Address</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <input type=\"password\" name=\"password\" formControlName=\"password\" class=\"form-control\" id=\"login_Password\"\r\n            placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n          <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n            <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"loading\">Log In</button>\r\n        </div>\r\n      </form>\r\n    </ul>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n  <a class=\"navbar-brand\" href=\"#\">\r\n    <h1> <strong>Yellow Snowcone</strong></h1>\r\n  </a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav ml-auto\">\r\n      <!--\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.email.errors }\">\r\n          <input type=\"email\" formControlName=\"email\" class=\"form-control clearfix\" id=\"login_Email\" aria-describedby=\"emailHelp\"\r\n            placeholder=\"Email\">\r\n          \r\n        </div>\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.password.errors }\">\r\n          <input type=\"password\" formControlName=\"password\" class=\"form-control clearfix\" id=\"login_Password\">\r\n        </div>\r\n        <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n      </form>\r\n      -->\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n          <input type=\"email\" name=\"email\" formControlName=\"email\" class=\"form-control\" id=\"login_Email\"\r\n            aria-describedby=\"emailHelp\" placeholder=\"Enter Email\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n          <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.email.errors.required\">Email Is Required</div>\r\n            <div *ngIf=\"f.email.errors.email\">Email Must Be A Valid Email Address</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <input type=\"password\" name=\"password\" formControlName=\"password\" class=\"form-control\" id=\"login_Password\"\r\n            placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n          <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n            <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"loading\">Log In</button>\r\n        </div>\r\n      </form>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -955,8 +955,8 @@ var MessageService = /** @class */ (function () {
         this.userService = userService;
         this.userId = this.userService.getLoggedInUsers()[0].userid;
         this.messages = [];
-        this.messagesByIdUrl = 'http://localhost:8080/messagesById';
-        this.addMessagesUrl = 'http://localhost:8080/addMessage';
+        this.messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
+        this.addMessagesUrl = this.storage.getBaseUrl() + "addMessage";
     }
     // getMessages (): Observable<Message[]> {
     //   return this.http.get<Message[]>(this.messagesUrl);
@@ -1058,6 +1058,7 @@ var MessagesComponent = /** @class */ (function () {
         this.users.reverse();
     };
     MessagesComponent.prototype.populateMessageThread = function (user) {
+        this.storage.setMessageThreadUser(user);
         this.storage.setUserId1(this.userid);
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
             var i = _a[_i];
@@ -1133,21 +1134,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
 /* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../message.service */ "./src/app/message.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+
 
 
 
 
 var MessagesthreadComponent = /** @class */ (function () {
-    function MessagesthreadComponent(messageService, storage) {
+    function MessagesthreadComponent(messageService, storage, userService) {
         this.messageService = messageService;
         this.storage = storage;
+        this.userService = userService;
+        this.userid = 0;
+        this.specificMessages = [];
+        this.messages = [];
+        this.users = [];
+        this.newSpecificMessages = [];
+        this.specificMessagesLengthOriginal = 0;
+        this.specificMessagesLengthNew = 0;
     }
     MessagesthreadComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.specificMessages = this.storage.getScope();
         this.userId1 = this.storage.getUserId1();
         this.userId2 = this.storage.getUserId2();
         this.user1 = this.storage.getUser1();
         this.user2 = this.storage.getUser2();
+        this.userid = this.userService.getLoggedInUsers()[0].userid;
+        this.messageService.getMessagesById()
+            .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
+        setInterval(function () {
+            _this.refreshMessages();
+        }, 500);
     };
     MessagesthreadComponent.prototype.send = function (messageContent) {
         this.message = {
@@ -1162,13 +1180,63 @@ var MessagesthreadComponent = /** @class */ (function () {
         this.messageService.addMessage(this.message);
         this.specificMessages.push("Me: " + messageContent.value);
     };
+    MessagesthreadComponent.prototype.refreshMessages = function () {
+        var _this = this;
+        this.newSpecificMessages = [];
+        this.messageService.getMessagesById()
+            .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
+        console.log("refresh messages");
+    };
+    MessagesthreadComponent.prototype.loadMessages = function () {
+        for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
+            var i = _a[_i];
+            if (i.userid1 === this.userid) {
+                this.users.push(i.user2.firstname + ' ' + i.user2.lastname);
+            }
+            else {
+                this.users.push(i.user1.firstname + ' ' + i.user1.lastname);
+            }
+        }
+        this.users = this.users.filter(function (elem, index, self) {
+            return index === self.indexOf(elem);
+        });
+        this.users.reverse();
+        this.storage.setUserId1(this.userid);
+        for (var _b = 0, _c = this.messages; _b < _c.length; _b++) {
+            var i = _c[_b];
+            if (i.userid1 === this.userid) {
+                if (this.storage.getMessageThreadUser() === (i.user2.firstname + ' ' + i.user2.lastname)) {
+                    this.newSpecificMessage = "Me: " + i.textcontents;
+                    this.newSpecificMessages.push(this.newSpecificMessage);
+                    this.storage.setUserId2(i.user2.userid);
+                    this.storage.setUser1(i.user1);
+                    this.storage.setUser2(i.user2);
+                }
+            }
+            else {
+                if (this.storage.getMessageThreadUser() === (i.user1.firstname + ' ' + i.user1.lastname)) {
+                    this.newSpecificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
+                    this.newSpecificMessages.push(this.newSpecificMessage);
+                    this.storage.setUserId2(i.user1.userid);
+                    this.storage.setUser1(i.user2);
+                    this.storage.setUser2(i.user1);
+                }
+            }
+        }
+        this.storage.setScope(this.specificMessages);
+        this.specificMessagesLengthOriginal = this.specificMessages.length;
+        this.specificMessagesLengthNew = this.newSpecificMessages.length;
+        if (this.specificMessagesLengthNew > this.specificMessagesLengthOriginal) {
+            this.specificMessages = this.newSpecificMessages;
+        }
+    };
     MessagesthreadComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-messagesthread',
             template: __webpack_require__(/*! ./messagesthread.component.html */ "./src/app/messagesthread/messagesthread.component.html"),
             styles: [__webpack_require__(/*! ./messagesthread.component.css */ "./src/app/messagesthread/messagesthread.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"], _storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"], _storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]])
     ], MessagesthreadComponent);
     return MessagesthreadComponent;
 }());
@@ -1476,13 +1544,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var NewpostService = /** @class */ (function () {
-    function NewpostService(http) {
+    function NewpostService(http, storage) {
         this.http = http;
-        this.newPostUrl = 'http://localhost:8080/userposts/add';
+        this.storage = storage;
+        this.newPostUrl = this.storage.getBaseUrl() + 'userposts/add';
     }
     NewpostService.prototype.createPost = function (data) {
         this.http.post(this.newPostUrl, data).subscribe();
@@ -1491,7 +1562,8 @@ var NewpostService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], NewpostService);
     return NewpostService;
 }());
@@ -1577,7 +1649,7 @@ module.exports = "small {\r\n    text-align: center\r\n}\r\n\r\n.card {\r\n    m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1623,7 +1695,9 @@ var PostComponent = /** @class */ (function () {
                 id2: i.postid + ' dislike',
                 postinteractions: i.postinteractions,
                 src1: '../../assets/snowconeshadow.png',
-                src2: '../../assets/snowconeshadowupsidedown.png'
+                src2: '../../assets/snowconeshadowupsidedown.png',
+                likecount: 0,
+                dislikecount: 0
             };
             this.postContent.push(this.post);
         }
@@ -1643,14 +1717,35 @@ var PostComponent = /** @class */ (function () {
                         i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
                     }
                 }
+                if (j.type === 1) {
+                    i.likecount++;
+                }
+                else if (j.type === 0) {
+                    i.dislikecount++;
+                }
             }
         }
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
         var postId = likeimg.split(" ")[0];
+        var dislikeimg = postId + ' dislike';
         postId = +postId;
+        var img2 = document.getElementById(dislikeimg);
         if (img.src.split('/').pop() === 'snowconeshadow.png') {
+            if (img2.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
+                img2.src = '../../assets/snowconeshadowupsidedown.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.dislikecount--;
+                        dislikecount.innerHTML = "" + i.dislikecount;
+                    }
+                }
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
             img.src = '../../assets/snowconelikeshadow.png';
             this.postInteraction = {
                 interactionid: null,
@@ -1658,17 +1753,47 @@ var PostComponent = /** @class */ (function () {
                 userid: this.userId,
                 type: 1
             };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.likecount++;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
             this.postsService.addPostInteraction(this.postInteraction);
         }
         else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
             img.src = '../../assets/snowconeshadow.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.likecount--;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
         }
     };
     PostComponent.prototype.dislike = function (dislikeimg) {
         var img = document.getElementById(dislikeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
         var postId = dislikeimg.split(" ")[0];
+        var likeimg = postId + ' like';
         postId = +postId;
+        var img2 = document.getElementById(likeimg);
         if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
+            if (img2.src.split('/').pop() === 'snowconelikeshadow.png') {
+                img2.src = '../../assets/snowconeshadow.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.likecount--;
+                        likecount.innerHTML = "" + i.likecount;
+                    }
+                }
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
             img.src = '../../assets/snowconedislikeshadowupsidedown.png';
             this.postInteraction = {
                 interactionid: null,
@@ -1676,10 +1801,25 @@ var PostComponent = /** @class */ (function () {
                 userid: this.userId,
                 type: 0
             };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.dislikecount++;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
             this.postsService.addPostInteraction(this.postInteraction);
         }
         else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
             img.src = '../../assets/snowconeshadowupsidedown.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.dislikecount--;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
         }
     };
     PostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1710,15 +1850,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var PostsService = /** @class */ (function () {
-    function PostsService(http) {
+    function PostsService(http, storage) {
         this.http = http;
-        this.userposts = 'http://localhost:8080/userposts';
-        this.addpostinteraction = 'http://localhost:8080/addinteraction';
-        this.getpostinteraction = 'http://localhost:8080/getinteractionsbyid';
+        this.storage = storage;
+        this.userposts = this.storage.getBaseUrl() + 'userposts';
+        this.addpostinteraction = this.storage.getBaseUrl() + 'addinteraction';
+        this.getpostinteraction = this.storage.getBaseUrl() + 'getinteractionsbyid';
+        this.deletepostinteraction = this.storage.getBaseUrl() + 'removeinteractionsbyid/';
     }
     PostsService.prototype.getPostsById = function (userId) {
         return this.http.post(this.userposts, userId);
@@ -1729,11 +1873,15 @@ var PostsService = /** @class */ (function () {
     PostsService.prototype.getInteractionsById = function (userId) {
         return this.http.post(this.getpostinteraction, userId);
     };
+    PostsService.prototype.deletePostInteraction = function (postid, userid) {
+        this.http.delete(this.deletepostinteraction + postid + '/' + userid).subscribe();
+    };
     PostsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], PostsService);
     return PostsService;
 }());
@@ -2193,7 +2341,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        this.baseUrl = "http://localhost:8080/";
+        this.baseUrl = "http://18.191.217.180:8888/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -2249,6 +2397,12 @@ var StorageService = /** @class */ (function () {
     };
     StorageService.prototype.getBaseUrl = function () {
         return this.baseUrl;
+    };
+    StorageService.prototype.getMessageThreadUser = function () {
+        return this.messageThreadUser;
+    };
+    StorageService.prototype.setMessageThreadUser = function (messageThreadUser) {
+        this.messageThreadUser = messageThreadUser;
     };
     StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -2362,7 +2516,6 @@ var UserService = /** @class */ (function () {
         this.storage = storage;
         this.users = [];
         this.loggedInUsers = [];
-        // private _url = this.storage.getBaseUrl();
         this._url = this.storage.getBaseUrl();
     }
     UserService.prototype.getUsers = function () {
@@ -2697,7 +2850,11 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\jdeje\OneDrive\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+=======
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+>>>>>>> master
 
 
 /***/ })

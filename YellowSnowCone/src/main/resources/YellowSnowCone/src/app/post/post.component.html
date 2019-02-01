@@ -19,12 +19,12 @@
         <div class="col-lg-1">
           <input id="{{post.id1}}" (click)="like(post.id1)" type="image" src={{post.src1}} width="48"
             height="48">
-          <small id="liked" class="form-text text-muted">Like</small>
+          <small id="liked" class="form-text text-muted">{{post.likecount}}</small>
         </div>
         <div class="col-lg-1">
           <input id="{{post.id2}}" (click)="dislike(post.id2)" type="image" src={{post.src2}}
             width="48" height="48">
-          <small id="disliked" class="form-text text-muted">Hate</small>
+          <small id="disliked" class="form-text text-muted">{{post.dislikecount}}</small>
         </div>
         <div class="col-lg-5"></div>
         <div class="col-lg-3">

@@ -17,9 +17,9 @@ export class MessageService {
 
   messages: string[] = [];
 
-  private messagesByIdUrl = 'http://localhost:8080/messagesById';
+  private messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
 
-  private addMessagesUrl = 'http://localhost:8080/addMessage';
+  private addMessagesUrl = this.storage.getBaseUrl() + "addMessage";
 
   constructor(
     private http: HttpClient,
