@@ -45,7 +45,7 @@ export class FriendslistComponent implements OnInit {
       }
     }
 
-    this.users.reverse();
+    // this.users.reverse();
     
   }
 

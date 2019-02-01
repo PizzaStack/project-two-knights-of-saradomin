@@ -552,7 +552,7 @@ var FriendslistComponent = /** @class */ (function () {
                 }
             }
         }
-        this.users.reverse();
+        // this.users.reverse();
     };
     FriendslistComponent.prototype.populateMessageThread = function (user) {
         this.storage.setMessageThreadUser(user);
@@ -1834,15 +1834,6 @@ var PostsService = /** @class */ (function () {
     };
     PostsService.prototype.getPostByPostId = function (postId) {
         return this.http.post(this.postbypostid, postId);
-        // let promise = new Promise((reject) => {
-        //   this.http.post<Posts>(this.postbypostid, postId).toPromise().then(data => {
-        //     this.repost = data;
-        //     return this.repost;
-        //   },
-        //     msg => {
-        //       reject(msg)
-        //     });
-        // });
     };
     PostsService.prototype.addPostInteraction = function (body) {
         this.http.post(this.addpostinteraction, body).subscribe();
@@ -2844,7 +2835,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
