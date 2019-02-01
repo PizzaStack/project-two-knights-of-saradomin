@@ -26,6 +26,11 @@ public class UserPostsController {
 	public List<UserPosts> findByUserId(@RequestBody int userid) {
 		return dao.findByUserid(userid);
 	}
+	
+	@PostMapping("/postsbypostid")
+	public UserPosts findByPostId(@RequestBody int postid) {
+		return dao.findByPostid(postid);
+	}
 
 	@PostMapping("/userposts/add")
 	public void addPost(@RequestBody UserPosts userposts) {

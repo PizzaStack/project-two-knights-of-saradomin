@@ -3,6 +3,7 @@ import { PostsService } from '../posts.service';
 import { Posts } from '../posts';
 import { PostInteractions } from '../postinteractions';
 import { UserService } from '../user.service';
+import { NewpostService } from '../newpost.service';
 
 @Component({
   selector: 'app-post',
@@ -39,7 +40,7 @@ export class PostComponent implements OnInit {
 
   userId = this.userService.getLoggedInUsers()[0].userid;
 
-  constructor(private postsService: PostsService, private userService: UserService) { }
+  constructor(private postsService: PostsService, private userService: UserService, private newpostService: NewpostService) { }
 
   ngOnInit() {
     this.postsService.getPostsById(this.userId)
@@ -199,5 +200,9 @@ export class PostComponent implements OnInit {
         }
       }
     }
+  }
+
+  repost(postid: any): void {
+    let repost = this.postsService.getPostsById
   }
 }

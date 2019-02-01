@@ -12,4 +12,8 @@ export class RepostComponent implements OnInit {
   ngOnInit() {
   }
 
+  repost(): void {
+    
+  }
+
 }

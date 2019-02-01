@@ -37,4 +37,6 @@ export class PostsService {
   deletePostInteraction(postid: number, userid: number): void {
     this.http.delete(this.deletepostinteraction + postid + '/' + userid).subscribe();
   }
+
+  
 }
