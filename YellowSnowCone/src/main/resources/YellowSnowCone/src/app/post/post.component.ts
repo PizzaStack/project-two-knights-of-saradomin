@@ -16,11 +16,11 @@ export class PostComponent implements OnInit {
   postInteraction: PostInteractions;
 
   post: {
-    content: string;
-    name: string;
-    id: number;
-    id1: any;
-    id2: any;
+    content: string,
+    name: string,
+    id: number,
+    id1: any,
+    id2: any,
     postinteractions: PostInteractions[],
     src1: string,
     src2: string,
