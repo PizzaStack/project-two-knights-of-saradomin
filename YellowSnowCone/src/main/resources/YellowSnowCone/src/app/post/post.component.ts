@@ -23,7 +23,9 @@ export class PostComponent implements OnInit {
     id2: any;
     postinteractions: PostInteractions[],
     src1: string,
-    src2: string
+    src2: string,
+    likecount: number,
+    dislikecount: number
   };
 
   interactionIdAndType: {
@@ -54,7 +56,9 @@ export class PostComponent implements OnInit {
         id2: i.postid + ' dislike',
         postinteractions: i.postinteractions,
         src1: '../../assets/snowconeshadow.png',
-        src2: '../../assets/snowconeshadowupsidedown.png'
+        src2: '../../assets/snowconeshadowupsidedown.png',
+        likecount: 0,
+        dislikecount: 0
       };
       this.postContent.push(this.post);
     }
@@ -72,17 +76,42 @@ export class PostComponent implements OnInit {
             i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
           }
         }
+
+        if (j.type === 1) {
+          i.likecount++;
+        } else if (j.type === 0) {
+          i.dislikecount++;
+        }
       }
     }
   }
 
   like(likeimg: any): void {
     const img = document.getElementById(likeimg) as HTMLImageElement;
+    const likecount = document.getElementById('liked');
+    const dislikecount = document.getElementById('disliked');
 
     let postId = likeimg.split(" ")[0];
+    let dislikeimg = postId + ' dislike';
     postId = +postId;
 
+    const img2 = document.getElementById(dislikeimg) as HTMLImageElement;
+
     if (img.src.split('/').pop() === 'snowconeshadow.png') {
+
+      if (img2.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
+        img2.src = '../../assets/snowconeshadowupsidedown.png';
+
+        for (let i of this.postContent) {
+          if (i.id === postId) {
+            i.dislikecount--;
+            dislikecount.innerHTML = `${i.dislikecount}`;
+          }
+        }
+
+        this.postsService.deletePostInteraction(postId, this.userId);
+      }
+
       img.src = '../../assets/snowconelikeshadow.png';
 
       this.postInteraction = {
@@ -92,21 +121,55 @@ export class PostComponent implements OnInit {
         type: 1
       }
 
+      for (let i of this.postContent) {
+        if (i.id === postId) {
+          i.likecount++;
+          likecount.innerHTML = `${i.likecount}`;
+        }
+      }
+
       this.postsService.addPostInteraction(this.postInteraction);
 
     } else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
       img.src = '../../assets/snowconeshadow.png';
+      this.postsService.deletePostInteraction(postId, this.userId);
+
+      for (let i of this.postContent) {
+        if (i.id === postId) {
+          i.likecount--;
+          likecount.innerHTML = `${i.likecount}`;
+        }
+      }
+
     }
   }
 
-
   dislike(dislikeimg: any): void {
     const img = document.getElementById(dislikeimg) as HTMLImageElement;
+    const likecount = document.getElementById('liked');
+    const dislikecount = document.getElementById('disliked');
 
     let postId = dislikeimg.split(" ")[0];
+    let likeimg = postId + ' like';
     postId = +postId;
 
+    const img2 = document.getElementById(likeimg) as HTMLImageElement;
+
     if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
+
+      if (img2.src.split('/').pop() === 'snowconelikeshadow.png') {
+        img2.src = '../../assets/snowconeshadow.png';
+
+        for (let i of this.postContent) {
+          if (i.id === postId) {
+            i.likecount--;
+            likecount.innerHTML = `${i.likecount}`;
+          }
+        }
+
+        this.postsService.deletePostInteraction(postId, this.userId);
+      }
+
       img.src = '../../assets/snowconedislikeshadowupsidedown.png';
 
       this.postInteraction = {
@@ -116,10 +179,25 @@ export class PostComponent implements OnInit {
         type: 0
       }
 
+      for (let i of this.postContent) {
+        if (i.id === postId) {
+          i.dislikecount++;
+          dislikecount.innerHTML = `${i.dislikecount}`;
+        }
+      }
+
       this.postsService.addPostInteraction(this.postInteraction);
 
     } else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
       img.src = '../../assets/snowconeshadowupsidedown.png';
+      this.postsService.deletePostInteraction(postId, this.userId);
+
+      for (let i of this.postContent) {
+        if (i.id === postId) {
+          i.dislikecount--;
+          dislikecount.innerHTML = `${i.dislikecount}`;
+        }
+      }
     }
   }
 }
