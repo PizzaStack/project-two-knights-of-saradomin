@@ -4,7 +4,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" #searchContents>
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button" (click)="search(searchContents)" (click)="searchContents.value=''">
+                  <button class="btn btn-secondary" type="button" (click)="search(searchContents)" (click)="searchContents.value=''" (click)="clearMessageRefresh()">
                     <i class="fa fa-search"></i>
                   </button>
                 </div>

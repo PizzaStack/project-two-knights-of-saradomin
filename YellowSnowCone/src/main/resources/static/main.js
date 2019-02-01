@@ -1059,13 +1059,10 @@ var MessagesComponent = /** @class */ (function () {
     };
     MessagesComponent.prototype.populateMessageThread = function (user) {
         this.storage.setMessageThreadUser(user);
-        this.storage.setUserId1(this.userid);
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
             var i = _a[_i];
             if (i.userid1 === this.userid) {
                 if (user === (i.user2.firstname + ' ' + i.user2.lastname)) {
-                    this.specificMessage = "Me: " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
                     this.storage.setUserId2(i.user2.userid);
                     this.storage.setUser1(i.user1);
                     this.storage.setUser2(i.user2);
@@ -1073,15 +1070,13 @@ var MessagesComponent = /** @class */ (function () {
             }
             else {
                 if (user === (i.user1.firstname + ' ' + i.user1.lastname)) {
-                    this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
                     this.storage.setUserId2(i.user1.userid);
                     this.storage.setUser1(i.user2);
                     this.storage.setUser2(i.user1);
                 }
             }
         }
-        this.storage.setScope(this.specificMessages);
+        this.storage.setUserId1(this.userid);
     };
     MessagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1163,9 +1158,10 @@ var MessagesthreadComponent = /** @class */ (function () {
         this.userid = this.userService.getLoggedInUsers()[0].userid;
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
-        setInterval(function () {
+        this.messageTimerId = setInterval(function () {
             _this.refreshMessages();
-        }, 500);
+        }, 1000);
+        this.storage.setMessageTimerId(this.messageTimerId);
     };
     MessagesthreadComponent.prototype.send = function (messageContent) {
         this.message = {
@@ -1178,32 +1174,17 @@ var MessagesthreadComponent = /** @class */ (function () {
             user2: this.user2
         };
         this.messageService.addMessage(this.message);
-        this.specificMessages.push("Me: " + messageContent.value);
     };
     MessagesthreadComponent.prototype.refreshMessages = function () {
         var _this = this;
         this.newSpecificMessages = [];
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
-        console.log("refresh messages");
     };
     MessagesthreadComponent.prototype.loadMessages = function () {
+        this.storage.setUserId1(this.userid);
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
             var i = _a[_i];
-            if (i.userid1 === this.userid) {
-                this.users.push(i.user2.firstname + ' ' + i.user2.lastname);
-            }
-            else {
-                this.users.push(i.user1.firstname + ' ' + i.user1.lastname);
-            }
-        }
-        this.users = this.users.filter(function (elem, index, self) {
-            return index === self.indexOf(elem);
-        });
-        this.users.reverse();
-        this.storage.setUserId1(this.userid);
-        for (var _b = 0, _c = this.messages; _b < _c.length; _b++) {
-            var i = _c[_b];
             if (i.userid1 === this.userid) {
                 if (this.storage.getMessageThreadUser() === (i.user2.firstname + ' ' + i.user2.lastname)) {
                     this.newSpecificMessage = "Me: " + i.textcontents;
@@ -1223,7 +1204,6 @@ var MessagesthreadComponent = /** @class */ (function () {
                 }
             }
         }
-        this.storage.setScope(this.specificMessages);
         this.specificMessagesLengthOriginal = this.specificMessages.length;
         this.specificMessagesLengthNew = this.newSpecificMessages.length;
         if (this.specificMessagesLengthNew > this.specificMessagesLengthOriginal) {
@@ -1319,7 +1299,7 @@ module.exports = ".navbar {\r\n    background: transparent;\r\n    margin-left: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar\">\r\n  <ul class=\"\">\r\n    <div class=\"input-group\">\r\n      <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n      <div class=\"input-group-append\">\r\n        <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\">\r\n          <i class=\"fa fa-search\"></i>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </ul>\r\n</div>"
+module.exports = "<div class=\"navbar\">\r\n  <ul class=\"\">\r\n    <div class=\"input-group\">\r\n      <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n      <div class=\"input-group-append\">\r\n        <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\" (click)=\"clearMessageRefresh()\">\r\n          <i class=\"fa fa-search\"></i>\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </ul>\r\n</div>"
 
 /***/ }),
 
@@ -1379,6 +1359,9 @@ var NavbarComponent = /** @class */ (function () {
             this.storageService.setSearchResults(this.matchingUsers);
             this.router.navigate(["searchuser"]);
         }
+    };
+    NavbarComponent.prototype.clearMessageRefresh = function () {
+        clearInterval(this.storageService.getMessageTimerId());
     };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1475,6 +1458,7 @@ var NewmessageComponent = /** @class */ (function () {
         this.users.reverse();
     };
     NewmessageComponent.prototype.populateMessageThread = function (user) {
+        this.storage.setMessageThreadUser(user);
         for (var _i = 0, _a = this.friends; _i < _a.length; _i++) {
             var i = _a[_i];
             if (i.userid1 === this.userid) {
@@ -1493,28 +1477,6 @@ var NewmessageComponent = /** @class */ (function () {
             }
         }
         this.storage.setUserId1(this.userid);
-        for (var _b = 0, _c = this.messages; _b < _c.length; _b++) {
-            var i = _c[_b];
-            if (i.userid1 === this.userid) {
-                if (user === (i.user2.firstname + ' ' + i.user2.lastname)) {
-                    this.specificMessage = "Me: " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
-                    this.storage.setUserId2(i.user2.userid);
-                    this.storage.setUser1(i.user1);
-                    this.storage.setUser2(i.user2);
-                }
-            }
-            else {
-                if (user === (i.user1.firstname + ' ' + i.user1.lastname)) {
-                    this.specificMessage = i.user1.firstname + " " + i.user1.lastname + ": " + i.textcontents;
-                    this.specificMessages.push(this.specificMessage);
-                    this.storage.setUserId2(i.user1.userid);
-                    this.storage.setUser1(i.user2);
-                    this.storage.setUser2(i.user1);
-                }
-            }
-        }
-        this.storage.setScope(this.specificMessages);
     };
     NewmessageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2080,7 +2042,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <div class=\"navbar\">\r\n        <ul class=\"\">\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\" (click)=\"searchContents.value=''\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                  </button>\r\n                </div>\r\n              </div>\r\n         </ul>\r\n      </div>\r\n\r\n\r\n\r\n\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n  \r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                        <h2>Search results:</h2>\r\n                          <ul *ngFor=\"let searchResult of searchResults\">\r\n                            <li>\r\n                              {{searchResult.firstname}} {{searchResult.lastname}}\r\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userid)\">Add Friend</button>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div>\r\n    <div class=\"navbar\">\r\n        <ul class=\"\">\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Search\" #searchContents>\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\" (click)=\"searchContents.value=''\" (click)=\"clearMessageRefresh()\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                  </button>\r\n                </div>\r\n              </div>\r\n         </ul>\r\n      </div>\r\n\r\n\r\n\r\n\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n  \r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                        <h2>Search results:</h2>\r\n                          <ul *ngFor=\"let searchResult of searchResults\">\r\n                            <li>\r\n                              {{searchResult.firstname}} {{searchResult.lastname}}\r\n                              <button>View Profile</button><button (click)=\"addFriend(searchResult.userid)\">Add Friend</button>\r\n                            </li>\r\n                        </ul>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -2194,6 +2156,9 @@ var SearchuserComponent = /** @class */ (function () {
             }
         }
     };
+    SearchuserComponent.prototype.clearMessageRefresh = function () {
+        clearInterval(this.storageService.getMessageTimerId());
+    };
     SearchuserComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-searchuser',
@@ -2227,7 +2192,7 @@ module.exports = "li {\r\n    margin-bottom: 15%;\r\n}\r\n\r\na {\r\n    color: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n        <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>{{name}}</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"/mainview\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"/mypost\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"/friendslist\">Friends List</a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"/messages\">Messages</a>\r\n        </li>\r\n    </ul>\r\n    <button type=\"submit\" class=\"btn \">Log Out</button>\r\n</nav>"
+module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n        <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>{{name}}</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"/mainview\" (click)=\"clearMessageRefresh()\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\" (click)=\"clearMessageRefresh()\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"/mypost\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"/friendslist\" (click)=\"clearMessageRefresh()\">Friends List</a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"/messages\" (click)=\"clearMessageRefresh()\">Messages</a>\r\n        </li>\r\n    </ul>\r\n    <button type=\"submit\" class=\"btn \" (click)=\"clearMessageRefresh()\">Log Out</button>\r\n</nav>"
 
 /***/ }),
 
@@ -2244,15 +2209,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+
 
 
 
 var SidemenuComponent = /** @class */ (function () {
-    function SidemenuComponent(userService) {
+    function SidemenuComponent(userService, storage) {
         this.userService = userService;
+        this.storage = storage;
     }
     SidemenuComponent.prototype.ngOnInit = function () {
         this.name = this.userService.getLoggedInUsers()[0].firstname + " " + this.userService.getLoggedInUsers()[0].lastname;
+    };
+    SidemenuComponent.prototype.clearMessageRefresh = function () {
+        clearInterval(this.storage.getMessageTimerId());
     };
     SidemenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2260,7 +2231,7 @@ var SidemenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sidemenu.component.html */ "./src/app/sidemenu/sidemenu.component.html"),
             styles: [__webpack_require__(/*! ./sidemenu.component.css */ "./src/app/sidemenu/sidemenu.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"], _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"]])
     ], SidemenuComponent);
     return SidemenuComponent;
 }());
@@ -2341,7 +2312,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        this.baseUrl = "http://18.191.217.180:8888/";
+        // baseUrl: string = "http://18.191.217.180:8888/";
+        this.baseUrl = "http://localhost:8080/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -2403,6 +2375,12 @@ var StorageService = /** @class */ (function () {
     };
     StorageService.prototype.setMessageThreadUser = function (messageThreadUser) {
         this.messageThreadUser = messageThreadUser;
+    };
+    StorageService.prototype.getMessageTimerId = function () {
+        return this.messageTimerId;
+    };
+    StorageService.prototype.setMessageTimerId = function (messageTimerId) {
+        this.messageTimerId = messageTimerId;
     };
     StorageService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

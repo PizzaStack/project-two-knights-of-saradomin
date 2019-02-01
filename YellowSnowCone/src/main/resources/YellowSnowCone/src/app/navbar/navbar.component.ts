@@ -49,4 +49,8 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(["searchuser"]);
     }
   }
+
+  clearMessageRefresh(){
+    clearInterval(this.storageService.getMessageTimerId());
+  }
 }

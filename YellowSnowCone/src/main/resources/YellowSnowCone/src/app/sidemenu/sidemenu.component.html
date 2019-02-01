@@ -9,20 +9,20 @@
         <li>
         </li>
         <li>
-            <a routerLink="/mainview">Home</a>
+            <a routerLink="/mainview" (click)="clearMessageRefresh()">Home</a>
         </li>
         <li>
-            <a href="#">Profile</a>
+            <a href="#" (click)="clearMessageRefresh()">Profile</a>
         </li>
         <li>
             <a href="/mypost">View My Post </a>
         </li>
         <li>
-            <a routerLink="/friendslist">Friends List</a>
+            <a routerLink="/friendslist" (click)="clearMessageRefresh()">Friends List</a>
         </li>
         <li>
-            <a routerLink="/messages">Messages</a>
+            <a routerLink="/messages" (click)="clearMessageRefresh()">Messages</a>
         </li>
     </ul>
-    <button type="submit" class="btn ">Log Out</button>
+    <button type="submit" class="btn " (click)="clearMessageRefresh()">Log Out</button>
 </nav>
