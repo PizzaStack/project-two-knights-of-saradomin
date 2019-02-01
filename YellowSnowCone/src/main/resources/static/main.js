@@ -1581,7 +1581,7 @@ module.exports = "small {\r\n    text-align: center\r\n}\r\n\r\n.card {\r\n    m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">Like</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">Hate</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <app-repost></app-repost>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1627,7 +1627,9 @@ var PostComponent = /** @class */ (function () {
                 id2: i.postid + ' dislike',
                 postinteractions: i.postinteractions,
                 src1: '../../assets/snowconeshadow.png',
-                src2: '../../assets/snowconeshadowupsidedown.png'
+                src2: '../../assets/snowconeshadowupsidedown.png',
+                likecount: 0,
+                dislikecount: 0
             };
             this.postContent.push(this.post);
         }
@@ -1647,11 +1649,19 @@ var PostComponent = /** @class */ (function () {
                         i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
                     }
                 }
+                if (j.type === 1) {
+                    i.likecount++;
+                }
+                else if (j.type === 0) {
+                    i.dislikecount++;
+                }
             }
         }
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
         var postId = likeimg.split(" ")[0];
         var dislikeimg = postId + ' dislike';
         postId = +postId;
@@ -1659,6 +1669,13 @@ var PostComponent = /** @class */ (function () {
         if (img.src.split('/').pop() === 'snowconeshadow.png') {
             if (img2.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
                 img2.src = '../../assets/snowconeshadowupsidedown.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.dislikecount--;
+                        dislikecount.innerHTML = "" + i.dislikecount;
+                    }
+                }
                 this.postsService.deletePostInteraction(postId, this.userId);
             }
             img.src = '../../assets/snowconelikeshadow.png';
@@ -1668,15 +1685,31 @@ var PostComponent = /** @class */ (function () {
                 userid: this.userId,
                 type: 1
             };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.likecount++;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
             this.postsService.addPostInteraction(this.postInteraction);
         }
         else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
             img.src = '../../assets/snowconeshadow.png';
             this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.likecount--;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
         }
     };
     PostComponent.prototype.dislike = function (dislikeimg) {
         var img = document.getElementById(dislikeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
         var postId = dislikeimg.split(" ")[0];
         var likeimg = postId + ' like';
         postId = +postId;
@@ -1684,6 +1717,13 @@ var PostComponent = /** @class */ (function () {
         if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
             if (img2.src.split('/').pop() === 'snowconelikeshadow.png') {
                 img2.src = '../../assets/snowconeshadow.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.likecount--;
+                        likecount.innerHTML = "" + i.likecount;
+                    }
+                }
                 this.postsService.deletePostInteraction(postId, this.userId);
             }
             img.src = '../../assets/snowconedislikeshadowupsidedown.png';
@@ -1693,11 +1733,25 @@ var PostComponent = /** @class */ (function () {
                 userid: this.userId,
                 type: 0
             };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.dislikecount++;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
             this.postsService.addPostInteraction(this.postInteraction);
         }
         else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
             img.src = '../../assets/snowconeshadowupsidedown.png';
             this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.dislikecount--;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
         }
     };
     PostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1740,7 +1794,7 @@ var PostsService = /** @class */ (function () {
         this.userposts = this.storage.getBaseUrl() + 'userposts';
         this.addpostinteraction = this.storage.getBaseUrl() + 'addinteraction';
         this.getpostinteraction = this.storage.getBaseUrl() + 'getinteractionsbyid';
-        this.deletepostinteraction = this.storage.getBaseUrl() + 'removeinteractionsbyid/'
+        this.deletepostinteraction = this.storage.getBaseUrl() + 'removeinteractionsbyid/';
     }
     PostsService.prototype.getPostsById = function (userId) {
         return this.http.post(this.userposts, userId);
@@ -2219,7 +2273,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        this.baseUrl = "http://3.16.107.15:8888/";
+        // baseUrl: string = "http://3.16.107.15:8888/";
+        this.baseUrl = "http://localhost:8080/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -2661,7 +2716,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
