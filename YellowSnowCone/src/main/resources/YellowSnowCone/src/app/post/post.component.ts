@@ -61,7 +61,9 @@ export class PostComponent implements OnInit {
   }
 
   loadPosts() {
+    let count = 0;
     for (const i of this.posts) {
+      count++;
       this.post = {
         content: i.textcontents,
         name: i.user.firstname + " " + i.user.lastname,
@@ -76,11 +78,15 @@ export class PostComponent implements OnInit {
       }
       this.postContent.push(this.post);
     }
-    this.loadLikesAndDislikes();
+    console.log('count: ' + count);
+    console.log('length: ' + this.posts.length);
+    if (count === this.posts.length) {
+      console.log('content: ' + JSON.stringify(this.postContent));
+      this.loadLikesAndDislikes();
+    }
   }
 
   loadLikesAndDislikes() {
-    this.postContent.sort();
     for (let i of this.postContent) {
       for (let j of i.postinteractions) {
         if (this.userId === j.userid) {
@@ -90,7 +96,6 @@ export class PostComponent implements OnInit {
             i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
           }
         }
-
         if (j.type === 1) {
           i.likecount++;
         } else if (j.type === 0) {
@@ -239,6 +244,7 @@ export class PostComponent implements OnInit {
           postinteractions: null
         };
         this.newpostService.createPost(post)
+        window.location.reload();
       },
         msg => {
           reject(msg)

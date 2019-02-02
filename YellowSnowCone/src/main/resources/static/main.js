@@ -1684,8 +1684,10 @@ var PostComponent = /** @class */ (function () {
         });
     };
     PostComponent.prototype.loadPosts = function () {
+        var count = 0;
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
+            count++;
             this.post = {
                 content: i.textcontents,
                 name: i.user.firstname + " " + i.user.lastname,
@@ -1700,10 +1702,14 @@ var PostComponent = /** @class */ (function () {
             };
             this.postContent.push(this.post);
         }
-        this.loadLikesAndDislikes();
+        console.log('count: ' + count);
+        console.log('length: ' + this.posts.length);
+        if (count === this.posts.length) {
+            console.log('content: ' + JSON.stringify(this.postContent));
+            this.loadLikesAndDislikes();
+        }
     };
     PostComponent.prototype.loadLikesAndDislikes = function () {
-        this.postContent.sort();
         for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
             var i = _a[_i];
             for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
@@ -1844,6 +1850,7 @@ var PostComponent = /** @class */ (function () {
                     postinteractions: null
                 };
                 _this.newpostService.createPost(post);
+                window.location.reload();
             }, function (msg) {
                 reject(msg);
             });
@@ -2962,7 +2969,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
