@@ -63,6 +63,11 @@ export class LoginComponent implements OnInit {
         this._userService.addLoggedInUser(this.loggedInUser);
         localStorage.setItem('isLoggedIn', "true");
         localStorage.setItem('token', this.loggedInUser.userid.toString());
+        localStorage.setItem('firstName', this.loggedInUser.firstname);
+        localStorage.setItem('lastName', this.loggedInUser.lastname);
+        localStorage.setItem('email', this.loggedInUser.email);
+        localStorage.setItem('password', this.loggedInUser.password);
+        localStorage.setItem('profilePicturePath', this.loggedInUser.profilePicturePath);
         this.router.navigate([this.mainviewUrl]);
       } else if ((this.loggedInUser.userid != null || this.loggedInUser.userid != -1)
         && this.loggedInUser.enabled == false){

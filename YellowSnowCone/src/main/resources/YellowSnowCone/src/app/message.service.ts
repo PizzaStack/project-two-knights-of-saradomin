@@ -11,7 +11,8 @@ import { UserService } from './user.service';
 })
 export class MessageService {
 
-  userId: number = this.userService.getLoggedInUsers()[0].userid;
+  // userId: number = this.userService.getLoggedInUsers()[0].userid;
+  userId = localStorage.getItem('token');
 
   addMessageStatus: addMessageStatus;
 
