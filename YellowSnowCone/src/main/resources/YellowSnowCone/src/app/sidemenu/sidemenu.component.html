@@ -24,5 +24,8 @@
             <a routerLink="/messages" (click)="clearMessageRefresh()">Messages</a>
         </li>
     </ul>
-    <button type="submit" class="btn " (click)="clearMessageRefresh()">Log Out</button>
+    <form (ngSubmit)="logout()">
+        <button type="submit" class="btn" (ngSubmit)="logout()">Log Out</button>
+    </form>
+
 </nav>

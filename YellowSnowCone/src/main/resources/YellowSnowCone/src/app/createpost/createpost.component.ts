@@ -38,7 +38,7 @@ export class CreatepostComponent implements OnInit {
       repostid: -1,
       user: this.user,
       postinteractions: null
-    }
+    };
 
     this.newPost.createPost(post);
     window.location.reload();
