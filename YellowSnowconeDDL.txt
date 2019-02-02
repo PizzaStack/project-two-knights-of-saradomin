@@ -12,7 +12,8 @@ create table users
 	password varchar(75) not null,
 	firstname varchar(50) not null,
 	lastname varchar(50) not null,
-	profilepicturepath varchar(200) null
+	profilepicturepath varchar(200) null,
+	enabled boolean default(false)
 );
 
 create table verificationtokens
