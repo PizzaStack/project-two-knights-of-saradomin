@@ -1,5 +1,5 @@
 drop table if exists usermessage;
-drop table if exists userrelationship;
+drop table if exists userrelations;
 drop table if exists postinteractions;
 drop table if exists userposts;
 drop table if exists verificationtokens;
