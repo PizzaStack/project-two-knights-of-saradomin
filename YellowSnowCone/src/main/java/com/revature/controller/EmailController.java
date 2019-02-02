@@ -35,19 +35,6 @@ public class EmailController {
     @Autowired
     public MailContentBuilder mailContentBuilder;
     
-    /*
-    @RequestMapping("/registrationEmail")
-    @ResponseBody
-    String sendRegistrationEmail() {
-        try {
-            sendEmail();
-            return "Email Sent!";
-        }catch(Exception ex) {
-            return "Error in sending email: "+ex;
-        }
-    }
-    */
-    
     public void sendEmail(Users user, VerificationToken verificationToken) throws Exception {
     	MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);

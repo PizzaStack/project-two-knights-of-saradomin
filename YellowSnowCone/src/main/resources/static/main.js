@@ -1540,14 +1540,13 @@ var RegisterComponent = /** @class */ (function () {
         var self = this;
         this._userService.addNewUser(user).subscribe(function (data) {
             _this.newUser = data;
-            var anewUser = _this.newUser;
-            if (anewUser.userid !== null && anewUser.userid != -1) {
+            var userApplicant = _this.newUser;
+            if (userApplicant.userid !== null && userApplicant.userid != -1) {
                 console.log("Registration Successful");
-                console.log('anewUser: ' + JSON.stringify(anewUser));
-                console.log('self._url=' + self._url);
-                //this._userService.addLoggedInUser(this.loggedInUser);
+                console.log('userApplicant: ' + JSON.stringify(userApplicant));
+                //console.log('self._url=' + self._url);
                 localStorage.setItem('isRegistered', "true");
-                localStorage.setItem('token', anewUser.userid.toString());
+                localStorage.setItem('token', userApplicant.userid.toString());
                 sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
                     title: "Success",
                     text: "Check Your Email!",
@@ -1555,7 +1554,7 @@ var RegisterComponent = /** @class */ (function () {
                     timer: 3000
                 });
             }
-            else if (anewUser.userid === -1 || anewUser.userid === null) {
+            else if (userApplicant.userid === -1 || userApplicant.userid === null) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()({
                     title: "Error",
                     text: "There is already an account associated with that email.",
@@ -1563,7 +1562,7 @@ var RegisterComponent = /** @class */ (function () {
                     timer: 3000
                 });
                 console.log('userid Is Null.');
-                console.log('anewUser Info: ' + JSON.stringify(anewUser));
+                console.log('userApplicant Info: ' + JSON.stringify(userApplicant));
             }
         });
     };
@@ -1984,7 +1983,7 @@ module.exports = "li{\r\n    margin-bottom: 15%;\r\n    \r\n}\r\na{\r\n    color
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n       <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>Name</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"/mypost\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Friends List</a>\r\n        </li>\r\n        <li>  \r\n           <a routerLink=\"/messages\">Messages</a>\r\n        </li>\r\n    </ul>\r\n    <button type=\"submit\" class=\"btn \">Log Out</button>\r\n\r\n</nav>"
+module.exports = "<nav id=\"sidebar\">\r\n    <div class=\"sidebar-header\">\r\n       <app-profilepicture></app-profilepicture>\r\n    </div>\r\n    <hr>\r\n    <p>Name</p>\r\n    <hr>\r\n    <ul class=\"list-unstyled components\">\r\n        <li>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Home</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Profile</a>\r\n        </li>\r\n        <li>\r\n            <a href=\"/mypost\">View My Post </a>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">Friends List</a>\r\n        </li>\r\n        <li>  \r\n           <a routerLink=\"/messages\">Messages</a>\r\n        </li>\r\n    </ul>\r\n    <form (ngSubmit)=\"logout()\">\r\n        <button type=\"submit\" class=\"btn\" (ngSubmit)=\"logout()\">Log Out</button>\r\n    </form>\r\n\r\n</nav>"
 
 /***/ }),
 
@@ -2000,12 +1999,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SidemenuComponent", function() { return SidemenuComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+
+
 
 
 var SidemenuComponent = /** @class */ (function () {
-    function SidemenuComponent() {
+    function SidemenuComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
     }
     SidemenuComponent.prototype.ngOnInit = function () {
+    };
+    SidemenuComponent.prototype.logout = function () {
+        console.log("Logout");
+        this.authService.logout();
+        this.router.navigate(['/welcomeview']);
     };
     SidemenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2013,7 +2023,8 @@ var SidemenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sidemenu.component.html */ "./src/app/sidemenu/sidemenu.component.html"),
             styles: [__webpack_require__(/*! ./sidemenu.component.css */ "./src/app/sidemenu/sidemenu.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], SidemenuComponent);
     return SidemenuComponent;
 }());
