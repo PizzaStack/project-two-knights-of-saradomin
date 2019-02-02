@@ -14,7 +14,8 @@ export class SidemenuComponent implements OnInit {
   constructor(private userService: UserService, private storage: StorageService) { }
 
   ngOnInit() {
-    this.name = this.userService.getLoggedInUsers()[0].firstname + " " + this.userService.getLoggedInUsers()[0].lastname;
+    // this.name = this.userService.getLoggedInUsers()[0].firstname + " " + this.userService.getLoggedInUsers()[0].lastname;
+    this.name = localStorage.getItem('firstName') + " " + localStorage.getItem('lastName');
   }
 
   clearMessageRefresh(){

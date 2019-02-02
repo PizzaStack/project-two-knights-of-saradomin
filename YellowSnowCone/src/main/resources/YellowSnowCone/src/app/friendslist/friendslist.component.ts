@@ -29,7 +29,8 @@ export class FriendslistComponent implements OnInit {
 
   ngOnInit() {
     this.friendService.getFriendsById().subscribe(data => this.friends = data,(error: any) => console.log(error),() => this.loadFriends());
-    this.userid = this.userService.getLoggedInUsers()[0].userid;
+    // this.userid = this.userService.getLoggedInUsers()[0].userid;
+    this.userid = parseInt(localStorage.getItem('token'));
     this.messageService.getMessagesById()
     .subscribe(data => this.messages = data);
   }

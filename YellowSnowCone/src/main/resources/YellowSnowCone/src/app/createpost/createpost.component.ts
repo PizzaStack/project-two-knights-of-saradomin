@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class CreatepostComponent implements OnInit {
 
-  user: Users[]
+  user: Users;
 
   constructor(
     private newPost: NewpostService,
@@ -19,41 +19,49 @@ export class CreatepostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.userService.getLoggedInUsers();
+    this.user = {
+        userid: parseInt(localStorage.getItem('token')),
+        email: localStorage.getItem('email'),
+        password: localStorage.getItem('password'),
+        firstname: localStorage.getItem('firstName'),
+        lastname: localStorage.getItem('lastName'),
+        profilePicturePath: localStorage.getItem('profilePicturePath')
+    };
   }
 
   createPost(data: any) {
     let post: Posts = {
       postid: null,
-      userid: this.user[0].userid,
+      userid: parseInt(localStorage.getItem('token')),
       textcontents: data.value,
       imagelocation: null,
       repostid: -1,
-      user: this.user[0],
+      user: this.user,
       postinteractions: null
     }
 
     this.newPost.createPost(post);
+    window.location.reload();
 
-    const view = document.getElementById('zmew')
-    view.innerHTML = `<app-navbar> </app-navbar>
-    <div class="wrapper">
-        <app-sidemenu></app-sidemenu>
-        <div id="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <app-createpost></app-createpost>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <app-post></app-post>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
-  }
+//     const view = document.getElementById('zmew')
+//     view.innerHTML = `<app-navbar> </app-navbar>
+//     <div class="wrapper">
+//         <app-sidemenu></app-sidemenu>
+//         <div id="content">
+//             <div class="container">
+//                 <div class="row">
+//                     <div class="col-lg-12">
+//                         <app-createpost></app-createpost>
+//                     </div>
+//                 </div>
+//                 <hr>
+//                 <div class="row">
+//                     <div class="col-lg-12">
+//                         <app-post></app-post>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>`;
+   }
 }

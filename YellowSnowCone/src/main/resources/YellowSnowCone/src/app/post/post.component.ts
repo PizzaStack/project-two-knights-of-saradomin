@@ -42,12 +42,12 @@ export class PostComponent implements OnInit {
 
   postContent = [];
 
-  userId = this.userService.getLoggedInUsers()[0].userid;
+  // userId = this.userService.getLoggedInUsers()[0].userid;
+  userId = parseInt(localStorage.getItem('token'));
 
   constructor(private postsService: PostsService, private userService: UserService, private newpostService: NewpostService, private friendService: FriendService) { }
 
   ngOnInit() {
-
     this.friendService.getFriendsById().subscribe(data => this.friends = data,
       (error: any) => console.log(error),
       () => {
@@ -76,11 +76,11 @@ export class PostComponent implements OnInit {
       }
       this.postContent.push(this.post);
     }
-    this.postContent.sort();
     this.loadLikesAndDislikes();
   }
 
   loadLikesAndDislikes() {
+    this.postContent.sort();
     for (let i of this.postContent) {
       for (let j of i.postinteractions) {
         if (this.userId === j.userid) {
@@ -220,13 +220,22 @@ export class PostComponent implements OnInit {
       this.postsService.getPostByPostId(postid).toPromise().then(data => {
         this.reposts = data;
 
+        let user = {
+          userid: parseInt(localStorage.getItem('token')),
+          email: localStorage.getItem('email'),
+          password: localStorage.getItem('password'),
+          firstname: localStorage.getItem('firstName'),
+          lastname: localStorage.getItem('lastName'),
+          profilePicturePath: localStorage.getItem('profilePicturePath')
+      };
+
         let post: Posts = {
           postid: null,
           userid: this.userId,
           textcontents: this.reposts.textcontents,
           imagelocation: this.reposts.imagelocation,
           repostid: this.reposts.postid,
-          user: this.userService.getLoggedInUsers()[0],
+          user: user,
           postinteractions: null
         };
         this.newpostService.createPost(post)
