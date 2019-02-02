@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -21,19 +22,20 @@ import { IconComponent } from './icon/icon.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { RepostComponent } from './repost/repost.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { SearchuserComponent } from './searchuser/searchuser.component';
+import { MypostViewComponent } from './mypost-view/mypost-view.component';
+import { UserpostComponent } from './userpost/userpost.component';
+import { RegisteredComponent } from './registered/registered.component';
 
 import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
 import { UserService } from './user.service';
-import { SearchuserComponent } from './searchuser/searchuser.component';
-import { ValidationService } from './validation.service'
-import { MypostViewComponent } from './mypost-view/mypost-view.component';
-import { UserpostComponent } from './userpost/userpost.component';
 import { NewmessageComponent } from './newmessage/newmessage.component';
 import { FriendslistComponent } from './friendslist/friendslist.component';
 import { OtheruserprofileComponent } from './otheruserprofile/otheruserprofile.component';
 import { UpdateprofileviewComponent } from './updateprofileview/updateprofileview.component';
+import { AuthService } from './auth.service'
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { UpdateprofileviewComponent } from './updateprofileview/updateprofilevie
     SearchuserComponent,
     MypostViewComponent,
     UserpostComponent,
+    RegisteredComponent,
     NewmessageComponent,
     FriendslistComponent,
     OtheruserprofileComponent,
@@ -67,9 +70,15 @@ import { UpdateprofileviewComponent } from './updateprofileview/updateprofilevie
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot({
+      buttonsStyling: false,
+      customClass: 'modal-content',
+      confirmButtonClass: 'btn btn-primary',
+      cancelButtonClass: 'btn'
+  })
   ],
-  providers: [UserService, MessageService, AuthGuard, ValidationService, AuthService],
+  providers: [UserService, MessageService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

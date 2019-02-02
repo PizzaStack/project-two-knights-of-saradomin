@@ -1,7 +1,8 @@
 drop table if exists usermessage;
-drop table if exists userrelationship;
+drop table if exists userrelations;
 drop table if exists postinteractions;
 drop table if exists userposts;
+drop table if exists verificationtokens;
 drop table if exists users;
 
 create table users
@@ -11,7 +12,14 @@ create table users
 	password varchar(75) not null,
 	firstname varchar(50) not null,
 	lastname varchar(50) not null,
-	profilepicturepath varchar(200) null
+	profilepicturepath varchar(200) null,
+	enabled boolean default(false)
+);
+
+create table verificationtokens
+(
+	userid INT PRIMARY KEY REFERENCES users(userid),
+	vtoken VARCHAR(500) UNIQUE
 );
 
 create table userposts
