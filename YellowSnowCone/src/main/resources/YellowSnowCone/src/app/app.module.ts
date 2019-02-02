@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,15 +25,14 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessagesthreadComponent } from './messagesthread/messagesthread.component';
 import { RepostComponent } from './repost/repost.component';
 import { UserListComponent } from './user-list/user-list.component';
-
-import { MessageService } from './message.service';
-import { AuthGuard } from './auth.guard';
-import { UserService } from './user.service';
 import { SearchuserComponent } from './searchuser/searchuser.component';
 import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { UserpostComponent } from './userpost/userpost.component';
 import { RegisteredComponent } from './registered/registered.component';
-import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+
+import { MessageService } from './message.service';
+import { AuthGuard } from './auth.guard';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [

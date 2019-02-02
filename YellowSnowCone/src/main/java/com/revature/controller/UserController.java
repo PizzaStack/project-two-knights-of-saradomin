@@ -18,6 +18,7 @@ import org.springframework.orm.jpa.SharedEntityManagerCreator;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -103,15 +104,26 @@ public class UserController {
 		return user;
 	}
 
-	@GetMapping("welcomeview/{id}/{token}")
-	public void verifyUser(@RequestParam int userid, @RequestParam String vtoken) {
-		if (tokenRepository.findByUseridAndVtoken(userid, vtoken)){
-		   Users user = userRepository.findByUserid(userid);
-		   user.setEnabled(true);
-		   VerificationToken verificationToken = tokenRepository.getByUseridAndVtoken(user.getUserid(), vtoken);
+	@PostMapping("validate/{id}/{vtoken}")
+	public Users verifyUser(@PathVariable String id, @PathVariable String vtoken) {
+		Users user = null;
+		int userid = Integer.parseInt(id);
+		if (userRepository.existsById(userid)){
+		   user = userRepository.findByUserid(userid);
+		   System.out.println("USER WAS FOUND");
+		   if (tokenRepository.existsById(userid)) {
+			   user.setEnabled(true);
+			   VerificationToken verificationToken = tokenRepository.findByUserid(userid);
+			   userRepository.flush();
+			   System.out.println("VERIFICATION TOKEN WAS FOUND");
+			   return user;
+		   }
+		   // TODO logic not finished - but get url working first
 		} else {
-			
+			System.out.println("no userid or verification token found!");
+			System.out.println("userid: " + userid);
+			if (vtoken != null) System.out.println("vtoken: " + vtoken);
 		}
-		//return new ModelAndView("redirect:" + "http://localhost:8080/welcomeview/success");
+		return user;
 	}
 }

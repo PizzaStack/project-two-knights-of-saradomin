@@ -23,6 +23,8 @@ public class VerificationToken {
 	@Column(name = "userid", updatable = false)
 	private int userid;
 
+	/* token is a keyword in postgres. Changing 'token to 'vtoken' 
+	   for now, in case it's the reason persistence is not working */
 	@Column(name = "vtoken")
 	private String vtoken;
 	
@@ -54,15 +56,6 @@ public class VerificationToken {
 			this.vtoken = vtoken;
 		}
 	}
-
-	/*
-	public Users getUser() {
-		return user;
-	}
-	public void setUser(Users user) {
-		this.user = user;
-	}
-	*/
 	
 	@Override
 	public String toString() {

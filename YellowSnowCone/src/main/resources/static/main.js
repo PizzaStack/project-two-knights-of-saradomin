@@ -1667,39 +1667,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 
 
 
 
+
+var httpPostOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+    })
+};
 var RegisteredComponent = /** @class */ (function () {
-    function RegisteredComponent(route) {
+    function RegisteredComponent(route, http) {
         this.route = route;
+        this.http = http;
     }
     RegisteredComponent.prototype.ngOnInit = function () {
-        var _this_1 = this;
         var _this = this;
         console.log("in registered component");
         this.sub = this.route.params.subscribe(function (params) {
-            _this_1.token = params['token'];
-            console.log("token found: " + _this_1.token);
-            if (_this_1.token.length >= 0) {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
-                    title: "Success",
-                    text: "Check Your Email!",
-                    type: "success",
-                    timer: 2000
-                });
-            }
-            else {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
-                    title: "???",
-                    text: "Error",
-                    type: "error",
-                    timer: 2000
-                });
-            }
+            localStorage.setItem('userid', params['userid']);
+            localStorage.setItem('token', params['token']);
         });
         this.goBack();
+        this.user = this.verify();
+        if (this.user.enabled) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
+                title: "Success",
+                text: "Check Your Email!",
+                type: "success",
+                timer: 2000
+            });
+        }
+        else {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
+                title: "???",
+                text: "Error",
+                type: "error",
+                timer: 2000
+            });
+        }
+    };
+    RegisteredComponent.prototype.verify = function () {
+        this.verificationToken.userid = +localStorage.getItem('userid');
+        this.verificationToken.vtoken = localStorage.getItem('vtoken');
+        console.log('verifying token info... ');
+        console.log("userid = " + this.verificationToken.userid);
+        console.log("vtoken = " + this.verificationToken.vtoken);
+        var newUser = null;
+        this.http.post("http://localhost:8080/"
+            .concat(this.userid.toString()).concat("/").concat(this.vtoken), JSON.stringify(this.verificationToken), httpPostOptions)
+            .subscribe(function (data) {
+            newUser = data;
+            console.log("new user: " + newUser);
+            return newUser;
+        });
+        console.log("new user returned outside subscription");
+        return newUser;
     };
     RegisteredComponent.prototype.goBack = function () {
         setTimeout(function () {
@@ -1715,7 +1742,8 @@ var RegisteredComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./registered.component.html */ "./src/app/registered/registered.component.html"),
             styles: [__webpack_require__(/*! ./registered.component.css */ "./src/app/registered/registered.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
     ], RegisteredComponent);
     return RegisteredComponent;
 }());

@@ -9,6 +9,8 @@ import com.revature.entity.VerificationToken;
 
 @Repository
 public interface VerificationTokenRepository extends JpaRepository<VerificationToken, Integer>{
-	boolean findByUseridAndVtoken(int userid, String vtoken);
-	VerificationToken getByUseridAndVtoken(int userid, String vtoken);
+	VerificationToken findByUserid(int userid);
+	VerificationToken findByVtoken(String vtoken);
+	boolean existsByUserid(int userid);
+	boolean existsByVtoken(String vtoken);
 }
