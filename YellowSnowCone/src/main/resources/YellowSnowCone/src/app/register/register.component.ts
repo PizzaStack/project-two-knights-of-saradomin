@@ -44,6 +44,15 @@ export class RegisterComponent implements OnInit {
   register(user:Users){
     var self = this;
     this._userService.addNewUser(user).subscribe(data => {
+      if (data == null){
+        swal({
+          title:"Error",
+          text:"There is already an account associated with that email.",
+          imageUrl: "../../assets/snowconelikeshadow.png",
+          imageHeight: 100,
+          timer: 3000
+        });
+      }
       this.newUser = data;
       var userApplicant:Users = this.newUser;
       if (userApplicant.userid !== null && userApplicant.userid != -1){
@@ -55,14 +64,16 @@ export class RegisterComponent implements OnInit {
         swal({
           title:"Success",
           text:"Check Your Email!",
-          type:"success",
+          imageUrl: "../../assets/greensnowcone.png",
+          imageHeight: 100,
           timer: 3000
         });
       } else if (userApplicant.userid === -1 || userApplicant.userid === null){
         swal({
           title:"Error",
-          text:"There is already an account associated with that email.",
-          type:"error",
+          text:"Unable To Register Your Account",
+          imageUrl: "../../assets/snowconelikeshadow.png",
+          imageHeight: 100,
           timer: 3000
         });
         console.log('userid Is Null.')
@@ -83,23 +94,11 @@ export class RegisterComponent implements OnInit {
       this.newUserModel.password = this.f.password.value;
       this.newUserModel.firstname = this.f.firstname.value;
       this.newUserModel.lastname = this.f.lastname.value;
-      if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
-        console.log("Valid Credentials")
-        this.register(this.newUserModel);
-        this.resetFields();
-        this.submitted = false;
-      } else {
-        /*
-        swal({
-          title:"Error",
-          text:"There is already an account associated with that email.",
-          type:"error"
-        });
-        setTimeout(function(){
-          this.router.navigate([this._url.concat("welcomeview")]);
-        }, 3000);
-        */
-      }
+      
+      console.log("Valid Credentials")
+      this.register(this.newUserModel);
+      this.resetFields();
+      this.submitted = false;
     }
   }
   resetFields(){

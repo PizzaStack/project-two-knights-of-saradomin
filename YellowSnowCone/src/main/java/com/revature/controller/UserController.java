@@ -81,6 +81,10 @@ public class UserController {
 	@PostMapping("/register")
 	@ResponseBody
 	public synchronized Users register(@RequestBody Users user) {
+		if (userRepository.existsByEmail(user.getEmail())) {
+			System.out.println("Duplicate Email");
+			return null;
+		}
 		Users newUser = userRepository.save(user);
 		userRepository.flush();
 

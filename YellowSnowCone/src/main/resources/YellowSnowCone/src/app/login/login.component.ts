@@ -50,7 +50,9 @@ export class LoginComponent implements OnInit {
         swal({
           title: "Error",
           text: "Invalid Username Or Password",
-          type: "error"
+          imageUrl: "../../assets/snowconelikeshadow.png",
+          imageHeight: 100,
+          timer: 3000
         });
       }
       this.loggedInUser = data;
@@ -65,15 +67,19 @@ export class LoginComponent implements OnInit {
       } else if ((this.loggedInUser.userid != null || this.loggedInUser.userid != -1)
         && this.loggedInUser.enabled == false){
         swal({
-          title: "Error",
+          title: "Not So Fast",
           text: "Your Email Has Not Been Verified",
-          type: "error"
+          imageUrl: "../../assets/yellowsnowcone.png",
+          imageHeight: 100,
+          timer: 3000
         });
       } else {
         swal({
           title: "Error",
           text: "Invalid Username Or Password",
-          type: "error"
+          imageUrl: "../../assets/snowconelikeshadow.png",
+          imageHeight: 100,
+          timer: 3000
         });
         console.log('userid Is Null.')
         console.log('User Info: ' + JSON.stringify(this.loggedInUser));

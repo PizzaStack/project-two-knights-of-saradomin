@@ -25,4 +25,5 @@ public interface UsersRepository extends JpaRepository<Users, Integer> {
 	@Transactional()
 	Users save(Users user);
 	Users findTopByOrderByUseridDesc();
+	boolean existsByEmail(String email);
 }
