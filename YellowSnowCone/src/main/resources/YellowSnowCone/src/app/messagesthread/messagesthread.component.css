@@ -27,6 +27,7 @@ input{
     background-color: white;
     padding: 10px;
     position: relative;
+    width: 450px
 }
 .messages {
     margin-top: auto;
@@ -38,6 +39,7 @@ input{
     position: relative;
     overflow: auto;
     height: 400px;
+    width: 100%
 }
 
 .wrapper {

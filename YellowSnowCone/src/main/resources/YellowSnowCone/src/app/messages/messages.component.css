@@ -1,8 +1,23 @@
+ul {
+    list-style-type: none;
+}
+strong{
+    margin: 25px;
+}
+
 .wrapper {
     display: flex;
     align-items: stretch;
 }
+.btn {
+    background: #aad4e5;
+    font-weight: bold;
+    color: white;
+    box-shadow: 5px 5px #888888;
+    font-size: 15px;
+    margin-top: 15px;
+}
 
-ul {
-    list-style-type: none;
+.btn:active {
+    transform: translateY(2px);
 }

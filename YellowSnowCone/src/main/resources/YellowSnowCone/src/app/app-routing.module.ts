@@ -9,6 +9,7 @@ import { MypostViewComponent } from './mypost-view/mypost-view.component';
 import { SearchuserComponent } from './searchuser/searchuser.component';
 import { NewmessageComponent } from './newmessage/newmessage.component';
 import { FriendslistComponent } from './friendslist/friendslist.component';
+import { UpdateprofileviewComponent } from './updateprofileview/updateprofileview.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'messagesthread', component: MessagesthreadComponent },
   { path: 'searchuser', component: SearchuserComponent},
   { path: 'newmessage', component: NewmessageComponent},
-  { path: 'friendslist', component: FriendslistComponent}
+  { path: 'friendslist', component: FriendslistComponent},
+  { path: 'updateprofile', component: UpdateprofileviewComponent}
 ];
 
 @NgModule({
