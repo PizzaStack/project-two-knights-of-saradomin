@@ -25,7 +25,8 @@ export class CreatepostComponent implements OnInit {
         password: localStorage.getItem('password'),
         firstname: localStorage.getItem('firstName'),
         lastname: localStorage.getItem('lastName'),
-        profilePicturePath: localStorage.getItem('profilePicturePath')
+        profilePicturePath: localStorage.getItem('profilePicturePath'),
+        enabled: true
     };
   }
 
@@ -38,7 +39,7 @@ export class CreatepostComponent implements OnInit {
       repostid: -1,
       user: this.user,
       postinteractions: null
-    }
+    };
 
     this.newPost.createPost(post);
     window.location.reload();
