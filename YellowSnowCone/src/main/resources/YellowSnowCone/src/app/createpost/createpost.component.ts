@@ -31,11 +31,11 @@ export class CreatepostComponent implements OnInit {
       repostid: -1,
       user: this.user[0],
       postinteractions: null
-    }
+    };
 
     this.newPost.createPost(post);
 
-    const view = document.getElementById('zmew')
+    const view = document.getElementById('zmew');
     view.innerHTML = `<app-navbar> </app-navbar>
     <div class="wrapper">
         <app-sidemenu></app-sidemenu>
