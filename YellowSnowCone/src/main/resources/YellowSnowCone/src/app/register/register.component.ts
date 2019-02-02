@@ -45,21 +45,20 @@ export class RegisterComponent implements OnInit {
     var self = this;
     this._userService.addNewUser(user).subscribe(data => {
       this.newUser = data;
-      var anewUser:Users = this.newUser;
-      if (anewUser.userid !== null && anewUser.userid != -1){
+      var userApplicant:Users = this.newUser;
+      if (userApplicant.userid !== null && userApplicant.userid != -1){
         console.log("Registration Successful");
-        console.log('anewUser: ' + JSON.stringify(anewUser));
-        console.log('self._url=' + self._url);
-        //this._userService.addLoggedInUser(this.loggedInUser);
+        console.log('userApplicant: ' + JSON.stringify(userApplicant));
+        //console.log('self._url=' + self._url);
         localStorage.setItem('isRegistered', "true");
-        localStorage.setItem('token', anewUser.userid.toString());
+        localStorage.setItem('token', userApplicant.userid.toString());
         swal({
           title:"Success",
           text:"Check Your Email!",
           type:"success",
           timer: 3000
         });
-      } else if (anewUser.userid === -1 || anewUser.userid === null){
+      } else if (userApplicant.userid === -1 || userApplicant.userid === null){
         swal({
           title:"Error",
           text:"There is already an account associated with that email.",
@@ -67,7 +66,7 @@ export class RegisterComponent implements OnInit {
           timer: 3000
         });
         console.log('userid Is Null.')
-        console.log('anewUser Info: ' + JSON.stringify(anewUser));
+        console.log('userApplicant Info: ' + JSON.stringify(userApplicant));
       }
     });
   }

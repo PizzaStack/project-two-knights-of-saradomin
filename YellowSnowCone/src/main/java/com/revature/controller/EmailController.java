@@ -33,7 +33,7 @@ public class EmailController {
     private JavaMailSender mailSender;
     
     @Autowired
-    public MailContentBuilder mailContentBuilder;// = new MailContextBuilder(templateEngine);
+    public MailContentBuilder mailContentBuilder;
     
     /*
     @RequestMapping("/registrationEmail")
@@ -56,7 +56,7 @@ public class EmailController {
             String vtoken = verificationToken.getVtoken();
             String url = "http://localhost:8080/welcomeview/".concat(String.valueOf(user.getUserid())).concat("/").concat(vtoken);
             String content = mailContentBuilder.build(name, url);
-            messageHelper.setTo("cmeyerwps@gmail.com");
+            messageHelper.setTo(user.getEmail());
             messageHelper.setSubject("YellowSnowCone - Please Verify Your Email");
             messageHelper.setText(content, true);
         };
@@ -66,47 +66,4 @@ public class EmailController {
         	e.printStackTrace();
         }
     }
-    /*
-    public void sendEmail() throws Exception {
-    	MimeMessagePreparator messagePreparator = mimeMessage -> {
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);
-            String name = "Randy";
-            String token = UUID.randomUUID().toString();
-            String url = "http://localhost:8080/".concat(token);
-            String content = mailContentBuilder.build(name, url);
-            messageHelper.setTo("cmeyerwps@gmail.com");
-            messageHelper.setSubject("YellowSnowCone - Please Verify Your Email");
-            messageHelper.setText(content, true);
-        };
-        try {
-            mailSender.send(messagePreparator);
-        } catch (MailException e) {
-        	e.printStackTrace();
-        }
-    }
-    */
-    
-    /*
-    public void sendEmail() throws Exception {
-        MimeMessage message = sender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
-        
-        Map<String, Object> model = new HashMap<>();
-        model.put("user", "qpt");
-        
-        // set loading location to src/main/resources
-        // You may want to use a subfolder such as /templates here
-        freemarkerConfig.setClassForTemplateLoading(this.getClass(), "/templates");
-        
-        Template template = freemarkerConfig.getTemplate("welcome.ftl");
-        String text = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
-        
-        helper.setTo("cmeyerwps@gmail.com");
-        helper.setText(text, true);
-        helper.setSubject("Please Verify Your Email");
-        
-        sender.send(message);
-        System.out.println("Email send!");
-    }
-    */
 }

@@ -24,6 +24,8 @@
            <a routerLink="/messages">Messages</a>
         </li>
     </ul>
-    <button type="submit" class="btn ">Log Out</button>
+    <form (ngSubmit)="logout()">
+        <button type="submit" class="btn" (ngSubmit)="logout()">Log Out</button>
+    </form>
 
 </nav>

@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
     { path: "welcomeview", component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__["WelcomeviewComponent"] },
-    { path: "welcomeview/:id/:token", component: _registered_registered_component__WEBPACK_IMPORTED_MODULE_10__["RegisteredComponent"] },
+    { path: "welcomeview/:userid/:vtoken", component: _registered_registered_component__WEBPACK_IMPORTED_MODULE_10__["RegisteredComponent"] },
     { path: "mypost", component: _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_8__["MypostViewComponent"] },
     { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
     { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
@@ -152,34 +152,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _mainpagejumbotron_mainpagejumbotron_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./mainpagejumbotron/mainpagejumbotron.component */ "./src/app/mainpagejumbotron/mainpagejumbotron.component.ts");
-/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
-/* harmony import */ var _sidemenu_sidemenu_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./sidemenu/sidemenu.component */ "./src/app/sidemenu/sidemenu.component.ts");
-/* harmony import */ var _profilepicture_profilepicture_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./profilepicture/profilepicture.component */ "./src/app/profilepicture/profilepicture.component.ts");
-/* harmony import */ var _createpost_createpost_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./createpost/createpost.component */ "./src/app/createpost/createpost.component.ts");
-/* harmony import */ var _snowcone_snowcone_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./snowcone/snowcone.component */ "./src/app/snowcone/snowcone.component.ts");
-/* harmony import */ var _snowconelike_snowconelike_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./snowconelike/snowconelike.component */ "./src/app/snowconelike/snowconelike.component.ts");
-/* harmony import */ var _snowconedislike_snowconedislike_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./snowconedislike/snowconedislike.component */ "./src/app/snowconedislike/snowconedislike.component.ts");
-/* harmony import */ var _post_post_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./post/post.component */ "./src/app/post/post.component.ts");
-/* harmony import */ var _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./mainview/mainview.component */ "./src/app/mainview/mainview.component.ts");
-/* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
-/* harmony import */ var _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./updateprofile/updateprofile.component */ "./src/app/updateprofile/updateprofile.component.ts");
-/* harmony import */ var _icon_icon_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./icon/icon.component */ "./src/app/icon/icon.component.ts");
-/* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
-/* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
-/* harmony import */ var _repost_repost_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./repost/repost.component */ "./src/app/repost/repost.component.ts");
-/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
-/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
-/* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./searchuser/searchuser.component */ "./src/app/searchuser/searchuser.component.ts");
-/* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
-/* harmony import */ var _userpost_userpost_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./userpost/userpost.component */ "./src/app/userpost/userpost.component.ts");
-/* harmony import */ var _registered_registered_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./registered/registered.component */ "./src/app/registered/registered.component.ts");
-/* harmony import */ var _toverux_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @toverux/ngx-sweetalert2 */ "./node_modules/@toverux/ngx-sweetalert2/esm5/toverux-ngx-sweetalert2.js");
+/* harmony import */ var _toverux_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @toverux/ngx-sweetalert2 */ "./node_modules/@toverux/ngx-sweetalert2/esm5/toverux-ngx-sweetalert2.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _mainpagejumbotron_mainpagejumbotron_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./mainpagejumbotron/mainpagejumbotron.component */ "./src/app/mainpagejumbotron/mainpagejumbotron.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _sidemenu_sidemenu_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./sidemenu/sidemenu.component */ "./src/app/sidemenu/sidemenu.component.ts");
+/* harmony import */ var _profilepicture_profilepicture_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./profilepicture/profilepicture.component */ "./src/app/profilepicture/profilepicture.component.ts");
+/* harmony import */ var _createpost_createpost_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./createpost/createpost.component */ "./src/app/createpost/createpost.component.ts");
+/* harmony import */ var _snowcone_snowcone_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./snowcone/snowcone.component */ "./src/app/snowcone/snowcone.component.ts");
+/* harmony import */ var _snowconelike_snowconelike_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./snowconelike/snowconelike.component */ "./src/app/snowconelike/snowconelike.component.ts");
+/* harmony import */ var _snowconedislike_snowconedislike_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./snowconedislike/snowconedislike.component */ "./src/app/snowconedislike/snowconedislike.component.ts");
+/* harmony import */ var _post_post_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./post/post.component */ "./src/app/post/post.component.ts");
+/* harmony import */ var _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./mainview/mainview.component */ "./src/app/mainview/mainview.component.ts");
+/* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
+/* harmony import */ var _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./updateprofile/updateprofile.component */ "./src/app/updateprofile/updateprofile.component.ts");
+/* harmony import */ var _icon_icon_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./icon/icon.component */ "./src/app/icon/icon.component.ts");
+/* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
+/* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
+/* harmony import */ var _repost_repost_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./repost/repost.component */ "./src/app/repost/repost.component.ts");
+/* harmony import */ var _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./user-list/user-list.component */ "./src/app/user-list/user-list.component.ts");
+/* harmony import */ var _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./searchuser/searchuser.component */ "./src/app/searchuser/searchuser.component.ts");
+/* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
+/* harmony import */ var _userpost_userpost_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./userpost/userpost.component */ "./src/app/userpost/userpost.component.ts");
+/* harmony import */ var _registered_registered_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./registered/registered.component */ "./src/app/registered/registered.component.ts");
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./message.service */ "./src/app/message.service.ts");
+/* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
 
 
 
@@ -220,30 +220,30 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
-                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_7__["NavbarComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
-                _mainpagejumbotron_mainpagejumbotron_component__WEBPACK_IMPORTED_MODULE_9__["MainpagejumbotronComponent"],
-                _register_register_component__WEBPACK_IMPORTED_MODULE_10__["RegisterComponent"],
-                _sidemenu_sidemenu_component__WEBPACK_IMPORTED_MODULE_11__["SidemenuComponent"],
-                _profilepicture_profilepicture_component__WEBPACK_IMPORTED_MODULE_12__["ProfilepictureComponent"],
-                _createpost_createpost_component__WEBPACK_IMPORTED_MODULE_13__["CreatepostComponent"],
-                _snowcone_snowcone_component__WEBPACK_IMPORTED_MODULE_14__["SnowconeComponent"],
-                _snowconelike_snowconelike_component__WEBPACK_IMPORTED_MODULE_15__["SnowconelikeComponent"],
-                _snowconedislike_snowconedislike_component__WEBPACK_IMPORTED_MODULE_16__["SnowconedislikeComponent"],
-                _post_post_component__WEBPACK_IMPORTED_MODULE_17__["PostComponent"],
-                _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_18__["MainviewComponent"],
-                _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_19__["WelcomeviewComponent"],
-                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_25__["UserListComponent"],
-                _messages_messages_component__WEBPACK_IMPORTED_MODULE_22__["MessagesComponent"],
-                _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_23__["MessagesthreadComponent"],
-                _icon_icon_component__WEBPACK_IMPORTED_MODULE_21__["IconComponent"],
-                _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_20__["UpdateprofileComponent"],
-                _repost_repost_component__WEBPACK_IMPORTED_MODULE_24__["RepostComponent"],
-                _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_29__["SearchuserComponent"],
-                _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_30__["MypostViewComponent"],
-                _userpost_userpost_component__WEBPACK_IMPORTED_MODULE_31__["UserpostComponent"],
-                _registered_registered_component__WEBPACK_IMPORTED_MODULE_32__["RegisteredComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"],
+                _mainpagejumbotron_mainpagejumbotron_component__WEBPACK_IMPORTED_MODULE_10__["MainpagejumbotronComponent"],
+                _register_register_component__WEBPACK_IMPORTED_MODULE_11__["RegisterComponent"],
+                _sidemenu_sidemenu_component__WEBPACK_IMPORTED_MODULE_12__["SidemenuComponent"],
+                _profilepicture_profilepicture_component__WEBPACK_IMPORTED_MODULE_13__["ProfilepictureComponent"],
+                _createpost_createpost_component__WEBPACK_IMPORTED_MODULE_14__["CreatepostComponent"],
+                _snowcone_snowcone_component__WEBPACK_IMPORTED_MODULE_15__["SnowconeComponent"],
+                _snowconelike_snowconelike_component__WEBPACK_IMPORTED_MODULE_16__["SnowconelikeComponent"],
+                _snowconedislike_snowconedislike_component__WEBPACK_IMPORTED_MODULE_17__["SnowconedislikeComponent"],
+                _post_post_component__WEBPACK_IMPORTED_MODULE_18__["PostComponent"],
+                _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_19__["MainviewComponent"],
+                _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_20__["WelcomeviewComponent"],
+                _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_26__["UserListComponent"],
+                _messages_messages_component__WEBPACK_IMPORTED_MODULE_23__["MessagesComponent"],
+                _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_24__["MessagesthreadComponent"],
+                _icon_icon_component__WEBPACK_IMPORTED_MODULE_22__["IconComponent"],
+                _updateprofile_updateprofile_component__WEBPACK_IMPORTED_MODULE_21__["UpdateprofileComponent"],
+                _repost_repost_component__WEBPACK_IMPORTED_MODULE_25__["RepostComponent"],
+                _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_27__["SearchuserComponent"],
+                _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_28__["MypostViewComponent"],
+                _userpost_userpost_component__WEBPACK_IMPORTED_MODULE_29__["UserpostComponent"],
+                _registered_registered_component__WEBPACK_IMPORTED_MODULE_30__["RegisteredComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -251,15 +251,15 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-                _toverux_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_33__["SweetAlert2Module"].forRoot({
+                _toverux_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_6__["SweetAlert2Module"].forRoot({
                     buttonsStyling: false,
                     customClass: 'modal-content',
                     confirmButtonClass: 'btn btn-primary',
                     cancelButtonClass: 'btn'
                 })
             ],
-            providers: [_user_service__WEBPACK_IMPORTED_MODULE_28__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_26__["MessageService"], _auth_guard__WEBPACK_IMPORTED_MODULE_27__["AuthGuard"]],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+            providers: [_user_service__WEBPACK_IMPORTED_MODULE_33__["UserService"], _message_service__WEBPACK_IMPORTED_MODULE_31__["MessageService"], _auth_guard__WEBPACK_IMPORTED_MODULE_32__["AuthGuard"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -1667,71 +1667,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _verificationToken__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../verificationToken */ "./src/app/verificationToken.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../users */ "./src/app/users.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+
+
+
 
 
 
 
 
 var httpPostOptions = {
-    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
     })
 };
 var RegisteredComponent = /** @class */ (function () {
-    function RegisteredComponent(route, http) {
+    function RegisteredComponent(router, route, http, _userService) {
+        this.router = router;
         this.route = route;
         this.http = http;
+        this._userService = _userService;
+        this.verificationToken = new _verificationToken__WEBPACK_IMPORTED_MODULE_4__["VerificationToken"](null, null);
+        this.user = new _users__WEBPACK_IMPORTED_MODULE_6__["Users"](null, null, null, null, null, null, false);
     }
     RegisteredComponent.prototype.ngOnInit = function () {
         var _this = this;
         console.log("in registered component");
         this.sub = this.route.params.subscribe(function (params) {
             localStorage.setItem('userid', params['userid']);
-            localStorage.setItem('token', params['token']);
+            localStorage.setItem('vtoken', params['vtoken']);
         });
-        this.goBack();
-        this.user = this.verify();
-        if (this.user.enabled) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
-                title: "Success",
-                text: "Check Your Email!",
-                type: "success",
-                timer: 2000
-            });
-        }
-        else {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
-                title: "???",
-                text: "Error",
-                type: "error",
-                timer: 2000
-            });
-        }
+        this.checkTokenInfo();
     };
-    RegisteredComponent.prototype.verify = function () {
-        this.verificationToken.userid = +localStorage.getItem('userid');
-        this.verificationToken.vtoken = localStorage.getItem('vtoken');
+    RegisteredComponent.prototype.checkTokenInfo = function () {
+        var _this_1 = this;
+        this.userid = Number(localStorage.getItem('userid'));
+        this.vtoken = localStorage.getItem('vtoken');
+        this.verificationToken = new _verificationToken__WEBPACK_IMPORTED_MODULE_4__["VerificationToken"](this.userid, this.vtoken);
         console.log('verifying token info... ');
         console.log("userid = " + this.verificationToken.userid);
         console.log("vtoken = " + this.verificationToken.vtoken);
-        var newUser = null;
-        this.http.post("http://localhost:8080/"
-            .concat(this.userid.toString()).concat("/").concat(this.vtoken), JSON.stringify(this.verificationToken), httpPostOptions)
-            .subscribe(function (data) {
-            newUser = data;
-            console.log("new user: " + newUser);
-            return newUser;
+        this._userService.verifyToken(this.verificationToken).subscribe(function (data) {
+            _this_1.user = data;
+            console.log("verifiedUser: " + JSON.stringify(_this_1.user));
+            if (_this_1.user.enabled) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
+                    title: "Success",
+                    text: "You Are Now Able To Log In",
+                    type: "success",
+                    timer: 3000
+                });
+                _this_1.router.navigate(['/welcomeview']);
+            }
+            else {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
+                    title: "Error",
+                    text: "Your Token Is Either Invalid or Expired",
+                    type: "error",
+                    timer: 3000
+                });
+                _this_1.router.navigate(['/welcomeview']);
+            }
         });
-        console.log("new user returned outside subscription");
-        return newUser;
-    };
-    RegisteredComponent.prototype.goBack = function () {
-        setTimeout(function () {
-            this.router.navigate(["http://localhost:8080/welcomeview"]);
-        }, 2000);
     };
     RegisteredComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
@@ -1742,8 +1744,10 @@ var RegisteredComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./registered.component.html */ "./src/app/registered/registered.component.html"),
             styles: [__webpack_require__(/*! ./registered.component.css */ "./src/app/registered/registered.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"],
+            _user_service__WEBPACK_IMPORTED_MODULE_7__["UserService"]])
     ], RegisteredComponent);
     return RegisteredComponent;
 }());
@@ -2422,6 +2426,15 @@ var UserService = /** @class */ (function () {
         console.log('authenticating... ' + user.email + ', ' + user.password);
         return this.http.post(this._url.concat('authenticate'), JSON.stringify(user), httpPostOptions);
     };
+    UserService.prototype.verifyToken = function (verificationToken) {
+        console.log('verifying token info... ');
+        console.log("userid = " + verificationToken.userid);
+        console.log("vtoken = " + verificationToken.vtoken);
+        var newUser = null;
+        return this.http.post("http://localhost:8080/validate/"
+            .concat(verificationToken.userid.toString()).concat("/")
+            .concat(verificationToken.vtoken), JSON.stringify(verificationToken), httpPostOptions);
+    };
     UserService.prototype.addNewUser = function (user) {
         console.log('adding new user... ' + user.email + ', ' + user.password);
         return this.http.post(this._url.concat('register'), JSON.stringify(user), httpPostOptions);
@@ -2527,6 +2540,28 @@ var Users = /** @class */ (function () {
         this.enabled = enabled;
     }
     return Users;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/verificationToken.ts":
+/*!**************************************!*\
+  !*** ./src/app/verificationToken.ts ***!
+  \**************************************/
+/*! exports provided: VerificationToken */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VerificationToken", function() { return VerificationToken; });
+var VerificationToken = /** @class */ (function () {
+    function VerificationToken(userid, vtoken) {
+        this.userid = userid;
+        this.vtoken = vtoken;
+    }
+    return VerificationToken;
 }());
 
 

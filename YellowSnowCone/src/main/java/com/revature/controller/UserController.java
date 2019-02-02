@@ -110,19 +110,26 @@ public class UserController {
 		int userid = Integer.parseInt(id);
 		if (userRepository.existsById(userid)){
 		   user = userRepository.findByUserid(userid);
-		   System.out.println("USER WAS FOUND");
+		   System.out.println("User Was Found");
 		   if (tokenRepository.existsById(userid)) {
-			   user.setEnabled(true);
+			   System.out.println("Verification Token Was Found");
 			   VerificationToken verificationToken = tokenRepository.findByUserid(userid);
-			   userRepository.flush();
-			   System.out.println("VERIFICATION TOKEN WAS FOUND");
-			   return user;
+			   if (verificationToken.getVtoken().equals(vtoken)) {
+				   System.out.println("verificationToken MATCHES Userid");
+				   user.setEnabled(true);
+				   user = userRepository.save(user);
+				   userRepository.flush();
+				   return user;
+			   } else {
+				   System.out.println("verificationToken DOES NOT MATCHE Userid");
+			   }
+			   user = null;
 		   }
-		   // TODO logic not finished - but get url working first
 		} else {
 			System.out.println("no userid or verification token found!");
-			System.out.println("userid: " + userid);
+			if (user != null) System.out.println("user: " + user);
 			if (vtoken != null) System.out.println("vtoken: " + vtoken);
+			user = null;
 		}
 		return user;
 	}
