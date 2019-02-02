@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SnowconedislikeComponent } from './snowconedislike.component';
+import { UpdateprofileviewComponent } from './updateprofileview.component';
 
-describe('SnowconedislikeComponent', () => {
-  let component: SnowconedislikeComponent;
-  let fixture: ComponentFixture<SnowconedislikeComponent>;
+describe('UpdateprofileviewComponent', () => {
+  let component: UpdateprofileviewComponent;
+  let fixture: ComponentFixture<UpdateprofileviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnowconedislikeComponent ]
+      declarations: [ UpdateprofileviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SnowconedislikeComponent);
+    fixture = TestBed.createComponent(UpdateprofileviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

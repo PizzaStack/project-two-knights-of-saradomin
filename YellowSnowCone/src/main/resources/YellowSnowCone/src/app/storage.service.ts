@@ -6,6 +6,12 @@ import { Users } from './users';
 })
 export class StorageService {
 
+  // baseUrl: string = "http://18.191.217.180:8888/";
+
+   baseUrl: string = "http://localhost:8080/";
+
+  messageTimerId;
+
   searchResults: Users[];
 
   textContents: string;
@@ -20,9 +26,13 @@ export class StorageService {
 
   user2: Users;
 
+  firstName: string;
+
+  messageThreadUser: string;
+
   public scope: Array<any> = [];
 
-  public firstName: string;
+  public userId: number;
 
   constructor() { }
 
@@ -92,5 +102,25 @@ export class StorageService {
 
   public getFirstName(): string {
     return this.firstName;
+  }
+
+  public getBaseUrl(): string {
+    return this.baseUrl;
+  }
+
+  public getMessageThreadUser(): string {
+    return this.messageThreadUser;
+  }
+
+  public setMessageThreadUser(messageThreadUser: string): void {
+    this.messageThreadUser = messageThreadUser;
+  }
+
+  public getMessageTimerId() {
+    return this.messageTimerId;
+  }
+
+  public setMessageTimerId(messageTimerId): void {
+    this.messageTimerId = messageTimerId;
   }
 }

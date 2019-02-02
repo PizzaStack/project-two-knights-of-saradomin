@@ -3,7 +3,6 @@
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form col-lg-12">
             <h3><strong>Create a New Account</strong></h3>
             <p>It’s free and always will be!</p>
-
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
@@ -44,7 +43,6 @@
                     <div *ngIf="f.password.errors.minlength">Password Must Be At Least 4 characters</div>
                 </div>
             </div>
-
             <div class="form-group">
                 <button type="submit" class="btn btn-default btn-lg float-right" [disabled]="loading">Register</button>
             </div>

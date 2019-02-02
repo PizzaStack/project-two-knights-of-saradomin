@@ -3,6 +3,7 @@ import { Posts } from './posts';
 
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StorageService } from './storage.service';
 
 
 @Injectable({
@@ -10,18 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class NewpostService {
 
-  newPost : Posts;
+  newPost: Posts;
 
-  private newPostUrl ='http://localhost:8080/userposts/add'
-  
-  
+  private newPostUrl = this.storage.getBaseUrl() + 'userposts/add';
+
+
   constructor(
     private http: HttpClient,
+    private storage: StorageService
   ) { }
 
-    createPost(data) {
-    
-     this.http.post(this.newPostUrl,data).subscribe();
-    }
-  
+  createPost(data: any) {
+    this.http.post(this.newPostUrl, data).subscribe();
+  }
+
 }

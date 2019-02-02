@@ -1,36 +1,31 @@
-
-
-
 <div>
   <app-navbar> </app-navbar>
-     <div class="wrapper">
-         <app-sidemenu></app-sidemenu>
+  <div class="wrapper">
+    <app-sidemenu></app-sidemenu>
 
-          <div id="content">
-              <div class="container">
-                  <div class="row">
-                    <div class="col-lg-3">
-                    <div class="col-lg-9">
-    
-                          <div>
-                            
-                            <div class="">
-                              <h4 class="card-title">Messages</h4>
-                              <div class="messages">
-                                <ul *ngFor="let specificMessage of specificMessages">
-                                  <li class="panel">
-                                    {{specificMessage}}
-                                  </li>
-                                </ul>
-                                <input id="messageContent" type="text"><button id="send">Send</button>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
-                 
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-9">
+            <div class="card">
+              <h4 class="card-title">Messages</h4>
+              <div class="messages">
+                <ul *ngFor="let specificMessage of specificMessages">
+                  <li>
+                    {{specificMessage}}
+                  </li>
+                </ul>
               </div>
+              <input id="messageContent" type="text" autofocus="autofocus" #messageContent (keyup.enter)="send(messageContent)" (keyup.enter)="messageContent.value=''">
+              <button class= "btn"id="send" (click)="send(messageContent)"
+                (click)="messageContent.value=''">Send</button>
+            </div>
           </div>
-      
-      </div>  
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>

@@ -1,17 +1,14 @@
-
 <div class="card">
     <div class="card-header">
         Create Post
     </div>
     <div class="card-body">
-     
         <form>
             <div class="form-group">
-                <textarea Required class="form-control" #newPost name="post" id="post" rows="5" placeholder="Roar it out!!!"></textarea>     
-            
-              <button type="button" (click)="createPost(newPost)" class="btn" routerLink='/mainpage'>Post</button>
-               </div>
+                <textarea Required class="form-control" #newPost name="post" id="post" rows="5" placeholder="Roar it out!!!"></textarea>
+
+                <button type="button" (click)="createPost(newPost)" class="btn">Post</button>
+            </div>
         </form>
-     
     </div>
-  </div>
+</div>

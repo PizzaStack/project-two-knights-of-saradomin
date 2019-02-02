@@ -1,8 +1,11 @@
 package com.revature.controller;
 
+<<<<<<< HEAD
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+=======
+>>>>>>> ccec612d378222e5b07415190037ec4ab9472627
 import java.util.List;
 import java.util.UUID;
 
@@ -43,6 +46,7 @@ public class UserController {
 	VerificationTokenRepository tokenRepository;
 	
 	Logger logger = LogManager.getLogger(UserController.class);
+	
 	@Autowired
 	EmailController emailController;
 
@@ -51,15 +55,14 @@ public class UserController {
     public UserController(BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-	
+
 	@GetMapping("/users")
-	public List<Users> getAll(){
-		//logger.info("FINDING ALL USERS");
+	public List<Users> getAll() {
+		// logger.info("FINDING ALL USERS");
 		System.out.println("FINDING ALL USERS");
 		return userRepository.findAll();
 	}
-	
-	@SuppressWarnings("unused")
+
 	@PostMapping("/authenticate")
 	@ResponseBody
 	public Users login(@RequestBody Users user) {
@@ -145,5 +148,10 @@ public class UserController {
 			user = null;
 		}
 		return user;
+	}
+
+	@GetMapping("users/{userId}")
+	public String redirectToUserView(@RequestParam int userId) {
+		return "redirect:/mainview";
 	}
 }

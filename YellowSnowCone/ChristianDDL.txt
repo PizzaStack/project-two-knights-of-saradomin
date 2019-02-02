@@ -34,8 +34,8 @@ create table userposts
 create table postinteractions
 (
 	interactionid serial primary key,
-	postid int references userposts(postid) not null,
-	userid int references users(userid) not null,
+	postid int not null,
+	userid int not null,
 	type smallint not null
 );
 

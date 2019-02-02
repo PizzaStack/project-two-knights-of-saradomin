@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { NewpostService } from '../newpost.service';
 import { Posts } from '../posts';
 import { Users } from '../users';
-import { $ } from 'protractor';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-createpost',
@@ -12,40 +11,49 @@ import { $ } from 'protractor';
 })
 export class CreatepostComponent implements OnInit {
 
-  constructor(private newPost: NewpostService) { }
-   
+  user: Users[]
 
+  constructor(
+    private newPost: NewpostService,
+    private userService: UserService
+  ) { }
 
-  ngOnInit() {  
-
-    // this.newPost.createPost
+  ngOnInit() {
+    this.user = this.userService.getLoggedInUsers();
   }
 
-  createPost(data){
-      
-    let user:Users = {
-        userid: 1,
-        email: 'test@revature.com',
-        password: 'PLOK1plok1',
-        firstname: 'John',
-        lastname: 'Smith',
-        profilePicturePath: null,
-        enabled:true
-      }
-
-      let post: Posts = {
+  createPost(data: any) {
+    let post: Posts = {
       postid: null,
-      userid : 1,
+      userid: this.user[0].userid,
       textcontents: data.value,
       imagelocation: null,
       repostid: -1,
-      user: user
-
+      user: this.user[0],
+      postinteractions: null
     }
 
     this.newPost.createPost(post);
-    // $("#post").empty();
-    window.location.reload();
+
+    const view = document.getElementById('zmew')
+    view.innerHTML = `<app-navbar> </app-navbar>
+    <div class="wrapper">
+        <app-sidemenu></app-sidemenu>
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <app-createpost></app-createpost>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <app-post></app-post>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
   }
- 
 }

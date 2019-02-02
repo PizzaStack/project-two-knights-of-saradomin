@@ -1,6 +1,6 @@
 <div class="card" *ngFor="let post of postContent">
   <div class="card-header">
-    User
+    {{post.name}}
   </div>
   <div class="card-body">
     <div class="container">
@@ -17,18 +17,18 @@
         <div class="col-lg-1">
         </div>
         <div class="col-lg-1">
-          <input id="{{post.id1}}" (click)="like(post.id1)" type="image" src="../../assets/snowconeshadow.png" width="48"
+          <input id="{{post.id1}}" (click)="like(post.id1)" type="image" src={{post.src1}} width="48"
             height="48">
-          <small id="liked" class="form-text text-muted">Like</small>
+          <small id="liked" class="form-text text-muted">{{post.likecount}}</small>
         </div>
         <div class="col-lg-1">
-          <input id="{{post.id2}}" (click)="dislike(post.id2)" type="image" src="../../assets/snowconeshadowupsidedown.png"
+          <input id="{{post.id2}}" (click)="dislike(post.id2)" type="image" src={{post.src2}}
             width="48" height="48">
-          <small id="disliked" class="form-text text-muted">Hate</small>
+          <small id="disliked" class="form-text text-muted">{{post.dislikecount}}</small>
         </div>
         <div class="col-lg-5"></div>
         <div class="col-lg-3">
-          <app-repost></app-repost>
+          <input id="repost" (click)="repost(post.id)" type="image" src="../../assets/repost-icon.png" width="48" height="48">
         </div>
         <div class="col-lg-1">
         </div>

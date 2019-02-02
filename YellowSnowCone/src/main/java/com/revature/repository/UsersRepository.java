@@ -16,12 +16,14 @@ import com.revature.entity.Users;
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Integer> {
 	List<Users> findByfirstname(String firstname);
+
 	List<Users> findBylastname(String lastname);
 
 	Users findByUserid(int id);
 	Users findByEmail(String email);
 	Users findByEmailAndPassword(String email, String password);
 
+	@SuppressWarnings("unchecked")
 	@Transactional()
 	Users save(Users user);
 	Users findTopByOrderByUseridDesc();

@@ -14,8 +14,6 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { ProfilepictureComponent } from './profilepicture/profilepicture.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { SnowconeComponent } from './snowcone/snowcone.component';
-import { SnowconelikeComponent } from './snowconelike/snowconelike.component';
-import { SnowconedislikeComponent } from './snowconedislike/snowconedislike.component';
 import { PostComponent } from './post/post.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import { WelcomeviewComponent } from './welcomeview/welcomeview.component';
@@ -33,6 +31,11 @@ import { RegisteredComponent } from './registered/registered.component';
 import { MessageService } from './message.service';
 import { AuthGuard } from './auth.guard';
 import { UserService } from './user.service';
+import { NewmessageComponent } from './newmessage/newmessage.component';
+import { FriendslistComponent } from './friendslist/friendslist.component';
+import { OtheruserprofileComponent } from './otheruserprofile/otheruserprofile.component';
+import { UpdateprofileviewComponent } from './updateprofileview/updateprofileview.component';
+import { AuthService } from './auth.service'
 
 @NgModule({
   declarations: [
@@ -45,12 +48,9 @@ import { UserService } from './user.service';
     ProfilepictureComponent,
     CreatepostComponent,
     SnowconeComponent,
-    SnowconelikeComponent,
-    SnowconedislikeComponent,
     PostComponent,
     MainviewComponent,
     WelcomeviewComponent,
-    UserListComponent,
     MessagesComponent,
     MessagesthreadComponent,
     IconComponent,
@@ -59,7 +59,11 @@ import { UserService } from './user.service';
     SearchuserComponent,
     MypostViewComponent,
     UserpostComponent,
-    RegisteredComponent
+    RegisteredComponent,
+    NewmessageComponent,
+    FriendslistComponent,
+    OtheruserprofileComponent,
+    UpdateprofileviewComponent
     ],
   imports: [
     BrowserModule,
@@ -74,7 +78,7 @@ import { UserService } from './user.service';
       cancelButtonClass: 'btn'
   })
   ],
-  providers: [UserService, MessageService, AuthGuard],
+  providers: [UserService, MessageService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

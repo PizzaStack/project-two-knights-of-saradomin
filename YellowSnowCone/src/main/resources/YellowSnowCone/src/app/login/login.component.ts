@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
         swal({
           title: "Not So Fast",
           text: "Your Email Has Not Been Verified",
-          imageUrl: "../../assets/yellowsnowcone.png",
+          imageUrl: "../../assets/yellowsnowconedislikeshadowupsidedown.png",
           imageHeight: 100,
           timer: 3000
         });

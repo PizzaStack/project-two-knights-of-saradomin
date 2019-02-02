@@ -4,11 +4,10 @@ import { Users } from './users'
 import { VerificationToken } from './verificationToken'
 
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { parseHttpResponse } from 'selenium-webdriver/http';
 import { Router } from '@angular/router';
+import { StorageService } from './storage.service';
 
 const httpPostOptions = {
   headers: new HttpHeaders({ 
@@ -34,20 +33,21 @@ const httpTextOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  users:Users[] = [];
-  loggedInUsers:Users[] = [];
-  private _url = "http://localhost:8080/";
+  users: Users[] = [];
+  loggedInUsers: Users[] = [];
+  private _url = this.storage.getBaseUrl();
 
   constructor(private http: HttpClient,
-              public router: Router) {}
+    public router: Router,
+    private storage: StorageService) { }
 
-  getUsers() : Observable<Users[]> {
+  getUsers(): Observable<Users[]> {
     return this.http.get<Users[]>(this._url.concat('users'), httpGetOptions);
   }
-  
-  authenticate(user:Users) : Observable<Users> {
-    console.log('authenticating... '+user.email+', '+user.password);
-    return this.http.post<Users>(this._url.concat('authenticate'), 
+
+  authenticate(user: Users): Observable<Users> {
+    console.log('authenticating... ' + user.email + ', ' + user.password);
+    return this.http.post<Users>(this._url.concat('authenticate'),
       JSON.stringify(user), httpPostOptions)
   }
 
@@ -75,11 +75,10 @@ export class UserService {
     this.router.navigate(['mainview']);
   }
 
-  getLoggedInUsers() : Users[] {
+  getLoggedInUsers(): Users[] {
     return this.loggedInUsers;
   }
-  addLoggedInUser(user:Users){
+  addLoggedInUser(user: Users) {
     this.loggedInUsers.push(user);
   }
-
 }

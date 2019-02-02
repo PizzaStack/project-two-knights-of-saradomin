@@ -1,27 +1,27 @@
 <nav id="sidebar">
     <div class="sidebar-header">
-       <app-profilepicture></app-profilepicture>
+        <app-profilepicture></app-profilepicture>
     </div>
     <hr>
-    <p>Name</p>
+    <p>{{name}}</p>
     <hr>
     <ul class="list-unstyled components">
         <li>
         </li>
         <li>
-            <a href="#">Home</a>
+            <a routerLink="/mainview" (click)="clearMessageRefresh()">Home</a>
         </li>
         <li>
-            <a href="#">Profile</a>
+            <a routerLink="/updateprofile" (click)="clearMessageRefresh()">Profile</a>
+           
+        <li>
+            <a routerLink="/mypost">View My Post </a>
         </li>
         <li>
-            <a href="/mypost">View My Post </a>
+            <a routerLink="/friendslist" (click)="clearMessageRefresh()">Friends List</a>
         </li>
         <li>
-            <a href="#">Friends List</a>
-        </li>
-        <li>  
-           <a routerLink="/messages">Messages</a>
+            <a routerLink="/messages" (click)="clearMessageRefresh()">Messages</a>
         </li>
     </ul>
     <form (ngSubmit)="logout()">

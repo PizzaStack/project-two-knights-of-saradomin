@@ -1,1 +1,19 @@
 
+<div class="card" *ngFor="let post of postContent">
+    <div class="card-header">
+      {{post.name}}
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-1">
+          </div>
+          <div class="col-lg-10">
+            <p>{{post.content}}</p>
+          </div>
+          <div class="col-lg-1">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
