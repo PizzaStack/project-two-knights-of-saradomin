@@ -14,7 +14,9 @@ export class FriendService {
 
   private addFriendUrl: string = this.storage.getBaseUrl() + "addFriend";
 
-  userId: number = this.userService.getLoggedInUsers()[0].userid;
+  // userId: number = this.userService.getLoggedInUsers()[0].userid;
+
+  userId = parseInt(localStorage.getItem('token'));
 
   constructor(
     private http: HttpClient,

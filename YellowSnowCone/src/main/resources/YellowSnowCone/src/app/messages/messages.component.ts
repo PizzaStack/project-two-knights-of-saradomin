@@ -29,7 +29,8 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
     this.messageService.getMessagesById()
     .subscribe(data => this.messages = data,(err) => console.log(err),() => this.loadMessages());
-    this.userid = this.userService.getLoggedInUsers()[0].userid;
+    // this.userid = this.userService.getLoggedInUsers()[0].userid;
+    this.userid = parseInt(localStorage.getItem('token'));
   }
 
   loadMessages() {

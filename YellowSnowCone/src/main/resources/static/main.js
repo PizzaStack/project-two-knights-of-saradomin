@@ -403,21 +403,47 @@ var CreatepostComponent = /** @class */ (function () {
         this.userService = userService;
     }
     CreatepostComponent.prototype.ngOnInit = function () {
-        this.user = this.userService.getLoggedInUsers();
+        this.user = {
+            userid: parseInt(localStorage.getItem('token')),
+            email: localStorage.getItem('email'),
+            password: localStorage.getItem('password'),
+            firstname: localStorage.getItem('firstName'),
+            lastname: localStorage.getItem('lastName'),
+            profilePicturePath: localStorage.getItem('profilePicturePath')
+        };
     };
     CreatepostComponent.prototype.createPost = function (data) {
         var post = {
             postid: null,
-            userid: this.user[0].userid,
+            userid: parseInt(localStorage.getItem('token')),
             textcontents: data.value,
             imagelocation: null,
             repostid: -1,
-            user: this.user[0],
+            user: this.user,
             postinteractions: null
         };
         this.newPost.createPost(post);
-        var view = document.getElementById('zmew');
-        view.innerHTML = "<app-navbar> </app-navbar>\n    <div class=\"wrapper\">\n        <app-sidemenu></app-sidemenu>\n        <div id=\"content\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-createpost></app-createpost>\n                    </div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-post></app-post>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>";
+        window.location.reload();
+        //     const view = document.getElementById('zmew')
+        //     view.innerHTML = `<app-navbar> </app-navbar>
+        //     <div class="wrapper">
+        //         <app-sidemenu></app-sidemenu>
+        //         <div id="content">
+        //             <div class="container">
+        //                 <div class="row">
+        //                     <div class="col-lg-12">
+        //                         <app-createpost></app-createpost>
+        //                     </div>
+        //                 </div>
+        //                 <hr>
+        //                 <div class="row">
+        //                     <div class="col-lg-12">
+        //                         <app-post></app-post>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>`;
     };
     CreatepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -462,7 +488,8 @@ var FriendService = /** @class */ (function () {
         this.userService = userService;
         this.friendsByIdUrl = this.storage.getBaseUrl() + "relationsById";
         this.addFriendUrl = this.storage.getBaseUrl() + "addFriend";
-        this.userId = this.userService.getLoggedInUsers()[0].userid;
+        // userId: number = this.userService.getLoggedInUsers()[0].userid;
+        this.userId = parseInt(localStorage.getItem('token'));
     }
     FriendService.prototype.getFriendsById = function () {
         return this.http.post(this.friendsByIdUrl, this.userId);
@@ -543,7 +570,8 @@ var FriendslistComponent = /** @class */ (function () {
     FriendslistComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; }, function (error) { return console.log(error); }, function () { return _this.loadFriends(); });
-        this.userid = this.userService.getLoggedInUsers()[0].userid;
+        // this.userid = this.userService.getLoggedInUsers()[0].userid;
+        this.userid = parseInt(localStorage.getItem('token'));
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; });
     };
@@ -734,6 +762,11 @@ var LoginComponent = /** @class */ (function () {
                 _this._userService.addLoggedInUser(_this.loggedInUser);
                 localStorage.setItem('isLoggedIn', "true");
                 localStorage.setItem('token', _this.loggedInUser.userid.toString());
+                localStorage.setItem('firstName', _this.loggedInUser.firstname);
+                localStorage.setItem('lastName', _this.loggedInUser.lastname);
+                localStorage.setItem('email', _this.loggedInUser.email);
+                localStorage.setItem('password', _this.loggedInUser.password);
+                localStorage.setItem('profilePicturePath', _this.loggedInUser.profilePicturePath);
                 _this.router.navigate([_this.mainviewUrl]);
                 return true;
             }
@@ -939,7 +972,8 @@ var MessageService = /** @class */ (function () {
         this.http = http;
         this.storage = storage;
         this.userService = userService;
-        this.userId = this.userService.getLoggedInUsers()[0].userid;
+        // userId: number = this.userService.getLoggedInUsers()[0].userid;
+        this.userId = localStorage.getItem('token');
         this.messages = [];
         this.messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
         this.addMessagesUrl = this.storage.getBaseUrl() + "addMessage";
@@ -1026,7 +1060,8 @@ var MessagesComponent = /** @class */ (function () {
         var _this = this;
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
-        this.userid = this.userService.getLoggedInUsers()[0].userid;
+        // this.userid = this.userService.getLoggedInUsers()[0].userid;
+        this.userid = parseInt(localStorage.getItem('token'));
     };
     MessagesComponent.prototype.loadMessages = function () {
         for (var _i = 0, _a = this.messages; _i < _a.length; _i++) {
@@ -1141,7 +1176,8 @@ var MessagesthreadComponent = /** @class */ (function () {
         this.userId2 = this.storage.getUserId2();
         this.user1 = this.storage.getUser1();
         this.user2 = this.storage.getUser2();
-        this.userid = this.userService.getLoggedInUsers()[0].userid;
+        // this.userid = this.userService.getLoggedInUsers()[0].userid;
+        this.userid = parseInt(localStorage.getItem('token'));
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; }, function (err) { return console.log(err); }, function () { return _this.loadMessages(); });
         this.messageTimerId = setInterval(function () {
@@ -1427,7 +1463,8 @@ var NewmessageComponent = /** @class */ (function () {
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; }, function (error) { return console.log(error); }, function () { return _this.loadFriends(); });
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; });
-        this.userid = this.userService.getLoggedInUsers()[0].userid;
+        // this.userid = this.userService.getLoggedInUsers()[0].userid;
+        this.userid = parseInt(localStorage.getItem('token'));
     };
     NewmessageComponent.prototype.loadFriends = function () {
         if (this.friends) {
@@ -1632,7 +1669,8 @@ var PostComponent = /** @class */ (function () {
         this.posts = [];
         this.interactionIdAndTypeArray = [];
         this.postContent = [];
-        this.userId = this.userService.getLoggedInUsers()[0].userid;
+        // userId = this.userService.getLoggedInUsers()[0].userid;
+        this.userId = parseInt(localStorage.getItem('token'));
     }
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1662,10 +1700,10 @@ var PostComponent = /** @class */ (function () {
             };
             this.postContent.push(this.post);
         }
-        this.postContent.sort();
         this.loadLikesAndDislikes();
     };
     PostComponent.prototype.loadLikesAndDislikes = function () {
+        this.postContent.sort();
         for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
             var i = _a[_i];
             for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
@@ -1788,13 +1826,21 @@ var PostComponent = /** @class */ (function () {
         new Promise(function (reject) {
             _this.postsService.getPostByPostId(postid).toPromise().then(function (data) {
                 _this.reposts = data;
+                var user = {
+                    userid: parseInt(localStorage.getItem('token')),
+                    email: localStorage.getItem('email'),
+                    password: localStorage.getItem('password'),
+                    firstname: localStorage.getItem('firstName'),
+                    lastname: localStorage.getItem('lastName'),
+                    profilePicturePath: localStorage.getItem('profilePicturePath')
+                };
                 var post = {
                     postid: null,
                     userid: _this.userId,
                     textcontents: _this.reposts.textcontents,
                     imagelocation: _this.reposts.imagelocation,
                     repostid: _this.reposts.postid,
-                    user: _this.userService.getLoggedInUsers()[0],
+                    user: user,
                     postinteractions: null
                 };
                 _this.newpostService.createPost(post);
@@ -2104,7 +2150,8 @@ var SearchuserComponent = /** @class */ (function () {
         this.searchResults = this.storageService.getSearchResults();
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; });
         this.userService.getUsers().subscribe(function (data) { return _this.users = data; });
-        this.userId = this.userService.getLoggedInUsers()[0].userid;
+        // this.userId = this.userService.getLoggedInUsers()[0].userid;
+        this.userId = parseInt(localStorage.getItem('token'));
         // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
     };
     SearchuserComponent.prototype.search = function (searchContents) {
@@ -2245,7 +2292,8 @@ var SidemenuComponent = /** @class */ (function () {
         this.storage = storage;
     }
     SidemenuComponent.prototype.ngOnInit = function () {
-        this.name = this.userService.getLoggedInUsers()[0].firstname + " " + this.userService.getLoggedInUsers()[0].lastname;
+        // this.name = this.userService.getLoggedInUsers()[0].firstname + " " + this.userService.getLoggedInUsers()[0].lastname;
+        this.name = localStorage.getItem('firstName') + " " + localStorage.getItem('lastName');
     };
     SidemenuComponent.prototype.clearMessageRefresh = function () {
         clearInterval(this.storage.getMessageTimerId());
@@ -2699,11 +2747,11 @@ var UserpostComponent = /** @class */ (function () {
     }
     UserpostComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.userId = this.userService.getLoggedInUsers()[0].userid;
+        // this.userId = this.userService.getLoggedInUsers()[0].userid;
+        this.userId = parseInt(localStorage.getItem('token'));
         this.userpostService.getPostsById(this.userId).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
     };
     UserpostComponent.prototype.loadPosts = function () {
-        console.log(this.userId);
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
             this.post = {

@@ -24,12 +24,12 @@ export class UserpostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userId = this.userService.getLoggedInUsers()[0].userid;
+    // this.userId = this.userService.getLoggedInUsers()[0].userid;
+    this.userId = parseInt(localStorage.getItem('token'));
     this.userpostService.getPostsById(this.userId).subscribe(data => this.posts = data,(error: any) => console.log(error),()=>this.loadPosts())
     
   }
   loadPosts() {
-    console.log(this.userId)
     for (const i of this.posts) {
       this.post = {
         content: i.textcontents, 
