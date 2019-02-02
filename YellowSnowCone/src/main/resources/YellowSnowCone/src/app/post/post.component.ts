@@ -4,6 +4,8 @@ import { Posts } from '../posts';
 import { PostInteractions } from '../postinteractions';
 import { UserService } from '../user.service';
 import { NewpostService } from '../newpost.service';
+import { FriendService } from '../friend.service';
+import { Friend } from '../friend';
 
 @Component({
   selector: 'app-post',
@@ -12,10 +14,11 @@ import { NewpostService } from '../newpost.service';
 })
 export class PostComponent implements OnInit {
 
-  posts: Posts[];
+  posts = [];
   postInteractionsArray: PostInteractions[];
   postInteraction: PostInteractions;
   reposts: Posts;
+  friends: Friend[];
 
   post: {
     content: string,
@@ -41,11 +44,20 @@ export class PostComponent implements OnInit {
 
   userId = this.userService.getLoggedInUsers()[0].userid;
 
-  constructor(private postsService: PostsService, private userService: UserService, private newpostService: NewpostService) { }
+  constructor(private postsService: PostsService, private userService: UserService, private newpostService: NewpostService, private friendService: FriendService) { }
 
   ngOnInit() {
-    this.postsService.getPostsById(this.userId)
-      .subscribe(data => this.posts = data, (error: any) => console.log(error), () => this.loadPosts());
+
+    this.friendService.getFriendsById().subscribe(data => this.friends = data,
+      (error: any) => console.log(error),
+      () => {
+        for (let i of this.friends) {
+          if (i.userid1 === this.userId) {
+            this.postsService.getPostsById(i.userid2).subscribe(data => this.posts = data,
+              (error: any) => console.log(error), () => this.loadPosts());
+          }
+        }
+      });
   }
 
   loadPosts() {
@@ -61,10 +73,10 @@ export class PostComponent implements OnInit {
         src2: '../../assets/snowconeshadowupsidedown.png',
         likecount: 0,
         dislikecount: 0
-      };
+      }
       this.postContent.push(this.post);
     }
-    this.postContent = this.postContent.reverse();
+    this.postContent.sort();
     this.loadLikesAndDislikes();
   }
 
