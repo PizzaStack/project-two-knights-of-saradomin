@@ -375,7 +375,7 @@ module.exports = ".card {\r\n    min-width: 100vh;\r\n}\r\n\r\n.btn {\r\n    bac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\" routerLink='/mainpage'>Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -416,7 +416,8 @@ var CreatepostComponent = /** @class */ (function () {
             postinteractions: null
         };
         this.newPost.createPost(post);
-        window.location.reload();
+        var view = document.getElementById('zmew');
+        view.innerHTML = "<app-navbar> </app-navbar>\n    <div class=\"wrapper\">\n        <app-sidemenu></app-sidemenu>\n        <div id=\"content\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-createpost></app-createpost>\n                    </div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-post></app-post>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>";
     };
     CreatepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -862,7 +863,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n        <div id=\"content\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                        <app-createpost></app-createpost>\r\n                    </div>\r\n                </div>\r\n                <hr>\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                        <app-post></app-post>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div id=\"zmew\">\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n        <div id=\"content\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                        <app-createpost></app-createpost>\r\n                    </div>\r\n                </div>\r\n                <hr>\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                        <app-post></app-post>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1615,24 +1616,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _posts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../posts.service */ "./src/app/posts.service.ts");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
 /* harmony import */ var _newpost_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../newpost.service */ "./src/app/newpost.service.ts");
+/* harmony import */ var _friend_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../friend.service */ "./src/app/friend.service.ts");
+
 
 
 
 
 
 var PostComponent = /** @class */ (function () {
-    function PostComponent(postsService, userService, newpostService) {
+    function PostComponent(postsService, userService, newpostService, friendService) {
         this.postsService = postsService;
         this.userService = userService;
         this.newpostService = newpostService;
+        this.friendService = friendService;
+        this.posts = [];
         this.interactionIdAndTypeArray = [];
         this.postContent = [];
         this.userId = this.userService.getLoggedInUsers()[0].userid;
     }
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.postsService.getPostsById(this.userId)
-            .subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+        this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; }, function (error) { return console.log(error); }, function () {
+            for (var _i = 0, _a = _this.friends; _i < _a.length; _i++) {
+                var i = _a[_i];
+                if (i.userid1 === _this.userId) {
+                    _this.postsService.getPostsById(i.userid2).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+                }
+            }
+        });
     };
     PostComponent.prototype.loadPosts = function () {
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
@@ -1651,7 +1662,7 @@ var PostComponent = /** @class */ (function () {
             };
             this.postContent.push(this.post);
         }
-        this.postContent = this.postContent.reverse();
+        this.postContent.sort();
         this.loadLikesAndDislikes();
     };
     PostComponent.prototype.loadLikesAndDislikes = function () {
@@ -1798,7 +1809,7 @@ var PostComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./post.component.html */ "./src/app/post/post.component.html"),
             styles: [__webpack_require__(/*! ./post.component.css */ "./src/app/post/post.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"], _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _newpost_service__WEBPACK_IMPORTED_MODULE_4__["NewpostService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_posts_service__WEBPACK_IMPORTED_MODULE_2__["PostsService"], _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"], _newpost_service__WEBPACK_IMPORTED_MODULE_4__["NewpostService"], _friend_service__WEBPACK_IMPORTED_MODULE_5__["FriendService"]])
     ], PostComponent);
     return PostComponent;
 }());
