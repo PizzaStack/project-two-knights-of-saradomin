@@ -11,9 +11,6 @@
          </ul>
       </div>
 
-
-
-
        <div class="wrapper">
            <app-sidemenu></app-sidemenu>
   
@@ -21,13 +18,21 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                        <h2>Search results:</h2>
-                          <ul *ngFor="let searchResult of searchResults">
-                            <li>
-                              {{searchResult.firstname}} {{searchResult.lastname}}
-                              <button>View Profile</button><button (click)="addFriend(searchResult.userid)">Add Friend</button>
-                            </li>
-                        </ul>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Search results:</h2>
+                                  <ul *ngFor="let searchResult of searchResults">
+                                    <li>
+                                     <strong>
+                                            {{searchResult.firstname}} {{searchResult.lastname}}
+                                     </strong> 
+                                      <button class="btn">View Profile</button>
+                                      <button class="btn" (click)="addFriend(searchResult.userid)">Add Friend</button>
+                                    </li>
+                                </ul>       
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -33,6 +33,7 @@ import { UserpostComponent } from './userpost/userpost.component';
 import { NewmessageComponent } from './newmessage/newmessage.component';
 import { FriendslistComponent } from './friendslist/friendslist.component';
 import { OtheruserprofileComponent } from './otheruserprofile/otheruserprofile.component';
+import { UpdateprofileviewComponent } from './updateprofileview/updateprofileview.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { OtheruserprofileComponent } from './otheruserprofile/otheruserprofile.c
     UserpostComponent,
     NewmessageComponent,
     FriendslistComponent,
-    OtheruserprofileComponent
+    OtheruserprofileComponent,
+    UpdateprofileviewComponent
     ],
   imports: [
     BrowserModule,

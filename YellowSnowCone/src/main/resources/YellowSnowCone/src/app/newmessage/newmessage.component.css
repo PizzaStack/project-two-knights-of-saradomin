@@ -1,4 +1,18 @@
+ul {
+    list-style-type: none;
+}
+
 .wrapper {
     display: flex;
     align-items: stretch;
+}
+.btn {
+    background: #aad4e5;
+    font-weight: bold;
+    color: white;
+    box-shadow: 5px 5px #888888;
+    font-size: 15px;
+}
+.btn:active {
+    transform: translateY(2px);
 }

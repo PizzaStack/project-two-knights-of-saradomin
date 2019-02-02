@@ -3,7 +3,11 @@ small {
 }
 
 .card {
-    margin-bottom: 15px,
+    margin-bottom: 15px;
+}
+.panel{
+    min-height: 30%;
+    overflow: auto
 }
 
 .btn {
