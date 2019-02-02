@@ -631,7 +631,7 @@ var LoginComponent = /** @class */ (function () {
                 console.log('User Info: ' + JSON.stringify(_this.loggedInUser));
             }
             return false;
-        });
+        }, function (err) { return console.log(err); });
     };
     LoginComponent.prototype.onSubmit = function () {
         this.submitted = true;

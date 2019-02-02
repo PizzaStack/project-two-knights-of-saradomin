@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { timeoutWith } from 'rxjs/operators';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -41,25 +42,42 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  login(user:Users) : any {
+  login(user:Users){
     //this.loggedInUser = user;
 
     this._userService.authenticate(user).subscribe(data => {
+      if (data == null){
+        swal({
+          title: "Error",
+          text: "Invalid Username Or Password",
+          type: "error"
+        });
+      }
       this.loggedInUser = data;
-
-      if (this.loggedInUser.userid !== null || this.loggedInUser.userid != -1){
+      if ((this.loggedInUser.userid != null || this.loggedInUser.userid != -1)
+        && this.loggedInUser.enabled == true) {
         console.log("Login successful");
         console.log('loggedInUser: ' + JSON.stringify(this.loggedInUser));
         this._userService.addLoggedInUser(this.loggedInUser);
         localStorage.setItem('isLoggedIn', "true");
         localStorage.setItem('token', this.loggedInUser.userid.toString());
         this.router.navigate([this.mainviewUrl]);
-        return true;
+      } else if ((this.loggedInUser.userid != null || this.loggedInUser.userid != -1)
+        && this.loggedInUser.enabled == false){
+        swal({
+          title: "Error",
+          text: "Your Email Has Not Been Verified",
+          type: "error"
+        });
       } else {
+        swal({
+          title: "Error",
+          text: "Invalid Username Or Password",
+          type: "error"
+        });
         console.log('userid Is Null.')
         console.log('User Info: ' + JSON.stringify(this.loggedInUser));
       }
-      return false;
     });
   }
   onSubmit(){
@@ -76,12 +94,8 @@ export class LoginComponent implements OnInit {
       if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
         console.log("valid credentials")
         this.login(this.newUserModel);
-        if (this.newUserModel.userid == -1 || this.newUserModel == null){
-          alert("Invalid Username Or Password");
-          this.router.navigate(["welcomeview"]);
-        }
       } else {
-        alert("Invalid Username Or Password");
+        swal("Invalid Username Or Password");
         this.router.navigate(["welcomeview"]);
       }
     }
