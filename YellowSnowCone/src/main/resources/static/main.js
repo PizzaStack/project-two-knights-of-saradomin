@@ -46,6 +46,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _newmessage_newmessage_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./newmessage/newmessage.component */ "./src/app/newmessage/newmessage.component.ts");
 /* harmony import */ var _friendslist_friendslist_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./friendslist/friendslist.component */ "./src/app/friendslist/friendslist.component.ts");
 /* harmony import */ var _updateprofileview_updateprofileview_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./updateprofileview/updateprofileview.component */ "./src/app/updateprofileview/updateprofileview.component.ts");
+/* harmony import */ var _otheruserprofile_otheruserprofile_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./otheruserprofile/otheruserprofile.component */ "./src/app/otheruserprofile/otheruserprofile.component.ts");
+
 
 
 
@@ -65,14 +67,14 @@ var routes = [
     { path: "welcomeview/:userid/:vtoken", component: _registered_registered_component__WEBPACK_IMPORTED_MODULE_9__["RegisteredComponent"] },
     { path: "mypost", component: _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_7__["MypostViewComponent"] },
     { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
-    // { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
     { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"] },
     { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] },
     { path: 'searchuser', component: _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_8__["SearchuserComponent"] },
     { path: 'logo', redirectTo: '' },
     { path: 'newmessage', component: _newmessage_newmessage_component__WEBPACK_IMPORTED_MODULE_10__["NewmessageComponent"] },
     { path: 'friendslist', component: _friendslist_friendslist_component__WEBPACK_IMPORTED_MODULE_11__["FriendslistComponent"] },
-    { path: 'updateprofile', component: _updateprofileview_updateprofileview_component__WEBPACK_IMPORTED_MODULE_12__["UpdateprofileviewComponent"] }
+    { path: 'updateprofile', component: _updateprofileview_updateprofileview_component__WEBPACK_IMPORTED_MODULE_12__["UpdateprofileviewComponent"] },
+    { path: 'otheruserprofile', component: _otheruserprofile_otheruserprofile_component__WEBPACK_IMPORTED_MODULE_13__["OtheruserprofileComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -437,9 +439,28 @@ var CreatepostComponent = /** @class */ (function () {
             postinteractions: null
         };
         this.newPost.createPost(post);
+        alert("Post Successful!");
         // window.location.reload();
-        var view = document.getElementById('zmew');
-        view.innerHTML = "<app-navbar> </app-navbar>\n    <div class=\"wrapper\">\n        <app-sidemenu></app-sidemenu>\n        <div id=\"content\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-createpost></app-createpost>\n                    </div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-post></app-post>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>";
+        // const view = document.getElementById('zmew')
+        // view.innerHTML = `<app-navbar> </app-navbar>
+        // <div class="wrapper">
+        //     <app-sidemenu></app-sidemenu>
+        //     <div id="content">
+        //         <div class="container">
+        //             <div class="row">
+        //                 <div class="col-lg-12">
+        //                     <app-createpost></app-createpost>
+        //                 </div>
+        //             </div>
+        //             <hr>
+        //             <div class="row">
+        //                 <div class="col-lg-12">
+        //                     <app-post></app-post>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>`;
     };
     CreatepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -515,7 +536,7 @@ var FriendService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZnJpZW5kc2xpc3QvZnJpZW5kc2xpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUIiLCJmaWxlIjoic3JjL2FwcC9mcmllbmRzbGlzdC9mcmllbmRzbGlzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xyXG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG59XHJcbi53cmFwcGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogc3RyZXRjaDtcclxufVxyXG5cclxuLmJ0biB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjYWFkNGU1O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBib3gtc2hhZG93OiA1cHggNXB4ICM4ODg4ODg7XHJcbiAgICBmb250LXNpemU6IDE1cHg7XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG59XHJcblxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG4iXX0= */"
+module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n#content {\r\n    min-width: 100vh;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZnJpZW5kc2xpc3QvZnJpZW5kc2xpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUI7QUFFQTtJQUNJLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL2ZyaWVuZHNsaXN0L2ZyaWVuZHNsaXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ1bCB7XHJcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XHJcbn1cclxuLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcblxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxuICAgIG1hcmdpbi10b3A6IDE1cHg7XHJcbn1cclxuXHJcbi5idG46YWN0aXZlIHtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59XHJcblxyXG4jY29udGVudCB7XHJcbiAgICBtaW4td2lkdGg6IDEwMHZoO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -526,7 +547,7 @@ module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\n.wrapper {\r\n    d
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n        <div id=\"content\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                        <div class=\"card text-center\">\r\n                            <h2>Friend's List:</h2>\r\n                            <div class=\"card-body\">\r\n                                <div class=\"container-fluid\">\r\n                                    <div class=\"row\">\r\n                                        <div class=\"col-lg-12\">\r\n                                            <ul *ngFor=\"let user of users\">\r\n                                                <li>\r\n                                                    <div class=\"container-fluid\">\r\n                                                        <div class=\"row\">\r\n                                                            <div class=\"col-lg-4\">\r\n                                                                <a>\r\n                                                                    <strong>\r\n                                                                        {{user.firstname}} {{user.lastname}}\r\n                                                                    </strong>\r\n                                                                </a>\r\n                                                            </div>\r\n                                                            \r\n                                                            <div class=\"col-lg-5\">\r\n                                                                <button class=\"btn\">View Profile</button>\r\n                                                            </div>\r\n                                                            <div class=\"col-lg-3\">\r\n                                                                <button class=\"btn\" (click)=\"populateMessageThread(user.firstname + ' ' + user.lastname)\"\r\n                                                                    routerLink=\"/messagesthread\">Messages</button>\r\n                                                            </div>\r\n                                                            \r\n                                                        </div>\r\n                                                    </div>\r\n                                                </li>\r\n                                            </ul>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>"
+module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n        <div id=\"content\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                        <div class=\"card text-center\">\r\n                            <h2>Friend's List:</h2>\r\n                            <div class=\"card-body\">\r\n                                <div class=\"container-fluid\">\r\n                                    <div class=\"row\">\r\n                                        <div class=\"col-lg-12\">\r\n                                            <ul *ngFor=\"let user of users\">\r\n                                                <li>\r\n                                                    <div class=\"container-fluid\">\r\n                                                        <div class=\"row\">\r\n                                                            <div class=\"col-lg-4\">\r\n                                                                <a>\r\n                                                                    <strong>\r\n                                                                        {{user.firstname}} {{user.lastname}}\r\n                                                                    </strong>\r\n                                                                </a>\r\n                                                            </div>\r\n                                                            \r\n                                                            <div class=\"col-lg-5\">\r\n                                                                <button class=\"btn\" (click)=\"viewProfile(user)\" routerLink=\"/otheruserprofile\">View Profile</button>\r\n                                                            </div>\r\n                                                            <div class=\"col-lg-3\">\r\n                                                                <button class=\"btn\" (click)=\"populateMessageThread(user.firstname + ' ' + user.lastname)\"\r\n                                                                    routerLink=\"/messagesthread\">Messages</button>\r\n                                                            </div>\r\n                                                            \r\n                                                        </div>\r\n                                                    </div>\r\n                                                </li>\r\n                                            </ul>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -570,6 +591,11 @@ var FriendslistComponent = /** @class */ (function () {
         this.userid = parseInt(localStorage.getItem('token'));
         this.messageService.getMessagesById()
             .subscribe(function (data) { return _this.messages = data; });
+    };
+    FriendslistComponent.prototype.viewProfile = function (searchResult) {
+        localStorage.setItem("otherFirstName", searchResult.firstname);
+        localStorage.setItem("otherLastName", searchResult.lastname);
+        localStorage.setItem("otherUserId", searchResult.userid);
     };
     FriendslistComponent.prototype.loadFriends = function () {
         if (this.friends) {
@@ -1033,7 +1059,7 @@ var MessageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\nstrong{\r\n    margin: 25px;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlcy9tZXNzYWdlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xyXG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG59XHJcbnN0cm9uZ3tcclxuICAgIG1hcmdpbjogMjVweDtcclxufVxyXG5cclxuLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcbi5idG4ge1xyXG4gICAgYmFja2dyb3VuZDogI2FhZDRlNTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG4gICAgbWFyZ2luLXRvcDogMTVweDtcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn0iXX0= */"
+module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\nstrong{\r\n    margin: 25px;\r\n}\r\na {\r\n    color: black;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n#content {\r\n    min-width: 100vh;\r\n    font-size: 35px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUI7QUFHQTtJQUNJLGdCQUFnQjtJQUNoQixlQUFlO0FBQ25CIiwiZmlsZSI6InNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInVsIHtcclxuICAgIGxpc3Qtc3R5bGUtdHlwZTogbm9uZTtcclxufVxyXG5zdHJvbmd7XHJcbiAgICBtYXJnaW46IDI1cHg7XHJcbn1cclxuXHJcbmEge1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG4ud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn1cclxuLmJ0biB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjYWFkNGU1O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBib3gtc2hhZG93OiA1cHggNXB4ICM4ODg4ODg7XHJcbiAgICBmb250LXNpemU6IDE1cHg7XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG59XHJcblxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG5cclxuXHJcbiNjb250ZW50IHtcclxuICAgIG1pbi13aWR0aDogMTAwdmg7XHJcbiAgICBmb250LXNpemU6IDM1cHg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1044,7 +1070,7 @@ module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\nstrong{\r\n    marg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n\r\n        <div id=\"content\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-2\" ></div>\r\n                    <div class=\"col-lg-8\">\r\n\r\n                        <div class=\"card\">\r\n                            <div class=\"card-body\">\r\n                                <h4 class=\"card-title\">Messages</h4>\r\n                                <hr>\r\n                                <ul *ngFor=\"let user of users\">\r\n                                    <li>\r\n                                        <strong>\r\n                                            <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a>\r\n                                        </strong>\r\n                                    </li>\r\n                                </ul>\r\n                                <button class=\"btn\" id=\"newMessage\" routerLink=\"/newmessage\">New Message</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-lg-2\" ></div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n\r\n        <div id=\"content\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n\r\n                        <div class=\"card\">\r\n                            <div class=\"card-body\">\r\n                                <h2 class=\"card-title\">Messages</h2>\r\n                                <hr>\r\n                                <ul *ngFor=\"let user of users\">\r\n                                    <li>\r\n                                        <strong>\r\n                                            <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a>\r\n                                        </strong>\r\n                                    </li>\r\n                                </ul>\r\n                                <button class=\"btn\" id=\"newMessage\" routerLink=\"/newmessage\">New Message</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-lg-2\" ></div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1097,7 +1123,7 @@ var MessagesComponent = /** @class */ (function () {
         this.users = this.users.filter(function (elem, index, self) {
             return index === self.indexOf(elem);
         });
-        this.users.reverse();
+        // this.users.reverse();
     };
     MessagesComponent.prototype.populateMessageThread = function (user) {
         this.storage.setMessageThreadUser(user);
@@ -1275,7 +1301,7 @@ var MessagesthreadComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.content{\r\n    min-height: 100%;\r\n    overflow: auto\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXlwb3N0LXZpZXcvbXlwb3N0LXZpZXcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvbXlwb3N0LXZpZXcvbXlwb3N0LXZpZXcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi53cmFwcGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogc3RyZXRjaDtcclxufVxyXG4uY29udGVudHtcclxuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XHJcbiAgICBvdmVyZmxvdzogYXV0b1xyXG59Il19 */"
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.content{\r\n    min-height: 100%;\r\n    overflow: auto;\r\n    min-width: 100vh;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXlwb3N0LXZpZXcvbXlwb3N0LXZpZXcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEI7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixjQUFjO0lBQ2QsZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvbXlwb3N0LXZpZXcvbXlwb3N0LXZpZXcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi53cmFwcGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogc3RyZXRjaDtcclxufVxyXG4uY29udGVudHtcclxuICAgIG1pbi1oZWlnaHQ6IDEwMCU7XHJcbiAgICBvdmVyZmxvdzogYXV0bztcclxuICAgIG1pbi13aWR0aDogMTAwdmg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1286,7 +1312,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n        <div id=\"content\">\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                       \r\n                            <app-userpost class=\"content\"></app-userpost>\r\n         \r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div>\r\n    <app-navbar> </app-navbar>\r\n    <div class=\"wrapper\">\r\n        <app-sidemenu></app-sidemenu>\r\n        <div>\r\n            <div class=\"container\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-lg-12\">\r\n                       <div class=\"content\">\r\n                            <app-userpost></app-userpost>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -1428,7 +1454,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\n\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmV3bWVzc2FnZS9uZXdtZXNzYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCOztBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7QUFDbkI7O0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvbmV3bWVzc2FnZS9uZXdtZXNzYWdlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ1bCB7XHJcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XHJcbn1cclxuXHJcbi53cmFwcGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogc3RyZXRjaDtcclxufVxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG4iXX0= */"
+module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\n\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#content {\r\n    min-width: 100vh;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbmV3bWVzc2FnZS9uZXdtZXNzYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCOztBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7QUFDbkI7O0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvbmV3bWVzc2FnZS9uZXdtZXNzYWdlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ1bCB7XHJcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XHJcbn1cclxuXHJcbi53cmFwcGVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogc3RyZXRjaDtcclxufVxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG5cclxuI2NvbnRlbnQge1xyXG4gICAgbWluLXdpZHRoOiAxMDB2aDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -1585,7 +1611,7 @@ var NewpostService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3RoZXJ1c2VycHJvZmlsZS9vdGhlcnVzZXJwcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCIiwiZmlsZSI6InNyYy9hcHAvb3RoZXJ1c2VycHJvZmlsZS9vdGhlcnVzZXJwcm9maWxlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn0iXX0= */"
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\nsmall {\r\n    text-align: center\r\n}\r\n\r\n.card {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.panel{\r\n    min-height: 30%;\r\n    overflow: auto\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\nimg {\r\n    height: 16px;\r\n    width: 16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#content {\r\n    min-width: 100vh;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3RoZXJ1c2VycHJvZmlsZS9vdGhlcnVzZXJwcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0k7QUFDSjs7QUFFQTtJQUNJLG1CQUFtQjtBQUN2Qjs7QUFDQTtJQUNJLGVBQWU7SUFDZjtBQUNKOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLFdBQVc7QUFDZjs7QUFFQTtJQUNJLGFBQWE7QUFDakI7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvb3RoZXJ1c2VycHJvZmlsZS9vdGhlcnVzZXJwcm9maWxlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn1cclxuXHJcbnNtYWxsIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlclxyXG59XHJcblxyXG4uY2FyZCB7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxNXB4O1xyXG59XHJcbi5wYW5lbHtcclxuICAgIG1pbi1oZWlnaHQ6IDMwJTtcclxuICAgIG92ZXJmbG93OiBhdXRvXHJcbn1cclxuXHJcbi5idG4ge1xyXG4gICAgYmFja2dyb3VuZDogI2FhZDRlNTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG59XHJcblxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG5cclxuaW1nIHtcclxuICAgIGhlaWdodDogMTZweDtcclxuICAgIHdpZHRoOiAxNnB4O1xyXG59XHJcblxyXG5pbnB1dCB7XHJcbiAgICBvdXRsaW5lOiBub25lO1xyXG59XHJcblxyXG5pbnB1dDphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbiNjb250ZW50IHtcclxuICAgIG1pbi13aWR0aDogMTAwdmg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -1596,7 +1622,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                      <div class=\"col-lg-12\">\r\n                          <h2>'s Profile</h2>\r\n                          <h1>Posts:</h1>\r\n                            <ul *ngFor=\"let post of posts\">\r\n                              <li>\r\n                               <a (click)=\"populateMessageThread(user)\" routerLink=\"/messagesthread\">{{user}}</a> \r\n                              </li>\r\n                            </ul>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      </div>\r\n  </div>"
+module.exports = "<div>\r\n  <app-navbar> </app-navbar>\r\n     <div class=\"wrapper\">\r\n         <app-sidemenu></app-sidemenu>\r\n\r\n          <div id=\"content\">\r\n              <div class=\"container\">\r\n                  <div class=\"row\">\r\n                      <div class=\"col-lg-12\">\r\n                          <h1>{{firstName}} {{lastName}}'s Profile</h1>\r\n                          <h2>Posts:</h2>\r\n                          <div class=\"card\" *ngFor=\"let post of postContent\">\r\n                            <div class=\"card-header\">\r\n                              {{post.name}}\r\n                            </div>\r\n                            <div class=\"card-body\">\r\n                              <div class=\"container\">\r\n                                <div class=\"row\">\r\n                                  <div class=\"col-lg-1\">\r\n                                  </div>\r\n                                  <div class=\"col-lg-10\">\r\n                                    <p>{{post.content}}</p>\r\n                                  </div>\r\n                                  <div class=\"col-lg-1\">\r\n                                  </div>\r\n                                </div>\r\n                                <div class=\"row\">\r\n                                  <div class=\"col-lg-1\">\r\n                                  </div>\r\n                                  <div class=\"col-lg-2\">\r\n                                    <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n                                      height=\"48\">\r\n                                    <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n                                  </div>\r\n                                  <div class=\"col-lg-2\">\r\n                                    <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n                                      width=\"48\" height=\"48\">\r\n                                    <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n                                  </div>\r\n                                  <div class=\"col-lg-3\"></div>\r\n                                  <div class=\"col-lg-3\">\r\n                                    <input id=\"repost\" (click)=\"repost(post.id)\" type=\"image\" src=\"../../assets/repost-icon.png\" width=\"48\" height=\"48\">\r\n                                  </div>\r\n                                  <div class=\"col-lg-1\">\r\n                                  </div>\r\n                                </div>\r\n                              </div>\r\n                            </div>\r\n                          </div>\r\n                      </div>\r\n                  </div>\r\n              </div>\r\n          </div>\r\n      </div>\r\n  </div>"
 
 /***/ }),
 
@@ -1613,14 +1639,216 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _posts_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../posts.service */ "./src/app/posts.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _newpost_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../newpost.service */ "./src/app/newpost.service.ts");
+/* harmony import */ var _friend_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../friend.service */ "./src/app/friend.service.ts");
+
+
+
+
 
 
 
 var OtheruserprofileComponent = /** @class */ (function () {
-    function OtheruserprofileComponent(storage) {
+    function OtheruserprofileComponent(storage, postsService, userService, newpostService, friendService) {
         this.storage = storage;
+        this.postsService = postsService;
+        this.userService = userService;
+        this.newpostService = newpostService;
+        this.friendService = friendService;
+        this.firstName = '';
+        this.lastName = '';
+        this.userid = 0;
+        this.posts = [];
+        this.interactionIdAndTypeArray = [];
+        this.postContent = [];
+        this.a = [];
+        // userId = this.userService.getLoggedInUsers()[0].userid;
+        this.userId = parseInt(localStorage.getItem('token'));
     }
     OtheruserprofileComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.firstName = localStorage.getItem("otherFirstName");
+        this.lastName = localStorage.getItem("otherLastName");
+        this.userid = parseInt(localStorage.getItem("otherUserId"));
+        this.postsService.getPostsById(this.userid).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+    };
+    OtheruserprofileComponent.prototype.loadPosts = function () {
+        console.log('inside loadposts');
+        for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
+            var i = _a[_i];
+            this.post = {
+                content: i.textcontents,
+                name: i.user.firstname + " " + i.user.lastname,
+                id: i.postid,
+                id1: i.postid + ' like',
+                id2: i.postid + ' dislike',
+                postinteractions: i.postinteractions,
+                src1: '../../assets/snowconeshadow.png',
+                src2: '../../assets/snowconeshadowupsidedown.png',
+                likecount: 0,
+                dislikecount: 0
+            };
+            this.a.push(this.post);
+            this.postContent.push(this.post);
+        }
+        console.log('count2: ' + this.count);
+        console.log('length2: ' + this.friendcount);
+        if (this.count === this.friendcount) {
+            console.log('content: ' + JSON.stringify(this.postContent));
+            this.loadLikesAndDislikes();
+        }
+    };
+    OtheruserprofileComponent.prototype.loadLikesAndDislikes = function () {
+        for (var _i = 0, _a = this.a; _i < _a.length; _i++) {
+            var i = _a[_i];
+            for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
+                var j = _c[_b];
+                if (this.userId === j.userid) {
+                    if (j.type === 1) {
+                        i.src1 = '../../assets/snowconelikeshadow.png';
+                    }
+                    else if (j.type === 0) {
+                        i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
+                    }
+                }
+                console.log("TESTTTT: " + JSON.stringify(j));
+                if (j.type === 1) {
+                    i.likecount++;
+                }
+                else if (j.type === 0) {
+                    i.dislikecount++;
+                }
+            }
+        }
+        this.a.splice(0);
+    };
+    OtheruserprofileComponent.prototype.like = function (likeimg) {
+        var img = document.getElementById(likeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
+        var postId = likeimg.split(" ")[0];
+        var dislikeimg = postId + ' dislike';
+        postId = +postId;
+        var img2 = document.getElementById(dislikeimg);
+        if (img.src.split('/').pop() === 'snowconeshadow.png') {
+            if (img2.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
+                img2.src = '../../assets/snowconeshadowupsidedown.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.dislikecount--;
+                        dislikecount.innerHTML = "" + i.dislikecount;
+                    }
+                }
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
+            img.src = '../../assets/snowconelikeshadow.png';
+            this.postInteraction = {
+                interactionid: null,
+                postid: postId,
+                userid: this.userId,
+                type: 1
+            };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.likecount++;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
+            this.postsService.addPostInteraction(this.postInteraction);
+        }
+        else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
+            img.src = '../../assets/snowconeshadow.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.likecount--;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
+        }
+    };
+    OtheruserprofileComponent.prototype.dislike = function (dislikeimg) {
+        var img = document.getElementById(dislikeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
+        var postId = dislikeimg.split(" ")[0];
+        var likeimg = postId + ' like';
+        postId = +postId;
+        var img2 = document.getElementById(likeimg);
+        if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
+            if (img2.src.split('/').pop() === 'snowconelikeshadow.png') {
+                img2.src = '../../assets/snowconeshadow.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.likecount--;
+                        likecount.innerHTML = "" + i.likecount;
+                    }
+                }
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
+            img.src = '../../assets/snowconedislikeshadowupsidedown.png';
+            this.postInteraction = {
+                interactionid: null,
+                postid: postId,
+                userid: this.userId,
+                type: 0
+            };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.dislikecount++;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
+            this.postsService.addPostInteraction(this.postInteraction);
+        }
+        else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
+            img.src = '../../assets/snowconeshadowupsidedown.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.dislikecount--;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
+        }
+    };
+    OtheruserprofileComponent.prototype.repost = function (postid) {
+        var _this = this;
+        new Promise(function (reject) {
+            _this.postsService.getPostByPostId(postid).toPromise().then(function (data) {
+                _this.reposts = data;
+                var user = {
+                    userid: parseInt(localStorage.getItem('token')),
+                    email: localStorage.getItem('email'),
+                    password: localStorage.getItem('password'),
+                    firstname: localStorage.getItem('firstName'),
+                    lastname: localStorage.getItem('lastName'),
+                    profilePicturePath: localStorage.getItem('profilePicturePath'),
+                    enabled: true
+                };
+                var post = {
+                    postid: null,
+                    userid: _this.userId,
+                    textcontents: _this.reposts.textcontents,
+                    imagelocation: _this.reposts.imagelocation,
+                    repostid: _this.reposts.postid,
+                    user: user,
+                    postinteractions: null
+                };
+                _this.newpostService.createPost(post);
+                alert("Reposted!");
+            }, function (msg) {
+                reject(msg);
+            });
+        });
     };
     OtheruserprofileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1628,7 +1856,7 @@ var OtheruserprofileComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./otheruserprofile.component.html */ "./src/app/otheruserprofile/otheruserprofile.component.html"),
             styles: [__webpack_require__(/*! ./otheruserprofile.component.css */ "./src/app/otheruserprofile/otheruserprofile.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_storage_service__WEBPACK_IMPORTED_MODULE_2__["StorageService"], _posts_service__WEBPACK_IMPORTED_MODULE_3__["PostsService"], _user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"], _newpost_service__WEBPACK_IMPORTED_MODULE_5__["NewpostService"], _friend_service__WEBPACK_IMPORTED_MODULE_6__["FriendService"]])
     ], OtheruserprofileComponent);
     return OtheruserprofileComponent;
 }());
@@ -1655,7 +1883,7 @@ module.exports = "small {\r\n    text-align: center\r\n}\r\n\r\n.card {\r\n    m
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-5\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <input id=\"repost\" (click)=\"repost(post.id)\" type=\"image\" src=\"../../assets/repost-icon.png\" width=\"48\" height=\"48\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-3\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <input id=\"repost\" (click)=\"repost(post.id)\" type=\"image\" src=\"../../assets/repost-icon.png\" width=\"48\" height=\"48\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1887,7 +2115,7 @@ var PostComponent = /** @class */ (function () {
                     postinteractions: null
                 };
                 _this.newpostService.createPost(post);
-                window.location.reload();
+                alert("Reposted!");
             }, function (msg) {
                 reject(msg);
             });
@@ -2379,7 +2607,7 @@ var RepostComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.navbar {\r\n    background: transparent;\r\n    margin-left: 0px;\r\n}\r\n\r\nul {\r\n    margin-left: 0px;\r\n    padding-left: 0px;\r\n    list-style-type: none;\r\n}\r\n\r\n.form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n    -moz-box-shadow: inset 0 0 15px #888888;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    margin-left: 10px\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksdUJBQXVCO0lBQ3ZCLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIscUJBQXFCO0FBQ3pCOztBQUVBO0lBRUksa0NBQWtDO0lBQ2xDLHVDQUF1QztBQUMzQzs7QUFFQTtJQUNJLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCO0FBQ0o7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn1cclxuXHJcbi5uYXZiYXIge1xyXG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XHJcbiAgICBtYXJnaW4tbGVmdDogMHB4O1xyXG59XHJcblxyXG51bCB7XHJcbiAgICBtYXJnaW4tbGVmdDogMHB4O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XHJcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XHJcbn1cclxuXHJcbi5mb3JtLWNvbnRyb2wge1xyXG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgYm94LXNoYWRvdzogaW5zZXQgMCAwIDE1cHggIzg4ODg4ODtcclxuICAgIC1tb3otYm94LXNoYWRvdzogaW5zZXQgMCAwIDE1cHggIzg4ODg4ODtcclxufVxyXG5cclxuLmJ0biB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjYWFkNGU1O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgbWFyZ2luLWxlZnQ6IDEwcHhcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbiJdfQ== */"
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n.navbar {\r\n    background: transparent;\r\n    margin-left: 0px;\r\n}\r\n\r\nul {\r\n    margin-left: 0px;\r\n    padding-left: 0px;\r\n    list-style-type: none;\r\n}\r\n\r\n.form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n    -moz-box-shadow: inset 0 0 15px #888888;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    margin-left: 10px\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#content {\r\n    min-width: 100vh;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxhQUFhO0lBQ2Isb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksdUJBQXVCO0lBQ3ZCLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixpQkFBaUI7SUFDakIscUJBQXFCO0FBQ3pCOztBQUVBO0lBRUksa0NBQWtDO0lBQ2xDLHVDQUF1QztBQUMzQzs7QUFFQTtJQUNJLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCO0FBQ0o7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvc2VhcmNodXNlci9zZWFyY2h1c2VyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IHN0cmV0Y2g7XHJcbn1cclxuXHJcbi5uYXZiYXIge1xyXG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XHJcbiAgICBtYXJnaW4tbGVmdDogMHB4O1xyXG59XHJcblxyXG51bCB7XHJcbiAgICBtYXJnaW4tbGVmdDogMHB4O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XHJcbiAgICBsaXN0LXN0eWxlLXR5cGU6IG5vbmU7XHJcbn1cclxuXHJcbi5mb3JtLWNvbnRyb2wge1xyXG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgYm94LXNoYWRvdzogaW5zZXQgMCAwIDE1cHggIzg4ODg4ODtcclxuICAgIC1tb3otYm94LXNoYWRvdzogaW5zZXQgMCAwIDE1cHggIzg4ODg4ODtcclxufVxyXG5cclxuLmJ0biB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjYWFkNGU1O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgbWFyZ2luLWxlZnQ6IDEwcHhcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbiNjb250ZW50IHtcclxuICAgIG1pbi13aWR0aDogMTAwdmg7XHJcbn0iXX0= */"
 
 /***/ }),
 
@@ -2390,7 +2618,7 @@ module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "    <div class=\"navbar\">\r\n        <ul class=\"\">\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" autofocus=\"autofocus\" class=\"form-control\" placeholder=\"Search\" #searchContents (keyup.enter)=\"search(searchContents)\" (keyup.enter)=\"clearMessageRefresh()\" (keyup.enter)=\"searchContents.value=''\">\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\" (click)=\"searchContents.value=''\" (click)=\"clearMessageRefresh()\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                  </button>\r\n                </div>\r\n              </div>\r\n         </ul>\r\n      </div>\r\n\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n  \r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                        <div class=\"card\">\r\n                            <div class=\"card-body\">\r\n                                <h2>Search results:</h2>\r\n                                  <ul *ngFor=\"let searchResult of searchResults\">\r\n                                    <li>\r\n                                     <strong>\r\n                                            {{searchResult.firstname}} {{searchResult.lastname}}\r\n                                     </strong> \r\n                                      <button class=\"btn\">View Profile</button>\r\n                                      <button class=\"btn\" (click)=\"addFriend(searchResult.userid)\">Add Friend</button>\r\n                                    </li>\r\n                                </ul>       \r\n                            </div>\r\n                        </div>\r\n\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>"
+module.exports = "    <div class=\"navbar\">\r\n        <ul class=\"\">\r\n            <div class=\"input-group\">\r\n                <input type=\"text\" autofocus=\"autofocus\" class=\"form-control\" placeholder=\"Search\" #searchContents (keyup.enter)=\"search(searchContents)\" (keyup.enter)=\"clearMessageRefresh()\" (keyup.enter)=\"searchContents.value=''\">\r\n                <div class=\"input-group-append\">\r\n                  <button class=\"btn btn-secondary\" type=\"button\" (click)=\"search(searchContents)\" (click)=\"searchContents.value=''\" (click)=\"clearMessageRefresh()\">\r\n                    <i class=\"fa fa-search\"></i>\r\n                  </button>\r\n                </div>\r\n              </div>\r\n         </ul>\r\n      </div>\r\n\r\n       <div class=\"wrapper\">\r\n           <app-sidemenu></app-sidemenu>\r\n  \r\n            <div id=\"content\">\r\n                <div class=\"container\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-lg-12\">\r\n                        <div class=\"card\">\r\n                            <div class=\"card-body\">\r\n                                <h2>Search results:</h2>\r\n                                  <ul *ngFor=\"let searchResult of searchResults\">\r\n                                    <li>\r\n                                     <strong>\r\n                                            {{searchResult.firstname}} {{searchResult.lastname}}\r\n                                     </strong> \r\n                                      <button class=\"btn\" (click)=\"viewProfile(searchResult)\" routerLink=\"/otheruserprofile\">View Profile</button>\r\n                                      <button class=\"btn\" (click)=\"addFriend(searchResult.userid)\">Add Friend</button>\r\n                                    </li>\r\n                                </ul>       \r\n                            </div>\r\n                        </div>\r\n\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>"
 
 /***/ }),
 
@@ -2459,6 +2687,11 @@ var SearchuserComponent = /** @class */ (function () {
         }
         this.searchResults.reverse();
     };
+    SearchuserComponent.prototype.viewProfile = function (searchResult) {
+        localStorage.setItem("otherFirstName", searchResult.firstname);
+        localStorage.setItem("otherLastName", searchResult.lastname);
+        localStorage.setItem("otherUserId", searchResult.userid);
+    };
     SearchuserComponent.prototype.addFriend = function (userId) {
         if (userId === this.userId) {
             alert("You cannot add yourself!");
@@ -2484,13 +2717,16 @@ var SearchuserComponent = /** @class */ (function () {
                     if (userId === i.userid) {
                         this.user2 = i;
                     }
+                    if (this.userId === i.userid) {
+                        this.user1 = i;
+                    }
                 }
             }
             if (alreadyFriends) {
                 alert("You are already friends with this user!");
             }
             else {
-                this.user1 = this.userService.getLoggedInUsers()[0];
+                parseInt(localStorage.getItem('token'));
                 this.friendToAdd = {
                     relationid: null,
                     userid1: this.userId,
@@ -2767,7 +3003,7 @@ var StorageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n    -moz-box-shadow: inset 0 0 15px #888888;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 25px\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#update_Profile {\r\n    margin-top: 30%;\r\n    background-color: white;\r\n    padding: 20px;\r\n    font-size: 25px;\r\n    box-shadow: 5px 5px #888888;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBkYXRlcHJvZmlsZS91cGRhdGVwcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFFSSxrQ0FBa0M7SUFDbEMsdUNBQXVDO0FBQzNDOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCO0FBQ0o7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLHVCQUF1QjtJQUN2QixhQUFhO0lBQ2IsZUFBZTtJQUNmLDJCQUEyQjtBQUMvQiIsImZpbGUiOiJzcmMvYXBwL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvcm0tY29udHJvbCB7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICBib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG59XHJcblxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMjVweFxyXG59XHJcblxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG5cclxuI3VwZGF0ZV9Qcm9maWxlIHtcclxuICAgIG1hcmdpbi10b3A6IDMwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMjVweDtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxufSJdfQ== */"
+module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n    -moz-box-shadow: inset 0 0 15px #888888;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 25px\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#update_Profile {\r\n    margin-top: 30%;\r\n    background-color: white;\r\n    padding: 20px;\r\n    font-size: 25px;\r\n    box-shadow: 5px 5px #888888;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBkYXRlcHJvZmlsZS91cGRhdGVwcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFFSSxrQ0FBa0M7SUFDbEMsdUNBQXVDO0FBQzNDOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCO0FBQ0o7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLHVCQUF1QjtJQUN2QixhQUFhO0lBQ2IsZUFBZTtJQUNmLDJCQUEyQjtBQUMvQiIsImZpbGUiOiJzcmMvYXBwL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvcm0tY29udHJvbCB7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICBib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG59XHJcblxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMjVweFxyXG59XHJcblxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG5cclxuI3VwZGF0ZV9Qcm9maWxlIHtcclxuICAgIG1hcmdpbi10b3A6IDMwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMjVweDtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -2823,7 +3059,7 @@ var UpdateprofileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBkYXRlcHJvZmlsZXZpZXcvdXBkYXRlcHJvZmlsZXZpZXcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEIiLCJmaWxlIjoic3JjL2FwcC91cGRhdGVwcm9maWxldmlldy91cGRhdGVwcm9maWxldmlldy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59Il19 */"
+module.exports = ".wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n\r\n#content {\r\n    min-width: 100vh;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBkYXRlcHJvZmlsZXZpZXcvdXBkYXRlcHJvZmlsZXZpZXcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixvQkFBb0I7QUFDeEI7O0FBRUE7SUFDSSxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC91cGRhdGVwcm9maWxldmlldy91cGRhdGVwcm9maWxldmlldy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcblxyXG4jY29udGVudCB7XHJcbiAgICBtaW4td2lkdGg6IDEwMHZoO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -3013,7 +3249,7 @@ var UserpostService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "small{\r\n    text-align: center\r\n}\r\n.card{\r\n    margin-bottom: 15px\r\n}\r\n.btn{\r\n    background:  #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n.btn:active{\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\nimg{\r\n    height: 16px;\r\n    width:16px;\r\n}\r\ninput {\r\n    outline: none;\r\n}\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlcnBvc3QvdXNlcnBvc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJO0FBQ0o7QUFDQTtJQUNJO0FBQ0o7QUFFQTtJQUNJLG9CQUFvQjtJQUNwQixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLDJCQUEyQjtJQUMzQixlQUFlO0FBQ25CO0FBQ0E7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCO0FBRUE7SUFDSSxZQUFZO0lBQ1osVUFBVTtBQUNkO0FBRUE7SUFDSSxhQUFhO0FBQ2pCO0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCIiwiZmlsZSI6InNyYy9hcHAvdXNlcnBvc3QvdXNlcnBvc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbInNtYWxse1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyXHJcbn1cclxuLmNhcmR7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxNXB4XHJcbn1cclxuXHJcbi5idG57XHJcbiAgICBiYWNrZ3JvdW5kOiAgI2FhZDRlNTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG59XHJcbi5idG46YWN0aXZle1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbmltZ3tcclxuICAgIGhlaWdodDogMTZweDtcclxuICAgIHdpZHRoOjE2cHg7XHJcbn1cclxuXHJcbmlucHV0IHtcclxuICAgIG91dGxpbmU6IG5vbmU7XHJcbn1cclxuXHJcbmlucHV0OmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG4iXX0= */"
+module.exports = "small {\r\n    text-align: center\r\n}\r\n\r\n.card {\r\n    margin-bottom: 15px;\r\n}\r\n\r\n.panel{\r\n    min-height: 30%;\r\n    overflow: auto\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\nimg {\r\n    height: 16px;\r\n    width: 16px;\r\n}\r\n\r\ninput {\r\n    outline: none;\r\n}\r\n\r\ninput:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#content {\r\n    min-width: 100vh;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlcnBvc3QvdXNlcnBvc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJO0FBQ0o7O0FBRUE7SUFDSSxtQkFBbUI7QUFDdkI7O0FBQ0E7SUFDSSxlQUFlO0lBQ2Y7QUFDSjs7QUFFQTtJQUNJLG1CQUFtQjtJQUNuQixpQkFBaUI7SUFDakIsWUFBWTtJQUNaLDJCQUEyQjtJQUMzQixlQUFlO0FBQ25COztBQUVBO0lBQ0ksa0NBQTBCO1lBQTFCLDBCQUEwQjtBQUM5Qjs7QUFFQTtJQUNJLFlBQVk7SUFDWixXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksa0NBQTBCO1lBQTFCLDBCQUEwQjtBQUM5Qjs7QUFFQTtJQUNJLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL3VzZXJwb3N0L3VzZXJwb3N0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJzbWFsbCB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXJcclxufVxyXG5cclxuLmNhcmQge1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTVweDtcclxufVxyXG4ucGFuZWx7XHJcbiAgICBtaW4taGVpZ2h0OiAzMCU7XHJcbiAgICBvdmVyZmxvdzogYXV0b1xyXG59XHJcblxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMTVweDtcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbmltZyB7XHJcbiAgICBoZWlnaHQ6IDE2cHg7XHJcbiAgICB3aWR0aDogMTZweDtcclxufVxyXG5cclxuaW5wdXQge1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxufVxyXG5cclxuaW5wdXQ6YWN0aXZlIHtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgycHgpO1xyXG59XHJcblxyXG4jY29udGVudCB7XHJcbiAgICBtaW4td2lkdGg6IDEwMHZoO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -3024,7 +3260,7 @@ module.exports = "small{\r\n    text-align: center\r\n}\r\n.card{\r\n    margin-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"card\" *ngFor=\"let post of postContent\">\r\n    <div class=\"card-header\">\r\n      {{post.name}}\r\n    </div>\r\n    <div class=\"card-body\">\r\n      <div class=\"container\">\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-1\">\r\n          </div>\r\n          <div class=\"col-lg-10\">\r\n            <p>{{post.content}}</p>\r\n          </div>\r\n          <div class=\"col-lg-1\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n"
+module.exports = "<div class=\"card\" *ngFor=\"let post of postContent\">\r\n  <div class=\"card-header\">\r\n    {{post.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-10\">\r\n          <p>{{post.content}}</p>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <input id=\"{{post.id1}}\" (click)=\"like(post.id1)\" type=\"image\" src={{post.src1}} width=\"48\"\r\n            height=\"48\">\r\n          <small id=\"liked\" class=\"form-text text-muted\">{{post.likecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-2\">\r\n          <input id=\"{{post.id2}}\" (click)=\"dislike(post.id2)\" type=\"image\" src={{post.src2}}\r\n            width=\"48\" height=\"48\">\r\n          <small id=\"disliked\" class=\"form-text text-muted\">{{post.dislikecount}}</small>\r\n        </div>\r\n        <div class=\"col-lg-3\"></div>\r\n        <div class=\"col-lg-3\">\r\n          <input id=\"repost\" (click)=\"repost(post.id)\" type=\"image\" src=\"../../assets/repost-icon.png\" width=\"48\" height=\"48\">\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -3041,34 +3277,214 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _userpost_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../userpost.service */ "./src/app/userpost.service.ts");
-/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+/* harmony import */ var _posts_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../posts.service */ "./src/app/posts.service.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _newpost_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../newpost.service */ "./src/app/newpost.service.ts");
+/* harmony import */ var _friend_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../friend.service */ "./src/app/friend.service.ts");
+
+
+
+
 
 
 
 
 var UserpostComponent = /** @class */ (function () {
-    function UserpostComponent(userpostService, userService) {
+    function UserpostComponent(userpostService, storage, postsService, userService, newpostService, friendService) {
         this.userpostService = userpostService;
+        this.storage = storage;
+        this.postsService = postsService;
         this.userService = userService;
+        this.newpostService = newpostService;
+        this.friendService = friendService;
         this.postContent = [];
         this.userId = 0;
+        this.posts = [];
+        this.interactionIdAndTypeArray = [];
+        this.a = [];
     }
     UserpostComponent.prototype.ngOnInit = function () {
         var _this = this;
         // this.userId = this.userService.getLoggedInUsers()[0].userid;
         this.userId = parseInt(localStorage.getItem('token'));
-        this.userpostService.getPostsById(this.userId).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+        this.postsService.getPostsById(this.userId).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
     };
     UserpostComponent.prototype.loadPosts = function () {
+        console.log('inside loadposts');
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
             this.post = {
                 content: i.textcontents,
-                name: i.user.firstname + " " + i.user.lastname
+                name: i.user.firstname + " " + i.user.lastname,
+                id: i.postid,
+                id1: i.postid + ' like',
+                id2: i.postid + ' dislike',
+                postinteractions: i.postinteractions,
+                src1: '../../assets/snowconeshadow.png',
+                src2: '../../assets/snowconeshadowupsidedown.png',
+                likecount: 0,
+                dislikecount: 0
             };
+            this.a.push(this.post);
             this.postContent.push(this.post);
         }
-        this.postContent = this.postContent.reverse();
+        console.log('count2: ' + this.count);
+        console.log('length2: ' + this.friendcount);
+        if (this.count === this.friendcount) {
+            console.log('content: ' + JSON.stringify(this.postContent));
+            this.loadLikesAndDislikes();
+        }
+    };
+    UserpostComponent.prototype.loadLikesAndDislikes = function () {
+        for (var _i = 0, _a = this.a; _i < _a.length; _i++) {
+            var i = _a[_i];
+            for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
+                var j = _c[_b];
+                if (this.userId === j.userid) {
+                    if (j.type === 1) {
+                        i.src1 = '../../assets/snowconelikeshadow.png';
+                    }
+                    else if (j.type === 0) {
+                        i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
+                    }
+                }
+                console.log("TESTTTT: " + JSON.stringify(j));
+                if (j.type === 1) {
+                    i.likecount++;
+                }
+                else if (j.type === 0) {
+                    i.dislikecount++;
+                }
+            }
+        }
+        this.a.splice(0);
+    };
+    UserpostComponent.prototype.like = function (likeimg) {
+        var img = document.getElementById(likeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
+        var postId = likeimg.split(" ")[0];
+        var dislikeimg = postId + ' dislike';
+        postId = +postId;
+        var img2 = document.getElementById(dislikeimg);
+        if (img.src.split('/').pop() === 'snowconeshadow.png') {
+            if (img2.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
+                img2.src = '../../assets/snowconeshadowupsidedown.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.dislikecount--;
+                        dislikecount.innerHTML = "" + i.dislikecount;
+                    }
+                }
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
+            img.src = '../../assets/snowconelikeshadow.png';
+            this.postInteraction = {
+                interactionid: null,
+                postid: postId,
+                userid: this.userId,
+                type: 1
+            };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.likecount++;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
+            this.postsService.addPostInteraction(this.postInteraction);
+        }
+        else if (img.src.split('/').pop() === 'snowconelikeshadow.png') {
+            img.src = '../../assets/snowconeshadow.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.likecount--;
+                    likecount.innerHTML = "" + i.likecount;
+                }
+            }
+        }
+    };
+    UserpostComponent.prototype.dislike = function (dislikeimg) {
+        var img = document.getElementById(dislikeimg);
+        var likecount = document.getElementById('liked');
+        var dislikecount = document.getElementById('disliked');
+        var postId = dislikeimg.split(" ")[0];
+        var likeimg = postId + ' like';
+        postId = +postId;
+        var img2 = document.getElementById(likeimg);
+        if (img.src.split('/').pop() === 'snowconeshadowupsidedown.png') {
+            if (img2.src.split('/').pop() === 'snowconelikeshadow.png') {
+                img2.src = '../../assets/snowconeshadow.png';
+                for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+                    var i = _a[_i];
+                    if (i.id === postId) {
+                        i.likecount--;
+                        likecount.innerHTML = "" + i.likecount;
+                    }
+                }
+                this.postsService.deletePostInteraction(postId, this.userId);
+            }
+            img.src = '../../assets/snowconedislikeshadowupsidedown.png';
+            this.postInteraction = {
+                interactionid: null,
+                postid: postId,
+                userid: this.userId,
+                type: 0
+            };
+            for (var _b = 0, _c = this.postContent; _b < _c.length; _b++) {
+                var i = _c[_b];
+                if (i.id === postId) {
+                    i.dislikecount++;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
+            this.postsService.addPostInteraction(this.postInteraction);
+        }
+        else if (img.src.split('/').pop() === 'snowconedislikeshadowupsidedown.png') {
+            img.src = '../../assets/snowconeshadowupsidedown.png';
+            this.postsService.deletePostInteraction(postId, this.userId);
+            for (var _d = 0, _e = this.postContent; _d < _e.length; _d++) {
+                var i = _e[_d];
+                if (i.id === postId) {
+                    i.dislikecount--;
+                    dislikecount.innerHTML = "" + i.dislikecount;
+                }
+            }
+        }
+    };
+    UserpostComponent.prototype.repost = function (postid) {
+        var _this = this;
+        new Promise(function (reject) {
+            _this.postsService.getPostByPostId(postid).toPromise().then(function (data) {
+                _this.reposts = data;
+                var user = {
+                    userid: parseInt(localStorage.getItem('token')),
+                    email: localStorage.getItem('email'),
+                    password: localStorage.getItem('password'),
+                    firstname: localStorage.getItem('firstName'),
+                    lastname: localStorage.getItem('lastName'),
+                    profilePicturePath: localStorage.getItem('profilePicturePath'),
+                    enabled: true
+                };
+                var post = {
+                    postid: null,
+                    userid: _this.userId,
+                    textcontents: _this.reposts.textcontents,
+                    imagelocation: _this.reposts.imagelocation,
+                    repostid: _this.reposts.postid,
+                    user: user,
+                    postinteractions: null
+                };
+                _this.newpostService.createPost(post);
+                alert("Reposted!");
+            }, function (msg) {
+                reject(msg);
+            });
+        });
     };
     UserpostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3077,7 +3493,7 @@ var UserpostComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./userpost.component.css */ "./src/app/userpost/userpost.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_userpost_service__WEBPACK_IMPORTED_MODULE_2__["UserpostService"],
-            _user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]])
+            _storage_service__WEBPACK_IMPORTED_MODULE_3__["StorageService"], _posts_service__WEBPACK_IMPORTED_MODULE_4__["PostsService"], _user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"], _newpost_service__WEBPACK_IMPORTED_MODULE_6__["NewpostService"], _friend_service__WEBPACK_IMPORTED_MODULE_7__["FriendService"]])
     ], UserpostComponent);
     return UserpostComponent;
 }());
@@ -3261,7 +3677,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })

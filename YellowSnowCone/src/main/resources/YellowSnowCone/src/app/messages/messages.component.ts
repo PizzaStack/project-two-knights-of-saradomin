@@ -45,7 +45,7 @@ export class MessagesComponent implements OnInit {
       return index === self.indexOf(elem);
     })
 
-    this.users.reverse();
+    // this.users.reverse();
 
   }
 

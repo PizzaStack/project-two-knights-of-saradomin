@@ -268,7 +268,7 @@ export class PostComponent implements OnInit {
           postinteractions: null
         };
         this.newpostService.createPost(post)
-        window.location.reload();
+        alert("Reposted!");
       },
         msg => {
           reject(msg)
