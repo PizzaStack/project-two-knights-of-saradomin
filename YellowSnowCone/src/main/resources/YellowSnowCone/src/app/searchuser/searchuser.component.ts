@@ -88,6 +88,9 @@ export class SearchuserComponent implements OnInit {
           if (userId === i.userid) {
             this.user2 = i;
           }
+          if (this.userId === i.userid) {
+            this.user1 = i;
+          }
         }
       }
 
@@ -97,7 +100,7 @@ export class SearchuserComponent implements OnInit {
       alert("You are already friends with this user!");
     } else {
 
-      this.user1 = this.userService.getLoggedInUsers()[0];
+      parseInt(localStorage.getItem('token'));
 
       this.friendToAdd = {
         relationid: null,

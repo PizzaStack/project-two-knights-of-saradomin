@@ -388,7 +388,7 @@ module.exports = ".card {\r\n    min-width: 100vh;\r\n}\r\n\r\n.btn {\r\n    bac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" (click)=\"newPost.value = ''\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -994,7 +994,7 @@ var MessageService = /** @class */ (function () {
         this.storage = storage;
         this.userService = userService;
         // userId: number = this.userService.getLoggedInUsers()[0].userid;
-        this.userId = localStorage.getItem('token');
+        this.userId = parseInt(localStorage.getItem('token'));
         this.messages = [];
         this.messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
         this.addMessagesUrl = this.storage.getBaseUrl() + "addMessage";

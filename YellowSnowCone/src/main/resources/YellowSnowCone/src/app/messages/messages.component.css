@@ -21,3 +21,7 @@ strong{
 .btn:active {
     transform: translateY(2px);
 }
+
+.card {
+    width: 350px;
+}
