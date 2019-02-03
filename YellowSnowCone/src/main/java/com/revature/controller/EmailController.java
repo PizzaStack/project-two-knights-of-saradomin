@@ -41,7 +41,7 @@ public class EmailController {
 
             String name = user.getFirstname();
             String vtoken = verificationToken.getVtoken();
-            String url = "http://localhost:8080/welcomeview/".concat(String.valueOf(user.getUserid())).concat("/").concat(vtoken);
+            String url = "http://18.191.217.180:8888/welcomeview/".concat(String.valueOf(user.getUserid())).concat("/").concat(vtoken);
             String content = mailContentBuilder.build(name, url);
             messageHelper.setTo(user.getEmail());
             messageHelper.setSubject("YellowSnowCone - Please Verify Your Email");

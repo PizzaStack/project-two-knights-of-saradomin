@@ -392,7 +392,7 @@ module.exports = ".card {\r\n    min-width: 100vh;\r\n}\r\n\r\n.btn {\r\n    bac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\" required></textarea>\r\n            </div>\r\n            <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\" required></textarea>\r\n            </div>\r\n            <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\" (click)=\"newPost.value = ''\">Post</button>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -2324,7 +2324,7 @@ var RegisterComponent = /** @class */ (function () {
     }
     RegisterComponent.prototype.ngOnInit = function () {
         this._authService.logout();
-        this._url = 'http://localhost:8080/';
+        this._url = 'http://18.191.217.180:8888/';
         this.newUserModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](null, null, null, null, null, null, false);
         this.registrationForm = this.formBuilder.group({
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].email]],
@@ -2931,8 +2931,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        // baseUrl: string = "http://18.191.217.180:8888/";
-        this.baseUrl = "http://localhost:8080/";
+        this.baseUrl = "http://18.191.217.180:8888/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -3021,7 +3020,7 @@ var StorageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n    -moz-box-shadow: inset 0 0 15px #888888;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 25px\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#update_Profile {\r\n    margin-top: 30%;\r\n    background-color: white;\r\n    padding: 20px;\r\n    font-size: 25px;\r\n    box-shadow: 5px 5px #888888;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBkYXRlcHJvZmlsZS91cGRhdGVwcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFFSSxrQ0FBa0M7SUFDbEMsdUNBQXVDO0FBQzNDOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCO0FBQ0o7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLHVCQUF1QjtJQUN2QixhQUFhO0lBQ2IsZUFBZTtJQUNmLDJCQUEyQjtBQUMvQiIsImZpbGUiOiJzcmMvYXBwL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvcm0tY29udHJvbCB7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICBib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG59XHJcblxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMjVweFxyXG59XHJcblxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG5cclxuI3VwZGF0ZV9Qcm9maWxlIHtcclxuICAgIG1hcmdpbi10b3A6IDMwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMjVweDtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxufVxyXG4iXX0= */"
+module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n    -moz-box-shadow: inset 0 0 15px #888888;\r\n}\r\n\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 25px\r\n}\r\n\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n\r\n#update_Profile {\r\n    margin-top: 30%;\r\n    background-color: white;\r\n    padding: 20px;\r\n    font-size: 25px;\r\n    box-shadow: 5px 5px #888888;\r\n}\r\n\r\n.updateFormLabel {\r\n    font-size: 17.5px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXBkYXRlcHJvZmlsZS91cGRhdGVwcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFFSSxrQ0FBa0M7SUFDbEMsdUNBQXVDO0FBQzNDOztBQUVBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCO0FBQ0o7O0FBRUE7SUFDSSxrQ0FBMEI7WUFBMUIsMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLHVCQUF1QjtJQUN2QixhQUFhO0lBQ2IsZUFBZTtJQUNmLDJCQUEyQjtBQUMvQjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQiIsImZpbGUiOiJzcmMvYXBwL3VwZGF0ZXByb2ZpbGUvdXBkYXRlcHJvZmlsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvcm0tY29udHJvbCB7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxNXB4ICM4ODg4ODg7XHJcbiAgICBib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiBpbnNldCAwIDAgMTVweCAjODg4ODg4O1xyXG59XHJcblxyXG4uYnRuIHtcclxuICAgIGJhY2tncm91bmQ6ICNhYWQ0ZTU7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxuICAgIGZvbnQtc2l6ZTogMjVweFxyXG59XHJcblxyXG4uYnRuOmFjdGl2ZSB7XHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMnB4KTtcclxufVxyXG5cclxuI3VwZGF0ZV9Qcm9maWxlIHtcclxuICAgIG1hcmdpbi10b3A6IDMwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMjVweDtcclxuICAgIGJveC1zaGFkb3c6IDVweCA1cHggIzg4ODg4ODtcclxufVxyXG5cclxuLnVwZGF0ZUZvcm1MYWJlbCB7XHJcbiAgICBmb250LXNpemU6IDE3LjVweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -3032,7 +3031,7 @@ module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" id=\"update_Profile\">\r\n    <div class=\"row\">\r\n        <form class=\"form col-lg-12\" [formGroup]=\"updateForm\" (ngSubmit)=\"onSubmit()\">\r\n            <h3><strong>Update Profile</strong></h3>\r\n            <hr>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" \r\n                        placeholder=\"First Name\" formControlName=\"firstname\" \r\n                        name=\"firstname\" [ngClass]=\"{ 'is-invalid': submitted && f.firstname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.firstname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.firstname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.firstname.errors.minlength\">First Name Must Be At Least 4 characters</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" \r\n                        placeholder=\"Last Name\" formControlName=\"lastname\" \r\n                        name=\"lastname\" [ngClass]=\"{ 'is-invalid': submitted && f.lastname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.lastname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.lastname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.lastname.errors.minlength\">Last Name Must Be At Least 1 character</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" \r\n                placeholder=\"Password\" formControlName=\"password\" \r\n                name=\"password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" required>\r\n                <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputConfirmPassword\" \r\n                placeholder=\"Confirm Password\" formControlName=\"confirmPassword\" \r\n                name=\"confirmPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.confirmPassword.errors }\" required>\r\n                <div *ngIf=\"submitted && f.confirmPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.confirmPassword.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.confirmPassword.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <!--\r\n            <div>\r\n                <h6>Upload a different photo...</h6>\r\n                <input type=\"file\" class=\"text-center center-block file-upload\">\r\n            </div>\r\n            -->\r\n            <button type=\"submit\" class=\"btn btn-default btn-lg float-right\" \r\n            [disabled]=\"loading\">\r\n                Save\r\n            </button>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\" id=\"update_Profile\">\r\n    <div class=\"row\">\r\n        <form class=\"form col-lg-12\" [formGroup]=\"updateForm\" (ngSubmit)=\"onSubmit()\">\r\n            <h3><strong>Update Profile</strong></h3>\r\n            <hr>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"updateFormLabel\" for=\"lastname\">First Name </label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" \r\n                        placeholder=\"First Name\" formControlName=\"firstname\" \r\n                        name=\"firstname\" [ngClass]=\"{ 'is-invalid': submitted && f.firstname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.firstname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.firstname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.firstname.errors.pattern\">Invalid First Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"updateFormLabel\" for=\"lastname\">Last Name </label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" \r\n                        placeholder=\"Last Name\" formControlName=\"lastname\" \r\n                        name=\"lastname\" [ngClass]=\"{ 'is-invalid': submitted && f.lastname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.lastname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.lastname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.lastname.errors.pattern\">Invalid Last Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" \r\n                placeholder=\"Password\" formControlName=\"password\" \r\n                name=\"password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" required>\r\n                <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputConfirmPassword\" \r\n                placeholder=\"Confirm Password\" formControlName=\"confirmPassword\" \r\n                name=\"confirmPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.confirmPassword.errors }\" required>\r\n                <div *ngIf=\"submitted && f.confirmPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.confirmPassword.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.confirmPassword.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputNewPassword\" \r\n                placeholder=\"Choose A New Password\" formControlName=\"newPassword\" \r\n                name=\"newPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.newPassword.errors }\">\r\n                <!--\r\n                <div *ngIf=\"submitted && f.newPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.newPassword.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.newPassword.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n                -->\r\n            </div>\r\n            <!--\r\n            <div>\r\n                <h6>Upload a different photo...</h6>\r\n                <input type=\"file\" class=\"text-center center-block file-upload\">\r\n            </div>\r\n            -->\r\n            <button type=\"submit\" class=\"btn btn-default btn-lg float-right\" \r\n            [disabled]=\"loading\">\r\n                Save\r\n            </button>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -3055,6 +3054,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _storage_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage.service */ "./src/app/storage.service.ts");
+
 
 
 
@@ -3064,8 +3065,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UpdateprofileComponent = /** @class */ (function () {
-    function UpdateprofileComponent(_userService, router, formBuilder, _authService) {
+    function UpdateprofileComponent(_userService, _storageService, router, formBuilder, _authService) {
         this._userService = _userService;
+        this._storageService = _storageService;
         this.router = router;
         this.formBuilder = formBuilder;
         this._authService = _authService;
@@ -3077,8 +3079,9 @@ var UpdateprofileComponent = /** @class */ (function () {
         this.updateForm = this.formBuilder.group({
             firstname: [this.userModel.firstname, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern(/[a-z\w]{1,}/i)]],
             lastname: [this.userModel.lastname, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern(/[a-z\w]{1,}/i)]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]],
-            confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]]
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]],
+            confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]],
+            newPassword: ['', []]
         });
     };
     Object.defineProperty(UpdateprofileComponent.prototype, "f", {
@@ -3105,7 +3108,14 @@ var UpdateprofileComponent = /** @class */ (function () {
         else {
             this.userModel.firstname = this.f.firstname.value;
             this.userModel.lastname = this.f.lastname.value;
-            this.userModel.password = this.f.password.value;
+            if (this.f.newPassword.value.length >= 4) {
+                this.userModel.password = this.f.newPassword.value;
+                console.log('new password: ' + this.userModel.password);
+            }
+            else {
+                this.userModel.password = this.f.password.value;
+                console.log('password (unchanged): ' + this.userModel.password);
+            }
             this.f.confirmPassword.setValue('');
             console.log("valid update form");
             this.updateInfo(this.userModel);
@@ -3138,6 +3148,7 @@ var UpdateprofileComponent = /** @class */ (function () {
                     imageHeight: 100,
                     timer: 3000
                 });
+                _this.router.navigate(["/mainview"]);
             }
         });
     };
@@ -3145,6 +3156,8 @@ var UpdateprofileComponent = /** @class */ (function () {
         this.f.firstname.setValue(localStorage.getItem('firstName'));
         this.f.lastname.setValue(localStorage.getItem('lastName'));
         this.f.password.setValue('');
+        this.f.confirmPassword.setValue('');
+        this.f.newPassword.setValue('');
     };
     UpdateprofileComponent.prototype.resetModel = function () {
         this.userModel.firstname = localStorage.getItem('firstName');
@@ -3158,6 +3171,7 @@ var UpdateprofileComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./updateprofile.component.css */ "./src/app/updateprofile/updateprofile.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"],
+            _storage_service__WEBPACK_IMPORTED_MODULE_8__["StorageService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"],
             _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]])
@@ -3285,7 +3299,7 @@ var UserService = /** @class */ (function () {
         console.log("userid = " + verificationToken.userid);
         console.log("vtoken = " + verificationToken.vtoken);
         var newUser = null;
-        return this.http.post("http://localhost:8080/validate/"
+        return this.http.post("http://18.191.217.180:8888/validate/"
             .concat(verificationToken.userid.toString()).concat("/")
             .concat(verificationToken.vtoken), JSON.stringify(verificationToken), httpPostOptions);
     };
@@ -3808,7 +3822,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Associate\java\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
