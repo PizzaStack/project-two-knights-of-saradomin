@@ -67,6 +67,12 @@ export class SearchuserComponent implements OnInit {
 
   }
 
+  viewProfile(searchResult){
+    localStorage.setItem("otherFirstName", searchResult.firstname);
+    localStorage.setItem("otherLastName", searchResult.lastname);
+    localStorage.setItem("otherUserId", searchResult.userid);
+  }
+
   addFriend(userId: any) {
     if (userId === this.userId) {
       alert("You cannot add yourself!");

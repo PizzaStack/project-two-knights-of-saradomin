@@ -35,6 +35,12 @@ export class FriendslistComponent implements OnInit {
     .subscribe(data => this.messages = data);
   }
 
+  viewProfile(searchResult){
+    localStorage.setItem("otherFirstName", searchResult.firstname);
+    localStorage.setItem("otherLastName", searchResult.lastname);
+    localStorage.setItem("otherUserId", searchResult.userid);
+  }
+
   loadFriends(){
     if(this.friends){
       for(let i of this.friends){

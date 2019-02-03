@@ -32,19 +32,26 @@ export class CreatepostComponent implements OnInit {
 
 
   createPost(data: any) {
-    let post: Posts = {
-      postid: null,
-      userid: parseInt(localStorage.getItem('token')),
-      textcontents: data.value,
-      imagelocation: null,
-      repostid: -1,
-      user: this.user,
-      postinteractions: null
-    };
+    console.log(data.value)
+    
+    if(data.value ==="" ){
+      alert("Are you scared? No Roar detected.");
+    }else{
+      let post: Posts = {
+        postid: null,
+        userid: parseInt(localStorage.getItem('token')),
+        textcontents: data.value,
+        imagelocation: null,
+        repostid: -1,
+        user: this.user,
+        postinteractions: null
+      };
+  
+      this.newPost.createPost(post);
+  
+      alert("Post Successful!");
+    }
 
-    this.newPost.createPost(post);
-
-    alert("Post Successful!");
     
     // window.location.reload();
 

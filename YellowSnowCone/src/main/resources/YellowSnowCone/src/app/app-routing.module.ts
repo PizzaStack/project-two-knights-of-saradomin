@@ -11,6 +11,7 @@ import { RegisteredComponent } from './registered/registered.component';
 import { NewmessageComponent } from './newmessage/newmessage.component';
 import { FriendslistComponent } from './friendslist/friendslist.component';
 import { UpdateprofileviewComponent } from './updateprofileview/updateprofileview.component';
+import { OtheruserprofileComponent } from './otheruserprofile/otheruserprofile.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'logo', redirectTo: ''},
   { path: 'newmessage', component: NewmessageComponent, canActivate: [AuthGuard]},
   { path: 'friendslist', component: FriendslistComponent, canActivate: [AuthGuard]},
-  { path: 'updateprofile', component: UpdateprofileviewComponent, canActivate: [AuthGuard]}
+  { path: 'updateprofile', component: UpdateprofileviewComponent, canActivate: [AuthGuard]},
+  { path: 'otheruserprofile', component: OtheruserprofileComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
