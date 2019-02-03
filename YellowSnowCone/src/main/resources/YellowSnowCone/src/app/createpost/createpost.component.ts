@@ -30,6 +30,7 @@ export class CreatepostComponent implements OnInit {
     };
   }
 
+
   createPost(data: any) {
     let post: Posts = {
       postid: null,
@@ -42,7 +43,10 @@ export class CreatepostComponent implements OnInit {
     };
 
     this.newPost.createPost(post);
-    window.location.reload();
+
+    alert("Post Successful!");
+    
+    // window.location.reload();
 
 //     const view = document.getElementById('zmew')
 //     view.innerHTML = `<app-navbar> </app-navbar>
