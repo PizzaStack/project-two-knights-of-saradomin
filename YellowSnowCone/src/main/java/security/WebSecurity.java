@@ -18,18 +18,21 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     BCryptPasswordEncoder bCryptPasswordEncoder;
     
     // Keep while not sure if autowired will work w/ these
-    /* 
     public WebSecurity(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     } 
-    */
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	/* This prevents default 'signup' from being necessary, and allows anonymous
     	   users to access endpoints - important since we do not define roles. */
-        http.authorizeRequests().antMatchers("/**").permitAll().and().formLogin();
+        http.authorizeRequests().antMatchers("/**").permitAll()
+        .and().formLogin()
+        .and()
+		.addFilter(new UserAuthenticationFilter(authenticationManager()))
+		.addFilter(new UserAuthorizationFilter(authenticationManager()));
+       
         
         /* Add filters to ^??? 
          * Desired behavior is simply to encrypt passwords, so prob not necessary.

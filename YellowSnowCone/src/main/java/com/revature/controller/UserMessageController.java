@@ -32,9 +32,11 @@ public class UserMessageController {
 
 		List<UserMessage> messageList2 = new ArrayList<>();
 
-		for (UserMessage userMessage : messageList) {
-			if (userMessage.getUserid1() == id || userMessage.getUserid2() == id) {
-				messageList2.add(userMessage);
+		if (messageList != null) {
+			for (UserMessage userMessage : messageList) {
+				if (userMessage.getUserid1() == id || userMessage.getUserid2() == id) {
+					messageList2.add(userMessage);
+				}
 			}
 		}
 		return messageList2;
