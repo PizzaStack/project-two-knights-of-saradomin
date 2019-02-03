@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message } from './message';
 import { addMessageStatus } from './addMessageStatus';
 import { StorageService } from './storage.service';
 import { UserService } from './user.service';
+
+const httpTextOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+  })
+}
 
 @Injectable({
   providedIn: 'root'

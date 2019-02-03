@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { timeoutWith } from 'rxjs/operators';
 import swal from 'sweetalert2';
 
 @Component({
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
   private mainviewUrl:string;
   protected newUserModel:Users;
   loginForm: FormGroup;
-  loggedInUser:Users;
+  loggedInUser: Users;
   submitted = false;
 
   constructor(protected _userService:UserService,
@@ -47,6 +46,7 @@ export class LoginComponent implements OnInit {
 
     this._userService.authenticate(user).subscribe(data => {
       if (data == null){
+        console.log("data: " + JSON.stringify(data))
         swal({
           title: "Error",
           text: "Invalid Username Or Password",
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
         });
       }
       this.loggedInUser = data;
+      console.log("loggedInUser: " + JSON.stringify(this.loggedInUser))
       if ((this.loggedInUser.userid != null || this.loggedInUser.userid != -1)
         && this.loggedInUser.enabled == true) {
         console.log("Login successful");
@@ -68,6 +69,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email', this.loggedInUser.email);
         localStorage.setItem('password', this.loggedInUser.password);
         localStorage.setItem('profilePicturePath', this.loggedInUser.profilePicturePath);
+        localStorage.setItem('enabled', 'true')
         this.router.navigate([this.mainviewUrl]);
       } else if ((this.loggedInUser.userid != null || this.loggedInUser.userid != -1)
         && this.loggedInUser.enabled == false){
@@ -102,13 +104,8 @@ export class LoginComponent implements OnInit {
     } else {
       this.newUserModel.email = this.f.email.value;
       this.newUserModel.password = this.f.password.value;
-      if (this.newUserModel.email.length >= 4 && this.newUserModel.password.length >= 4) {
-        console.log("valid credentials")
-        this.login(this.newUserModel);
-      } else {
-        swal("Invalid Username Or Password");
-        this.router.navigate(["welcomeview"]);
-      }
+      console.log("valid credentials")
+      this.login(this.newUserModel);
     }
   }
 }
