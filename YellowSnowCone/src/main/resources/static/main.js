@@ -388,7 +388,11 @@ module.exports = ".card {\r\n    min-width: 100vh;\r\n}\r\n\r\n.btn {\r\n    bac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+=======
+module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" (click)=\"newPost.value = ''\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+>>>>>>> master
 
 /***/ }),
 
@@ -437,6 +441,7 @@ var CreatepostComponent = /** @class */ (function () {
             postinteractions: null
         };
         this.newPost.createPost(post);
+<<<<<<< HEAD
         window.location.reload();
         //     const view = document.getElementById('zmew')
         //     view.innerHTML = `<app-navbar> </app-navbar>
@@ -458,6 +463,11 @@ var CreatepostComponent = /** @class */ (function () {
         //             </div>
         //         </div>
         //     </div>`;
+=======
+        // window.location.reload();
+        var view = document.getElementById('zmew');
+        view.innerHTML = "<app-navbar> </app-navbar>\n    <div class=\"wrapper\">\n        <app-sidemenu></app-sidemenu>\n        <div id=\"content\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-createpost></app-createpost>\n                    </div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-post></app-post>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>";
+>>>>>>> master
     };
     CreatepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1012,7 +1022,11 @@ var MessageService = /** @class */ (function () {
         this.storage = storage;
         this.userService = userService;
         // userId: number = this.userService.getLoggedInUsers()[0].userid;
+<<<<<<< HEAD
         this.userId = localStorage.getItem('token');
+=======
+        this.userId = parseInt(localStorage.getItem('token'));
+>>>>>>> master
         this.messages = [];
         this.messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
         this.addMessagesUrl = this.storage.getBaseUrl() + "addMessage";
@@ -1708,21 +1722,49 @@ var PostComponent = /** @class */ (function () {
         this.posts = [];
         this.interactionIdAndTypeArray = [];
         this.postContent = [];
+<<<<<<< HEAD
+=======
+        this.a = [];
+>>>>>>> master
         // userId = this.userService.getLoggedInUsers()[0].userid;
         this.userId = parseInt(localStorage.getItem('token'));
     }
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; }, function (error) { return console.log(error); }, function () {
+<<<<<<< HEAD
             for (var _i = 0, _a = _this.friends; _i < _a.length; _i++) {
                 var i = _a[_i];
                 if (i.userid1 === _this.userId) {
                     _this.postsService.getPostsById(i.userid2).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
                 }
+=======
+            _this.count = 0;
+            console.log(_this.friends);
+            for (var _i = 0, _a = _this.friends; _i < _a.length; _i++) {
+                var i = _a[_i];
+                _this.friendcount = _this.friends.length;
+                if (i.userid1 === _this.userId) {
+                    _this.count++;
+                    console.log('count1: ' + _this.count);
+                    console.log('length1: ' + _this.friends.length);
+                    _this.postsService.getPostsById(i.userid2).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+                }
+                else if (i.userid2 === _this.userId) {
+                    _this.count++;
+                    console.log('count1: ' + _this.count);
+                    console.log('length1: ' + _this.friends.length);
+                    _this.postsService.getPostsById(i.userid1).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+                }
+>>>>>>> master
             }
         });
     };
     PostComponent.prototype.loadPosts = function () {
+<<<<<<< HEAD
+=======
+        console.log('inside loadposts');
+>>>>>>> master
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
             this.post = {
@@ -1737,6 +1779,7 @@ var PostComponent = /** @class */ (function () {
                 likecount: 0,
                 dislikecount: 0
             };
+<<<<<<< HEAD
             this.postContent.push(this.post);
         }
         this.loadLikesAndDislikes();
@@ -1744,6 +1787,20 @@ var PostComponent = /** @class */ (function () {
     PostComponent.prototype.loadLikesAndDislikes = function () {
         this.postContent.sort();
         for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+=======
+            this.a.push(this.post);
+            this.postContent.push(this.post);
+        }
+        console.log('count2: ' + this.count);
+        console.log('length2: ' + this.friendcount);
+        if (this.count === this.friendcount) {
+            console.log('content: ' + JSON.stringify(this.postContent));
+            this.loadLikesAndDislikes();
+        }
+    };
+    PostComponent.prototype.loadLikesAndDislikes = function () {
+        for (var _i = 0, _a = this.a; _i < _a.length; _i++) {
+>>>>>>> master
             var i = _a[_i];
             for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
                 var j = _c[_b];
@@ -1755,6 +1812,10 @@ var PostComponent = /** @class */ (function () {
                         i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
                     }
                 }
+<<<<<<< HEAD
+=======
+                console.log("TESTTTT: " + JSON.stringify(j));
+>>>>>>> master
                 if (j.type === 1) {
                     i.likecount++;
                 }
@@ -1763,6 +1824,10 @@ var PostComponent = /** @class */ (function () {
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        this.a.splice(0);
+>>>>>>> master
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
@@ -1884,6 +1949,10 @@ var PostComponent = /** @class */ (function () {
                     postinteractions: null
                 };
                 _this.newpostService.createPost(post);
+<<<<<<< HEAD
+=======
+                window.location.reload();
+>>>>>>> master
             }, function (msg) {
                 reject(msg);
             });
@@ -3257,7 +3326,11 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\jdeje\OneDrive\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+>>>>>>> master
 
 
 /***/ })

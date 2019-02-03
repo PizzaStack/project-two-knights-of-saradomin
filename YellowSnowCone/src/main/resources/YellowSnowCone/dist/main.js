@@ -1684,8 +1684,10 @@ var PostComponent = /** @class */ (function () {
         });
     };
     PostComponent.prototype.loadPosts = function () {
+        var count = 0;
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
+            count++;
             this.post = {
                 content: i.textcontents,
                 name: i.user.firstname + " " + i.user.lastname,
@@ -1700,8 +1702,12 @@ var PostComponent = /** @class */ (function () {
             };
             this.postContent.push(this.post);
         }
-        this.postContent.sort();
-        this.loadLikesAndDislikes();
+        console.log('count: ' + count);
+        console.log('length: ' + this.posts.length);
+        if (count === this.posts.length) {
+            console.log('content: ' + JSON.stringify(this.postContent));
+            this.loadLikesAndDislikes();
+        }
     };
     PostComponent.prototype.loadLikesAndDislikes = function () {
         for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
@@ -1836,6 +1842,7 @@ var PostComponent = /** @class */ (function () {
                     postinteractions: null
                 };
                 _this.newpostService.createPost(post);
+                window.location.reload();
             }, function (msg) {
                 reject(msg);
             });
