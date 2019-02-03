@@ -42,6 +42,9 @@ export class PostComponent implements OnInit {
 
   postContent = [];
 
+  count: number;
+  friendcount: number;
+
   // userId = this.userService.getLoggedInUsers()[0].userid;
   userId = parseInt(localStorage.getItem('token'));
 
@@ -51,19 +54,22 @@ export class PostComponent implements OnInit {
     this.friendService.getFriendsById().subscribe(data => this.friends = data,
       (error: any) => console.log(error),
       () => {
+        this.count = 0;
         for (let i of this.friends) {
+          this.friendcount = this.friends.length;
           if (i.userid1 === this.userId) {
+            this.count++;
             this.postsService.getPostsById(i.userid2).subscribe(data => this.posts = data,
               (error: any) => console.log(error), () => this.loadPosts());
+          } else {
+            this.friendcount--;
           }
         }
       });
   }
 
   loadPosts() {
-    let count = 0;
     for (const i of this.posts) {
-      count++;
       this.post = {
         content: i.textcontents,
         name: i.user.firstname + " " + i.user.lastname,
@@ -78,9 +84,9 @@ export class PostComponent implements OnInit {
       }
       this.postContent.push(this.post);
     }
-    console.log('count: ' + count);
-    console.log('length: ' + this.posts.length);
-    if (count === this.posts.length) {
+    console.log('count: ' + this.count);
+    console.log('length: ' + this.friendcount);
+    if (this.count === this.friendcount) {
       console.log('content: ' + JSON.stringify(this.postContent));
       this.loadLikesAndDislikes();
     }
@@ -231,7 +237,8 @@ export class PostComponent implements OnInit {
           password: localStorage.getItem('password'),
           firstname: localStorage.getItem('firstName'),
           lastname: localStorage.getItem('lastName'),
-          profilePicturePath: localStorage.getItem('profilePicturePath')
+          profilePicturePath: localStorage.getItem('profilePicturePath'),
+          enabled: true
       };
 
         let post: Posts = {
