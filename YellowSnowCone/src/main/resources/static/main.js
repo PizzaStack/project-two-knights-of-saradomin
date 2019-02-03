@@ -2278,7 +2278,6 @@ var RegisteredComponent = /** @class */ (function () {
         this.user = new _users__WEBPACK_IMPORTED_MODULE_6__["Users"](null, null, null, null, null, null, false);
     }
     RegisteredComponent.prototype.ngOnInit = function () {
-        var _this = this;
         console.log("in registered component");
         this.sub = this.route.params.subscribe(function (params) {
             localStorage.setItem('userid', params['userid']);
@@ -2287,7 +2286,7 @@ var RegisteredComponent = /** @class */ (function () {
         this.checkTokenInfo();
     };
     RegisteredComponent.prototype.checkTokenInfo = function () {
-        var _this_1 = this;
+        var _this = this;
         this.userid = Number(localStorage.getItem('userid'));
         this.vtoken = localStorage.getItem('vtoken');
         this.verificationToken = new _verificationToken__WEBPACK_IMPORTED_MODULE_4__["VerificationToken"](this.userid, this.vtoken);
@@ -2295,16 +2294,25 @@ var RegisteredComponent = /** @class */ (function () {
         console.log("userid = " + this.verificationToken.userid);
         console.log("vtoken = " + this.verificationToken.vtoken);
         this._userService.verifyToken(this.verificationToken).subscribe(function (data) {
-            _this_1.user = data;
-            console.log("verifiedUser: " + JSON.stringify(_this_1.user));
-            if (_this_1.user.enabled) {
+            if (data == null) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
+                    title: "Error",
+                    text: "Your Token Is Either Invalid or Expired",
+                    type: "error",
+                    timer: 3000
+                });
+                _this.router.navigate(['/welcomeview']);
+            }
+            _this.user = data;
+            console.log("verifiedUser: " + JSON.stringify(_this.user));
+            if (_this.user.enabled) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
                     title: "Success",
                     text: "You Are Now Able To Log In",
                     type: "success",
                     timer: 3000
                 });
-                _this_1.router.navigate(['/welcomeview']);
+                _this.router.navigate(['/welcomeview']);
             }
             else {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()({
@@ -2313,12 +2321,9 @@ var RegisteredComponent = /** @class */ (function () {
                     type: "error",
                     timer: 3000
                 });
-                _this_1.router.navigate(['/welcomeview']);
+                _this.router.navigate(['/welcomeview']);
             }
         });
-    };
-    RegisteredComponent.prototype.ngOnDestroy = function () {
-        this.sub.unsubscribe();
     };
     RegisteredComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

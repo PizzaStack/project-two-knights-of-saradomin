@@ -34,11 +34,8 @@ public class UserController {
 	@Autowired
 	EmailController emailController;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    public UserController(BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+	@Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@GetMapping("/users")
 	public List<Users> getAll() {
@@ -101,11 +98,10 @@ public class UserController {
 		}
 		return user;
 	}
-
-	// TODO: No System.out
-	@SuppressWarnings("unused") // Strangely, sometimes get errors without this... #toString()?
+	
 	@PostMapping("validate/{id}/{vtoken}")
 	public Users verifyUser(@PathVariable String id, @PathVariable String vtoken) {
+		System.out.println("validate endpoint hit");
 		Users user = null;
 		int userid = Integer.parseInt(id);
 		if (userRepository.existsById(userid)){
@@ -134,8 +130,10 @@ public class UserController {
 		return user;
 	}
 
+	/*
 	@GetMapping("users/{userId}")
 	public String redirectToUserView(@RequestParam int userId) {
 		return "redirect:/mainview";
 	}
+	*/
 }

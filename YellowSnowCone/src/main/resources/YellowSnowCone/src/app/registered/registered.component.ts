@@ -22,7 +22,7 @@ const httpPostOptions = {
   templateUrl: './registered.component.html',
   styleUrls: ['./registered.component.css']
 })
-export class RegisteredComponent implements OnInit, OnDestroy {
+export class RegisteredComponent implements OnInit/*, OnDestroy*/ {
   verificationToken:VerificationToken = new VerificationToken(null, null)
   userid:number;
   vtoken:string;
@@ -37,7 +37,6 @@ export class RegisteredComponent implements OnInit, OnDestroy {
               private _userService: UserService) {}
 
   ngOnInit() {
-    var _this=this;
     console.log("in registered component")
     this.sub = this.route.params.subscribe(params => {
       localStorage.setItem('userid', params['userid'])
@@ -54,6 +53,15 @@ export class RegisteredComponent implements OnInit, OnDestroy {
     console.log("userid = " + this.verificationToken.userid);
     console.log("vtoken = " + this.verificationToken.vtoken);
     this._userService.verifyToken(this.verificationToken).subscribe(data => {
+      if (data == null){
+        swal({
+          title:"Error",
+          text:"Your Token Is Either Invalid or Expired",
+          type:"error",
+          timer: 3000
+        });
+        this.router.navigate(['/welcomeview']);
+      }
       this.user = data;
       console.log("verifiedUser: " + JSON.stringify(this.user))
       if (this.user.enabled){
@@ -76,7 +84,9 @@ export class RegisteredComponent implements OnInit, OnDestroy {
     });
   }
 
+  /*
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+  */
 }
