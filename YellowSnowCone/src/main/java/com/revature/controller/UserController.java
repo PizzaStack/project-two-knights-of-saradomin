@@ -49,11 +49,11 @@ public class UserController {
 		Users storedUser = userRepository.findByEmail(user.getEmail());
 		if (storedUser != null && bCryptPasswordEncoder.matches(user.getPassword(), storedUser.getPassword())) {
 			user = storedUser;
-			logger.info("loggedInUser (success) = " + user);
+			logger.info("loggedInUser (authenticate-success) = " + user);
 			return user;
 		} else {
 			user = null;
-			logger.info("loggedInUser (failure) = " + user);
+			logger.info("loggedInUser (authenticate-failure) = " + user);
 		}
 		return user;
 	}
@@ -139,7 +139,7 @@ public class UserController {
 			return userRepository.save(storedUser);
 		} else {
 			user = null;
-			logger.info("loggedInUser (failure) = " + user);
+			logger.info("loggedInUser (update-failure) = " + user);
 		}
 		return user;
 	}

@@ -34,11 +34,12 @@ export class UpdateprofileComponent implements OnInit {
       null, true);
     console.log("userModel: " + JSON.stringify(this.userModel))
     this.updateForm = this.formBuilder.group({
-      firstname: [this.userModel.firstname, [Validators.required, Validators.pattern(/[a-z\w]{1,}/i)]],
-      lastname: [this.userModel.lastname, [Validators.required, Validators.pattern(/[a-z\w]{1,}/i)]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
-      newPassword: ['', []]
+      firstname: [this.userModel.firstname, [Validators.required, Validators.pattern(/[a-z\w]{1,20}/i)]],
+      lastname: [this.userModel.lastname, [Validators.required, Validators.pattern(/[a-z\w]{1,20}/i)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      newPassword: ['', [Validators.maxLength(25)]]
+      // Will check min length in java -- too much trouble in ang since form would be invalid if blank
     });
   }
   get f() { return this.updateForm.controls; }
@@ -83,7 +84,11 @@ export class UpdateprofileComponent implements OnInit {
           timer: 3000
         });
       } else {
-        user.password = newPassword;
+        if (newPassword.length >= 8){
+          user.password = newPassword;
+        } 
+        console.log("user info before update: " + JSON.stringify(user))
+        
         this._userService.updateInfo(user).subscribe(data => {
           if (data == null){
             console.log("data: " + JSON.stringify(data))

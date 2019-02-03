@@ -35,9 +35,9 @@ export class RegisterComponent implements OnInit {
 
     this.registrationForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
-      firstname: ['', [Validators.required, Validators.minLength(1)]],
-      lastname: ['', [Validators.required, Validators.minLength(1)]]
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      firstname: ['', [Validators.required, Validators.pattern(/[a-z\w]{1,20}/i)]],
+      lastname: ['', [Validators.required,  Validators.pattern(/[a-z\w]{1,20}/i)]]
     });
   }
   get f() { return this.registrationForm.controls; }
@@ -88,6 +88,8 @@ export class RegisterComponent implements OnInit {
     if (this.registrationForm.invalid){
       //this.resetFields();
       this.resetModel();
+      this.f.email.setValue("");
+      this.f.password.setValue("");
       return;
     } else {
       this.newUserModel.email = this.f.email.value;
