@@ -56,7 +56,8 @@ export class MessagesthreadComponent implements OnInit {
     this.userId2 = this.storage.getUserId2();
     this.user1 = this.storage.getUser1();
     this.user2 = this.storage.getUser2();
-    this.userid = this.userService.getLoggedInUsers()[0].userid;
+    // this.userid = this.userService.getLoggedInUsers()[0].userid;
+    this.userid = parseInt(localStorage.getItem('token'));
     this.messageService.getMessagesById()
       .subscribe(data => this.messages = data,(err) => console.log(err),() => this.loadMessages());
     this.messageTimerId = setInterval(() => {

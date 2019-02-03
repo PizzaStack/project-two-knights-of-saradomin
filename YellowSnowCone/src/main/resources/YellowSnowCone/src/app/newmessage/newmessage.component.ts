@@ -33,7 +33,8 @@ export class NewmessageComponent implements OnInit {
     this.friendService.getFriendsById().subscribe(data => this.friends = data,(error: any) => console.log(error),() => this.loadFriends());
     this.messageService.getMessagesById()
     .subscribe(data => this.messages = data);
-    this.userid = this.userService.getLoggedInUsers()[0].userid;
+    // this.userid = this.userService.getLoggedInUsers()[0].userid;
+    this.userid = parseInt(localStorage.getItem('token'));
   }
 
   loadFriends(){

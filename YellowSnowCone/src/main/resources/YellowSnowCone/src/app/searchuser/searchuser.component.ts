@@ -34,7 +34,8 @@ export class SearchuserComponent implements OnInit {
     this.searchResults = this.storageService.getSearchResults();
     this.friendService.getFriendsById().subscribe(data => this.friends = data);
     this.userService.getUsers().subscribe(data => this.users = data);
-    this.userId = this.userService.getLoggedInUsers()[0].userid;
+    // this.userId = this.userService.getLoggedInUsers()[0].userid;
+    this.userId = parseInt(localStorage.getItem('token'));
     // this.userService.getUsers().subscribe(data => this.user = data,(error: any) => console.log(error),() => this.storageService.setUser(this.user));
   }
 

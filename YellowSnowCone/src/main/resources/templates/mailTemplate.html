@@ -1,0 +1,26 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Email Message</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Anton|Archivo+Black|Fredoka+One|Staatliches" rel="stylesheet">
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+</head>
+<body style="font-size:170%; font-family: 'Anton', sans-serif; text-align:center">
+    <div class="container" style="background:rgb(170, 212, 229);">
+        <h2 style="color:rgb(242,92,104); margin-bottom:-10px; margin-top: 10px; padding-top: 25px;">
+            Welcome To YellowSnowCone, 
+        </h2>
+        <h1>
+            <p th:text="${name}" style="color:rgb(242,92,104); text-decoration: underline; text-decoration-color:rgb(255,240,102);"></p>
+        </h1>
+        <h2 style="display:inline-block; white-space:pre; color:rgb(242,92,104); margin-top:10px; padding-bottom: 15px;">Verify Your Email: <span style="float:right;"><a th:href="${url}" style="color:rgb(255,240,102); background-color:rgb(242,92,104); text-decoration-line: overline underline;">Token</a></span></h2>
+    </div>
+</body>
+</html>
+
