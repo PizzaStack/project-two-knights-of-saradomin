@@ -388,11 +388,7 @@ module.exports = ".card {\r\n    min-width: 100vh;\r\n}\r\n\r\n.btn {\r\n    bac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-<<<<<<< HEAD
-module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
-=======
-module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" (click)=\"newPost.value = ''\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
->>>>>>> master
+module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\" required></textarea>\r\n            </div>\r\n            <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -431,43 +427,44 @@ var CreatepostComponent = /** @class */ (function () {
         };
     };
     CreatepostComponent.prototype.createPost = function (data) {
-        var post = {
-            postid: null,
-            userid: parseInt(localStorage.getItem('token')),
-            textcontents: data.value,
-            imagelocation: null,
-            repostid: -1,
-            user: this.user,
-            postinteractions: null
-        };
-        this.newPost.createPost(post);
-<<<<<<< HEAD
-        window.location.reload();
-        //     const view = document.getElementById('zmew')
-        //     view.innerHTML = `<app-navbar> </app-navbar>
-        //     <div class="wrapper">
-        //         <app-sidemenu></app-sidemenu>
-        //         <div id="content">
-        //             <div class="container">
-        //                 <div class="row">
-        //                     <div class="col-lg-12">
-        //                         <app-createpost></app-createpost>
-        //                     </div>
+        console.log(data.value);
+        if (data.value === "") {
+            alert("Are you scared? No roar detected");
+        }
+        else {
+            var post = {
+                postid: null,
+                userid: parseInt(localStorage.getItem('token')),
+                textcontents: data.value,
+                imagelocation: null,
+                repostid: -1,
+                user: this.user,
+                postinteractions: null
+            };
+            this.newPost.createPost(post);
+            alert("Post Successful!");
+        }
+        // window.location.reload();
+        // const view = document.getElementById('zmew')
+        // view.innerHTML = `<app-navbar> </app-navbar>
+        // <div class="wrapper">
+        //     <app-sidemenu></app-sidemenu>
+        //     <div id="content">
+        //         <div class="container">
+        //             <div class="row">
+        //                 <div class="col-lg-12">
+        //                     <app-createpost></app-createpost>
         //                 </div>
-        //                 <hr>
-        //                 <div class="row">
-        //                     <div class="col-lg-12">
-        //                         <app-post></app-post>
-        //                     </div>
+        //             </div>
+        //             <hr>
+        //             <div class="row">
+        //                 <div class="col-lg-12">
+        //                     <app-post></app-post>
         //                 </div>
         //             </div>
         //         </div>
-        //     </div>`;
-=======
-        // window.location.reload();
-        var view = document.getElementById('zmew');
-        view.innerHTML = "<app-navbar> </app-navbar>\n    <div class=\"wrapper\">\n        <app-sidemenu></app-sidemenu>\n        <div id=\"content\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-createpost></app-createpost>\n                    </div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-post></app-post>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>";
->>>>>>> master
+        //     </div>
+        // </div>`;
     };
     CreatepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1022,11 +1019,7 @@ var MessageService = /** @class */ (function () {
         this.storage = storage;
         this.userService = userService;
         // userId: number = this.userService.getLoggedInUsers()[0].userid;
-<<<<<<< HEAD
-        this.userId = localStorage.getItem('token');
-=======
         this.userId = parseInt(localStorage.getItem('token'));
->>>>>>> master
         this.messages = [];
         this.messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
         this.addMessagesUrl = this.storage.getBaseUrl() + "addMessage";
@@ -1065,7 +1058,7 @@ var MessageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\nstrong{\r\n    margin: 25px;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlcy9tZXNzYWdlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xyXG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG59XHJcbnN0cm9uZ3tcclxuICAgIG1hcmdpbjogMjVweDtcclxufVxyXG5cclxuLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcbi5idG4ge1xyXG4gICAgYmFja2dyb3VuZDogI2FhZDRlNTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG4gICAgbWFyZ2luLXRvcDogMTVweDtcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn0iXX0= */"
+module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\nstrong{\r\n    margin: 25px;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n.card {\r\n    width: 350px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUI7QUFFQTtJQUNJLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlcy9tZXNzYWdlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xyXG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG59XHJcbnN0cm9uZ3tcclxuICAgIG1hcmdpbjogMjVweDtcclxufVxyXG5cclxuLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcbi5idG4ge1xyXG4gICAgYmFja2dyb3VuZDogI2FhZDRlNTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG4gICAgbWFyZ2luLXRvcDogMTVweDtcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIHdpZHRoOiAzNTBweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -1722,23 +1715,13 @@ var PostComponent = /** @class */ (function () {
         this.posts = [];
         this.interactionIdAndTypeArray = [];
         this.postContent = [];
-<<<<<<< HEAD
-=======
         this.a = [];
->>>>>>> master
         // userId = this.userService.getLoggedInUsers()[0].userid;
         this.userId = parseInt(localStorage.getItem('token'));
     }
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; }, function (error) { return console.log(error); }, function () {
-<<<<<<< HEAD
-            for (var _i = 0, _a = _this.friends; _i < _a.length; _i++) {
-                var i = _a[_i];
-                if (i.userid1 === _this.userId) {
-                    _this.postsService.getPostsById(i.userid2).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
-                }
-=======
             _this.count = 0;
             console.log(_this.friends);
             for (var _i = 0, _a = _this.friends; _i < _a.length; _i++) {
@@ -1756,15 +1739,11 @@ var PostComponent = /** @class */ (function () {
                     console.log('length1: ' + _this.friends.length);
                     _this.postsService.getPostsById(i.userid1).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
                 }
->>>>>>> master
             }
         });
     };
     PostComponent.prototype.loadPosts = function () {
-<<<<<<< HEAD
-=======
         console.log('inside loadposts');
->>>>>>> master
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
             this.post = {
@@ -1779,15 +1758,6 @@ var PostComponent = /** @class */ (function () {
                 likecount: 0,
                 dislikecount: 0
             };
-<<<<<<< HEAD
-            this.postContent.push(this.post);
-        }
-        this.loadLikesAndDislikes();
-    };
-    PostComponent.prototype.loadLikesAndDislikes = function () {
-        this.postContent.sort();
-        for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
-=======
             this.a.push(this.post);
             this.postContent.push(this.post);
         }
@@ -1800,7 +1770,6 @@ var PostComponent = /** @class */ (function () {
     };
     PostComponent.prototype.loadLikesAndDislikes = function () {
         for (var _i = 0, _a = this.a; _i < _a.length; _i++) {
->>>>>>> master
             var i = _a[_i];
             for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
                 var j = _c[_b];
@@ -1812,10 +1781,7 @@ var PostComponent = /** @class */ (function () {
                         i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
                     }
                 }
-<<<<<<< HEAD
-=======
                 console.log("TESTTTT: " + JSON.stringify(j));
->>>>>>> master
                 if (j.type === 1) {
                     i.likecount++;
                 }
@@ -1824,10 +1790,7 @@ var PostComponent = /** @class */ (function () {
                 }
             }
         }
-<<<<<<< HEAD
-=======
         this.a.splice(0);
->>>>>>> master
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
@@ -1949,10 +1912,7 @@ var PostComponent = /** @class */ (function () {
                     postinteractions: null
                 };
                 _this.newpostService.createPost(post);
-<<<<<<< HEAD
-=======
                 window.location.reload();
->>>>>>> master
             }, function (msg) {
                 reject(msg);
             });
@@ -2549,13 +2509,16 @@ var SearchuserComponent = /** @class */ (function () {
                     if (userId === i.userid) {
                         this.user2 = i;
                     }
+                    if (this.userId === i.userid) {
+                        this.user1 = i;
+                    }
                 }
             }
             if (alreadyFriends) {
                 alert("You are already friends with this user!");
             }
             else {
-                this.user1 = this.userService.getLoggedInUsers()[0];
+                parseInt(localStorage.getItem('token'));
                 this.friendToAdd = {
                     relationid: null,
                     userid1: this.userId,
@@ -3326,11 +3289,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\jdeje\OneDrive\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
-=======
-module.exports = __webpack_require__(/*! C:\Users\Derrick\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
->>>>>>> master
 
 
 /***/ })
