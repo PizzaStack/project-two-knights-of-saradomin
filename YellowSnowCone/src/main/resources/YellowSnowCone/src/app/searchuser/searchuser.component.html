@@ -26,7 +26,7 @@
                                      <strong>
                                             {{searchResult.firstname}} {{searchResult.lastname}}
                                      </strong> 
-                                      <button class="btn">View Profile</button>
+                                      <button class="btn" (click)="viewProfile(searchResult)" routerLink="/otheruserprofile">View Profile</button>
                                       <button class="btn" (click)="addFriend(searchResult.userid)">Add Friend</button>
                                     </li>
                                 </ul>       
