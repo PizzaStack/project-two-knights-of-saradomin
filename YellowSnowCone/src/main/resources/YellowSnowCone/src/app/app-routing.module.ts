@@ -16,16 +16,15 @@ const routes: Routes = [
   { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
   { path: "welcomeview", component: WelcomeviewComponent },
   { path: "welcomeview/:userid/:vtoken", component: RegisteredComponent },
-  { path: "mypost", component: MypostViewComponent },
-  { path: "messages", component: MessagesComponent },
-  // { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
-  { path: "mainview", component: MainviewComponent },
-  { path: 'messagesthread', component: MessagesthreadComponent },
-  { path: 'searchuser', component: SearchuserComponent},
+  { path: "mypost", component: MypostViewComponent, canActivate: [AuthGuard] },
+  { path: "messages", component: MessagesComponent, canActivate: [AuthGuard] },
+  { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
+  { path: 'messagesthread', component: MessagesthreadComponent, canActivate: [AuthGuard] },
+  { path: 'searchuser', component: SearchuserComponent, canActivate: [AuthGuard]},
   { path: 'logo', redirectTo: ''},
-  { path: 'newmessage', component: NewmessageComponent},
-  { path: 'friendslist', component: FriendslistComponent},
-  { path: 'updateprofile', component: UpdateprofileviewComponent}
+  { path: 'newmessage', component: NewmessageComponent, canActivate: [AuthGuard]},
+  { path: 'friendslist', component: FriendslistComponent, canActivate: [AuthGuard]},
+  { path: 'updateprofile', component: UpdateprofileviewComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -40,12 +40,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./messages/messages.component */ "./src/app/messages/messages.component.ts");
 /* harmony import */ var _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcomeview/welcomeview.component */ "./src/app/welcomeview/welcomeview.component.ts");
 /* harmony import */ var _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./messagesthread/messagesthread.component */ "./src/app/messagesthread/messagesthread.component.ts");
-/* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
-/* harmony import */ var _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./searchuser/searchuser.component */ "./src/app/searchuser/searchuser.component.ts");
-/* harmony import */ var _registered_registered_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./registered/registered.component */ "./src/app/registered/registered.component.ts");
-/* harmony import */ var _newmessage_newmessage_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./newmessage/newmessage.component */ "./src/app/newmessage/newmessage.component.ts");
-/* harmony import */ var _friendslist_friendslist_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./friendslist/friendslist.component */ "./src/app/friendslist/friendslist.component.ts");
-/* harmony import */ var _updateprofileview_updateprofileview_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./updateprofileview/updateprofileview.component */ "./src/app/updateprofileview/updateprofileview.component.ts");
+/* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth.guard */ "./src/app/auth.guard.ts");
+/* harmony import */ var _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mypost-view/mypost-view.component */ "./src/app/mypost-view/mypost-view.component.ts");
+/* harmony import */ var _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./searchuser/searchuser.component */ "./src/app/searchuser/searchuser.component.ts");
+/* harmony import */ var _registered_registered_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./registered/registered.component */ "./src/app/registered/registered.component.ts");
+/* harmony import */ var _newmessage_newmessage_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./newmessage/newmessage.component */ "./src/app/newmessage/newmessage.component.ts");
+/* harmony import */ var _friendslist_friendslist_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./friendslist/friendslist.component */ "./src/app/friendslist/friendslist.component.ts");
+/* harmony import */ var _updateprofileview_updateprofileview_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./updateprofileview/updateprofileview.component */ "./src/app/updateprofileview/updateprofileview.component.ts");
+
 
 
 
@@ -62,17 +64,17 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: "", redirectTo: "/welcomeview", pathMatch: "full" },
     { path: "welcomeview", component: _welcomeview_welcomeview_component__WEBPACK_IMPORTED_MODULE_5__["WelcomeviewComponent"] },
-    { path: "welcomeview/:userid/:vtoken", component: _registered_registered_component__WEBPACK_IMPORTED_MODULE_9__["RegisteredComponent"] },
-    { path: "mypost", component: _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_7__["MypostViewComponent"] },
-    { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"] },
-    // { path: "mainview", component: MainviewComponent, canActivate: [AuthGuard] },
-    { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"] },
-    { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"] },
-    { path: 'searchuser', component: _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_8__["SearchuserComponent"] },
+    { path: "welcomeview/:userid/:vtoken", component: _registered_registered_component__WEBPACK_IMPORTED_MODULE_10__["RegisteredComponent"] },
+    { path: "mypost", component: _mypost_view_mypost_view_component__WEBPACK_IMPORTED_MODULE_8__["MypostViewComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: "messages", component: _messages_messages_component__WEBPACK_IMPORTED_MODULE_4__["MessagesComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: "mainview", component: _mainview_mainview_component__WEBPACK_IMPORTED_MODULE_3__["MainviewComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    //{ path: "mainview", component: MainviewComponent },
+    { path: 'messagesthread', component: _messagesthread_messagesthread_component__WEBPACK_IMPORTED_MODULE_6__["MessagesthreadComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: 'searchuser', component: _searchuser_searchuser_component__WEBPACK_IMPORTED_MODULE_9__["SearchuserComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
     { path: 'logo', redirectTo: '' },
-    { path: 'newmessage', component: _newmessage_newmessage_component__WEBPACK_IMPORTED_MODULE_10__["NewmessageComponent"] },
-    { path: 'friendslist', component: _friendslist_friendslist_component__WEBPACK_IMPORTED_MODULE_11__["FriendslistComponent"] },
-    { path: 'updateprofile', component: _updateprofileview_updateprofileview_component__WEBPACK_IMPORTED_MODULE_12__["UpdateprofileviewComponent"] }
+    { path: 'newmessage', component: _newmessage_newmessage_component__WEBPACK_IMPORTED_MODULE_11__["NewmessageComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: 'friendslist', component: _friendslist_friendslist_component__WEBPACK_IMPORTED_MODULE_12__["FriendslistComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] },
+    { path: 'updateprofile', component: _updateprofileview_updateprofileview_component__WEBPACK_IMPORTED_MODULE_13__["UpdateprofileviewComponent"], canActivate: [_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -3252,6 +3254,7 @@ var WelcomeviewComponent = /** @class */ (function () {
         this.router = router;
     }
     WelcomeviewComponent.prototype.ngOnInit = function () {
+        localStorage.clear();
         console.log("Location: " + this.router.url);
     };
     WelcomeviewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

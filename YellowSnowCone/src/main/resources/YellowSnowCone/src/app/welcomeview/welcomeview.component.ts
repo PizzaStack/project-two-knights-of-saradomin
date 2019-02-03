@@ -15,6 +15,7 @@ export class WelcomeviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    localStorage.clear();
     console.log("Location: " + this.router.url);
   }
 }
