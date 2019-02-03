@@ -390,7 +390,7 @@ module.exports = ".card {\r\n    min-width: 100vh;\r\n}\r\n\r\n.btn {\r\n    bac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" (click)=\"newPost.value = ''\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\" required></textarea>\r\n            </div>\r\n            <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -429,17 +429,23 @@ var CreatepostComponent = /** @class */ (function () {
         };
     };
     CreatepostComponent.prototype.createPost = function (data) {
-        var post = {
-            postid: null,
-            userid: parseInt(localStorage.getItem('token')),
-            textcontents: data.value,
-            imagelocation: null,
-            repostid: -1,
-            user: this.user,
-            postinteractions: null
-        };
-        this.newPost.createPost(post);
-        alert("Post Successful!");
+        console.log(data.value);
+        if (data.value === "") {
+            alert("Are you scared? No Roar detected.");
+        }
+        else {
+            var post = {
+                postid: null,
+                userid: parseInt(localStorage.getItem('token')),
+                textcontents: data.value,
+                imagelocation: null,
+                repostid: -1,
+                user: this.user,
+                postinteractions: null
+            };
+            this.newPost.createPost(post);
+            alert("Post Successful!");
+        }
         // window.location.reload();
         // const view = document.getElementById('zmew')
         // view.innerHTML = `<app-navbar> </app-navbar>
@@ -450,6 +456,7 @@ var CreatepostComponent = /** @class */ (function () {
         //             <div class="row">
         //                 <div class="col-lg-12">
         //                     <app-createpost></app-createpost>
+
         //                 </div>
         //             </div>
         //             <hr>
@@ -3677,7 +3684,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\jdeje\OneDrive\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })
