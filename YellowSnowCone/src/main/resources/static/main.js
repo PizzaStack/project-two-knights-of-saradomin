@@ -437,27 +437,9 @@ var CreatepostComponent = /** @class */ (function () {
             postinteractions: null
         };
         this.newPost.createPost(post);
-        window.location.reload();
-        //     const view = document.getElementById('zmew')
-        //     view.innerHTML = `<app-navbar> </app-navbar>
-        //     <div class="wrapper">
-        //         <app-sidemenu></app-sidemenu>
-        //         <div id="content">
-        //             <div class="container">
-        //                 <div class="row">
-        //                     <div class="col-lg-12">
-        //                         <app-createpost></app-createpost>
-        //                     </div>
-        //                 </div>
-        //                 <hr>
-        //                 <div class="row">
-        //                     <div class="col-lg-12">
-        //                         <app-post></app-post>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>`;
+        // window.location.reload();
+        var view = document.getElementById('zmew');
+        view.innerHTML = "<app-navbar> </app-navbar>\n    <div class=\"wrapper\">\n        <app-sidemenu></app-sidemenu>\n        <div id=\"content\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-createpost></app-createpost>\n                    </div>\n                </div>\n                <hr>\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        <app-post></app-post>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>";
     };
     CreatepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1708,6 +1690,7 @@ var PostComponent = /** @class */ (function () {
         this.posts = [];
         this.interactionIdAndTypeArray = [];
         this.postContent = [];
+        this.a = [];
         // userId = this.userService.getLoggedInUsers()[0].userid;
         this.userId = parseInt(localStorage.getItem('token'));
     }
@@ -1715,20 +1698,27 @@ var PostComponent = /** @class */ (function () {
         var _this = this;
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; }, function (error) { return console.log(error); }, function () {
             _this.count = 0;
+            console.log(_this.friends);
             for (var _i = 0, _a = _this.friends; _i < _a.length; _i++) {
                 var i = _a[_i];
                 _this.friendcount = _this.friends.length;
                 if (i.userid1 === _this.userId) {
                     _this.count++;
+                    console.log('count1: ' + _this.count);
+                    console.log('length1: ' + _this.friends.length);
                     _this.postsService.getPostsById(i.userid2).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
                 }
-                else {
-                    _this.friendcount--;
+                else if (i.userid2 === _this.userId) {
+                    _this.count++;
+                    console.log('count1: ' + _this.count);
+                    console.log('length1: ' + _this.friends.length);
+                    _this.postsService.getPostsById(i.userid1).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
                 }
             }
         });
     };
     PostComponent.prototype.loadPosts = function () {
+        console.log('inside loadposts');
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
             this.post = {
@@ -1743,17 +1733,18 @@ var PostComponent = /** @class */ (function () {
                 likecount: 0,
                 dislikecount: 0
             };
+            this.a.push(this.post);
             this.postContent.push(this.post);
         }
-        console.log('count: ' + this.count);
-        console.log('length: ' + this.friendcount);
+        console.log('count2: ' + this.count);
+        console.log('length2: ' + this.friendcount);
         if (this.count === this.friendcount) {
             console.log('content: ' + JSON.stringify(this.postContent));
             this.loadLikesAndDislikes();
         }
     };
     PostComponent.prototype.loadLikesAndDislikes = function () {
-        for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+        for (var _i = 0, _a = this.a; _i < _a.length; _i++) {
             var i = _a[_i];
             for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
                 var j = _c[_b];
@@ -1765,6 +1756,7 @@ var PostComponent = /** @class */ (function () {
                         i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
                     }
                 }
+                console.log("TESTTTT: " + JSON.stringify(j));
                 if (j.type === 1) {
                     i.likecount++;
                 }
@@ -1773,6 +1765,7 @@ var PostComponent = /** @class */ (function () {
                 }
             }
         }
+        this.a.splice(0);
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);

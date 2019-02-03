@@ -44,6 +44,7 @@ export class PostComponent implements OnInit {
 
   count: number;
   friendcount: number;
+  a = [];
 
   // userId = this.userService.getLoggedInUsers()[0].userid;
   userId = parseInt(localStorage.getItem('token'));
@@ -55,20 +56,28 @@ export class PostComponent implements OnInit {
       (error: any) => console.log(error),
       () => {
         this.count = 0;
+        console.log(this.friends);
         for (let i of this.friends) {
           this.friendcount = this.friends.length;
           if (i.userid1 === this.userId) {
             this.count++;
+            console.log('count1: ' + this.count);
+            console.log('length1: ' + this.friends.length);
             this.postsService.getPostsById(i.userid2).subscribe(data => this.posts = data,
               (error: any) => console.log(error), () => this.loadPosts());
-          } else {
-            this.friendcount--;
+          } else if (i.userid2 === this.userId) {
+            this.count++;
+            console.log('count1: ' + this.count);
+            console.log('length1: ' + this.friends.length);
+            this.postsService.getPostsById(i.userid1).subscribe(data => this.posts = data,
+              (error: any) => console.log(error), () => this.loadPosts());
           }
         }
       });
   }
 
   loadPosts() {
+    console.log('inside loadposts');
     for (const i of this.posts) {
       this.post = {
         content: i.textcontents,
@@ -82,10 +91,12 @@ export class PostComponent implements OnInit {
         likecount: 0,
         dislikecount: 0
       }
+
+      this.a.push(this.post);
       this.postContent.push(this.post);
     }
-    console.log('count: ' + this.count);
-    console.log('length: ' + this.friendcount);
+    console.log('count2: ' + this.count);
+    console.log('length2: ' + this.friendcount);
     if (this.count === this.friendcount) {
       console.log('content: ' + JSON.stringify(this.postContent));
       this.loadLikesAndDislikes();
@@ -93,7 +104,7 @@ export class PostComponent implements OnInit {
   }
 
   loadLikesAndDislikes() {
-    for (let i of this.postContent) {
+    for (let i of this.a) {
       for (let j of i.postinteractions) {
         if (this.userId === j.userid) {
           if (j.type === 1) {
@@ -101,14 +112,20 @@ export class PostComponent implements OnInit {
           } else if (j.type === 0) {
             i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
           }
+
         }
+
+        console.log("TESTTTT: " + JSON.stringify(j));
+
         if (j.type === 1) {
           i.likecount++;
         } else if (j.type === 0) {
           i.dislikecount++;
         }
+
       }
     }
+    this.a.splice(0);
   }
 
   like(likeimg: any): void {
