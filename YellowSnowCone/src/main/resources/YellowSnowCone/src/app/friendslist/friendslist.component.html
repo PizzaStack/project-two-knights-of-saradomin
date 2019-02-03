@@ -25,7 +25,7 @@
                                                             </div>
                                                             
                                                             <div class="col-lg-5">
-                                                                <button class="btn">View Profile</button>
+                                                                <button class="btn" (click)="viewProfile(user)" routerLink="/otheruserprofile">View Profile</button>
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <button class="btn" (click)="populateMessageThread(user.firstname + ' ' + user.lastname)"

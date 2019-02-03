@@ -2,3 +2,44 @@
     display: flex;
     align-items: stretch;
 }
+
+small {
+    text-align: center
+}
+
+.card {
+    margin-bottom: 15px;
+}
+.panel{
+    min-height: 30%;
+    overflow: auto
+}
+
+.btn {
+    background: #aad4e5;
+    font-weight: bold;
+    color: white;
+    box-shadow: 5px 5px #888888;
+    font-size: 15px;
+}
+
+.btn:active {
+    transform: translateY(2px);
+}
+
+img {
+    height: 16px;
+    width: 16px;
+}
+
+input {
+    outline: none;
+}
+
+input:active {
+    transform: translateY(2px);
+}
+
+#content {
+    min-width: 100vh;
+}

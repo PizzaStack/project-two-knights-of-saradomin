@@ -4,5 +4,6 @@
 }
 .content{
     min-height: 100%;
-    overflow: auto
+    overflow: auto;
+    min-width: 100vh;
 }

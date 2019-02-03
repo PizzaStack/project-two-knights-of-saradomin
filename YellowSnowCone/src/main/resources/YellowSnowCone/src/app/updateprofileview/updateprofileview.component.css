@@ -2,3 +2,7 @@
     display: flex;
     align-items: stretch;
 }
+
+#content {
+    min-width: 100vh;
+}
