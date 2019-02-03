@@ -7,7 +7,7 @@
             <div class="form-group">
                 <textarea Required class="form-control" #newPost name="post" id="post" rows="5" placeholder="Roar it out!!!"></textarea>
 
-                <button type="button" (click)="createPost(newPost)" class="btn">Post</button>
+                <button type="button" (click)="createPost(newPost)" (click)="newPost.value = ''" class="btn">Post</button>
             </div>
         </form>
     </div>

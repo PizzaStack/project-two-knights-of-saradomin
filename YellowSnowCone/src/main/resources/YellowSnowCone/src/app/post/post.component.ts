@@ -226,7 +226,8 @@ export class PostComponent implements OnInit {
           password: localStorage.getItem('password'),
           firstname: localStorage.getItem('firstName'),
           lastname: localStorage.getItem('lastName'),
-          profilePicturePath: localStorage.getItem('profilePicturePath')
+          profilePicturePath: localStorage.getItem('profilePicturePath'),
+          enabled: true
       };
 
         let post: Posts = {
