@@ -15,11 +15,6 @@ export class MainviewComponent implements OnInit {
 
   ngOnInit() {
     this.id = localStorage.getItem('token');
-  }
-
-  logout(): void {
-    console.log("Logout");
-    this.authService.logout();
-    this.router.navigate(['/welcomeview']);
+    console.log(localStorage);
   }
 }

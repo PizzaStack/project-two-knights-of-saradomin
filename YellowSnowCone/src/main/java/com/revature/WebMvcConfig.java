@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
 /* Remember to uncomment below if wanna try using this again... */
-//@Configuration
+@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 	private String resourceHandler = "/**/*";
     @Override

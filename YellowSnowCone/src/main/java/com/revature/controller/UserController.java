@@ -34,16 +34,11 @@ public class UserController {
 	@Autowired
 	EmailController emailController;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    public UserController(BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+	@Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@GetMapping("/users")
 	public List<Users> getAll() {
-		// logger.info("FINDING ALL USERS");
-		System.out.println("FINDING ALL USERS");
 		return userRepository.findAll();
 	}
 
@@ -63,8 +58,6 @@ public class UserController {
 		return user;
 	}
 
-	// TODO: No System.out
-	@SuppressWarnings("unused") // Strangely, sometimes get errors without this... #toString()?
 	@PostMapping("/register")
 	@ResponseBody
 	public synchronized Users register(@RequestBody Users user) {
@@ -82,7 +75,6 @@ public class UserController {
 		        newUser.setVerificationToken(verificationToken);
 		        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		        newUser = userRepository.save(newUser);
-		        //tokenRepository.save(verificationToken);
 		        System.out.println("verificationToken Persisted");
 				emailController.sendEmail(newUser, verificationToken);
 			} catch (Exception e) {
@@ -101,9 +93,7 @@ public class UserController {
 		}
 		return user;
 	}
-
-	// TODO: No System.out
-	@SuppressWarnings("unused") // Strangely, sometimes get errors without this... #toString()?
+	
 	@PostMapping("validate/{id}/{vtoken}")
 	public Users verifyUser(@PathVariable String id, @PathVariable String vtoken) {
 		Users user = null;
@@ -121,7 +111,7 @@ public class UserController {
 				    userRepository.flush();
 				    return user;
 			    } else {
-				    System.out.println("verificationToken DOES NOT MATCHE Userid");
+				    System.out.println("verificationToken DOES NOT MATCH Userid");
 			    }
 			    user = null;
 		    }
@@ -133,9 +123,24 @@ public class UserController {
 		}
 		return user;
 	}
-
-	@GetMapping("users/{userId}")
-	public String redirectToUserView(@RequestParam int userId) {
-		return "redirect:/mainview";
+	
+	@PostMapping("/updateInfo")
+	@ResponseBody
+	public Users updateInfo(@RequestBody Users user) {
+		logger.info("User = " + user);
+		Users storedUser = userRepository.findByEmail(user.getEmail());
+		if (storedUser != null) {
+			System.out.println("user: " + user);
+			System.out.println("storedUser: " + storedUser);
+			storedUser.setFirstname(user.getFirstname());
+			storedUser.setLastname(user.getLastname());
+			storedUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+			System.out.println("new user info: " + storedUser);
+			return userRepository.save(storedUser);
+		} else {
+			user = null;
+			logger.info("loggedInUser (failure) = " + user);
+		}
+		return user;
 	}
 }

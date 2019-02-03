@@ -65,6 +65,12 @@ export class UserService {
       JSON.stringify(verificationToken), httpPostOptions);
   }
 
+  updateInfo(user: Users): Observable<Users> {
+    console.log('updating information: ' + JSON.stringify(user));
+    return this.http.post<Users>(this._url.concat('updateInfo'),
+      JSON.stringify(user), httpPostOptions)
+  }
+
   addNewUser(user:Users) : Observable<Users> {
     console.log('adding new user... '+user.email+', '+user.password);
     return this.http.post<Users>(this._url.concat('register'), 
@@ -78,7 +84,12 @@ export class UserService {
   getLoggedInUsers(): Users[] {
     return this.loggedInUsers;
   }
+
   addLoggedInUser(user: Users) {
     this.loggedInUsers.push(user);
+  }
+  
+  setLoggedInUserById(id:number, user:Users){
+    this.loggedInUsers[id] = user;
   }
 }

@@ -17,6 +17,7 @@ public class YellowSnowConeApplication {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(WebSecurity.class);
+		context.register(WebMvcConfig.class);
 		SpringApplication.run(YellowSnowConeApplication.class, args);
 		context.close();
 	}

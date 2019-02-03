@@ -30,6 +30,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     	/* This prevents default 'signup' from being necessary, and allows anonymous
     	   users to access endpoints - important since we do not define roles. */
         http.authorizeRequests().antMatchers("/**").permitAll().and().formLogin();
+        
         /* Add filters to ^??? 
          * Desired behavior is simply to encrypt passwords, so prob not necessary.
         http

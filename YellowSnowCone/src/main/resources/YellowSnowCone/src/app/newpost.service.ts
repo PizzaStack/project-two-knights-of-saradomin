@@ -5,6 +5,12 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from './storage.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +28,7 @@ export class NewpostService {
   ) { }
 
   createPost(data: any) {
-    this.http.post(this.newPostUrl, data).subscribe();
+    this.http.post(this.newPostUrl, data, httpOptions).subscribe();
   }
 
 }
