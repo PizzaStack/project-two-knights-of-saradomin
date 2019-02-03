@@ -388,7 +388,7 @@ module.exports = ".card {\r\n    min-width: 100vh;\r\n}\r\n\r\n.btn {\r\n    bac
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"card\">\r\n    <div class=\"card-header\">\r\n        Create Post\r\n    </div>\r\n    <div class=\"card-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <textarea Required class=\"form-control\" #newPost name=\"post\" id=\"post\" rows=\"5\" placeholder=\"Roar it out!!!\"></textarea>\r\n\r\n                <button type=\"button\" (click)=\"createPost(newPost)\" (click)=\"newPost.value = ''\" class=\"btn\">Post</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -437,27 +437,28 @@ var CreatepostComponent = /** @class */ (function () {
             postinteractions: null
         };
         this.newPost.createPost(post);
-        window.location.reload();
-        //     const view = document.getElementById('zmew')
-        //     view.innerHTML = `<app-navbar> </app-navbar>
-        //     <div class="wrapper">
-        //         <app-sidemenu></app-sidemenu>
-        //         <div id="content">
-        //             <div class="container">
-        //                 <div class="row">
-        //                     <div class="col-lg-12">
-        //                         <app-createpost></app-createpost>
-        //                     </div>
+        alert("Post Successful!");
+        // window.location.reload();
+        // const view = document.getElementById('zmew')
+        // view.innerHTML = `<app-navbar> </app-navbar>
+        // <div class="wrapper">
+        //     <app-sidemenu></app-sidemenu>
+        //     <div id="content">
+        //         <div class="container">
+        //             <div class="row">
+        //                 <div class="col-lg-12">
+        //                     <app-createpost></app-createpost>
         //                 </div>
-        //                 <hr>
-        //                 <div class="row">
-        //                     <div class="col-lg-12">
-        //                         <app-post></app-post>
-        //                     </div>
+        //             </div>
+        //             <hr>
+        //             <div class="row">
+        //                 <div class="col-lg-12">
+        //                     <app-post></app-post>
         //                 </div>
         //             </div>
         //         </div>
-        //     </div>`;
+        //     </div>
+        // </div>`;
     };
     CreatepostComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -961,11 +962,7 @@ var MainviewComponent = /** @class */ (function () {
     }
     MainviewComponent.prototype.ngOnInit = function () {
         this.id = localStorage.getItem('token');
-    };
-    MainviewComponent.prototype.logout = function () {
-        console.log("Logout");
-        this.authService.logout();
-        this.router.navigate(['/welcomeview']);
+        console.log(localStorage);
     };
     MainviewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1003,13 +1000,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var httpTextOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+    })
+};
 var MessageService = /** @class */ (function () {
     function MessageService(http, storage, userService) {
         this.http = http;
         this.storage = storage;
         this.userService = userService;
         // userId: number = this.userService.getLoggedInUsers()[0].userid;
-        this.userId = localStorage.getItem('token');
+        this.userId = parseInt(localStorage.getItem('token'));
         this.messages = [];
         this.messagesByIdUrl = this.storage.getBaseUrl() + "messagesById";
         this.addMessagesUrl = this.storage.getBaseUrl() + "addMessage";
@@ -1048,7 +1051,7 @@ var MessageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\nstrong{\r\n    margin: 25px;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlcy9tZXNzYWdlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xyXG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG59XHJcbnN0cm9uZ3tcclxuICAgIG1hcmdpbjogMjVweDtcclxufVxyXG5cclxuLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcbi5idG4ge1xyXG4gICAgYmFja2dyb3VuZDogI2FhZDRlNTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG4gICAgbWFyZ2luLXRvcDogMTVweDtcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn0iXX0= */"
+module.exports = "ul {\r\n    list-style-type: none;\r\n}\r\nstrong{\r\n    margin: 25px;\r\n}\r\n.wrapper {\r\n    display: flex;\r\n    align-items: stretch;\r\n}\r\n.btn {\r\n    background: #aad4e5;\r\n    font-weight: bold;\r\n    color: white;\r\n    box-shadow: 5px 5px #888888;\r\n    font-size: 15px;\r\n    margin-top: 15px;\r\n}\r\n.btn:active {\r\n    -webkit-transform: translateY(2px);\r\n            transform: translateY(2px);\r\n}\r\n.card {\r\n    width: 350px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVzc2FnZXMvbWVzc2FnZXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QjtBQUNBO0lBQ0ksWUFBWTtBQUNoQjtBQUVBO0lBQ0ksYUFBYTtJQUNiLG9CQUFvQjtBQUN4QjtBQUNBO0lBQ0ksbUJBQW1CO0lBQ25CLGlCQUFpQjtJQUNqQixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGtDQUEwQjtZQUExQiwwQkFBMEI7QUFDOUI7QUFFQTtJQUNJLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9tZXNzYWdlcy9tZXNzYWdlcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xyXG4gICAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG59XHJcbnN0cm9uZ3tcclxuICAgIG1hcmdpbjogMjVweDtcclxufVxyXG5cclxuLndyYXBwZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBzdHJldGNoO1xyXG59XHJcbi5idG4ge1xyXG4gICAgYmFja2dyb3VuZDogI2FhZDRlNTtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogNXB4IDVweCAjODg4ODg4O1xyXG4gICAgZm9udC1zaXplOiAxNXB4O1xyXG4gICAgbWFyZ2luLXRvcDogMTVweDtcclxufVxyXG5cclxuLmJ0bjphY3RpdmUge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKDJweCk7XHJcbn1cclxuXHJcbi5jYXJkIHtcclxuICAgIHdpZHRoOiAzNTBweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -1570,6 +1573,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+    })
+};
 var NewpostService = /** @class */ (function () {
     function NewpostService(http, storage) {
         this.http = http;
@@ -1577,7 +1586,7 @@ var NewpostService = /** @class */ (function () {
         this.newPostUrl = this.storage.getBaseUrl() + 'userposts/add';
     }
     NewpostService.prototype.createPost = function (data) {
-        this.http.post(this.newPostUrl, data).subscribe();
+        this.http.post(this.newPostUrl, data, httpOptions).subscribe();
     };
     NewpostService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1705,21 +1714,35 @@ var PostComponent = /** @class */ (function () {
         this.posts = [];
         this.interactionIdAndTypeArray = [];
         this.postContent = [];
+        this.a = [];
         // userId = this.userService.getLoggedInUsers()[0].userid;
         this.userId = parseInt(localStorage.getItem('token'));
     }
     PostComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.friendService.getFriendsById().subscribe(function (data) { return _this.friends = data; }, function (error) { return console.log(error); }, function () {
+            _this.count = 0;
+            console.log(_this.friends);
             for (var _i = 0, _a = _this.friends; _i < _a.length; _i++) {
                 var i = _a[_i];
+                _this.friendcount = _this.friends.length;
                 if (i.userid1 === _this.userId) {
+                    _this.count++;
+                    console.log('count1: ' + _this.count);
+                    console.log('length1: ' + _this.friends.length);
                     _this.postsService.getPostsById(i.userid2).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
+                }
+                else if (i.userid2 === _this.userId) {
+                    _this.count++;
+                    console.log('count1: ' + _this.count);
+                    console.log('length1: ' + _this.friends.length);
+                    _this.postsService.getPostsById(i.userid1).subscribe(function (data) { return _this.posts = data; }, function (error) { return console.log(error); }, function () { return _this.loadPosts(); });
                 }
             }
         });
     };
     PostComponent.prototype.loadPosts = function () {
+        console.log('inside loadposts');
         for (var _i = 0, _a = this.posts; _i < _a.length; _i++) {
             var i = _a[_i];
             this.post = {
@@ -1734,13 +1757,18 @@ var PostComponent = /** @class */ (function () {
                 likecount: 0,
                 dislikecount: 0
             };
+            this.a.push(this.post);
             this.postContent.push(this.post);
         }
-        this.loadLikesAndDislikes();
+        console.log('count2: ' + this.count);
+        console.log('length2: ' + this.friendcount);
+        if (this.count === this.friendcount) {
+            console.log('content: ' + JSON.stringify(this.postContent));
+            this.loadLikesAndDislikes();
+        }
     };
     PostComponent.prototype.loadLikesAndDislikes = function () {
-        this.postContent.sort();
-        for (var _i = 0, _a = this.postContent; _i < _a.length; _i++) {
+        for (var _i = 0, _a = this.a; _i < _a.length; _i++) {
             var i = _a[_i];
             for (var _b = 0, _c = i.postinteractions; _b < _c.length; _b++) {
                 var j = _c[_b];
@@ -1752,6 +1780,7 @@ var PostComponent = /** @class */ (function () {
                         i.src2 = '../../assets/snowconedislikeshadowupsidedown.png';
                     }
                 }
+                console.log("TESTTTT: " + JSON.stringify(j));
                 if (j.type === 1) {
                     i.likecount++;
                 }
@@ -1760,6 +1789,7 @@ var PostComponent = /** @class */ (function () {
                 }
             }
         }
+        this.a.splice(0);
     };
     PostComponent.prototype.like = function (likeimg) {
         var img = document.getElementById(likeimg);
@@ -1881,6 +1911,7 @@ var PostComponent = /** @class */ (function () {
                     postinteractions: null
                 };
                 _this.newpostService.createPost(post);
+                window.location.reload();
             }, function (msg) {
                 reject(msg);
             });
@@ -2477,13 +2508,16 @@ var SearchuserComponent = /** @class */ (function () {
                     if (userId === i.userid) {
                         this.user2 = i;
                     }
+                    if (this.userId === i.userid) {
+                        this.user1 = i;
+                    }
                 }
             }
             if (alreadyFriends) {
                 alert("You are already friends with this user!");
             }
             else {
-                this.user1 = this.userService.getLoggedInUsers()[0];
+                parseInt(localStorage.getItem('token'));
                 this.friendToAdd = {
                     relationid: null,
                     userid1: this.userId,
@@ -2771,7 +2805,7 @@ module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" id=\"update_Profile\">\r\n    <div class=\"row\">\r\n        <form class=\"form col-lg-12\">\r\n            <h3><strong>Update Profile</strong></h3>\r\n            <hr>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" placeholder=\"Update First Name\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Update Last Name\">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" placeholder=\"Update Password\" title=\"At least 6 characters with letters and numbers\"\r\n                    required=\"\">\r\n            </div>\r\n            <div>\r\n                <h6>Upload a different photo...</h6>\r\n                <input type=\"file\" class=\"text-center center-block file-upload\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default btn-lg float-right\">Save</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\" id=\"update_Profile\">\r\n    <div class=\"row\">\r\n        <form class=\"form col-lg-12\" [formGroup]=\"updateForm\" (ngSubmit)=\"onSubmit()\">\r\n            <h3><strong>Update Profile</strong></h3>\r\n            <hr>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6 form-group\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" \r\n                    placeholder=\"First Name\" formControlName=\"firstname\" \r\n                    name=\"firstname\" [ngClass]=\"{ 'is-invalid': submitted && f.firstname.errors }\" required>\r\n                    <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.password.errors.required\">This Field Is Required</div>\r\n                        <div *ngIf=\"f.password.errors.minlength\">First Name Must Be At Least 4 characters</div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6 form-group\">\r\n                    <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" \r\n                    placeholder=\"Last Name\" formControlName=\"lastname\" \r\n                    name=\"lastname\" [ngClass]=\"{ 'is-invalid': submitted && f.lastname.errors }\" required>\r\n                    <div *ngIf=\"submitted && f.lastname.errors\" class=\"invalid-feedback\">\r\n                        <div *ngIf=\"f.lastname.errors.required\">This Field Is Required</div>\r\n                        <div *ngIf=\"f.lastname.errors.minlength\">Last Name Must Be At Least 1 character</div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" \r\n                placeholder=\"Password\" formControlName=\"password\" \r\n                name=\"password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" required=\"\">\r\n                <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" \r\n                placeholder=\"Confirm Password\" formControlName=\"confirmPassword\" \r\n                name=\"confirmPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.confirmPassword.errors }\" required>\r\n                <div *ngIf=\"submitted && f.confirmPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.confirmPassword.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.confirmPassword.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div>\r\n                <h6>Upload a different photo...</h6>\r\n                <input type=\"file\" class=\"text-center center-block file-upload\">\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default btn-lg float-right\" \r\n                [disabled]=\"loading\">\r\n                    Save\r\n                </button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -2787,20 +2821,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateprofileComponent", function() { return UpdateprofileComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _users__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../users */ "./src/app/users.ts");
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user.service */ "./src/app/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../auth.service */ "./src/app/auth.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+
 
 
 var UpdateprofileComponent = /** @class */ (function () {
-    function UpdateprofileComponent() {
+    function UpdateprofileComponent(_userService, router, formBuilder, _authService) {
+        this._userService = _userService;
+        this.router = router;
+        this.formBuilder = formBuilder;
+        this._authService = _authService;
+        this.submitted = false;
     }
     UpdateprofileComponent.prototype.ngOnInit = function () {
+        this.loggedInUser.firstname = localStorage.getItem('firstname');
+        this.loggedInUser.lastname = localStorage.getItem('lastname');
+        this.userModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](null, null, this.loggedInUser.firstname, this.loggedInUser.lastname, null, null, true);
+        this.updateForm = this.formBuilder.group({
+            firstname: ['', []],
+            lastname: ['', []],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]],
+            confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]]
+        });
     };
+    Object.defineProperty(UpdateprofileComponent.prototype, "f", {
+        get: function () { return this.updateForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
     UpdateprofileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-updateprofile',
             template: __webpack_require__(/*! ./updateprofile.component.html */ "./src/app/updateprofile/updateprofile.component.html"),
             styles: [__webpack_require__(/*! ./updateprofile.component.css */ "./src/app/updateprofile/updateprofile.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormBuilder"],
+            _auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]])
     ], UpdateprofileComponent);
     return UpdateprofileComponent;
 }());
@@ -2975,6 +3041,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+    })
+};
 var UserpostService = /** @class */ (function () {
     function UserpostService(http, storage) {
         this.http = http;
@@ -2983,7 +3055,7 @@ var UserpostService = /** @class */ (function () {
         this.userposts = this.storage.getBaseUrl() + "userposts";
     }
     UserpostService.prototype.getPostsById = function (userId) {
-        return this.http.post(this.userposts, userId);
+        return this.http.post(this.userposts, userId, httpOptions);
     };
     UserpostService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
