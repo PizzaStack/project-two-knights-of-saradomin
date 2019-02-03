@@ -456,6 +456,7 @@ var CreatepostComponent = /** @class */ (function () {
         //             <div class="row">
         //                 <div class="col-lg-12">
         //                     <app-createpost></app-createpost>
+
         //                 </div>
         //             </div>
         //             <hr>
@@ -3684,7 +3685,6 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! C:\Users\jdeje\OneDrive\Documents\Revature\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
-
 
 /***/ })
 
