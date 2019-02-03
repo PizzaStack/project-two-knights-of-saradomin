@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import swal from 'sweetalert2';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-updateprofile',
@@ -21,24 +22,98 @@ export class UpdateprofileComponent implements OnInit {
   submitted = false;
   userModel:Users;
 
-  constructor(protected _userService:UserService,
+  constructor(protected _userService: UserService,
+    private _storageService: StorageService,
     private router: Router, 
     private formBuilder: FormBuilder,
     public _authService: AuthService) { }
 
   ngOnInit() {
-    this.loggedInUser.firstname = localStorage.getItem('firstname');
-    this.loggedInUser.lastname = localStorage.getItem('lastname');
-    this.userModel = new Users(null, null, 
-      this.loggedInUser.firstname, this.loggedInUser.lastname, 
-      null, null, true);
+    this.userModel = new Users(Number(localStorage.getItem('token')), localStorage.getItem('email'), '', 
+      localStorage.getItem('firstName'), localStorage.getItem('lastName'), 
+      null, true);
+    console.log("userModel: " + JSON.stringify(this.userModel))
     this.updateForm = this.formBuilder.group({
-      firstname: ['', []],
-      lastname: ['', []],
+      firstname: [this.userModel.firstname, [Validators.required, Validators.pattern(/[a-z\w]{1,}/i)]],
+      lastname: [this.userModel.lastname, [Validators.required, Validators.pattern(/[a-z\w]{1,}/i)]],
       password: ['', [Validators.required, Validators.minLength(4)]],
-      confirmPassword: ['', [Validators.minLength(4)]]
+      confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
+      newPassword: ['', []]
     });
   }
   get f() { return this.updateForm.controls; }
 
+  onSubmit(){
+    this.submitted = true;
+    if (this.updateForm.invalid) {
+      this.resetModel();
+      return;
+    } else if (this.f.password.value != this.f.confirmPassword.value){
+      console.log('password: ' + this.f.password.value + ', ' + 'confirmPassword: ' + this.f.confirmPassword.value)
+      swal({
+        title: "Error",
+        text: "Passwords Do Not Match",
+        imageUrl: "../../assets/snowconelikeshadow.png",
+        imageHeight: 100,
+        timer: 3000
+      });
+    } else {
+      this.userModel.firstname = this.f.firstname.value;
+      this.userModel.lastname = this.f.lastname.value;
+      if (this.f.newPassword.value.length >= 4){
+        this.userModel.password = this.f.newPassword.value;
+        console.log('new password: ' + this.userModel.password)
+      } else {
+        this.userModel.password = this.f.password.value;
+        console.log('password (unchanged): ' + this.userModel.password)
+      }
+
+      this.f.confirmPassword.setValue('');
+      console.log("valid update form")
+      this.updateInfo(this.userModel);
+      this.submitted = false;
+    }
+  }
+
+  updateInfo(user:Users){
+    this._userService.updateInfo(user).subscribe(data => {
+      if (data == null){
+        console.log("data: " + JSON.stringify(data))
+        swal({
+          title: "Error",
+          text: "Unable To Update Your Information",
+          imageUrl: "../../assets/snowconelikeshadow.png",
+          imageHeight: 100,
+          timer: 3000
+        });
+      } else {
+        user = data;
+        localStorage.setItem('firstName', user.firstname);
+        localStorage.setItem('lastName', user.lastname);
+        this._userService.setLoggedInUserById(user.userid, user);
+        console.log("New LoggedIn User: " + JSON.stringify(user));
+        swal({
+          title:"Success",
+          text:"We Updated Your Information",
+          imageUrl: "../../assets/greensnowcone.png",
+          imageHeight: 100,
+          timer: 3000
+        });
+        this.router.navigate(["/mainview"]);
+      }
+    });
+  }
+
+  resetFields(){
+    this.f.firstname.setValue(localStorage.getItem('firstName'));
+    this.f.lastname.setValue(localStorage.getItem('lastName'));
+    this.f.password.setValue('');
+    this.f.confirmPassword.setValue('');
+    this.f.newPassword.setValue('');
+  }
+  resetModel(){
+    this.userModel.firstname = localStorage.getItem('firstName');
+    this.userModel.lastname = localStorage.getItem('lastName');
+    this.userModel.password = '';
+  }
 }
