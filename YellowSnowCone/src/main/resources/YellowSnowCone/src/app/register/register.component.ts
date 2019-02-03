@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this._authService.logout();
-    this._url = 'http://localhost:8080/';
+    this._url = 'http://18.191.217.180:8888/';
     this.newUserModel = new Users(null, null, null, null, null, null, false);
 
     this.registrationForm = this.formBuilder.group({

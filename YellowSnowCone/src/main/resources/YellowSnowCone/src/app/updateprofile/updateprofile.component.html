@@ -50,7 +50,7 @@
             <div class="form-group">
                 <input type="password" class="form-control" id="inputNewPassword" 
                 placeholder="Choose A New Password" formControlName="newPassword" 
-                name="newPassword" [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }" required>
+                name="newPassword" [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }">
                 <!--
                 <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback">
                     <div *ngIf="f.newPassword.errors.required">Password Is Required</div>
