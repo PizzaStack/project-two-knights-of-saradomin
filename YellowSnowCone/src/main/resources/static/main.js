@@ -2842,6 +2842,7 @@ var SidemenuComponent = /** @class */ (function () {
         this.clearMessageRefresh();
         this.authService.logout();
         this.router.navigate(['/welcomeview']);
+        window.location.reload();
     };
     SidemenuComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

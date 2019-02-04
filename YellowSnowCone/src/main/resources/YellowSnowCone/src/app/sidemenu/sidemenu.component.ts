@@ -31,5 +31,6 @@ export class SidemenuComponent implements OnInit {
     this.clearMessageRefresh();
     this.authService.logout();
     this.router.navigate(['/welcomeview']);
+    window.location.reload();
   }
 }
