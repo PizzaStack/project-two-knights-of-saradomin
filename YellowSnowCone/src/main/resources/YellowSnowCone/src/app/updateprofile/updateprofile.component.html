@@ -35,7 +35,8 @@
                 name="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">Password Is Required</div>
-                    <div *ngIf="f.password.errors.minlength">Password Must Be At Least 4 characters</div>
+                    <div *ngIf="f.password.errors.minlength">Password Must Be At Least 8 characters</div>
+                    <div *ngIf="f.password.errors.maxlength">Password Too Long</div>
                 </div>
             </div>
             <div class="form-group">
@@ -44,19 +45,17 @@
                 name="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" required>
                 <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                     <div *ngIf="f.confirmPassword.errors.required">Password Is Required</div>
-                    <div *ngIf="f.confirmPassword.errors.minlength">Password Must Be At Least 4 characters</div>
+                    <div *ngIf="f.confirmPassword.errors.minlength">Password Must Be At Least 8 characters</div>
+                    <div *ngIf="f.confirmPassword.errors.maxlength">Password Too Long</div>
                 </div>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="inputNewPassword" 
                 placeholder="Choose A New Password" formControlName="newPassword" 
                 name="newPassword" [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }">
-                <!--
                 <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback">
-                    <div *ngIf="f.newPassword.errors.required">Password Is Required</div>
-                    <div *ngIf="f.newPassword.errors.minlength">Password Must Be At Least 4 characters</div>
+                    <div *ngIf="f.newPassword.errors.maxlength">Password Too Long</div>
                 </div>
-                -->
             </div>
             <!--
             <div>

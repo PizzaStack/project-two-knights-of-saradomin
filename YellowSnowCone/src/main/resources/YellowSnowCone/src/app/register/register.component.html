@@ -9,8 +9,8 @@
                         <input type="text" class="form-control" id="input_First_Name" placeholder="First Name" name="firstname"
                             formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }">
                         <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
-                            <div *ngIf="f.firstname.errors.required">Firstname Is Required</div>
-                            <div *ngIf="f.firstname.errors.minlength">Firstname Too Short</div>
+                            <div *ngIf="f.firstname.errors.required">First Name Is Required</div>
+                            <div *ngIf="f.firstname.errors.pattern">Invalid First Name</div>
                         </div>
                     </div>
                 </div>
@@ -19,8 +19,8 @@
                         <input type="text" class="form-control" id="input_Last_Name" placeholder="Last Name" name="lastname"
                             formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
                         <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
-                            <div *ngIf="f.lastname.errors.required">Lastname Is Required</div>
-                            <div *ngIf="f.lastname.errors.minlength">Lastname Too Short</div>
+                            <div *ngIf="f.lastname.errors.required">Last Name Is Required</div>
+                            <div *ngIf="f.lastname.errors.pattern">Invalid Last Name</div>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,8 @@
                 <!-- ngModel [(ngModel)]="newUserModel.password"-->
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">Password Is Required</div>
-                    <div *ngIf="f.password.errors.minlength">Password Must Be At Least 4 characters</div>
+                    <div *ngIf="f.password.errors.minlength">Password Must Be At Least 8 characters</div>
+                    <div *ngIf="f.password.errors.maxlength">Password Too Long</div>
                 </div>
             </div>
             <div class="form-group">

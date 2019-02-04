@@ -729,7 +729,7 @@ module.exports = ".navbar {\r\n    background-color: white;\r\n    box-shadow: 0
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n  <a class=\"navbar-brand\" href=\"#\">\r\n    <h1><strong>Yellow Snowcone</strong></h1>\r\n  </a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav ml-auto\">\r\n      <!--\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.email.errors }\">\r\n          <input type=\"email\" formControlName=\"email\" class=\"form-control clearfix\" id=\"login_Email\" aria-describedby=\"emailHelp\"\r\n            placeholder=\"Email\">\r\n          \r\n        </div>\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.password.errors }\">\r\n          <input type=\"password\" formControlName=\"password\" class=\"form-control clearfix\" id=\"login_Password\">\r\n        </div>\r\n        <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n      </form>\r\n      -->\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n          <input type=\"email\" name=\"email\" formControlName=\"email\" class=\"form-control\" id=\"login_Email\"\r\n            aria-describedby=\"emailHelp\" placeholder=\"Enter Email\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n          <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.email.errors.required\">Email Is Required</div>\r\n            <div *ngIf=\"f.email.errors.email\">Email Must Be A Valid Email Address</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <input type=\"password\" name=\"password\" formControlName=\"password\" class=\"form-control\" id=\"login_Password\"\r\n            placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n          <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n            <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"loading\">Log In</button>\r\n        </div>\r\n      </form>\r\n    </ul>\r\n  </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light \">\r\n  <a class=\"navbar-brand\" href=\"#\">\r\n    <h1><strong>Yellow Snowcone</strong></h1>\r\n  </a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav ml-auto\">\r\n      <!--\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.email.errors }\">\r\n          <input type=\"email\" formControlName=\"email\" class=\"form-control clearfix\" id=\"login_Email\" aria-describedby=\"emailHelp\"\r\n            placeholder=\"Email\">\r\n          \r\n        </div>\r\n        <div class=\"form-group\" [ngClass]=\"{ 'has-error': submitted && f.password.errors }\">\r\n          <input type=\"password\" formControlName=\"password\" class=\"form-control clearfix\" id=\"login_Password\">\r\n        </div>\r\n        <button type=\"submit\" class=\"btn\" [disabled]=\"!loginForm.valid\">Log In</button>\r\n      </form>\r\n      -->\r\n      <form class=\"form-inline\" [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\r\n        <div class=\"form-group\">\r\n          <input type=\"email\" name=\"email\" formControlName=\"email\" class=\"form-control\" id=\"login_Email\"\r\n            aria-describedby=\"emailHelp\" placeholder=\"Enter Email\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n          <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.email.errors.required\">Email Is Required</div>\r\n            <div *ngIf=\"f.email.errors.email\">Email Must Be A Valid Email Address</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <input type=\"password\" name=\"password\" formControlName=\"password\" class=\"form-control\" id=\"login_Password\"\r\n            placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\">\r\n          <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n          <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n            <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n            <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 8 characters</div>\r\n            <div *ngIf=\"f.password.errors.maxlength\">Password Too Long</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"form-group\">\r\n          <button type=\"submit\" class=\"btn btn-success\" [disabled]=\"loading\">Log In</button>\r\n        </div>\r\n      </form>\r\n    </ul>\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -777,7 +777,7 @@ var LoginComponent = /** @class */ (function () {
         this.newUserModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](null, null, null, null, null, null, false);
         this.loginForm = this.formBuilder.group({
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].email]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(4)]]
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(8), _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].maxLength(25)]]
         });
     };
     Object.defineProperty(LoginComponent.prototype, "f", {
@@ -2280,7 +2280,7 @@ module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" id=\"Register\">\r\n    <div class=\"row\">\r\n        <form [formGroup]=\"registrationForm\" (ngSubmit)=\"onSubmit()\" class=\"form col-lg-12\">\r\n            <h3><strong>Create a New Account</strong></h3>\r\n            <p>It’s free and always will be!</p>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" placeholder=\"First Name\" name=\"firstname\"\r\n                            formControlName=\"firstname\" [ngClass]=\"{ 'is-invalid': submitted && f.firstname.errors }\">\r\n                        <div *ngIf=\"submitted && f.firstname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.firstname.errors.required\">Firstname Is Required</div>\r\n                            <div *ngIf=\"f.firstname.errors.minlength\">Firstname Too Short</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Last Name\" name=\"lastname\"\r\n                            formControlName=\"lastname\" [ngClass]=\"{ 'is-invalid': submitted && f.lastname.errors }\">\r\n                        <div *ngIf=\"submitted && f.lastname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.lastname.errors.required\">Lastname Is Required</div>\r\n                            <div *ngIf=\"f.lastname.errors.minlength\">Lastname Too Short</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"email\" name=\"email\" formControlName=\"email\" class=\"form-control\" id=\"input_Email\"\r\n                    placeholder=\"Email\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n                <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.email.errors.required\">Email Is Required</div>\r\n                    <div *ngIf=\"f.email.errors.email\">Email Must Be A Valid Email Address</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" name=\"password\" formControlName=\"password\" class=\"form-control\" id=\"InputPassword\"\r\n                    placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n                <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default btn-lg float-right\" [disabled]=\"loading\">Register</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\" id=\"Register\">\r\n    <div class=\"row\">\r\n        <form [formGroup]=\"registrationForm\" (ngSubmit)=\"onSubmit()\" class=\"form col-lg-12\">\r\n            <h3><strong>Create a New Account</strong></h3>\r\n            <p>It’s free and always will be!</p>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" placeholder=\"First Name\" name=\"firstname\"\r\n                            formControlName=\"firstname\" [ngClass]=\"{ 'is-invalid': submitted && f.firstname.errors }\">\r\n                        <div *ngIf=\"submitted && f.firstname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.firstname.errors.required\">First Name Is Required</div>\r\n                            <div *ngIf=\"f.firstname.errors.pattern\">Invalid First Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" placeholder=\"Last Name\" name=\"lastname\"\r\n                            formControlName=\"lastname\" [ngClass]=\"{ 'is-invalid': submitted && f.lastname.errors }\">\r\n                        <div *ngIf=\"submitted && f.lastname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.lastname.errors.required\">Last Name Is Required</div>\r\n                            <div *ngIf=\"f.lastname.errors.pattern\">Invalid Last Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"email\" name=\"email\" formControlName=\"email\" class=\"form-control\" id=\"input_Email\"\r\n                    placeholder=\"Email\" [ngClass]=\"{ 'is-invalid': submitted && f.email.errors }\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.email\" -->\r\n                <div *ngIf=\"submitted && f.email.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.email.errors.required\">Email Is Required</div>\r\n                    <div *ngIf=\"f.email.errors.email\">Email Must Be A Valid Email Address</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" name=\"password\" formControlName=\"password\" class=\"form-control\" id=\"InputPassword\"\r\n                    placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\">\r\n                <!-- ngModel [(ngModel)]=\"newUserModel.password\"-->\r\n                <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 8 characters</div>\r\n                    <div *ngIf=\"f.password.errors.maxlength\">Password Too Long</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" class=\"btn btn-default btn-lg float-right\" [disabled]=\"loading\">Register</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -2328,9 +2328,9 @@ var RegisterComponent = /** @class */ (function () {
         this.newUserModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](null, null, null, null, null, null, false);
         this.registrationForm = this.formBuilder.group({
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].email]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(4)]],
-            firstname: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(1)]],
-            lastname: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(1)]]
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].minLength(8), _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].maxLength(25)]],
+            firstname: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].pattern(/[a-z\w]{1,20}/i)]],
+            lastname: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].pattern(/[a-z\w]{1,20}/i)]]
         });
     };
     Object.defineProperty(RegisterComponent.prototype, "f", {
@@ -2385,6 +2385,8 @@ var RegisterComponent = /** @class */ (function () {
         if (this.registrationForm.invalid) {
             //this.resetFields();
             this.resetModel();
+            this.f.email.setValue("");
+            this.f.password.setValue("");
             return;
         }
         else {
@@ -3031,7 +3033,7 @@ module.exports = ".form-control {\r\n    box-shadow: inset 0 0 15px #888888;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" id=\"update_Profile\">\r\n    <div class=\"row\">\r\n        <form class=\"form col-lg-12\" [formGroup]=\"updateForm\" (ngSubmit)=\"onSubmit()\">\r\n            <h3><strong>Update Profile</strong></h3>\r\n            <hr>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"updateFormLabel\" for=\"lastname\">First Name </label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" \r\n                        placeholder=\"First Name\" formControlName=\"firstname\" \r\n                        name=\"firstname\" [ngClass]=\"{ 'is-invalid': submitted && f.firstname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.firstname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.firstname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.firstname.errors.pattern\">Invalid First Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"updateFormLabel\" for=\"lastname\">Last Name </label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" \r\n                        placeholder=\"Last Name\" formControlName=\"lastname\" \r\n                        name=\"lastname\" [ngClass]=\"{ 'is-invalid': submitted && f.lastname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.lastname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.lastname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.lastname.errors.pattern\">Invalid Last Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" \r\n                placeholder=\"Password\" formControlName=\"password\" \r\n                name=\"password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" required>\r\n                <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputConfirmPassword\" \r\n                placeholder=\"Confirm Password\" formControlName=\"confirmPassword\" \r\n                name=\"confirmPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.confirmPassword.errors }\" required>\r\n                <div *ngIf=\"submitted && f.confirmPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.confirmPassword.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.confirmPassword.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputNewPassword\" \r\n                placeholder=\"Choose A New Password\" formControlName=\"newPassword\" \r\n                name=\"newPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.newPassword.errors }\">\r\n                <!--\r\n                <div *ngIf=\"submitted && f.newPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.newPassword.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.newPassword.errors.minlength\">Password Must Be At Least 4 characters</div>\r\n                </div>\r\n                -->\r\n            </div>\r\n            <!--\r\n            <div>\r\n                <h6>Upload a different photo...</h6>\r\n                <input type=\"file\" class=\"text-center center-block file-upload\">\r\n            </div>\r\n            -->\r\n            <button type=\"submit\" class=\"btn btn-default btn-lg float-right\" \r\n            [disabled]=\"loading\">\r\n                Save\r\n            </button>\r\n        </form>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\" id=\"update_Profile\">\r\n    <div class=\"row\">\r\n        <form class=\"form col-lg-12\" [formGroup]=\"updateForm\" (ngSubmit)=\"onSubmit()\">\r\n            <h3><strong>Update Profile</strong></h3>\r\n            <hr>\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"updateFormLabel\" for=\"lastname\">First Name </label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_First_Name\" \r\n                        placeholder=\"First Name\" formControlName=\"firstname\" \r\n                        name=\"firstname\" [ngClass]=\"{ 'is-invalid': submitted && f.firstname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.firstname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.firstname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.firstname.errors.pattern\">Invalid First Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-6\">\r\n                    <div class=\"form-group\">\r\n                        <label class=\"updateFormLabel\" for=\"lastname\">Last Name </label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"input_Last_Name\" \r\n                        placeholder=\"Last Name\" formControlName=\"lastname\" \r\n                        name=\"lastname\" [ngClass]=\"{ 'is-invalid': submitted && f.lastname.errors }\" required>\r\n                        <div *ngIf=\"submitted && f.lastname.errors\" class=\"invalid-feedback\">\r\n                            <div *ngIf=\"f.lastname.errors.required\">This Field Is Required</div>\r\n                            <div *ngIf=\"f.lastname.errors.pattern\">Invalid Last Name</div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputPassword\" \r\n                placeholder=\"Password\" formControlName=\"password\" \r\n                name=\"password\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" required>\r\n                <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.password.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.password.errors.minlength\">Password Must Be At Least 8 characters</div>\r\n                    <div *ngIf=\"f.password.errors.maxlength\">Password Too Long</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputConfirmPassword\" \r\n                placeholder=\"Confirm Password\" formControlName=\"confirmPassword\" \r\n                name=\"confirmPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.confirmPassword.errors }\" required>\r\n                <div *ngIf=\"submitted && f.confirmPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.confirmPassword.errors.required\">Password Is Required</div>\r\n                    <div *ngIf=\"f.confirmPassword.errors.minlength\">Password Must Be At Least 8 characters</div>\r\n                    <div *ngIf=\"f.confirmPassword.errors.maxlength\">Password Too Long</div>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <input type=\"password\" class=\"form-control\" id=\"inputNewPassword\" \r\n                placeholder=\"Choose A New Password\" formControlName=\"newPassword\" \r\n                name=\"newPassword\" [ngClass]=\"{ 'is-invalid': submitted && f.newPassword.errors }\">\r\n                <div *ngIf=\"submitted && f.newPassword.errors\" class=\"invalid-feedback\">\r\n                    <div *ngIf=\"f.newPassword.errors.maxlength\">Password Too Long</div>\r\n                </div>\r\n            </div>\r\n            <!--\r\n            <div>\r\n                <h6>Upload a different photo...</h6>\r\n                <input type=\"file\" class=\"text-center center-block file-upload\">\r\n            </div>\r\n            -->\r\n            <button type=\"submit\" class=\"btn btn-default btn-lg float-right\" \r\n            [disabled]=\"loading\">\r\n                Save\r\n            </button>\r\n        </form>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -3077,11 +3079,12 @@ var UpdateprofileComponent = /** @class */ (function () {
         this.userModel = new _users__WEBPACK_IMPORTED_MODULE_2__["Users"](Number(localStorage.getItem('token')), localStorage.getItem('email'), '', localStorage.getItem('firstName'), localStorage.getItem('lastName'), null, true);
         console.log("userModel: " + JSON.stringify(this.userModel));
         this.updateForm = this.formBuilder.group({
-            firstname: [this.userModel.firstname, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern(/[a-z\w]{1,}/i)]],
-            lastname: [this.userModel.lastname, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern(/[a-z\w]{1,}/i)]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]],
-            confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(4)]],
-            newPassword: ['', []]
+            firstname: [this.userModel.firstname, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern(/[a-z\w]{1,20}/i)]],
+            lastname: [this.userModel.lastname, [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].pattern(/[a-z\w]{1,20}/i)]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(8), _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(25)]],
+            confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].minLength(8), _angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(25)]],
+            newPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["Validators"].maxLength(25)]]
+            // Will check min length in java -- too much trouble in ang since form would be invalid if blank
         });
     };
     Object.defineProperty(UpdateprofileComponent.prototype, "f", {
@@ -3108,47 +3111,59 @@ var UpdateprofileComponent = /** @class */ (function () {
         else {
             this.userModel.firstname = this.f.firstname.value;
             this.userModel.lastname = this.f.lastname.value;
-            if (this.f.newPassword.value.length >= 4) {
-                this.userModel.password = this.f.newPassword.value;
-                console.log('new password: ' + this.userModel.password);
-            }
-            else {
-                this.userModel.password = this.f.password.value;
-                console.log('password (unchanged): ' + this.userModel.password);
-            }
+            this.userModel.password = this.f.newPassword.value;
+            console.log('new password: ' + this.userModel.password);
+            this.userModel.password = this.f.password.value;
             this.f.confirmPassword.setValue('');
             console.log("valid update form");
-            this.updateInfo(this.userModel);
+            this.updateInfo(this.userModel, this.f.newPassword.value);
             this.submitted = false;
         }
     };
-    UpdateprofileComponent.prototype.updateInfo = function (user) {
+    UpdateprofileComponent.prototype.updateInfo = function (user, newPassword) {
         var _this = this;
-        this._userService.updateInfo(user).subscribe(function (data) {
-            if (data == null) {
-                console.log("data: " + JSON.stringify(data));
+        this._userService.authenticate(user).subscribe(function (dataIsValid) {
+            if (dataIsValid == null) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_7___default()({
                     title: "Error",
-                    text: "Unable To Update Your Information",
+                    text: "Incorrect Password",
                     imageUrl: "../../assets/snowconelikeshadow.png",
                     imageHeight: 100,
                     timer: 3000
                 });
             }
             else {
-                user = data;
-                localStorage.setItem('firstName', user.firstname);
-                localStorage.setItem('lastName', user.lastname);
-                _this._userService.setLoggedInUserById(user.userid, user);
-                console.log("New LoggedIn User: " + JSON.stringify(user));
-                sweetalert2__WEBPACK_IMPORTED_MODULE_7___default()({
-                    title: "Success",
-                    text: "We Updated Your Information",
-                    imageUrl: "../../assets/greensnowcone.png",
-                    imageHeight: 100,
-                    timer: 3000
+                if (newPassword.length >= 8) {
+                    user.password = newPassword;
+                }
+                console.log("user info before update: " + JSON.stringify(user));
+                _this._userService.updateInfo(user).subscribe(function (data) {
+                    if (data == null) {
+                        console.log("data: " + JSON.stringify(data));
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_7___default()({
+                            title: "Error",
+                            text: "Unable To Update Your Information",
+                            imageUrl: "../../assets/snowconelikeshadow.png",
+                            imageHeight: 100,
+                            timer: 3000
+                        });
+                    }
+                    else {
+                        user = data;
+                        localStorage.setItem('firstName', user.firstname);
+                        localStorage.setItem('lastName', user.lastname);
+                        _this._userService.setLoggedInUserById(user.userid, user);
+                        console.log("New LoggedIn User: " + JSON.stringify(user));
+                        sweetalert2__WEBPACK_IMPORTED_MODULE_7___default()({
+                            title: "Success",
+                            text: "We Updated Your Information",
+                            imageUrl: "../../assets/greensnowcone.png",
+                            imageHeight: 100,
+                            timer: 3000
+                        });
+                        _this.router.navigate(["/mainview"]);
+                    }
                 });
-                _this.router.navigate(["/mainview"]);
             }
         });
     };
@@ -3822,7 +3837,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\boydt\Desktop\Project Two\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Associate\java\project-two-knights-of-saradomin\YellowSnowCone\src\main\resources\YellowSnowCone\src\main.ts */"./src/main.ts");
 
 
 /***/ })

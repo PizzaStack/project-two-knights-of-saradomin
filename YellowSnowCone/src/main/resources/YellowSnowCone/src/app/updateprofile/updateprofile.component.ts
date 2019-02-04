@@ -34,11 +34,12 @@ export class UpdateprofileComponent implements OnInit {
       null, true);
     console.log("userModel: " + JSON.stringify(this.userModel))
     this.updateForm = this.formBuilder.group({
-      firstname: [this.userModel.firstname, [Validators.required, Validators.pattern(/[a-z\w]{1,}/i)]],
-      lastname: [this.userModel.lastname, [Validators.required, Validators.pattern(/[a-z\w]{1,}/i)]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
-      newPassword: ['', []]
+      firstname: [this.userModel.firstname, [Validators.required, Validators.pattern(/[a-z\w]{1,20}/i)]],
+      lastname: [this.userModel.lastname, [Validators.required, Validators.pattern(/[a-z\w]{1,20}/i)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(25)]],
+      newPassword: ['', [Validators.maxLength(25)]]
+      // Will check min length in java -- too much trouble in ang since form would be invalid if blank
     });
   }
   get f() { return this.updateForm.controls; }
@@ -60,48 +61,62 @@ export class UpdateprofileComponent implements OnInit {
     } else {
       this.userModel.firstname = this.f.firstname.value;
       this.userModel.lastname = this.f.lastname.value;
-      if (this.f.newPassword.value.length >= 4){
-        this.userModel.password = this.f.newPassword.value;
-        console.log('new password: ' + this.userModel.password)
-      } else {
-        this.userModel.password = this.f.password.value;
-        console.log('password (unchanged): ' + this.userModel.password)
-      }
+
+      this.userModel.password = this.f.newPassword.value;
+      console.log('new password: ' + this.userModel.password)
+      this.userModel.password = this.f.password.value;
 
       this.f.confirmPassword.setValue('');
       console.log("valid update form")
-      this.updateInfo(this.userModel);
+      this.updateInfo(this.userModel, this.f.newPassword.value);
       this.submitted = false;
     }
   }
 
-  updateInfo(user:Users){
-    this._userService.updateInfo(user).subscribe(data => {
-      if (data == null){
-        console.log("data: " + JSON.stringify(data))
+  updateInfo(user:Users, newPassword:string){
+    this._userService.authenticate(user).subscribe(dataIsValid => {
+      if (dataIsValid == null){
         swal({
           title: "Error",
-          text: "Unable To Update Your Information",
+          text: "Incorrect Password",
           imageUrl: "../../assets/snowconelikeshadow.png",
           imageHeight: 100,
           timer: 3000
         });
       } else {
-        user = data;
-        localStorage.setItem('firstName', user.firstname);
-        localStorage.setItem('lastName', user.lastname);
-        this._userService.setLoggedInUserById(user.userid, user);
-        console.log("New LoggedIn User: " + JSON.stringify(user));
-        swal({
-          title:"Success",
-          text:"We Updated Your Information",
-          imageUrl: "../../assets/greensnowcone.png",
-          imageHeight: 100,
-          timer: 3000
+        if (newPassword.length >= 8){
+          user.password = newPassword;
+        } 
+        console.log("user info before update: " + JSON.stringify(user))
+        
+        this._userService.updateInfo(user).subscribe(data => {
+          if (data == null){
+            console.log("data: " + JSON.stringify(data))
+            swal({
+              title: "Error",
+              text: "Unable To Update Your Information",
+              imageUrl: "../../assets/snowconelikeshadow.png",
+              imageHeight: 100,
+              timer: 3000
+            });
+          } else {
+            user = data;
+            localStorage.setItem('firstName', user.firstname);
+            localStorage.setItem('lastName', user.lastname);
+            this._userService.setLoggedInUserById(user.userid, user);
+            console.log("New LoggedIn User: " + JSON.stringify(user));
+            swal({
+              title:"Success",
+              text:"We Updated Your Information",
+              imageUrl: "../../assets/greensnowcone.png",
+              imageHeight: 100,
+              timer: 3000
+            });
+            this.router.navigate(["/mainview"]);
+          }
         });
-        this.router.navigate(["/mainview"]);
       }
-    });
+    })
   }
 
   resetFields(){
