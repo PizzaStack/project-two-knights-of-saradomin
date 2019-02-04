@@ -616,9 +616,8 @@ var FriendslistComponent = /** @class */ (function () {
                     this.users.push(i.user1);
                 }
             }
-            alert(this.users.toString);
         }
-        // this.users.reverse();
+        this.users.reverse();
     };
     FriendslistComponent.prototype.populateMessageThread = function (user) {
         this.storage.setMessageThreadUser(user);
