@@ -59,7 +59,7 @@ export class UserService {
     console.log("vtoken = " + verificationToken.vtoken);
     var newUser:Users = null;
   
-    return this.http.post<Users>("http://18.191.217.180:8888/validate/"
+    return this.http.post<Users>("http://3.16.214.183:8888/validate/"
       .concat(verificationToken.userid.toString()).concat("/")
       .concat(verificationToken.vtoken), 
       JSON.stringify(verificationToken), httpPostOptions);
