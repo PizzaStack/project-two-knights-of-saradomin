@@ -2933,7 +2933,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var StorageService = /** @class */ (function () {
     function StorageService() {
-        this.baseUrl = "http://18.191.217.180:8888/";
+        this.baseUrl = "http://3.16.214.183:8888/";
         this.scope = [];
     }
     StorageService.prototype.getScope = function () {
@@ -3314,7 +3314,7 @@ var UserService = /** @class */ (function () {
         console.log("userid = " + verificationToken.userid);
         console.log("vtoken = " + verificationToken.vtoken);
         var newUser = null;
-        return this.http.post("http://18.191.217.180:8888/validate/"
+        return this.http.post("http://3.16.214.183:8888/validate/"
             .concat(verificationToken.userid.toString()).concat("/")
             .concat(verificationToken.vtoken), JSON.stringify(verificationToken), httpPostOptions);
     };
