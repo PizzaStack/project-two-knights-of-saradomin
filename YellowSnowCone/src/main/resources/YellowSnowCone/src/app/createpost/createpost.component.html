@@ -5,7 +5,7 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <textarea Required class="form-control" #newPost name="post" id="post" rows="5" placeholder="Roar it out!!!"></textarea>
+                <textarea required class="form-control" #newPost name="post" id="post" rows="5" placeholder="Roar it out!!!"></textarea>
 
                 <button type="button" (click)="createPost(newPost)" (click)="newPost.value = ''" class="btn">Post</button>
             </div>
