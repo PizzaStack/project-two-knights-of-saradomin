@@ -50,11 +50,9 @@ export class FriendslistComponent implements OnInit {
           this.users.push(i.user1);
         }
       }
-
-      alert(this.users.toString);
     }
 
-    // this.users.reverse();
+    this.users.reverse();
     
   }
 
